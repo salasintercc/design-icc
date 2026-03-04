@@ -1,0 +1,84 @@
+[00:00:01.060] Server  LOG     ✓ Ready in 715ms
+[00:00:45.009] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:45.165] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:45.165] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:45.165] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772624709359} /_vercel/insights/view
+[00:04:02.062] Server  LOG     ✓ Compiled in 606ms
+[00:04:02.164] Browser ERROR   ./components/templates/template-ic-blue-professional.tsx:497:21
+Parsing ecmascript source code failed
+  495 |       </section>
+  496 |
+> 497 |       {/* FOOTER */}}
+      |                     ^
+  498 |       <footer className="flex flex-col md:flex-row items-center justify-between gap-4 px-6 lg:px-14 py-10 flex-wrap" style={{ background: IC.blue }}>
+  499 |         <div className="flex items-center gap-3">
+  500 |           <div className="w-8 h-8 flex items-center justify-center font-black text-[13px]" style={{ background: IC.white, color: IC.blue }}>IC</div>
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/templates/template-ic-blue-professional.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/templates/template-ic-blue-professional.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:05:17.872] Server  LOG     ✓ Compiled in 86ms
+[00:29:21.332] Server  LOG     ✓ Compiled in 141ms
+[00:29:33.293] Server  LOG     ✓ Compiled in 69ms
+[00:35:57.094] Server  LOG     ✓ Compiled in 125ms
+[00:35:57.210] Browser ERROR   uncaughtError: ReferenceError: H2 is not defined
+[00:36:29.428] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:36:29.445] Server  LOG     ✓ Compiled in 77ms
+[00:36:29.569] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772626853723} /_vercel/insights/view
+[00:36:30.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:30.198] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:36:30.198] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:36:30.198] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772626854369} /_vercel/insights/view
+[00:36:52.689] Server  LOG     ✓ Compiled in 113ms
+[00:37:35.930] Server  LOG     ✓ Compiled in 134ms
+[00:38:18.664] Server  LOG     ✓ Compiled in 103ms
+[00:41:13.059] Server  LOG     ✓ Compiled in 117ms
+[00:41:53.051] Server  LOG     ✓ Compiled in 118ms
+[00:43:40.214] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:40.343] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:43:40.343] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:43:40.343] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772627284509} /_vercel/insights/view
+[00:45:54.765] Server  LOG     ✓ Compiled in 119ms
+[00:46:01.969] Server  LOG     ✓ Compiled in 33ms
+[00:48:29.196] Server  LOG     ✓ Compiled in 128ms
+[00:48:29.308] Browser ERROR   ./components/templates/template-ic-editorial.tsx:272:20
+Parsing ecmascript source code failed
+  270 |             </Fade>
+  271 |               </div>
+> 272 |             </Fade>
+      |                    ^
+> 273 |
+      | ^
+> 274 |           </div>
+      | ^^^^^^^^^^^
+  275 |
+  276 |           {/* ── Competences Slider ─────────────────────────────────────────── */}
+  277 |           <div className="mt-16 lg:mt-20 pt-12" style={{ borderTop: `1px solid ${IC.blueXL}` }}>
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./components/templates/template-ic-editorial.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/templates/template-ic-editorial.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:54:25.788] Server  LOG     ✓ Compiled in 135ms
+[00:55:28.046] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:28.165] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:28.165] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:55:28.165] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1772627992328} /_vercel/insights/view
+[00:56:48.712] Server  LOG     ✓ Compiled in 55ms
