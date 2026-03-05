@@ -24,15 +24,15 @@ const IC = {
 }
 
 const D = {
-  productName:  "Windows",
-  regionName:   "Austria",
-  productTypes: ["Market Analysis", "Competition Analysis", "Market Forecast", "Company Profiles"],
+  productName:  "Defining Growth Potential",
+  regionName:   "Since 1998",
+  productTypes: ["Industry knowledge", "Concepts & tools", "Lead generation", "Pricing optimisation"],
 
-  descTitle: "Austrian Window Market Overview",
-  descText:  "The Austrian window market encompasses residential, commercial, and industrial segments. This comprehensive study covers market size, growth trends, competitive landscape, and future outlook through 2030, based on primary research with 200+ market participants across the value chain.",
+  descTitle: "How we make our customers successful",
+  descText:  "Consultants by passion and excellence! Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.",
 
-  trendTitle: "Key Market Trends 2025–2027",
-  trendText:  "The Austrian window market is undergoing significant transformation driven by energy efficiency regulations (EU Energy Performance of Buildings Directive), rising raw material costs, and growing demand for smart window solutions. Triple-glazed windows now account for 68% of all new residential installations.",
+  trendTitle: "IC News - Don't miss any Industry Trends",
+  trendText:  "After two years of decline, key industrial markets are starting to grow again, driven by increasing renovation projects and a solid level of new investments.",
 
   editions: [
     { name: "Standard Edition 2025",                    price: "€2,490" },
@@ -47,7 +47,7 @@ const D = {
     { name: "Romania",        status: "On Request", available: false },
   ],
 
-  players: ["Internorm", "Salamander", "Rehau", "Veka", "Schüco", "Aluplast", "KF Group", "Pax Fenster"],
+  players: ["Admonter", "CISA", "Citibank", "Codex Partners", "Concentro", "Conex", "CRH", "Deceuninck"],
 
   faqs: [
     { q: "What methodology is used in this report?",      a: "Our research combines primary data from 200+ interviews with manufacturers, distributors and end-users with secondary data analysis and our proprietary database of 14,000+ market studies." },
@@ -56,7 +56,7 @@ const D = {
     { q: "How current is the data in this report?",       a: "The 2025 edition incorporates data through Q3 2025, with preliminary estimates for Q4 2025. Forecasts extend to 2030." },
   ],
 
-  subText:  "Unlock unlimited access to our full library of 14,889 market reports across 50+ industries with an IC Subscription.",
+  subText:  "Keep in touch with our events and get the most up-to-date market data, industry sales and marketing concepts as well as praxis relevant tools.",
   benefits: [
     { title: "Unlimited Downloads", text: "Access our complete report library including all updates and future editions." },
     { title: "Priority Research",   text: "Commission custom research at preferential subscriber rates." },
@@ -64,40 +64,40 @@ const D = {
     { title: "Analyst Access",      text: "Direct consultation with our team of 50+ industry specialists." },
   ],
 
-  clientQuote: "The IC report on the Austrian window market gave us exactly the intelligence needed to plan our distribution expansion. The data quality and depth of analysis is unmatched in the industry.",
-  clientName:  "Head of Strategy, Leading European Window Manufacturer",
-  clients:     ["Saint-Gobain", "Schneider Electric", "Sodexo", "Salamander", "ELK Fertighaus", "Kontron"],
+  clientQuote: "At the IC Impulsworkshop 'Sales Optimization' we appreciate not only the practical relevance, but also the eloquent language and the perfect rhetoric.",
+  clientName:  "Adrian Capellari, Head of Sales, Admonter Holzindustrie",
+  clients:     ["Admonter", "Österreichs Personaldienstleister", "CISA", "Citibank", "Codex Partners", "Concentro"],
 
-  related: ["Doors & Entrances", "Insulation Materials", "Flat Glass", "PVC Profiles", "Aluminium Systems", "Architectural Hardware", "Sealants & Adhesives", "Roofing"],
+  related: ["Management Consulting", "Customer Insights", "Innovation Management", "Big Data Tools", "Market Reports", "Industry Experience", "Lead Generation", "Pricing"],
 
   press: [
-    { title: "Austrian Construction Market Rebounds in Q4 2025", desc: "New building permits rose 12% year-on-year, signaling positive outlook for window manufacturers." },
-    { title: "EU Energy Directive Reshapes Window Standards",     desc: "Upcoming EU regulations set to increase minimum energy performance requirements from 2026 onwards." },
+    { title: "Building Back Growth: European Sandwich Panels Market Shows Signs of Recovery", desc: "After two years of decline, the market is starting to grow again, driven by increasing renovation projects and a solid level of new investments." },
+    { title: "Europe's Door Access Control Goes Smart: Integrated Readers on the Rise", desc: "Residential new-builds are expected to recover gradually, supported by ongoing renovation activity and rising demand for integrated security solutions." },
   ],
   events: [
-    { title: "Fensterbau Frontale 2026", desc: "World's leading trade fair for windows, doors and façades.", date: "18–21 March 2026" },
-    { title: "BAU Munich 2027",          desc: "International trade fair for architecture, materials and systems.", date: "January 2027" },
+    { title: "Free Online Preview: Facility Services in Central and Eastern Europe 2026", desc: "Webinar with latest market tracking insights and practical recommendations.", date: "10/03/2026" },
+    { title: "Free Online Preview: Facility Services in Italy 2026", desc: "Webinar covering current trends, opportunities and strategic implications.", date: "11/03/2026" },
   ],
 
   references: [
-    { company: "Saint-Gobain",       domain: "saint-gobain.com",      statement: "The IC report on the Austrian window market gave us exactly the intelligence needed to plan our distribution expansion. The data quality and depth of analysis is unmatched in the industry." },
-    { company: "Schneider Electric", domain: "schneider-electric.com", statement: "Interconnection Consulting’s research is our go-to source when entering new European markets. Their competitive intelligence cuts months off our strategy cycles." },
+    { company: "Admonter", domain: "admonter.com", statement: "At the IC Impulsworkshop 'Sales Optimization' we appreciate not only the practical relevance, but also the eloquent language and the perfect rhetoric. The most important benefit for our company was the sales pipeline." },
+    { company: "Österreichs Personaldienstleister", domain: "personaldienstleister.at", statement: "The sales management tool 'Jobs Intelligence' has become indispensable for fast and correct strategic management decisions as well as daily support for hot leads for the sales team." },
   ],
   additionalClients: [
-    { name: "Salamander",     domain: "salamander.de" },
-    { name: "ELK Fertighaus", domain: "elk.at"        },
-    { name: "Kontron",        domain: "kontron.com"   },
-    { name: "Rehau",          domain: "rehau.com"     },
+    { name: "CISA",          domain: "cisa.com" },
+    { name: "Citibank",      domain: "citibank.com" },
+    { name: "Codex Partners",domain: "codex.partners" },
+    { name: "Concentro",     domain: "concentro.com" },
   ],
 }
 
 const COMPETENCES = [
-  { icon: BarChart2,  title: "Market Reports",           desc: "In-depth industry and regional analyses covering market size, trends and competitive dynamics." },
-  { icon: Search,     title: "Competitive Intelligence", desc: "Map competitor positioning, benchmark your performance and identify market white spaces." },
-  { icon: TrendingUp, title: "Pricing Intelligence",     desc: "Data-driven pricing strategies to optimise margins and respond to market shifts." },
-  { icon: Target,     title: "Lead Generation",          desc: "Identify and reach high-value prospects with verified, segmented market data." },
-  { icon: Users,      title: "Customer Insights",        desc: "Understand buyer behaviour, satisfaction drivers and churn risk across segments." },
-  { icon: Lightbulb,  title: "Strategic Consulting",     desc: "Expert advisory services to turn market intelligence into decisive business action." },
+  { icon: BarChart2,  title: "Management Consulting", desc: "Tailor-made consulting solutions to optimise sales, pricing and strategic execution." },
+  { icon: Search,     title: "Customer Insights",     desc: "Practical insight into customer needs, behaviour and market expectations." },
+  { icon: TrendingUp, title: "Innovation Management", desc: "From trend detection to innovation priorities that create measurable growth." },
+  { icon: Target,     title: "Big Data Tools",        desc: "Data-driven tools for structured market intelligence and decision support." },
+  { icon: Users,      title: "Market Reports",        desc: "High-quality market reports worldwide with actionable and relevant findings." },
+  { icon: Lightbulb,  title: "Industry Experience",   desc: "Deep sector expertise built through decades of projects and market research." },
 ]
 
 function useInView() {
@@ -131,15 +131,118 @@ function Fade({ children, className, style, delay = 0 }: { children: React.React
   )
 }
 
+function useParallax(speed = 0.07) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [offset, setOffset] = useState(0)
+  useEffect(() => {
+    const fn = () => {
+      if (!ref.current) return
+      const rect = ref.current.getBoundingClientRect()
+      setOffset((rect.top + rect.height / 2 - window.innerHeight / 2) * speed)
+    }
+    window.addEventListener("scroll", fn, { passive: true })
+    fn()
+    return () => window.removeEventListener("scroll", fn)
+  }, [speed])
+  return { ref, offset }
+}
+
+function WordReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true) }, { threshold: 0 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+  return (
+    <span style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", paddingBottom: "0.05em" }}>
+      <span
+        ref={ref}
+        style={{
+          display: "inline-block",
+          transform: visible ? "translateY(0)" : "translateY(110%)",
+          opacity: visible ? 1 : 0,
+          transition: `transform 0.82s cubic-bezier(0.22,1,0.36,1) ${delay}s, opacity 0.5s ease ${delay}s`,
+          willChange: "transform",
+        }}
+      >
+        {children}
+      </span>
+    </span>
+  )
+}
+
+function SplitFade({ text, baseDelay = 0, style, className }: {
+  text: string; baseDelay?: number; style?: React.CSSProperties; className?: string
+}) {
+  return (
+    <span className={className} style={{ display: "block", ...style }}>
+      {text.split(" ").map((w, i, arr) => (
+        <span key={i} style={{ display: "inline" }}>
+          <WordReveal delay={baseDelay + i * 0.065}>{w}</WordReveal>
+          {i < arr.length - 1 && " "}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+function ParaH2({ children, speed = 0.06, className, style }: {
+  children: React.ReactNode; speed?: number; className?: string; style?: React.CSSProperties
+}) {
+  const { ref, offset } = useParallax(speed)
+  return (
+    <div ref={ref} style={{ transform: `translateY(${offset}px)`, willChange: "transform" }}>
+      <h2 className={className} style={style}>{children}</h2>
+    </div>
+  )
+}
+
+// Drop: headings descend into place (editorial weight — opposite of Fade)
+function Drop({ children, className, style, delay = 0 }: { children: React.ReactNode; className?: string; style?: React.CSSProperties; delay?: number }) {
+  const { ref, visible } = useInView()
+  return (
+    <div ref={ref} className={className} style={{
+      ...style,
+      opacity: visible ? 1 : 0,
+      transform: visible ? "none" : "translateY(-22px)",
+      filter: visible ? "blur(0px)" : "blur(3px)",
+      transition: `opacity 0.9s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.9s cubic-bezier(0.22,1,0.36,1) ${delay}s, filter 0.9s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+      willChange: "opacity, transform, filter",
+    }}>
+      {children}
+    </div>
+  )
+}
+
+// SectionReveal: whole-section lift with strong Y + heading parallax
+function SectionReveal({ children, className, style, delay = 0 }: { children: React.ReactNode; className?: string; style?: React.CSSProperties; delay?: number }) {
+  const { ref, visible } = useInView()
+  return (
+    <div ref={ref} className={className} style={{
+      ...style,
+      opacity: visible ? 1 : 0,
+      transform: visible ? "none" : "translateY(64px)",
+      transition: `opacity 1s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 1.1s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
+      willChange: "opacity, transform",
+    }}>
+      {children}
+    </div>
+  )
+}
 
 export default function TemplateICEditorial() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled,  setScrolled]  = useState(false)
+  const [scrollY,   setScrollY]   = useState(0)
+  const [heroReady, setHeroReady] = useState(false)
   const sliderRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", fn)
+    const fn = () => { setScrolled(window.scrollY > 50); setScrollY(window.scrollY) }
+    window.addEventListener("scroll", fn, { passive: true })
     return () => window.removeEventListener("scroll", fn)
   }, [])
+  useEffect(() => { const t = setTimeout(() => setHeroReady(true), 80); return () => clearTimeout(t) }, [])
 
   return (
     <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
@@ -157,120 +260,189 @@ export default function TemplateICEditorial() {
           0%, 100% { opacity: 0.35; transform: scaleX(0.7); }
           50%      { opacity: 1; transform: scaleX(1); }
         }
+        @keyframes edHeroIn {
+          from { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+          to   { opacity: 1; transform: translateY(0);   filter: blur(0px); }
+        }
+        @keyframes edDecoIn {
+          from { opacity: 0; transform: translateX(-30px) rotate(-3deg); }
+          to   { opacity: 1; transform: translateX(0)    rotate(-3deg); }
+        }
+        @keyframes edLineIn {
+          from { transform: scaleY(0); opacity: 0; }
+          to   { transform: scaleY(1); opacity: 1; }
+        }
+        @keyframes edImgReveal {
+          from { clip-path: inset(0 100% 0 0); }
+          to   { clip-path: inset(0 0% 0 0); }
+        }
       `}</style>
 
-      {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-16 transition-all"
-        style={{ paddingTop: scrolled ? 13 : 18, paddingBottom: scrolled ? 13 : 18, background: "rgba(255,255,255,0.97)", borderBottom: `1px solid ${scrolled ? IC.blueXL : "transparent"}`, backdropFilter: "blur(14px)" }}>
-        <div className="flex items-center gap-2.5">
-          <span className="font-black text-xs px-2 py-1.5 tracking-widest" style={{ background: IC.blue, color: IC.white }}>IC</span>
-          <span className="hidden sm:block text-[13px] font-semibold tracking-tight" style={{ color: IC.gray80 }}>Interconnection Consulting</span>
+      {/* NAVBAR — Clean minimal */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-16"
+        style={{
+          paddingTop: 16, paddingBottom: 16,
+          background: scrolled ? "rgba(255,255,255,0.96)" : "rgba(255,255,255,0.92)",
+          borderBottom: `1px solid ${scrolled ? IC.blueXL : "rgba(220,230,242,0.5)"}`,
+          backdropFilter: "blur(16px)",
+          transition: "border-color 0.4s ease, background 0.4s ease",
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 flex items-center justify-center font-black text-[11px]" style={{ background: IC.blue, color: IC.white }}>IC</div>
+          <span className="hidden sm:block text-[13px] font-semibold" style={{ color: IC.gray80, letterSpacing: "-0.01em" }}>Interconnection Consulting</span>
         </div>
-        <div className="hidden lg:flex items-center gap-10 text-[12px] font-medium tracking-wide" style={{ color: IC.gray50 }}>
-          {["Reports & Tools", "Our Competences", "Shop", "News", "Events", "About"].map(l => (
-            <a key={l} href="#" className="hover:text-[#24579B] transition-colors uppercase tracking-widest text-[11px]">{l}</a>
+        <div className="hidden lg:flex items-center gap-9">
+          {["What we do", "Market Reports", "Industry Experience", "News", "Events", "About IC"].map(l => (
+            <a key={l} href="#"
+              className="text-[11px] font-medium transition-colors duration-200"
+              style={{ color: IC.gray50, letterSpacing: "0.02em" }}
+              onMouseEnter={e => (e.currentTarget.style.color = IC.blue)}
+              onMouseLeave={e => (e.currentTarget.style.color = IC.gray50)}
+            >{l}</a>
           ))}
         </div>
-        <a href="#pricing" className="text-[12px] font-bold px-5 py-2.5 rounded-full transition-opacity hover:opacity-85"
-          style={{ background: IC.blue, color: IC.white }}>
-          Buy Report →
+        <a href="#overview"
+          className="inline-flex items-center gap-2 text-[12px] font-bold px-5 py-2.5"
+          style={{ background: IC.blue, color: IC.white }}
+        >
+          Contact us <ArrowRight size={12} />
         </a>
       </nav>
 
-      {/* ── SECTION 1 — SLIDE / HERO ────────────────────────────────────────
-           <H1> [Product Name] + in [Region]
-           [H1 extension]: Product types as pill tags
-      ─────────────────────────────────────────────────────────────────────── */}
-      <section className="relative" style={{ background: IC.white, paddingTop: 120 }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 pt-12 pb-0">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-end">
+      {/* ── HERO — Editorial Parallax ──────────────────────────────────── */}
+      <section className="relative overflow-hidden" style={{ background: IC.white, minHeight: "100vh" }}>
 
-            {/* Left: Text */}
-            <div>
-              <Fade>
-                <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-8" style={{ color: IC.blue }}>
-                  Market Study · Interconnection Consulting
-                </p>
-              </Fade>
-              <Fade delay={0.08}>
-                {/* H1 */}
-                <h1 className="font-bold tracking-tight" style={{ fontSize: "clamp(3rem,6.5vw,5rem)", lineHeight: 1.0, color: IC.gray80 }}>
-                  {D.productName}
-                  <br />
-                  <span style={{ color: IC.blue }}>in {D.regionName}</span>
-                </h1>
-              </Fade>
-              <Fade delay={0.18}>
-                {/* H1 Extension: Product Types */}
-                <div className="flex flex-wrap gap-2 mt-7 mb-10">
-                  {D.productTypes.map(t => (
-                    <span key={t} className="text-[11px] font-semibold tracking-wide px-3 py-1.5"
-                      style={{ background: IC.blueXL, color: IC.blue }}>{t}</span>
-                  ))}
-                </div>
-              </Fade>
-              <Fade delay={0.26}>
-                <div className="flex flex-wrap gap-3 mb-14">
-                  <a href="#pricing" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full transition-opacity hover:opacity-85" style={{ background: IC.blue, color: IC.white }}>
-                    <ShoppingCart size={14} /> Buy Report
-                  </a>
-                  <a href="#overview" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full" style={{ border: `1.5px solid ${IC.blueXL}`, color: IC.gray80 }}>
-                    Explore Report <ArrowRight size={14} />
-                  </a>
-                </div>
-              </Fade>
+        {/* Layer A — Large circle outline, depth 1 (slowest) */}
+        <div className="absolute select-none pointer-events-none" style={{
+          top: "-18%", left: "-16%",
+          width: "clamp(400px, 70vw, 820px)", height: "clamp(400px, 70vw, 820px)",
+          borderRadius: "50%",
+          border: "1px solid rgba(36,87,155,0.055)",
+          transform: `translateY(${scrollY * 0.08}px)`,
+          willChange: "transform",
+        }} />
+
+
+        {/* Right image panel — clip-reveal on load, drifts up on scroll */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0" style={{ width: "44%", overflow: "hidden" }}>
+          <div style={{
+            position: "absolute", inset: "-10% 0",
+            transform: `translateY(${scrollY * 0.14}px) scale(1.1)`,
+            transformOrigin: "center top",
+            willChange: "transform",
+            animation: heroReady ? "edImgReveal 1.1s cubic-bezier(0.77,0,0.18,1) 0.25s both" : "none",
+          }}>
+            <Image src="/images/hero-light.jpg" alt={D.productName} fill className="object-cover" priority />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.55) 0%, transparent 28%, transparent 100%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 52%, rgba(36,87,155,0.14) 100%)" }} />
+          </div>
+          {/* Left-edge accent line */}
+          <div style={{
+            position: "absolute", left: 0, top: "8%", width: 2, height: "84%",
+            background: `linear-gradient(to bottom, transparent, ${IC.blue}, transparent)`,
+            transformOrigin: "top",
+            animation: heroReady ? "edLineIn 1s cubic-bezier(0.22,1,0.36,1) 0.65s both" : "none",
+          }} />
+        </div>
+
+        {/* Text content — each group has its own parallax depth */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16" style={{ paddingTop: 148, paddingBottom: 88 }}>
+          <div className="lg:max-w-[55%]">
+
+            {/* Category label */}
+            <div style={{
+              opacity: heroReady ? 1 : 0,
+              transform: heroReady ? "none" : "translateY(10px)",
+              transition: "opacity 0.7s ease 0.1s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s",
+              marginBottom: 26,
+            }}>
+              <p className="text-[10px] font-bold tracking-[0.38em] uppercase" style={{ color: IC.blue }}>
+                Interconnection Consulting
+              </p>
             </div>
 
-            {/* Right: Hero image */}
-            <Fade delay={0.1} className="hidden lg:block">
-              <div className="relative overflow-hidden" style={{ height: 480, borderRadius: 2 }}>
-                <Image src="/images/hero-light.jpg" alt={`${D.productName} in ${D.regionName}`} fill className="object-cover" priority />
-                <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, rgba(36,87,155,0.12) 100%)` }} />
+            {/* H1 — counter-parallax depth, CSS transition reveal tied to heroReady */}
+            <div style={{ transform: `translateY(${scrollY * -0.07}px)`, willChange: "transform" }}>
+              <h1 style={{ fontSize: "clamp(3.4rem,7.2vw,6.2rem)", lineHeight: 0.94, letterSpacing: "-0.026em", marginBottom: 0 }}>
+                <span style={{
+                  display: "block", color: IC.gray80, fontWeight: 900,
+                  opacity: heroReady ? 1 : 0,
+                  transform: heroReady ? "none" : "translateY(24px)",
+                  transition: "opacity 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s",
+                }}>{D.productName}</span>
+                <span style={{
+                  display: "block", color: IC.blue, fontWeight: 300, fontStyle: "italic", paddingLeft: "0.1em",
+                  opacity: heroReady ? 1 : 0,
+                  transform: heroReady ? "none" : "translateY(24px)",
+                  transition: "opacity 0.8s cubic-bezier(0.22,1,0.36,1) 0.32s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.32s",
+                }}>{D.regionName}</span>
+              </h1>
+            </div>
+
+            {/* Rule — medium depth */}
+            <div style={{ transform: `translateY(${scrollY * -0.05}px)`, willChange: "transform" }}>
+              <div className="my-8 origin-left" style={{
+                height: 1, width: "100%",
+                background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueXL} 100%)`,
+                transform: heroReady ? "scaleX(1)" : "scaleX(0)",
+                transition: "transform 1s cubic-bezier(0.22,1,0.36,1) 0.62s",
+              }} />
+            </div>
+
+            {/* Subtitle + CTAs — barely moves */}
+            <div style={{ transform: `translateY(${scrollY * -0.02}px)`, willChange: "transform" }}>
+              <div style={{ opacity: heroReady ? 1 : 0, transform: heroReady ? "none" : "translateY(14px)", transition: "opacity 0.7s ease 0.68s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.68s" }}>
+                <div className="flex items-start gap-6 mb-10">
+                  <div style={{ width: 2, minHeight: 52, background: IC.blue, flexShrink: 0, marginTop: 4 }} />
+                  <p className="text-base leading-[1.75]" style={{ color: IC.gray50, maxWidth: 420 }}>
+                    Talk to our Experts
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="#overview" className="inline-flex items-center gap-2.5 text-[13px] font-bold px-7 py-3.5" style={{ background: IC.blue, color: IC.white }}>
+                    Contact us <ArrowRight size={13} />
+                  </a>
+                </div>
               </div>
-            </Fade>
+            </div>
           </div>
         </div>
 
         {/* Bottom rule */}
-        <div style={{ height: 1, background: IC.blueXL, marginTop: 0 }} />
+        <div style={{ height: 1, background: IC.blueXL, position: "relative", zIndex: 10 }} />
       </section>
 
       {/* ── SECTION 2 — FROM DATA TO DECISIONS ────────────────────────── */}
-      <section id="overview" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: IC.white }}>
-        <div
-          className="absolute -top-14 -left-20 w-[18rem] h-[18rem] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(36,87,155,0.14) 0%, rgba(36,87,155,0) 70%)",
-            filter: "blur(8px)",
-            animation: "floatOrb 8.5s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute -bottom-16 right-[-2rem] w-[20rem] h-[20rem] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(142,180,227,0.18) 0%, rgba(142,180,227,0) 72%)",
-            filter: "blur(10px)",
-            animation: "floatOrb 10s ease-in-out infinite",
-            animationDelay: "-2s",
-          }}
-        />
+      <section id="overview" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: IC.offWhite }}>
+        {/* Section number */}
+        <div className="absolute top-12 right-8 select-none pointer-events-none" style={{ fontSize: "clamp(5rem,10vw,9rem)", fontWeight: 900, lineHeight: 1, color: "transparent", WebkitTextStroke: "1px rgba(36,87,155,0.06)", letterSpacing: "-0.04em" }}>02</div>
+        {/* Left edge accent */}
+        <div className="absolute left-0 top-16 bottom-16" style={{ width: 3, background: `linear-gradient(to bottom, transparent, ${IC.blue}, transparent)` }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
             {/* Left */}
-            <Fade>
-              <h2 className="font-bold tracking-tight leading-tight mb-6" style={{ fontSize: "clamp(2rem,4.5vw,3.25rem)", color: IC.gray80 }}>
-                From data to decisions—fast.
-              </h2>
-              <p className="text-base leading-[1.8] mb-10" style={{ color: IC.gray50 }}>
-                We combine market reports, competitive intelligence, and tailored consulting to improve lead generation, pricing, and customer satisfaction.
+            <div>
+              <Drop>
+                <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-5" style={{ color: IC.blue }}>How we make our customers successful</p>
+              </Drop>
+              <Drop delay={0.06}>
+                <ParaH2 className="font-bold tracking-tight leading-[1.05] mb-8" style={{ fontSize: "clamp(2.2rem,5vw,3.6rem)", color: IC.gray80, letterSpacing: "-0.02em" }}>
+                  Consultants by passion<br />and <em style={{ fontStyle: "italic", fontWeight: 300, color: IC.blueDark }}>excellence!</em>
+                </ParaH2>
+              </Drop>
+              <SectionReveal delay={0.12}>
+              <p className="text-base leading-[1.85] mb-10" style={{ color: IC.gray50 }}>
+                {D.descText}
               </p>
               {/* Minimal search */}
               <div>
                 <div className="flex items-center" style={{ borderBottom: `1.5px solid ${IC.blue}` }}>
                   <input
                     readOnly
-                    placeholder="Search by industry + region…"
+                    placeholder="Industry Report Search"
                     className="flex-1 py-3 bg-transparent text-sm outline-none"
                     style={{ color: IC.gray50 }}
                   />
@@ -285,8 +457,9 @@ export default function TemplateICEditorial() {
                 </div>
                 <div className="origin-left mt-1 h-[2px] w-20" style={{ background: IC.blueLight, animation: "linePulse 2.4s ease-in-out infinite" }} />
               </div>
-              <p className="mt-2.5 text-[11px]" style={{ color: IC.gray50 }}>14,889+ reports across 50+ industries &amp; regions</p>
-            </Fade>
+              <p className="mt-2.5 text-[11px]" style={{ color: IC.gray50 }}>14,889 market reports worldwide</p>
+              </SectionReveal>
+            </div>
 
             {/* Right — CTA panel */}
             <Fade delay={0.15}>
@@ -300,14 +473,14 @@ export default function TemplateICEditorial() {
                 }}
               >
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Get in Touch</p>
+                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
                   <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(1.4rem,2.8vw,1.75rem)", color: IC.white }}>
-                    Ready to make<br />smarter decisions?
+                    Do not hesitate<br />to contact us
                   </h3>
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
                     {[
                       ["Contact Us", "#"],
-                      ["Request a Sample Form", "#"],
+                      ["Send inquiry", "#"],
                     ].map(([label, href]) => (
                       <a
                         key={label} href={href}
@@ -342,22 +515,25 @@ export default function TemplateICEditorial() {
           </div>
 
           {/* Competences Grid */}
-          <div className="mt-16 lg:mt-20">
+          <div className="mt-16 lg:mt-20 relative">
+            {/* Section number */}
+            <div className="absolute -top-6 right-0 select-none pointer-events-none" style={{ fontSize: "clamp(5rem,10vw,9rem)", fontWeight: 900, lineHeight: 1, color: "transparent", WebkitTextStroke: "1px rgba(142,180,227,0.18)", letterSpacing: "-0.04em" }}>03</div>
             <div className="-mx-6 lg:-mx-16 px-6 lg:px-16 py-16 lg:py-20" style={{ background: IC.blueDark }}>
-              <Fade>
+              <Drop>
                 <div className="flex items-end justify-between mb-14">
                   <div>
-                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Our Competences</p>
-                    <h2 className="font-bold tracking-tight mb-0" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)", color: IC.white, lineHeight: 1.1 }}>
-                      Intelligence<br />that drives growth.
-                    </h2>
+                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>What we do</p>
+                    <ParaH2 className="font-bold tracking-tight mb-0" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)", color: IC.white, lineHeight: 1.1 }}>
+                      Industry Experience<br />that creates value.
+                    </ParaH2>
                   </div>
                   <a href="#" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold pb-0.5"
                     style={{ color: IC.blueLight, borderBottom: "1px solid rgba(142,180,227,0.4)" }}>
                     All services <ArrowRight size={12} />
                   </a>
                 </div>
-              </Fade>
+              </Drop>
+              <SectionReveal>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.08)" }}>
                 {COMPETENCES.map((c, i) => {
                   const Icon = c.icon
@@ -397,71 +573,9 @@ export default function TemplateICEditorial() {
                   )
                 })}
               </div>
+              </SectionReveal>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 4 — SHOP / PRICING ─────────────────────────────────────
-           <H2> "Get Your Report Today"
-           Edition row: [Product] [Region] [Edition] [Price]  →  Buy Now / Request Offer
-           <L> Other Regions  →  <T2> name + <T2> status
-      ─────────────────────────────────────────────────────────────────────── */}
-      <section id="pricing" className="py-24 lg:py-32" style={{ background: IC.white }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
-              <Fade>
-                {/* H2 */}
-                <h2 className="font-bold tracking-tight mb-14" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", color: IC.gray80 }}>
-                  Get Your Report Today
-                </h2>
-              </Fade>
-
-              {/* Edition rows */}
-              {D.editions.map((ed, idx) => (
-                <Fade key={ed.name} delay={idx * 0.1}>
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 py-8"
-                    style={{ borderTop: `1px solid ${IC.blueXL}`, borderBottom: idx === D.editions.length - 1 ? `1px solid ${IC.blueXL}` : undefined }}>
-                    <div className="flex-1">
-                      {/* T2: Product + Region */}
-                      <p className="text-[11px] font-bold tracking-[0.2em] uppercase mb-2" style={{ color: IC.blueLight }}>
-                        {D.productName} in {D.regionName}
-                      </p>
-                      {/* T2: Edition */}
-                      <h3 className="text-xl font-bold mb-2" style={{ color: IC.gray80 }}>{ed.name}</h3>
-                      <p className="text-xs flex items-center gap-1.5" style={{ color: IC.gray50 }}>
-                        <FileText size={12} /> PDF + Excel download included
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-6 flex-wrap flex-shrink-0">
-                      {/* T2: Price */}
-                      <span className="text-3xl font-bold" style={{ color: IC.blue }}>{ed.price}</span>
-                      <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full transition-opacity hover:opacity-85 whitespace-nowrap" style={{ background: IC.blue, color: IC.white }}>
-                        <ShoppingCart size={14} /> Buy Now
-                      </a>
-                      <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full whitespace-nowrap" style={{ border: `1.5px solid ${IC.blue}`, color: IC.blue }}>
-                        <Download size={14} /> Request Offer
-                      </a>
-                    </div>
-                  </div>
-                </Fade>
-              ))}
-
-              {/* L: Other Regions */}
-              <Fade delay={0.2}>
-                <p className="text-[11px] font-bold tracking-[0.2em] uppercase mt-12 mb-5" style={{ color: IC.gray80 }}>
-                  {D.productName} — Other Available Regions
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  {D.otherRegions.map(r => (
-                    <div key={r.name} className="flex items-center gap-2 px-4 py-2"
-                      style={{ border: `1px solid ${r.available ? IC.blueXL : IC.grayLight}`, background: r.available ? IC.white : IC.offWhite }}>
-                      {/* T2 */}
-                      <span className="text-sm font-medium" style={{ color: r.available ? IC.gray80 : IC.grayLight }}>{r.name}</span>
-                      <span className="text-[11px]" style={{ color: r.available ? IC.blue : IC.grayLight }}>· {r.status}</span>
-                    </div>
-                  ))}
-                </div>
-              </Fade>
         </div>
       </section>
 
@@ -470,14 +584,18 @@ export default function TemplateICEditorial() {
            <H3> "Latest Press"  →  <L> <H4> title + <T2> desc
            <H3> "Upcoming Events"  →  <L> <H4> title + <T2> desc + <T2> date
       ─────────────────────────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32" style={{ background: IC.white }}>
+      <section className="py-24 lg:py-32 relative" style={{ background: IC.offWhite }}>
+        {/* Section number */}
+        <div className="absolute top-12 right-8 select-none pointer-events-none" style={{ fontSize: "clamp(5rem,10vw,9rem)", fontWeight: 900, lineHeight: 1, color: "transparent", WebkitTextStroke: "1px rgba(36,87,155,0.06)", letterSpacing: "-0.04em" }}>04</div>
+        {/* Left edge accent */}
+        <div className="absolute left-0 top-16 bottom-16" style={{ width: 3, background: `linear-gradient(to bottom, transparent, ${IC.blue}, transparent)` }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-              <Fade>
-                {/* H2 */}
-                <h2 className="font-bold tracking-tight mb-16" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", color: IC.gray80 }}>
-                  Industry News &amp; Events
-                </h2>
-              </Fade>
+              <Drop>
+                <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Stay Informed</p>
+                <ParaH2 className="font-bold tracking-tight mb-16" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", color: IC.gray80 }}>
+                  IC News - Don't miss any Industry Trends
+                </ParaH2>
+              </Drop>
 
               <div className="grid lg:grid-cols-2 gap-20">
 
@@ -487,7 +605,7 @@ export default function TemplateICEditorial() {
                     {/* H3 */}
                     <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase mb-10"
                       style={{ color: IC.blue, paddingBottom: 14, borderBottom: `1px solid ${IC.blue}` }}>
-                      Latest Press &amp; Research
+                      IC News
                     </h3>
                   </Fade>
                   {D.press.map((p, idx) => (
@@ -511,7 +629,7 @@ export default function TemplateICEditorial() {
                     {/* H3 */}
                     <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase mb-10"
                       style={{ color: IC.blue, paddingBottom: 14, borderBottom: `1px solid ${IC.blue}` }}>
-                      Upcoming Events
+                      Keep in touch with our events
                     </h3>
                   </Fade>
                   {D.events.map((e, idx) => (
@@ -538,29 +656,28 @@ export default function TemplateICEditorial() {
            Featured: Logo oval + statement  (x2)
            Bottom row: 4 additional client logos
       ─────────────────────────────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32" style={{ background: IC.blueXL }}>
+      <section className="py-24 lg:py-32 relative" style={{ background: IC.blueXL }}>
+        {/* Section number */}
+        <div className="absolute top-12 right-8 select-none pointer-events-none" style={{ fontSize: "clamp(5rem,10vw,9rem)", fontWeight: 900, lineHeight: 1, color: "transparent", WebkitTextStroke: "1px rgba(36,87,155,0.1)", letterSpacing: "-0.04em" }}>05</div>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-          <Fade>
-            <p className="text-[11px] font-semibold tracking-widest uppercase mb-3" style={{ color: IC.blue }}>References</p>
-            <h2 className="font-bold tracking-tight mb-16" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", color: IC.gray80 }}>
-              What Our Clients Say
-            </h2>
-          </Fade>
+          <Drop>
+            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Client Voices</p>
+            <ParaH2 className="font-bold tracking-tight mb-16" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", color: IC.gray80 }}>
+              Leading Companies trust in Interconnection Consulting
+            </ParaH2>
+          </Drop>
 
           {/* Featured references */}
           <div className="flex flex-col gap-16 mb-20">
             {D.references.map((ref, idx) => (
               <Fade key={idx} delay={idx * 0.1}>
-                <div className="grid lg:grid-cols-3 gap-10 lg:gap-16 items-center"
-                  style={{ paddingBottom: 64, borderBottom: `1px solid rgba(36,87,155,0.15)` }}>
-                  {/* Logo */}
-                  <div className="flex justify-center">
-                    <div className="flex items-center justify-center p-8"
-                      style={{ width: 210, height: 126, background: IC.white, border: `1px solid rgba(36,87,155,0.12)`, flexShrink: 0 }}>
+                <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center" style={{ paddingBottom: 64, borderBottom: `1px solid rgba(36,87,155,0.15)` }}>
+                  <div className="lg:col-span-1">
+                    <div className="flex items-center justify-center p-8" style={{ background: IC.white, border: `1px solid rgba(36,87,155,0.15)`, minHeight: 120 }}>
                       <img
                         src={`https://logo.clearbit.com/${ref.domain}`}
                         alt={ref.company}
-                        style={{ maxWidth: 130, maxHeight: 60, objectFit: "contain" }}
+                        style={{ maxWidth: 180, maxHeight: 56, objectFit: "contain", filter: "grayscale(100%)", opacity: 0.72 }}
                         onError={e => {
                           e.currentTarget.style.display = "none"
                           if (e.currentTarget.nextElementSibling) (e.currentTarget.nextElementSibling as HTMLElement).style.display = "block"
@@ -569,7 +686,6 @@ export default function TemplateICEditorial() {
                       <span className="hidden text-sm font-bold text-center" style={{ color: IC.gray80 }}>{ref.company}</span>
                     </div>
                   </div>
-                  {/* Statement */}
                   <div className="lg:col-span-2">
                     <div style={{ fontSize: "4.5rem", lineHeight: 0.8, color: IC.blueXL, fontFamily: "Georgia, serif", marginBottom: 12, filter: "brightness(0.8)" }}>&ldquo;</div>
                     <p className="text-lg leading-loose" style={{ color: IC.gray80 }}>{ref.statement}</p>
@@ -610,7 +726,7 @@ export default function TemplateICEditorial() {
             <span className="text-sm font-semibold" style={{ color: IC.gray80 }}>Interconnection Consulting</span>
           </div>
           <p className="text-xs text-center md:text-right" style={{ color: IC.grayLight }}>
-            © 2026 Interconnection Consulting GmbH · Getreidemarkt 1, 1060 Vienna, Austria
+            © 2026 Interconnection Consulting GmbH · Getreidemarkt 1, 1060 Vienna
           </p>
         </div>
       </footer>

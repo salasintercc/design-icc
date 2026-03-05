@@ -25,9 +25,9 @@ const IC = {
 }
 
 const D = {
-  productName:  "Windows",
-  regionName:   "Austria",
-  productTypes: ["Market Analysis", "Competition Analysis", "Market Forecast", "Company Profiles"],
+  productName:  "Defining Growth Potential",
+  regionName:   "Since 1998",
+  productTypes: ["Industry knowledge", "Concepts & tools", "Lead generation", "Pricing optimisation"],
 
   editions: [
     { name: "Standard Edition 2025",                    price: "€2,490", highlight: false },
@@ -43,33 +43,33 @@ const D = {
   ],
 
   press: [
-    { title: "Austrian Construction Market Rebounds in Q4 2025", desc: "New building permits rose 12% year-on-year, signaling positive outlook for window manufacturers." },
-    { title: "EU Energy Directive Reshapes Window Standards",     desc: "Upcoming EU regulations set to increase minimum energy performance requirements from 2026 onwards." },
+    { title: "Building Back Growth: European Sandwich Panels Market Shows Signs of Recovery", desc: "After two years of decline, the market is starting to grow again, driven by increasing renovation projects and a solid level of new investments." },
+    { title: "Europe's Door Access Control Goes Smart: Integrated Readers on the Rise", desc: "Residential new-builds are expected to recover gradually, supported by ongoing renovation activity and rising demand for integrated security solutions." },
   ],
   events: [
-    { title: "Fensterbau Frontale 2026", desc: "World's leading trade fair for windows, doors and façades.", date: "18–21 March 2026" },
-    { title: "BAU Munich 2027",          desc: "International trade fair for architecture, materials and systems.", date: "January 2027" },
+    { title: "Free Online Preview: Facility Services in Central and Eastern Europe 2026", desc: "Webinar with latest market tracking insights and practical recommendations.", date: "10/03/2026" },
+    { title: "Free Online Preview: Facility Services in Italy 2026", desc: "Webinar covering current trends, opportunities and strategic implications.", date: "11/03/2026" },
   ],
 
   references: [
-    { company: "Saint-Gobain",       domain: "saint-gobain.com",       statement: "The IC report on the Austrian window market gave us exactly the intelligence needed to plan our distribution expansion. The data quality and depth of analysis is unmatched in the industry." },
-    { company: "Schneider Electric", domain: "schneider-electric.com",  statement: "Interconnection Consulting’s research is our go-to source when entering new European markets. Their competitive intelligence cuts months off our strategy cycles." },
+    { company: "Admonter", domain: "admonter.com", statement: "At the IC Impulsworkshop 'Sales Optimization' we appreciate not only the practical relevance, but also the eloquent language and the perfect rhetoric. The most important benefit for our company was the sales pipeline." },
+    { company: "Österreichs Personaldienstleister", domain: "personaldienstleister.at", statement: "The sales management tool 'Jobs Intelligence' has become indispensable for fast and correct strategic management decisions as well as daily support for hot leads for the sales team." },
   ],
   additionalClients: [
-    { name: "Salamander",     domain: "salamander.de"    },
-    { name: "ELK Fertighaus", domain: "elk.at"           },
-    { name: "Kontron",        domain: "kontron.com"      },
-    { name: "Rehau",          domain: "rehau.com"        },
+    { name: "CISA",          domain: "cisa.com" },
+    { name: "Citibank",      domain: "citibank.com" },
+    { name: "Codex Partners",domain: "codex.partners" },
+    { name: "Concentro",     domain: "concentro.com" },
   ],
 }
 
 const COMPETENCES = [
-  { icon: BarChart2,  title: "Market Reports",           desc: "In-depth industry and regional analyses covering market size, trends and competitive dynamics." },
-  { icon: Search,     title: "Competitive Intelligence", desc: "Map competitor positioning, benchmark performance and identify white spaces." },
-  { icon: TrendingUp, title: "Pricing Intelligence",     desc: "Data-driven pricing strategies to optimise margins and respond to market shifts." },
-  { icon: Target,     title: "Lead Generation",          desc: "Identify and reach high-value prospects with verified, segmented market data." },
-  { icon: Users,      title: "Customer Insights",        desc: "Understand buyer behaviour, satisfaction drivers and churn risk across segments." },
-  { icon: Lightbulb,  title: "Strategic Consulting",     desc: "Expert advisory services to turn market intelligence into decisive business action." },
+  { icon: BarChart2,  title: "Management Consulting", desc: "Tailor-made consulting solutions to optimise sales, pricing and strategic execution." },
+  { icon: Search,     title: "Customer Insights",     desc: "Practical insight into customer needs, behaviour and market expectations." },
+  { icon: TrendingUp, title: "Innovation Management", desc: "From trend detection to innovation priorities that create measurable growth." },
+  { icon: Target,     title: "Big Data Tools",        desc: "Data-driven tools for structured market intelligence and decision support." },
+  { icon: Users,      title: "Market Reports",        desc: "High-quality market reports worldwide with actionable and relevant findings." },
+  { icon: Lightbulb,  title: "Industry Experience",   desc: "Deep sector expertise built through decades of projects and market research." },
 ]
 
 type FadeVariant = "up" | "left" | "right" | "scale"
@@ -111,8 +111,9 @@ function Fade({
       ...style,
       opacity: visible ? 1 : 0,
       transform: visible ? "none" : getHidden(variant),
-      transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-      willChange: "opacity, transform",
+      filter: visible ? "blur(0px)" : "blur(5px)",
+      transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s, filter ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+      willChange: "opacity, transform, filter",
     }}>
       {children}
     </div>
@@ -144,23 +145,115 @@ function SH({ children, light = false, className }: { children: React.ReactNode;
 }
 
 function Rule({ light = false }: { light?: boolean }) {
-  return <div className="w-7 h-[2px] mt-1 mb-8" style={{ background: light ? "rgba(255,255,255,0.28)" : IC.blue }} />
+  const { ref, visible } = useInView()
+  return (
+    <div
+      ref={ref}
+      className="w-7 h-[2px] mt-1 mb-8 origin-left"
+      style={{
+        background: light ? "rgba(255,255,255,0.28)" : IC.blue,
+        transform: visible ? "scaleX(1)" : "scaleX(0)",
+        transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1) 0.2s",
+      }}
+    />
+  )
+}
+
+function useParallax(speed = 0.07) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [offset, setOffset] = useState(0)
+  useEffect(() => {
+    const fn = () => {
+      if (!ref.current) return
+      const rect = ref.current.getBoundingClientRect()
+      setOffset((rect.top + rect.height / 2 - window.innerHeight / 2) * speed)
+    }
+    window.addEventListener("scroll", fn, { passive: true })
+    fn()
+    return () => window.removeEventListener("scroll", fn)
+  }, [speed])
+  return { ref, offset }
+}
+
+function WordReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true) }, { threshold: 0 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+  return (
+    <span style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", paddingBottom: "0.05em" }}>
+      <span
+        ref={ref}
+        style={{
+          display: "inline-block",
+          transform: visible ? "translateY(0)" : "translateY(110%)",
+          opacity: visible ? 1 : 0,
+          transition: `transform 0.82s cubic-bezier(0.22,1,0.36,1) ${delay}s, opacity 0.5s ease ${delay}s`,
+          willChange: "transform",
+        }}
+      >
+        {children}
+      </span>
+    </span>
+  )
+}
+
+function SplitFade({ text, baseDelay = 0, style, className }: {
+  text: string; baseDelay?: number; style?: React.CSSProperties; className?: string
+}) {
+  return (
+    <span className={className} style={{ display: "block", ...style }}>
+      {text.split(" ").map((w, i, arr) => (
+        <span key={i} style={{ display: "inline" }}>
+          <WordReveal delay={baseDelay + i * 0.065}>{w}</WordReveal>
+          {i < arr.length - 1 && " "}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+function ParaTitle({ children, speed = 0.06, light = false, className }: {
+  children: React.ReactNode; speed?: number; light?: boolean; className?: string
+}) {
+  const { ref, offset } = useParallax(speed)
+  return (
+    <div ref={ref} style={{ transform: `translateY(${offset}px)`, willChange: "transform" }}>
+      <SH light={light} className={className}>{children}</SH>
+    </div>
+  )
 }
 
 export default function TemplateICBlueProfessional() {
   const [scrolled,   setScrolled]   = useState(false)
   const [scrollY,    setScrollY]    = useState(0)
+  const [winH,       setWinH]       = useState(900)
   const [hovEdition, setHovEdition] = useState<number | null>(null)
   const [dot,        setDot]        = useState(0)
+  const [heroReady,  setHeroReady]  = useState(false)
   const sliderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    setWinH(window.innerHeight)
     const fn = () => {
       setScrolled(window.scrollY > 60)
       setScrollY(window.scrollY)
     }
+    const onResize = () => setWinH(window.innerHeight)
     window.addEventListener("scroll", fn, { passive: true })
-    return () => window.removeEventListener("scroll", fn)
+    window.addEventListener("resize", onResize)
+    return () => {
+      window.removeEventListener("scroll", fn)
+      window.removeEventListener("resize", onResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroReady(true), 180)
+    return () => clearTimeout(t)
   }, [])
 
   const onSliderScroll = useCallback(() => {
@@ -169,6 +262,16 @@ export default function TemplateICBlueProfessional() {
     const idx = Math.round((scrollLeft / (scrollWidth - clientWidth)) * (COMPETENCES.length - 1))
     setDot(Math.min(Math.max(idx, 0), COMPETENCES.length - 1))
   }, [])
+
+  const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1)
+  // hero content fades from scroll 0 → winH*0.60
+  const heroOut = clamp01(scrollY / (winH * 0.60))
+  // section 2 content fades in from scroll winH*0.35 → winH*0.85
+  const sectionIn  = clamp01((scrollY - winH * 0.35) / (winH * 0.50))
+  // keep old names as aliases for rest of component
+  const heroBridgeProgress = heroOut
+  const sectionLeadIn = sectionIn
+  const competencesLeadIn = clamp01((scrollY - winH * 1.85) / (winH * 0.55))
 
   return (
     <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
@@ -189,6 +292,26 @@ export default function TemplateICBlueProfessional() {
         @keyframes linePulse {
           0%, 100% { opacity: 0.35; transform: scaleX(0.7); }
           50%      { opacity: 1; transform: scaleX(1); }
+        }
+        @keyframes heroLineGrow {
+          from { transform: scaleX(0); opacity: 0; }
+          to   { transform: scaleX(1); opacity: 1; }
+        }
+        @keyframes heroShimmer {
+          0%   { background-position: -200% center; }
+          100% { background-position: 200% center; }
+        }
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(32px); filter: blur(8px); }
+          to   { opacity: 1; transform: translateY(0);   filter: blur(0px); }
+        }
+        @keyframes heroGridPulse {
+          0%, 100% { opacity: 0.04; }
+          50%       { opacity: 0.09; }
+        }
+        @keyframes heroSlash {
+          from { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+          to   { clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%); }
         }
       `}</style>
 
@@ -219,7 +342,7 @@ export default function TemplateICBlueProfessional() {
           </span>
         </div>
         <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium">
-          {["Reports & Tools", "Our Competences", "Shop", "News", "Events", "About"].map(l => (
+          {["What we do", "Market Reports", "Industry Experience", "News", "Events", "About IC"].map(l => (
             <a
               key={l} href="#"
               className="transition-colors duration-300 hover:opacity-80"
@@ -238,136 +361,306 @@ export default function TemplateICBlueProfessional() {
             border: `1px solid ${scrolled ? "transparent" : "rgba(255,255,255,0.45)"}`,
           }}
         >
-          Buy Report
+          Contact us
         </a>
       </nav>
 
-      {/* HERO */}
-      <section className="relative flex items-end overflow-hidden" style={{ minHeight: "92vh" }}>
+      {/* ═══ STICKY SCENE: hero + section 2 share one viewport-pinned stage ═══ */}
+      <div style={{ position: "relative", height: "300vh" }}>
+
+        {/* ── Layer 0: persistent background that NEVER changes color ── */}
+        <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.blueDark, zIndex: 0 }} />
+
+      {/* ── HERO content layer ── */}
+      <section className="relative overflow-hidden" style={{ position: "sticky", top: 0, height: "100vh", background: "transparent", display: "flex", flexDirection: "column", zIndex: 2, marginTop: "-100vh" }}>
+
+        {/* Layer 1 — Photo (right half, slowest) */}
         <div
-          className="absolute inset-0"
-          style={{ transform: `translateY(${scrollY * 0.2}px)`, willChange: "transform" }}
+          className="hidden lg:block absolute right-0 top-0 bottom-0 pointer-events-none"
+          style={{ width: "48%", overflow: "hidden" }}
         >
-          <Image
-            src="/images/hero-light.jpg"
-            alt={`${D.productName} in ${D.regionName}`}
-            fill className="object-cover" priority
-          />
+          <div style={{
+            position: "absolute", inset: "-8% 0",
+            transform: `translateY(${scrollY * 0.14}px) scale(1.08)`,
+            transformOrigin: "center top",
+            willChange: "transform",
+            opacity: Math.max(0, 1 - heroOut * 1.6),
+          }}>
+            <Image src="/images/hero-light.jpg" alt={D.productName} fill className="object-cover" priority />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,74,134,0.96) 0%, rgba(30,74,134,0.60) 30%, rgba(30,74,134,0.12) 100%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.25) 0%, rgba(20,44,90,0.55) 100%)" }} />
+          </div>
         </div>
+
+        {/* Layer 2 — Animated grid */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: Math.max(0, 1 - heroOut * 1.8) }}>
+          <svg width="100%" height="100%" className="absolute inset-0" style={{ animation: "heroGridPulse 4s ease-in-out infinite", opacity: 0.55 }}>
+            <defs>
+              <pattern id="bpgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(142,180,227,1)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#bpgrid)" />
+          </svg>
+        </div>
+
+        {/* Layer 3 — Content: flex-grow to fill viewport */}
         <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(105deg, rgba(30,74,134,0.96) 0%, rgba(36,87,155,0.80) 48%, rgba(36,87,155,0.10) 100%)" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 right-0 h-[3px]"
-          style={{ background: "linear-gradient(90deg, #8EB4E3, transparent)" }}
-        />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14 pb-24 pt-36">
-          <Fade>
-            <p className="text-[10px] font-bold tracking-[0.35em] uppercase mb-7" style={{ color: IC.blueLight }}>
-              Interconnection Consulting · Market Study
-            </p>
-          </Fade>
-          <Fade delay={0.12}>
-            <h1
-              className="font-bold tracking-tight leading-[0.95]"
-              style={{ fontSize: "clamp(3.2rem,8vw,6rem)", color: IC.white, letterSpacing: "-0.02em" }}
+          className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-7xl mx-auto px-6 lg:px-14"
+          style={{
+            paddingTop: 100,
+            paddingBottom: 60,
+            opacity: Math.max(0, 1 - heroOut * 1.65),
+            willChange: "opacity",
+          }}
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+            {/* Left — headline + CTA */}
+            <div>
+          {/* Eyebrow line */}
+          <div
+            style={{
+              opacity:   heroReady ? 1 : 0,
+              transition: "opacity 1.2s ease 0.22s",
+            }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div
+                className="h-px origin-left"
+                style={{
+                  width: 36,
+                  background: IC.blueLight,
+                  animation: heroReady ? "heroLineGrow 1.35s cubic-bezier(0.22,1,0.36,1) 0.36s both" : "none",
+                }}
+              />
+              <p className="text-[9px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(142,180,227,0.7)" }}>
+                Interconnection Consulting
+              </p>
+            </div>
+          </div>
+
+          {/* H1 — refined scale */}
+          <h1
+            className="font-black"
+            style={{ fontSize: "clamp(1.85rem,3.1vw,2.85rem)", lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 0 }}
+          >
+            <span
+              style={{
+                display: "block",
+                color: IC.white,
+                textShadow: "0 12px 34px rgba(10,24,48,0.35)",
+                opacity: heroReady ? 1 : 0,
+                transform: heroReady ? "none" : "translateY(26px)",
+                transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1) 0.26s, transform 1.1s cubic-bezier(0.22,1,0.36,1) 0.26s",
+              }}
             >
               {D.productName}
-            </h1>
-            <h1
-              className="font-bold tracking-tight leading-[0.95] mb-6"
-              style={{ fontSize: "clamp(3.2rem,8vw,6rem)", color: IC.blueLight, letterSpacing: "-0.02em" }}
+            </span>
+            <span
+              style={{
+                display: "block",
+                color: IC.blueLight,
+                opacity: heroReady ? 1 : 0,
+                transform: heroReady ? "none" : "translateY(26px)",
+                transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s, transform 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s",
+              }}
             >
-              in {D.regionName}
-            </h1>
-          </Fade>
-          <Fade delay={0.22}>
-            <p className="text-sm md:text-[15px] font-medium mb-12" style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.04em" }}>
-              {D.productTypes.join("  ·  ")}
+              {D.regionName}
+            </span>
+          </h1>
+
+          {/* Thin accent line — draws in after title */}
+          <div
+            className="mt-5 mb-6 h-px origin-left"
+            style={{
+              width: 56,
+              background: "rgba(142,180,227,0.45)",
+              animation: heroReady ? "heroLineGrow 1.25s cubic-bezier(0.22,1,0.36,1) 0.82s both" : "none",
+            }}
+          />
+
+          {/* Supporting copy and key highlights */}
+          <div
+            style={{
+              opacity: heroReady ? 1 : 0,
+              transform: heroReady ? "none" : "translateY(16px)",
+              transition: "opacity 1s ease 1.05s, transform 1s cubic-bezier(0.22,1,0.36,1) 1.05s",
+            }}
+          >
+            <p className="text-[13px] leading-[1.75] max-w-[480px] mb-7" style={{ color: "rgba(220,230,242,0.82)" }}>
+              Consultants by passion and excellence. We help companies improve sales performance through industry knowledge, practical concepts and measurable tools.
             </p>
-          </Fade>
-          <Fade delay={0.32}>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                "14,889 market reports",
+                "50+ industries",
+                "35+ years experience",
+              ].map((tag, i) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-semibold px-3.5 py-1.5"
+                  style={{
+                    color: i === 0 ? IC.white : "rgba(220,230,242,0.9)",
+                    background: i === 0 ? "rgba(142,180,227,0.24)" : "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(142,180,227,0.24)",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA group */}
+          <div
+            style={{
+              opacity:   heroReady ? 1 : 0,
+              transform: heroReady ? "none" : "translateY(14px)",
+              transition: "opacity 1.05s ease 0.95s, transform 1.05s cubic-bezier(0.22,1,0.36,1) 0.95s",
+            }}
+          >
+            <div className="flex flex-wrap items-center gap-6">
               <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-[13px] font-bold"
-                style={{ background: IC.white, color: IC.blue }}
+                href="#overview"
+                className="inline-flex items-center gap-3 text-[13px] font-bold px-6 py-3"
+                style={{ color: IC.white, background: "rgba(142,180,227,0.2)", border: "1px solid rgba(142,180,227,0.45)" }}
               >
-                <ShoppingCart size={14} /> Buy Report
+                Talk to our Experts <ArrowRight size={13} strokeWidth={2.5} />
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-[13px] font-semibold"
-                style={{ border: "1px solid rgba(255,255,255,0.38)", color: IC.white }}
+                className="inline-flex items-center gap-3 text-[13px] font-semibold"
+                style={{ color: "rgba(220,230,242,0.92)" }}
+                onMouseEnter={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "100%" }}
+                onMouseLeave={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "0%" }}
               >
-                View Details <ArrowRight size={13} />
+                <span style={{ position: "relative", paddingBottom: 2 }}>
+                  Explore market reports
+                  <span className="cta-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: "rgba(255,255,255,0.62)", transition: "width 0.45s cubic-bezier(0.22,1,0.36,1)" }} />
+                </span>
+                <ArrowRight size={13} strokeWidth={2.5} />
               </a>
             </div>
-          </Fade>
-        </div>
+          </div>
+            </div>{/* end left column */}
+
+            {/* Right — stats panel (distinctly different from editorial image-only) */}
+            <div
+              className="hidden lg:grid grid-cols-2 gap-3"
+              style={{
+                opacity: heroReady ? 1 : 0,
+                transform: heroReady ? "none" : "translateY(18px)",
+                transition: "opacity 1s ease 0.55s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.55s",
+              }}
+            >
+              {[
+                { value: "14,889",  label: "Market Reports",    sub: "in our library" },
+                { value: "50+",     label: "Industries",        sub: "covered globally" },
+                { value: "35+",     label: "Years Experience",  sub: "since 1988" },
+                { value: "200+",    label: "Expert Interviews", sub: "per study" },
+              ].map((s, i) => (
+                <div
+                  key={s.label}
+                  style={{
+                    padding: "20px 22px",
+                    background: i % 2 === 0 ? "rgba(255,255,255,0.07)" : "rgba(36,87,155,0.35)",
+                    border: "1px solid rgba(142,180,227,0.18)",
+                    animationDelay: `${0.7 + i * 0.1}s`,
+                  }}
+                >
+                  <p className="font-black" style={{ fontSize: "clamp(1.6rem,2.8vw,2.2rem)", color: IC.white, letterSpacing: "-0.03em", lineHeight: 1 }}>{s.value}</p>
+                  <p className="text-[11px] font-bold mt-1" style={{ color: IC.blueLight }}>{s.label}</p>
+                  <p className="text-[10px] mt-0.5" style={{ color: "rgba(220,230,242,0.5)" }}>{s.sub}</p>
+                </div>
+              ))}
+            </div>
+
+          </div>{/* end grid */}
+        </div>{/* end content wrapper */}
+
+        {/* Scroll indicator */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-          style={{ opacity: scrollY > 60 ? 0 : 1, transition: "opacity 0.5s ease", pointerEvents: "none" }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          style={{ opacity: scrollY > winH * 0.12 ? 0 : 1, transition: "opacity 0.8s ease" }}
         >
-          <ArrowDown size={16} style={{ color: IC.blueLight, animation: "scrollBounce 1.8s ease-in-out infinite" }} />
+          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.18)", position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, background: IC.blueLight, animation: "scrollBounce 1.8s ease-in-out infinite", height: "40%" }} />
+          </div>
+          <p className="text-[9px] tracking-[0.35em] uppercase" style={{ color: "rgba(255,255,255,0.28)" }}>Scroll</p>
         </div>
+
+        {/* Bottom vignette — ends at exact IC.blueDark so section 2 top is the same color → seamless */}
+        <div
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: 160,
+            background: `linear-gradient(to bottom, transparent 0%, ${IC.blueDark} 100%)`,
+          }}
+        />
       </section>
 
-      {/* FROM DATA TO DECISIONS */}
-      <section id="overview" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: IC.white }}>
-        <div
-          className="absolute -top-14 -left-20 w-[18rem] h-[18rem] rounded-full"
+      {/* ── SECTION 2 content layer — same stage, same bg, fades in OVER hero ── */}
+      <section
+        id="overview"
+        style={{
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          background: "transparent",
+          zIndex: 3,
+          marginTop: "-100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          overflow: "hidden",
+          opacity: sectionIn,
+          willChange: "opacity",
+          pointerEvents: sectionIn < 0.05 ? "none" : "auto",
+        }}
+      >
+        {/* White gradient from bottom 40% — reveals the white sections below */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
+          height: "45%",
+          background: `linear-gradient(to bottom, transparent 0%, ${IC.white} 100%)`,
+          opacity: Math.max(0, (sectionIn - 0.6) * 2.5),
+        }} />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10"
           style={{
-            background: "radial-gradient(circle, rgba(36,87,155,0.14) 0%, rgba(36,87,155,0) 70%)",
-            filter: "blur(8px)",
-            animation: "floatOrb 8.5s ease-in-out infinite",
+            transform: `scale(${0.94 + sectionIn * 0.06}) translateY(${(1 - sectionIn) * 28}px)`,
+            willChange: "transform",
           }}
-        />
-        <div
-          className="absolute -bottom-16 right-[-2rem] w-[20rem] h-[20rem] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(142,180,227,0.18) 0%, rgba(142,180,227,0) 72%)",
-            filter: "blur(10px)",
-            animation: "floatOrb 10s ease-in-out infinite",
-            animationDelay: "-2s",
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
+        >
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-start">
 
-            {/* Left */}
-            <Fade>
-              <Label>Strategy &amp; Intelligence</Label>
-              <SH className="mb-4">From data to<br />decisions—fast.</SH>
-              <Rule />
-              <p className="text-base leading-[1.8] mb-10" style={{ color: IC.gray60 }}>
-                We combine market reports, competitive intelligence, and tailored consulting to improve lead generation, pricing, and customer satisfaction.
+            {/* Left — on dark bg */}
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
+              <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
+                Consultants by passion<br />and excellence!
+              </h2>
+              <div className="w-7 h-[2px] mb-8" style={{ background: "rgba(142,180,227,0.6)" }} />
+              <p className="text-[13px] leading-[1.8] mb-10" style={{ color: "rgba(220,230,242,0.78)" }}>
+                Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.
               </p>
-              {/* Minimal search */}
               <div>
-                <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid ${IC.blue}` }}>
-                  <input
-                    readOnly placeholder="Search by industry + region…"
+                <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid rgba(142,180,227,0.6)` }}>
+                  <input readOnly placeholder="Industry Report Search"
                     className="flex-1 py-3 bg-transparent text-sm outline-none"
-                    style={{ color: IC.gray60 }}
+                    style={{ color: "rgba(220,230,242,0.7)" }}
                   />
-                  <button
-                    className="flex items-center gap-1.5 px-3 py-3 text-[13px] font-bold shrink-0"
-                    style={{ color: IC.blue, transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "translateX(3px)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "translateX(0)")}
-                  >
+                  <button className="flex items-center gap-1.5 px-3 py-3 text-[13px] font-bold shrink-0"
+                    style={{ color: IC.blueLight }}>
                     Search <ArrowRight size={12} />
                   </button>
                 </div>
-                <div className="origin-left mt-1 h-[2px] w-20" style={{ background: IC.blueLight, animation: "linePulse 2.4s ease-in-out infinite" }} />
               </div>
-              <p className="mt-2.5 text-[11px]" style={{ color: IC.gray50 }}>14,889+ reports across 50+ industries &amp; regions</p>
-            </Fade>
+              <p className="mt-2.5 text-[11px]" style={{ color: "rgba(142,180,227,0.55)" }}>14,889 market reports worldwide</p>
+            </div>
 
             {/* Right — CTA panel */}
-            <Fade delay={0.15} variant="right">
+            <Fade delay={0.22} duration={1.15} variant="right">
               <div
                 className="flex flex-col justify-between py-12 px-10"
                 style={{
@@ -378,14 +671,14 @@ export default function TemplateICBlueProfessional() {
                 }}
               >
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Get in Touch</p>
+                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
                   <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(1.4rem,2.8vw,1.75rem)", color: IC.white }}>
-                    Ready to make<br />smarter decisions?
+                    Do not hesitate<br />to contact us
                   </h3>
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
                     {[
                       ["Contact Us", "#"],
-                      ["Request a Sample Form", "#"],
+                      ["Send inquiry", "#"],
                     ].map(([label, href]) => (
                       <a
                         key={label} href={href}
@@ -417,15 +710,33 @@ export default function TemplateICBlueProfessional() {
               </div>
             </Fade>
 
-          </div>
+          </div>{/* end grid */}
+        </div>{/* end max-w wrapper */}
+      </section>
+      </div>{/* end sticky scene */}
 
-          {/* Competences Grid */}
-          <div className="mt-24 lg:mt-32 pt-16" style={{ borderTop: `1px solid ${IC.blueXL}` }}>
+      {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
+      <section id="overview-full" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: IC.white, zIndex: 10, position: "relative" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
+            <div className="mb-10" style={{ position: "relative" }}>
+              <div style={{ height: 1, background: `linear-gradient(90deg, ${IC.blueXL} 0%, rgba(36,87,155,0.6) 45%, ${IC.blueXL} 100%)` }} />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  height: 1,
+                  width: `${15 + competencesLeadIn * 85}%`,
+                  background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
+                  transition: "width 0.4s ease",
+                }}
+              />
+            </div>
             <Fade>
               <div className="flex items-end justify-between mb-14">
                 <div>
-                  <Label>Our Competences</Label>
-                  <SH className="mb-0">Intelligence<br />that drives growth.</SH>
+                  <Label>What we do</Label>
+                  <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
                 </div>
                 <a href="#" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold pb-0.5"
                   style={{ color: IC.blue, borderBottom: `1px solid ${IC.blueLight}` }}>
@@ -437,7 +748,7 @@ export default function TemplateICBlueProfessional() {
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
-                  <Fade key={c.title} delay={i * 0.07}>
+                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95}>
                     <div
                       className="relative flex flex-col p-8 overflow-hidden"
                       style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
@@ -472,72 +783,6 @@ export default function TemplateICBlueProfessional() {
                 )
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SHOP / PRICING */}
-      <section id="pricing" className="py-24 lg:py-32" style={{ background: IC.surface }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-14">
-          <Fade>
-            <Label>Shop</Label>
-            <SH className="mb-4">Get Your Report Today</SH>
-            <Rule />
-          </Fade>
-
-          <div className="flex flex-col gap-4 mb-16">
-            {D.editions.map((ed, idx) => (
-              <Fade key={ed.name} delay={idx * 0.1}>
-                <div
-                  className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8"
-                  style={{
-                    border: `1.5px solid ${hovEdition === idx ? IC.blueLight : (ed.highlight ? IC.blue : IC.blueXL)}`,
-                    background: hovEdition === idx ? IC.white : (ed.highlight ? IC.blueXL : IC.white),
-                    transition: "border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease",
-                    boxShadow: hovEdition === idx ? "0 8px 28px rgba(36,87,155,0.10)" : "none",
-                  }}
-                  onMouseEnter={() => setHovEdition(idx)}
-                  onMouseLeave={() => setHovEdition(null)}
-                >
-                  <div>
-                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-2.5" style={{ color: IC.blueLight }}>
-                      {D.productName} in {D.regionName}
-                    </p>
-                    <h3 className="text-[17px] font-bold mb-2" style={{ color: IC.gray80 }}>{ed.name}</h3>
-                    <p className="text-xs flex items-center gap-1.5" style={{ color: IC.gray50 }}>
-                      <FileText size={12} /> PDF + Excel download included
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-5 flex-shrink-0 flex-wrap">
-                    <span className="text-2xl font-bold" style={{ color: IC.blue }}>{ed.price}</span>
-                    <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-[13px] font-bold whitespace-nowrap" style={{ background: IC.blue, color: IC.white }}>
-                      <ShoppingCart size={14} /> Buy Now
-                    </a>
-                    <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-[13px] font-semibold whitespace-nowrap"
-                      style={{ border: `1.5px solid ${IC.blue}`, color: IC.blue }}>
-                      <Download size={14} /> Request Offer
-                    </a>
-                  </div>
-                </div>
-              </Fade>
-            ))}
-          </div>
-
-          {/* Other regions */}
-          <Fade>
-            <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>
-              {D.productName} — Other Available Regions
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {D.otherRegions.map(r => (
-                <div key={r.name} className="p-4"
-                  style={{ border: `1.5px solid ${r.available ? IC.blueXL : "#E8EBF0"}`, background: r.available ? IC.white : IC.offWhite }}>
-                  <p className="text-sm font-semibold mb-0.5" style={{ color: r.available ? IC.gray80 : IC.grayLight }}>{r.name}</p>
-                  <p className="text-[11px]" style={{ color: r.available ? IC.blue : IC.grayLight }}>{r.status}</p>
-                </div>
-              ))}
-            </div>
-          </Fade>
         </div>
       </section>
 
@@ -545,8 +790,8 @@ export default function TemplateICBlueProfessional() {
       <section className="py-24 lg:py-32" style={{ background: IC.white }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
-            <Label>News &amp; Events</Label>
-            <SH className="mb-4">Industry News &amp; Events</SH>
+            <Label>IC News</Label>
+            <ParaTitle className="mb-4">Don't miss any Industry Trends</ParaTitle>
             <Rule />
           </Fade>
           <div className="grid lg:grid-cols-2 gap-16 mt-4">
@@ -556,7 +801,7 @@ export default function TemplateICBlueProfessional() {
               <Fade>
                 <h3 className="text-[13px] font-bold pb-5 mb-8 tracking-widest uppercase"
                   style={{ color: IC.gray80, borderBottom: `2px solid ${IC.blue}` }}>
-                  Latest Press &amp; Research
+                  IC News
                 </h3>
               </Fade>
               {D.press.map((p, idx) => (
@@ -574,7 +819,7 @@ export default function TemplateICBlueProfessional() {
               <Fade delay={0.05}>
                 <h3 className="text-[13px] font-bold pb-5 mb-8 tracking-widest uppercase"
                   style={{ color: IC.gray80, borderBottom: `2px solid ${IC.blue}` }}>
-                  Upcoming Events
+                  Keep in touch with our events
                 </h3>
               </Fade>
               {D.events.map((e, idx) => (
@@ -598,7 +843,7 @@ export default function TemplateICBlueProfessional() {
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>References</Label>
-            <SH className="mb-4">What Our Clients Say</SH>
+            <ParaTitle className="mb-4">Leading Companies trust in Interconnection Consulting</ParaTitle>
             <Rule />
           </Fade>
 
@@ -682,7 +927,7 @@ export default function TemplateICBlueProfessional() {
           <div>
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact</p>
             <p className="text-sm leading-relaxed" style={{ color: IC.white, opacity: 0.85 }}>
-              Getreidemarkt 1, 1060 Vienna, Austria<br />
+              Getreidemarkt 1, 1060 Vienna<br />
               +43 1 585 47 10<br />
               office@interconnection.at
             </p>
