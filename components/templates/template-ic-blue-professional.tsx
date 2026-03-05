@@ -268,10 +268,18 @@ export default function TemplateICBlueProfessional() {
   const heroOut = clamp01(scrollY / (winH * 0.60))
   // section 2 content fades in from scroll winH*0.35 → winH*0.85
   const sectionIn  = clamp01((scrollY - winH * 0.35) / (winH * 0.50))
+  // independent lane transitions with sequence:
+  // 1) indicators (hero right) out + contact-us (section right) in
+  // 2) title/text (hero left) out + how-we-make (section left) in
+  const heroRightOut = clamp01((scrollY - winH * 0.06) / (winH * 0.30))
+  const sectionRightIn = clamp01((scrollY - winH * 0.20) / (winH * 0.30))
+  const heroLeftOut = clamp01((scrollY - winH * 0.34) / (winH * 0.30))
+  const sectionLeftIn = clamp01((scrollY - winH * 0.48) / (winH * 0.30))
+  // horizontal bridge: section 2 -> section 3 (What we do)
+  const overviewHorizontal = clamp01((scrollY - winH * 0.92) / (winH * 0.70))
   // keep old names as aliases for rest of component
   const heroBridgeProgress = heroOut
   const sectionLeadIn = sectionIn
-  const competencesLeadIn = clamp01((scrollY - winH * 1.85) / (winH * 0.55))
 
   return (
     <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
@@ -366,7 +374,7 @@ export default function TemplateICBlueProfessional() {
       </nav>
 
       {/* ═══ STICKY SCENE: hero + section 2 share one viewport-pinned stage ═══ */}
-      <div style={{ position: "relative", height: "300vh" }}>
+      <div style={{ position: "relative", height: "332vh" }}>
 
         {/* ── Layer 0: persistent background that NEVER changes color ── */}
         <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.blueDark, zIndex: 0 }} />
@@ -410,14 +418,20 @@ export default function TemplateICBlueProfessional() {
           style={{
             paddingTop: 100,
             paddingBottom: 60,
-            opacity: Math.max(0, 1 - heroOut * 1.65),
-            willChange: "opacity",
+            willChange: "transform, opacity",
           }}
         >
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
             {/* Left — headline + CTA */}
-            <div>
+            <div
+              style={{
+                opacity: Math.max(0, 1 - heroLeftOut * 1.35),
+                transform: `translate3d(${heroLeftOut * -42}px, ${heroLeftOut * -10}px, 0)`,
+                filter: `blur(${heroLeftOut * 1.8}px)`,
+                willChange: "transform, opacity, filter",
+              }}
+            >
           {/* Eyebrow line */}
           <div
             style={{
@@ -549,9 +563,10 @@ export default function TemplateICBlueProfessional() {
             <div
               className="hidden lg:grid grid-cols-2 gap-3"
               style={{
-                opacity: heroReady ? 1 : 0,
-                transform: heroReady ? "none" : "translateY(18px)",
-                transition: "opacity 1s ease 0.55s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.55s",
+                opacity: (heroReady ? 1 : 0) * Math.max(0, 1 - heroRightOut * 1.35),
+                transform: `translate3d(${heroRightOut * 52}px, ${heroRightOut * -8}px, 0)`,
+                filter: `blur(${heroRightOut * 2}px)`,
+                willChange: "transform, opacity, filter",
               }}
             >
               {[
@@ -614,28 +629,47 @@ export default function TemplateICBlueProfessional() {
           flexDirection: "column",
           justifyContent: "center",
           overflow: "hidden",
-          opacity: sectionIn,
-          willChange: "opacity",
-          pointerEvents: sectionIn < 0.05 ? "none" : "auto",
+          willChange: "transform, opacity",
+          pointerEvents: Math.max(sectionLeftIn, sectionRightIn) < 0.05 ? "none" : "auto",
         }}
       >
-        {/* White gradient from bottom 40% — reveals the white sections below */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
-          height: "45%",
-          background: `linear-gradient(to bottom, transparent 0%, ${IC.white} 100%)`,
-          opacity: Math.max(0, (sectionIn - 0.6) * 2.5),
+        {/* White gradient to the right — horizontal transition */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: `linear-gradient(to right, transparent 0%, rgba(255,255,255,0.12) 42%, ${IC.white} 100%)`,
+          opacity: Math.max(0, (sectionLeftIn - 0.56) * 2.4),
         }} />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10"
-          style={{
-            transform: `scale(${0.94 + sectionIn * 0.06}) translateY(${(1 - sectionIn) * 28}px)`,
-            willChange: "transform",
-          }}
-        >
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-start">
+        <div className="relative w-full overflow-hidden" style={{ height: "100vh" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "200vw",
+              height: "100%",
+              transform: `translate3d(${-overviewHorizontal * 100}vw, 0, 0)`,
+              willChange: "transform",
+            }}
+          >
+            {/* PANEL 1 — section 2 */}
+            <div style={{ width: "100vw", flexShrink: 0, display: "flex", alignItems: "center" }}>
+              <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10"
+                style={{
+                  paddingTop: 88,
+                  paddingBottom: 42,
+                  transform: `scale(${0.965 + Math.max(sectionLeftIn, sectionRightIn) * 0.035})`,
+                  willChange: "transform",
+                }}
+              >
+                <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-start">
 
             {/* Left — on dark bg */}
-            <div>
+            <div
+              style={{
+                opacity: sectionLeftIn,
+                transform: `translate3d(${(1 - sectionLeftIn) * -44}px, ${(1 - sectionLeftIn) * 14}px, 0)`,
+                filter: `blur(${(1 - sectionLeftIn) * 2.2}px)`,
+                willChange: "transform, opacity, filter",
+              }}
+            >
               <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
               <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
                 Consultants by passion<br />and excellence!
@@ -660,7 +694,14 @@ export default function TemplateICBlueProfessional() {
             </div>
 
             {/* Right — CTA panel */}
-            <Fade delay={0.22} duration={1.15} variant="right">
+            <div
+              style={{
+                opacity: sectionRightIn,
+                transform: `translate3d(${(1 - sectionRightIn) * 56}px, ${(1 - sectionRightIn) * 12}px, 0)`,
+                filter: `blur(${(1 - sectionRightIn) * 2.4}px)`,
+                willChange: "transform, opacity, filter",
+              }}
+            >
               <div
                 className="flex flex-col justify-between py-12 px-10"
                 style={{
@@ -708,83 +749,93 @@ export default function TemplateICBlueProfessional() {
                   ))}
                 </div>
               </div>
-            </Fade>
+            </div>
 
-          </div>{/* end grid */}
-        </div>{/* end max-w wrapper */}
-      </section>
-      </div>{/* end sticky scene */}
+                </div>{/* end grid */}
+              </div>{/* end max-w wrapper panel 1 */}
+            </div>
 
-      {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
-      <section id="overview-full" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: IC.white, zIndex: 10, position: "relative" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
-            <div className="mb-10" style={{ position: "relative" }}>
-              <div style={{ height: 1, background: `linear-gradient(90deg, ${IC.blueXL} 0%, rgba(36,87,155,0.6) 45%, ${IC.blueXL} 100%)` }} />
-              <div
+            {/* PANEL 2 — section 3 (What we do + cards) */}
+            <div style={{ width: "100vw", flexShrink: 0, background: IC.white, display: "flex", alignItems: "center" }}>
+              <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full"
                 style={{
-                  position: "absolute",
-                  left: 0,
-                  top: 0,
-                  height: 1,
-                  width: `${15 + competencesLeadIn * 85}%`,
-                  background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
-                  transition: "width 0.4s ease",
+                  transform: `translate3d(${(1 - overviewHorizontal) * -120}px, 0, 0)`,
+                  opacity: 0.35 + overviewHorizontal * 0.65,
+                  willChange: "transform, opacity",
+                  paddingTop: 88,
+                  paddingBottom: 42,
                 }}
-              />
-            </div>
-            <Fade>
-              <div className="flex items-end justify-between mb-14">
-                <div>
-                  <Label>What we do</Label>
-                  <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
+              >
+                <div className="mb-8" style={{ position: "relative" }}>
+                  <div style={{ height: 1, background: `linear-gradient(90deg, ${IC.blueXL} 0%, rgba(36,87,155,0.6) 45%, ${IC.blueXL} 100%)` }} />
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      height: 1,
+                      width: `${22 + overviewHorizontal * 78}%`,
+                      background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
+                      transition: "width 0.25s ease",
+                    }}
+                  />
                 </div>
-                <a href="#" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold pb-0.5"
-                  style={{ color: IC.blue, borderBottom: `1px solid ${IC.blueLight}` }}>
-                  All services <ArrowRight size={12} />
-                </a>
-              </div>
-            </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
-              {COMPETENCES.map((c, i) => {
-                const Icon = c.icon
-                return (
-                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95}>
-                    <div
-                      className="relative flex flex-col p-8 overflow-hidden"
-                      style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = IC.surface
-                        e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
-                        const num = e.currentTarget.querySelector(".deco-num") as HTMLElement
-                        if (num) num.style.color = IC.blueXL
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = IC.white
-                        e.currentTarget.style.boxShadow = "none"
-                        const num = e.currentTarget.querySelector(".deco-num") as HTMLElement
-                        if (num) num.style.color = "transparent"
-                      }}
-                    >
-                      <span
-                        className="deco-num absolute top-4 right-5 font-black pointer-events-none select-none"
-                        style={{ fontSize: "4.5rem", lineHeight: 1, color: "transparent", transition: "color 0.4s ease" }}
+                <div className="flex items-end justify-between mb-8">
+                  <div>
+                    <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>What we do</p>
+                    <h2 className="font-bold tracking-tight leading-[1.08]" style={{ fontSize: "clamp(2rem,3.6vw,3.2rem)", color: IC.gray80, letterSpacing: "-0.02em" }}>
+                      Industry Experience<br />that creates value.
+                    </h2>
+                  </div>
+                  <a href="#" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold pb-0.5"
+                    style={{ color: IC.blue, borderBottom: `1px solid ${IC.blueLight}` }}>
+                    All services <ArrowRight size={12} />
+                  </a>
+                </div>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
+                  {COMPETENCES.map((c, i) => {
+                    const Icon = c.icon
+                    return (
+                      <div
+                        key={c.title}
+                        className="relative flex flex-col p-6 overflow-hidden"
+                        style={{ background: IC.white, minHeight: 180, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.background = IC.surface
+                          e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
+                          const num = e.currentTarget.querySelector(".deco-num") as HTMLElement
+                          if (num) num.style.color = IC.blueXL
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = IC.white
+                          e.currentTarget.style.boxShadow = "none"
+                          const num = e.currentTarget.querySelector(".deco-num") as HTMLElement
+                          if (num) num.style.color = "transparent"
+                        }}
                       >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[15px] font-bold mb-3" style={{ color: IC.gray80 }}>{c.title}</h3>
-                      <p className="text-sm leading-relaxed flex-1" style={{ color: IC.gray60 }}>{c.desc}</p>
-                      <a href="#" className="inline-flex items-center gap-1.5 text-[12px] font-bold mt-6"
-                        style={{ color: IC.blue }}>
-                        Explore <ArrowRight size={11} />
-                      </a>
-                    </div>
-                  </Fade>
-                )
-              })}
+                        <span
+                          className="deco-num absolute top-4 right-5 font-black pointer-events-none select-none"
+                          style={{ fontSize: "3.8rem", lineHeight: 1, color: "transparent", transition: "color 0.4s ease" }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <Icon size={20} style={{ color: IC.blue, marginBottom: 16 }} />
+                        <h3 className="text-[15px] font-bold mb-2" style={{ color: IC.gray80 }}>{c.title}</h3>
+                        <p className="text-sm leading-relaxed flex-1" style={{ color: IC.gray60 }}>{c.desc}</p>
+                        <a href="#" className="inline-flex items-center gap-1.5 text-[12px] font-bold mt-5" style={{ color: IC.blue }}>
+                          Explore <ArrowRight size={11} />
+                        </a>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </section>
+      </div>{/* end sticky scene */}
 
       {/* NEWS & EVENTS */}
       <section className="py-24 lg:py-32" style={{ background: IC.white }}>
