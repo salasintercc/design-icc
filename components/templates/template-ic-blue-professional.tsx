@@ -545,8 +545,14 @@ export default function TemplateICBlueProfessional() {
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12)",
                 }}
+                onMouseEnter={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "100%" }}
+                onMouseLeave={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "0%" }}
               >
-                Explore market reports <ArrowRight size={13} strokeWidth={2.5} />
+                <span style={{ position: "relative", paddingBottom: 2 }}>
+                  Explore market reports
+                  <span className="cta-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: "rgba(255,255,255,0.62)", transition: "width 0.45s cubic-bezier(0.22,1,0.36,1)" }} />
+                </span>
+                <ArrowRight size={13} strokeWidth={2.5} />
               </a>
             </div>
 
