@@ -358,15 +358,15 @@ export default function TemplateICBlueProfessional() {
           href="#pricing"
           className="text-[13px] font-bold px-5 py-2.5 transition-all duration-300"
           style={{
+            borderRadius: 4,
             background: scrolled
-              ? `linear-gradient(138deg, ${IC.blueDark} 0%, ${IC.blue} 48%, #3f74bc 74%, #8EB4E3 100%)`
-              : `linear-gradient(138deg, rgba(36,87,155,0.92) 0%, rgba(62,114,184,0.9) 62%, rgba(142,180,227,0.82) 100%)`,
+              ? `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 60%, #3f74bc 100%)`
+              : `linear-gradient(135deg, rgba(36,87,155,0.92) 0%, rgba(62,114,184,0.88) 60%, rgba(142,180,227,0.75) 100%)`,
             color: IC.white,
-            border: `1px solid ${scrolled ? "rgba(36,87,155,0.34)" : "rgba(220,230,242,0.72)"}`,
+            border: `1px solid ${scrolled ? "rgba(36,87,155,0.3)" : "rgba(220,230,242,0.45)"}`,
             boxShadow: scrolled
-              ? "0 12px 24px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.26)"
-              : "0 12px 26px rgba(17,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.42)",
-            textShadow: "0 1px 0 rgba(0,0,0,0.18)",
+              ? "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)"
+              : "0 4px 16px rgba(17,44,86,0.24), inset 0 1px 0 rgba(255,255,255,0.22)",
           }}
         >
           Contact us
@@ -382,10 +382,10 @@ export default function TemplateICBlueProfessional() {
       {/* ── HERO content layer ── */}
       <section className="relative overflow-hidden" style={{ position: "sticky", top: 0, height: "100vh", background: "transparent", display: "flex", flexDirection: "column", zIndex: 2, marginTop: "-100vh" }}>
 
-        {/* Layer 1 — Photo (right half, slowest) */}
+        {/* Layer 1 — Photo (full bleed on mobile, right half on desktop) */}
         <div
-          className="hidden lg:block absolute right-0 top-0 bottom-0 pointer-events-none"
-          style={{ width: "48%", overflow: "hidden" }}
+          className="absolute inset-0 lg:left-auto lg:right-0 pointer-events-none"
+          style={{ width: "100%", overflow: "hidden" }}
         >
           <div style={{
             position: "absolute", inset: "-8% 0",
@@ -393,10 +393,14 @@ export default function TemplateICBlueProfessional() {
             transformOrigin: "center top",
             willChange: "transform",
             opacity: Math.max(0, 1 - heroOut * 1.6),
+            width: "100%",
           }}>
-            <Image src="/images/hero-light.jpg" alt={D.productName} fill className="object-cover" priority />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,74,134,0.96) 0%, rgba(30,74,134,0.60) 30%, rgba(30,74,134,0.12) 100%)" }} />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.25) 0%, rgba(20,44,90,0.55) 100%)" }} />
+            <Image src="/images/hero-light.jpg" alt={D.productName} fill className="object-cover lg:object-center" style={{ objectPosition: "center 60%" }} priority />
+            {/* Mobile overlay — top fade (navbar) + heavy bottom so content pops */}
+            <div className="absolute inset-0 lg:hidden" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
+            {/* Desktop overlay — fade from left only */}
+            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to right, rgba(30,74,134,0.96) 0%, rgba(30,74,134,0.60) 30%, rgba(30,74,134,0.12) 100%)" }} />
+            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.25) 0%, rgba(20,44,90,0.55) 100%)" }} />
           </div>
         </div>
 
@@ -416,8 +420,8 @@ export default function TemplateICBlueProfessional() {
         <div
           className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-7xl mx-auto px-6 lg:px-14"
           style={{
-            paddingTop: 100,
-            paddingBottom: 60,
+            paddingTop: "max(72px, 12vh)",
+            paddingBottom: "max(32px, 5vh)",
             willChange: "transform, opacity",
           }}
         >
@@ -439,7 +443,7 @@ export default function TemplateICBlueProfessional() {
               transition: "opacity 1.2s ease 0.22s",
             }}
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-5 lg:mb-8">
               <div
                 className="h-px origin-left"
                 style={{
@@ -457,7 +461,7 @@ export default function TemplateICBlueProfessional() {
           {/* H1 — refined scale */}
           <h1
             className="font-black"
-            style={{ fontSize: "clamp(1.85rem,3.1vw,2.85rem)", lineHeight: 0.9, letterSpacing: "-0.03em", marginBottom: 0 }}
+            style={{ fontSize: "clamp(2.1rem, 8vw, 2.85rem)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
           >
             <span
               style={{
@@ -502,7 +506,7 @@ export default function TemplateICBlueProfessional() {
               transition: "opacity 1s ease 1.05s, transform 1s cubic-bezier(0.22,1,0.36,1) 1.05s",
             }}
           >
-            <p className="text-[13px] leading-[1.75] max-w-[480px] mb-7" style={{ color: "rgba(220,230,242,0.82)" }}>
+            <p className="text-sm leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: "rgba(220,230,242,0.82)" }}>
               Consultants by passion and excellence. We help companies improve sales performance through industry knowledge, practical concepts and measurable tools.
             </p>
           </div>
@@ -515,16 +519,16 @@ export default function TemplateICBlueProfessional() {
               transition: "opacity 1.05s ease 0.95s, transform 1.05s cubic-bezier(0.22,1,0.36,1) 0.95s",
             }}
           >
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center gap-3 text-[13px] font-bold px-6 py-3"
+                className="inline-flex items-center justify-center gap-3 text-[13px] font-bold px-6 py-3.5"
                 style={{
+                  borderRadius: 4,
                   color: IC.white,
                   background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
-                  boxShadow: "0 14px 30px rgba(18,44,86,0.34), inset 0 1px 0 rgba(255,255,255,0.28)",
-                  backdropFilter: "blur(4px)",
+                  boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   textShadow: "0 1px 0 rgba(0,0,0,0.2)",
                 }}
               >
@@ -532,25 +536,21 @@ export default function TemplateICBlueProfessional() {
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold"
+                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold"
                 style={{
                   color: "rgba(220,230,242,0.96)",
-                  padding: "10px 14px",
-                  borderRadius: 999,
-                  background: "linear-gradient(135deg, rgba(220,230,242,0.15) 0%, rgba(142,180,227,0.2) 45%, rgba(36,87,155,0.2) 100%)",
-                  border: "1px solid rgba(142,180,227,0.35)",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
+                  padding: "12px 18px",
+                  borderRadius: 4,
+                  background: "linear-gradient(135deg, rgba(220,230,242,0.08) 0%, rgba(142,180,227,0.14) 100%)",
+                  border: "1px solid rgba(142,180,227,0.45)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12)",
                 }}
-                onMouseEnter={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "100%" }}
-                onMouseLeave={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "0%" }}
               >
-                <span style={{ position: "relative", paddingBottom: 2 }}>
-                  Explore market reports
-                  <span className="cta-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: "rgba(255,255,255,0.62)", transition: "width 0.45s cubic-bezier(0.22,1,0.36,1)" }} />
-                </span>
-                <ArrowRight size={13} strokeWidth={2.5} />
+                Explore market reports <ArrowRight size={13} strokeWidth={2.5} />
               </a>
             </div>
+
+
           </div>
             </div>{/* end left column */}
 
@@ -588,17 +588,6 @@ export default function TemplateICBlueProfessional() {
 
           </div>{/* end grid */}
         </div>{/* end content wrapper */}
-
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          style={{ opacity: scrollY > winH * 0.12 ? 0 : 1, transition: "opacity 0.8s ease" }}
-        >
-          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.18)", position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, background: IC.blueLight, animation: "scrollBounce 1.8s ease-in-out infinite", height: "40%" }} />
-          </div>
-          <p className="text-[9px] tracking-[0.35em] uppercase" style={{ color: "rgba(255,255,255,0.28)" }}>Scroll</p>
-        </div>
 
         {/* Bottom vignette — ends at exact IC.blueDark so section 2 top is the same color → seamless */}
         <div
@@ -787,9 +776,10 @@ export default function TemplateICBlueProfessional() {
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
                       <h3 className="text-[15px] font-bold mb-3" style={{ color: IC.gray80 }}>{c.title}</h3>
                       <p className="text-sm leading-relaxed flex-1" style={{ color: IC.gray60 }}>{c.desc}</p>
-                      <a href="#" className="inline-flex items-center gap-1.5 text-[12px] font-bold mt-6"
+                      <a href="#" className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 group"
                         style={{ color: IC.blue }}>
-                        Explore <ArrowRight size={11} />
+                        Explore
+                        <ArrowRight size={11} className="transition-transform duration-200 group-hover:translate-x-1" />
                       </a>
                     </div>
                   </Fade>
@@ -836,10 +826,11 @@ export default function TemplateICBlueProfessional() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{p.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-bold"
+                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold group"
                       style={{ color: IC.blue }}
                     >
-                      Read more <ArrowUpRight size={13} />
+                      Read more
+                      <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   </div>
                 </Fade>
@@ -847,10 +838,10 @@ export default function TemplateICBlueProfessional() {
               <Fade delay={0.25}>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-4 py-2 rounded-md"
-                  style={{ color: IC.white, background: IC.blue, boxShadow: "0 8px 20px rgba(36,87,155,0.2)" }}
+                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
+                  style={{ borderRadius: 4, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
                 >
-                  more news <ArrowUpRight size={13} />
+                  More News <ArrowUpRight size={12} />
                 </a>
               </Fade>
             </div>
@@ -876,10 +867,11 @@ export default function TemplateICBlueProfessional() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{e.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-bold"
+                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold group"
                       style={{ color: IC.blue }}
                     >
-                      Read more <ArrowUpRight size={13} />
+                      Read more
+                      <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   </div>
                 </Fade>
@@ -887,10 +879,10 @@ export default function TemplateICBlueProfessional() {
               <Fade delay={0.3}>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-4 py-2 rounded-md"
-                  style={{ color: IC.white, background: IC.blue, boxShadow: "0 8px 20px rgba(36,87,155,0.2)" }}
+                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
+                  style={{ borderRadius: 4, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
                 >
-                  more events <ArrowUpRight size={13} />
+                  More Events <ArrowUpRight size={12} />
                 </a>
               </Fade>
             </div>
