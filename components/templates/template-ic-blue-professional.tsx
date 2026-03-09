@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, ArrowUpRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb } from "lucide-react"
+import { ArrowRight, ArrowUpRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb, Menu } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect, useRef, useCallback } from "react"
 
@@ -20,8 +20,8 @@ const IC = {
 }
 
 const D = {
-  productName:  "Defining Growth Potential",
-  regionName:   "Since 1998",
+  productName:  "From Data to Decisions",
+  regionName:   "Faster.",
   productTypes: ["Industry knowledge", "Concepts & tools", "Lead generation", "Pricing optimisation"],
 
   editions: [
@@ -226,6 +226,7 @@ export default function TemplateICBlueProfessional() {
   const [scrolled,   setScrolled]   = useState(false)
   const [scrollY,    setScrollY]    = useState(0)
   const [winH,       setWinH]       = useState(900)
+  const [winW,       setWinW]       = useState(1200)
   const [hovEdition, setHovEdition] = useState<number | null>(null)
   const [dot,        setDot]        = useState(0)
   const [heroReady,  setHeroReady]  = useState(false)
@@ -233,11 +234,15 @@ export default function TemplateICBlueProfessional() {
 
   useEffect(() => {
     setWinH(window.innerHeight)
+    setWinW(window.innerWidth)
     const fn = () => {
       setScrolled(window.scrollY > 60)
       setScrollY(window.scrollY)
     }
-    const onResize = () => setWinH(window.innerHeight)
+    const onResize = () => {
+      setWinH(window.innerHeight)
+      setWinW(window.innerWidth)
+    }
     window.addEventListener("scroll", fn, { passive: true })
     window.addEventListener("resize", onResize)
     return () => {
@@ -270,6 +275,9 @@ export default function TemplateICBlueProfessional() {
   const sectionRightIn = clamp01((scrollY - winH * 0.20) / (winH * 0.30))
   const heroLeftOut = clamp01((scrollY - winH * 0.34) / (winH * 0.30))
   const sectionLeftIn = clamp01((scrollY - winH * 0.48) / (winH * 0.30))
+  const isDesktop = winW >= 1024
+  const sectionRightInEff = isDesktop ? sectionRightIn : 1
+  const sectionLeftInEff = isDesktop ? sectionLeftIn : 1
   // keep old names as aliases for rest of component
   const heroBridgeProgress = heroOut
   const sectionLeadIn = sectionIn
@@ -319,7 +327,7 @@ export default function TemplateICBlueProfessional() {
 
       {/* NAVBAR */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-14"
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
           paddingTop:    scrolled ? 13 : 20,
           paddingBottom: scrolled ? 13 : 20,
@@ -329,52 +337,63 @@ export default function TemplateICBlueProfessional() {
           transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)",
         }}
       >
-        <div className="flex items-center gap-3">
-          <div
-            className="w-8 h-8 flex items-center justify-center font-black text-[13px]"
-            style={{ background: scrolled ? IC.blue : IC.white, color: scrolled ? IC.white : IC.blue, transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)" }}
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-14 flex items-center justify-between">
+          <button
+            type="button"
+            aria-label="Open menu"
+            className="lg:hidden inline-flex items-center justify-center w-10 h-10"
+            style={{
+              color: scrolled ? IC.gray80 : IC.white,
+              transition: "color 0.45s cubic-bezier(0.22,1,0.36,1)",
+            }}
           >
-            IC
+            <Menu size={22} />
+          </button>
+
+          <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium">
+            {["Reports & Tools", "Our Competence", "Shop", "News", "Events", "About Us"].map(l => (
+              <a
+                key={l} href="#"
+                className="transition-colors duration-300 hover:opacity-80"
+                style={{ color: scrolled ? IC.gray80 : "rgba(255,255,255,0.85)" }}
+              >
+                {l}
+              </a>
+            ))}
           </div>
-          <span
-            className="hidden sm:block text-[13px] font-bold"
-            style={{ color: scrolled ? IC.blue : IC.white, transition: "color 0.45s cubic-bezier(0.22,1,0.36,1)" }}
-          >
-            Interconnection Consulting
-          </span>
-        </div>
-        <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium">
-          {["Reports & Tools", "Our Competence", "Shop", "News", "Events", "About Us"].map(l => (
-            <a
-              key={l} href="#"
-              className="transition-colors duration-300 hover:opacity-80"
-              style={{ color: scrolled ? IC.gray80 : "rgba(255,255,255,0.85)" }}
+          {/* Logo right — cross-fade between transparent state (text) and scrolled state (image) */}
+          <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
+            {/* Logo transparent (not scrolled) */}
+            <div
+              className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center"
+              style={{
+                opacity: scrolled ? 0 : 1,
+                transition: "opacity 0.45s cubic-bezier(0.22,1,0.36,1)",
+                pointerEvents: scrolled ? "none" : "auto",
+                whiteSpace: "nowrap",
+              }}
             >
-              {l}
-            </a>
-          ))}
+              <span className="block text-[11px] sm:text-[13px] font-bold" style={{ color: IC.white }}>
+                Interconnection Consulting
+              </span>
+            </div>
+            {/* Logo scrolled (image) */}
+            <div
+              className="absolute right-0 top-1/2 -translate-y-1/2"
+              style={{
+                opacity: scrolled ? 1 : 0,
+                transition: "opacity 0.45s cubic-bezier(0.22,1,0.36,1)",
+                pointerEvents: scrolled ? "auto" : "none",
+              }}
+            >
+              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={200} height={36} className="w-[160px] sm:w-[200px] h-auto" style={{ objectFit: "contain" }} priority />
+            </div>
+          </div>
         </div>
-        <a
-          href="#pricing"
-          className="text-[13px] font-bold px-5 py-2.5 transition-all duration-300"
-          style={{
-            borderRadius: 4,
-            background: scrolled
-              ? `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 60%, #3f74bc 100%)`
-              : `linear-gradient(135deg, rgba(36,87,155,0.92) 0%, rgba(62,114,184,0.88) 60%, rgba(142,180,227,0.75) 100%)`,
-            color: IC.white,
-            border: `1px solid ${scrolled ? "rgba(36,87,155,0.3)" : "rgba(220,230,242,0.45)"}`,
-            boxShadow: scrolled
-              ? "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)"
-              : "0 4px 16px rgba(17,44,86,0.24), inset 0 1px 0 rgba(255,255,255,0.22)",
-          }}
-        >
-          Contact us
-        </a>
       </nav>
 
       {/* ═══ STICKY SCENE: hero + section 2 share one viewport-pinned stage ═══ */}
-      <div style={{ position: "relative", height: "262vh" }}>
+      <div style={{ position: "relative", height: isDesktop ? "262vh" : "100vh" }}>
 
         {/* ── Layer 0: persistent background that NEVER changes color ── */}
         <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.blueDark, zIndex: 0 }} />
@@ -395,7 +414,7 @@ export default function TemplateICBlueProfessional() {
             opacity: Math.max(0, 1 - heroOut * 1.6),
             width: "100%",
           }}>
-            <Image src="/images/hero-light.jpg" alt={D.productName} fill className="object-cover lg:object-center" style={{ objectPosition: "center 60%" }} priority />
+            <Image src="/images/hero-dark.jpg" alt={D.productName} fill className="object-cover lg:object-center" style={{ objectPosition: "center center" }} priority />
             {/* Mobile overlay — top fade (navbar) + heavy bottom so content pops */}
             <div className="absolute inset-0 lg:hidden" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
             {/* Desktop overlay — fade from left only */}
@@ -506,7 +525,7 @@ export default function TemplateICBlueProfessional() {
               transition: "opacity 1s ease 1.05s, transform 1s cubic-bezier(0.22,1,0.36,1) 1.05s",
             }}
           >
-            <p className="text-sm leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: "rgba(220,230,242,0.82)" }}>
+            <p className="text-sm leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: IC.white }}>
               Consultants by passion and excellence. We help companies improve sales performance through industry knowledge, practical concepts and measurable tools.
             </p>
           </div>
@@ -524,7 +543,7 @@ export default function TemplateICBlueProfessional() {
                 href="#overview"
                 className="inline-flex items-center justify-center gap-3 text-[13px] font-bold px-6 py-3.5"
                 style={{
-                  borderRadius: 4,
+                  borderRadius: 0,
                   color: IC.white,
                   background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
@@ -540,7 +559,7 @@ export default function TemplateICBlueProfessional() {
                 style={{
                   color: "rgba(220,230,242,0.96)",
                   padding: "12px 18px",
-                  borderRadius: 4,
+                  borderRadius: 0,
                   background: "linear-gradient(135deg, rgba(220,230,242,0.08) 0%, rgba(142,180,227,0.14) 100%)",
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12)",
@@ -570,24 +589,64 @@ export default function TemplateICBlueProfessional() {
                 willChange: "transform, opacity, filter",
               }}
             >
+              {/* CTA card — scroll to contact */}
+              <button
+                onClick={() => {
+                  window.scrollTo({ top: window.innerHeight * 0.85, behavior: "smooth" })
+                }}
+                className="group text-left"
+                style={{
+                  padding: "20px 22px",
+                  background: `linear-gradient(135deg, rgba(36,87,155,0.82) 0%, rgba(72,126,198,0.72) 100%)`,
+                  border: `1px solid rgba(195,218,244,0.72)`,
+                  cursor: "pointer",
+                  transition: "background 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease",
+                  boxShadow: "0 14px 36px rgba(20,44,90,0.36), inset 0 1px 0 rgba(255,255,255,0.28)",
+                }}
+                onMouseEnter={e => {
+                  const t = e.currentTarget
+                  t.style.background = `linear-gradient(135deg, rgba(36,87,155,0.96) 0%, rgba(86,139,210,0.86) 100%)`
+                  t.style.borderColor = "rgba(220,235,252,0.88)"
+                  t.style.transform = "translateY(-4px) scale(1.015)"
+                  t.style.boxShadow = "0 18px 44px rgba(20,44,90,0.48), 0 0 0 1px rgba(220,235,252,0.28)"
+                }}
+                onMouseLeave={e => {
+                  const t = e.currentTarget
+                  t.style.background = `linear-gradient(135deg, rgba(36,87,155,0.82) 0%, rgba(72,126,198,0.72) 100%)`
+                  t.style.borderColor = "rgba(195,218,244,0.72)"
+                  t.style.transform = "translateY(0)"
+                  t.style.boxShadow = "0 14px 36px rgba(20,44,90,0.36), inset 0 1px 0 rgba(255,255,255,0.28)"
+                }}
+              >
+                <div className="flex flex-col justify-between h-full gap-6">
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[9px] font-bold tracking-[0.28em] uppercase" style={{ color: "#DCEEFF" }}>Contact Us</span>
+                      <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" style={{ color: "#DCEEFF" }} />
+                    </div>
+                    <p className="font-black leading-[1.2]" style={{ fontSize: "clamp(0.95rem,1.45vw,1.1rem)", color: IC.white, letterSpacing: "-0.01em" }}>Talk to<br />our Experts</p>
+                  </div>
+                  <p className="text-[10px] leading-[1.6]" style={{ color: "rgba(233,242,252,0.86)" }}>Let&apos;s discuss your market — no commitment needed.</p>
+                </div>
+              </button>
+
+              {/* Remaining feature cards */}
               {[
-                { title: "Market Reports",      label: "Industry Intelligence", sub: "Updated regularly" },
                 { title: "Industry Experience", label: "Cross-sector expertise", sub: "International scope" },
-                { title: "Strategic Consulting",label: "Tailor-made concepts",   sub: "Practical execution" },
-                { title: "Customer Insights",   label: "Decision support",       sub: "Actionable outcomes" },
+                { title: "Strategic Consulting", label: "Tailor-made concepts",   sub: "Practical execution" },
+                { title: "Customer Insights",    label: "Decision support",       sub: "Actionable outcomes" },
               ].map((s, i) => (
                 <div
                   key={s.title}
                   style={{
                     padding: "20px 22px",
-                    background: i % 2 === 0 ? "rgba(255,255,255,0.07)" : "rgba(36,87,155,0.35)",
+                    background: i % 2 === 0 ? "rgba(36,87,155,0.35)" : "rgba(255,255,255,0.07)",
                     border: "1px solid rgba(142,180,227,0.18)",
-                    animationDelay: `${0.7 + i * 0.1}s`,
                   }}
                 >
                   <p className="font-black" style={{ fontSize: "clamp(0.95rem,1.45vw,1.15rem)", color: IC.white, letterSpacing: "-0.01em", lineHeight: 1.2 }}>{s.title}</p>
                   <p className="text-[11px] font-bold mt-1" style={{ color: IC.blueLight }}>{s.label}</p>
-                  <p className="text-[10px] mt-0.5" style={{ color: "rgba(220,230,242,0.5)" }}>{s.sub}</p>
+                  <p className="text-[10px] mt-0.5" style={{ color: IC.white }}>{s.sub}</p>
                 </div>
               ))}
             </div>
@@ -608,6 +667,7 @@ export default function TemplateICBlueProfessional() {
       {/* ── SECTION 2 content layer — same stage, same bg, fades in OVER hero ── */}
       <section
         id="overview"
+        className="hidden lg:flex lg:flex-col"
         style={{
           position: "sticky",
           top: 0,
@@ -615,8 +675,6 @@ export default function TemplateICBlueProfessional() {
           background: "transparent",
           zIndex: 3,
           marginTop: "-100vh",
-          display: "flex",
-          flexDirection: "column",
           justifyContent: "center",
           overflow: "hidden",
           willChange: "transform, opacity",
@@ -641,9 +699,9 @@ export default function TemplateICBlueProfessional() {
             {/* Left — on dark bg */}
             <div
               style={{
-                opacity: sectionLeftIn,
-                transform: `translate3d(${(1 - sectionLeftIn) * -44}px, ${(1 - sectionLeftIn) * 14}px, 0)`,
-                filter: `blur(${(1 - sectionLeftIn) * 2.2}px)`,
+                opacity: sectionLeftInEff,
+                transform: `translate3d(${(1 - sectionLeftInEff) * -44}px, ${(1 - sectionLeftInEff) * 14}px, 0)`,
+                filter: `blur(${(1 - sectionLeftInEff) * 2.2}px)`,
                 willChange: "transform, opacity, filter",
               }}
             >
@@ -673,13 +731,14 @@ export default function TemplateICBlueProfessional() {
             {/* Right — CTA panel */}
             <div
               style={{
-                opacity: sectionRightIn,
-                transform: `translate3d(${(1 - sectionRightIn) * 56}px, ${(1 - sectionRightIn) * 12}px, 0)`,
-                filter: `blur(${(1 - sectionRightIn) * 2.4}px)`,
+                opacity: sectionRightInEff,
+                transform: `translate3d(${(1 - sectionRightInEff) * 56}px, ${(1 - sectionRightInEff) * 12}px, 0)`,
+                filter: `blur(${(1 - sectionRightInEff) * 2.4}px)`,
                 willChange: "transform, opacity, filter",
               }}
             >
               <div
+                id="contact-panel"
                 className="flex flex-col justify-between py-12 px-10"
                 style={{
                   background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)",
@@ -732,6 +791,39 @@ export default function TemplateICBlueProfessional() {
         </div>{/* end max-w wrapper */}
       </section>
       </div>{/* end sticky scene */}
+
+      {/* ── MOBILE SECTION 2 — shown only on mobile, flows naturally below hero ── */}
+      <section
+        className="flex flex-col lg:hidden"
+        style={{ background: IC.blueDark, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
+      >
+        <div className="max-w-7xl mx-auto px-6 w-full">
+          <div className="flex flex-col gap-10">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
+              <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(1.5rem,6vw,2rem)", color: IC.white, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
+              <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
+              <p className="text-[13px] leading-[1.8]" style={{ color: "rgba(220,230,242,0.78)" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
+            </div>
+            <div className="flex flex-col justify-between py-10 px-8" style={{ background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)", border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
+              <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
+              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.white }}>Do not hesitate<br />to contact us</h3>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                {[["Contact Us","#"],["Send inquiry","#"]].map(([label,href]) => (
+                  <a key={label} href={href} className="flex items-center justify-between py-4 text-[15px] font-medium" style={{ color: IC.white, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                    {label}<ArrowRight size={14} style={{ color: IC.blueLight, flexShrink: 0 }} />
+                  </a>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 mt-10 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                {[["14,889+","Reports"],["35+","Years"],["50+","Analysts"]].map(([n,l]) => (
+                  <div key={l}><p className="text-[20px] font-bold" style={{ color: IC.white }}>{n}</p><p className="text-[11px] mt-1" style={{ color: IC.blueLight }}>{l}</p></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pt-12 pb-24 lg:pt-16 lg:pb-32 relative overflow-hidden" style={{ background: IC.white, zIndex: 10, position: "relative", marginTop: -10 }}>
@@ -845,7 +937,7 @@ export default function TemplateICBlueProfessional() {
                 <a
                   href="#"
                   className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{ borderRadius: 4, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
+                  style={{ borderRadius: 0, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
                 >
                   More News <ArrowUpRight size={12} />
                 </a>
@@ -886,7 +978,7 @@ export default function TemplateICBlueProfessional() {
                 <a
                   href="#"
                   className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{ borderRadius: 4, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
+                  style={{ borderRadius: 0, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
                 >
                   More Events <ArrowUpRight size={12} />
                 </a>
@@ -968,13 +1060,25 @@ export default function TemplateICBlueProfessional() {
       <footer
         className="py-14 px-6 lg:px-14 relative overflow-hidden"
         style={{
-          background: `linear-gradient(122deg, ${IC.blueDark} 0%, ${IC.blue} 36%, #336ab2 66%, #5f89c7 100%)`,
+          background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
+          paddingTop: 156,
         }}
       >
-        <div className="absolute inset-x-0 top-0 h-px pointer-events-none" style={{ background: "linear-gradient(90deg, rgba(220,230,242,0) 0%, rgba(220,230,242,0.85) 50%, rgba(220,230,242,0) 100%)" }} />
-        <div className="absolute -top-28 -right-24 w-[26rem] h-[26rem] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(220,230,242,0.42) 0%, rgba(220,230,242,0) 70%)" }} />
-        <div className="absolute -bottom-24 -left-20 w-[22rem] h-[22rem] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(142,180,227,0.36) 0%, rgba(142,180,227,0) 72%)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(75deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.07) 100%)" }} />
+        {/* gradient bridge from page to footer */}
+        <div
+          className="absolute inset-x-0 top-0 pointer-events-none"
+          style={{
+            height: 176,
+            background: `linear-gradient(to bottom,
+              ${IC.offWhite} 0%,
+              rgba(247,249,252,0.94) 14%,
+              rgba(232,239,248,0.80) 30%,
+              rgba(181,202,230,0.58) 48%,
+              rgba(108,145,196,0.34) 68%,
+              rgba(53,96,165,0.16) 84%,
+              rgba(36,87,155,0) 100%)`,
+          }}
+        />
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 relative z-10" style={{ padding: "26px 24px" }}>
           <div>
             <div className="flex items-center gap-3 mb-4">
