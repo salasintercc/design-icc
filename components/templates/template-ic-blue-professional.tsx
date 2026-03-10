@@ -130,7 +130,7 @@ function SH({ children, light = false, className }: { children: React.ReactNode;
       className={`font-bold tracking-tight leading-[1.08] ${className ?? ""}`}
       style={{
         fontSize: "clamp(1.75rem,3.2vw,2.6rem)",
-        color: light ? IC.white : IC.gray80,
+        color: light ? IC.white : "#4D4D4D",
         letterSpacing: "-0.015em",
       }}
     >
@@ -386,7 +386,7 @@ export default function TemplateICBlueProfessional() {
                 pointerEvents: scrolled ? "auto" : "none",
               }}
             >
-              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={200} height={36} className="w-[160px] sm:w-[200px] h-auto" style={{ objectFit: "contain" }} priority />
+              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
             </div>
           </div>
         </div>
@@ -541,7 +541,7 @@ export default function TemplateICBlueProfessional() {
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-bold px-6 py-3.5"
+                className="inline-flex items-center justify-center gap-3 text-[13px] font-bold px-6 py-3.5 relative overflow-hidden"
                 style={{
                   borderRadius: 0,
                   color: IC.white,
@@ -549,8 +549,24 @@ export default function TemplateICBlueProfessional() {
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   textShadow: "0 1px 0 rgba(0,0,0,0.2)",
+                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                }}
+                onMouseEnter={e => {
+                  const btn = e.currentTarget as HTMLElement
+                  btn.style.transform = "translateY(-3px)"
+                  btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                  const shine = btn.querySelector(".btn-shine") as HTMLElement
+                  if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                }}
+                onMouseLeave={e => {
+                  const btn = e.currentTarget as HTMLElement
+                  btn.style.transform = "translateY(0)"
+                  btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                  const shine = btn.querySelector(".btn-shine") as HTMLElement
+                  if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                 }}
               >
+                <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
                 Talk to our Experts <ArrowRight size={13} strokeWidth={2.5} />
               </a>
               <a
@@ -560,18 +576,35 @@ export default function TemplateICBlueProfessional() {
                   color: "rgba(220,230,242,0.96)",
                   padding: "12px 18px",
                   borderRadius: 0,
-                  background: "linear-gradient(135deg, rgba(220,230,242,0.08) 0%, rgba(142,180,227,0.14) 100%)",
+                  background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12)",
+                  boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
                 }}
-                onMouseEnter={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "100%" }}
-                onMouseLeave={e => { const el = e.currentTarget.querySelector(".cta-ul") as HTMLElement; if (el) el.style.width = "0%" }}
+                onMouseEnter={e => {
+                  const btn = e.currentTarget as HTMLElement
+                  btn.style.borderColor = "rgba(220,230,242,0.75)"
+                  btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                  btn.style.background = `linear-gradient(135deg, rgba(142,180,227,0.78) 0%, rgba(76,125,190,0.95) 40%, rgba(30,74,134,1) 100%)`
+                  const ul = btn.querySelector(".cta-ul") as HTMLElement; if (ul) ul.style.width = "100%"
+                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
+                }}
+                onMouseLeave={e => {
+                  const btn = e.currentTarget as HTMLElement
+                  btn.style.borderColor = "rgba(142,180,227,0.45)"
+                  btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                  btn.style.background = `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`
+                  const ul = btn.querySelector(".cta-ul") as HTMLElement; if (ul) ul.style.width = "0%"
+                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                }}
               >
                 <span style={{ position: "relative", paddingBottom: 2 }}>
                   Explore market reports
                   <span className="cta-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: "rgba(255,255,255,0.62)", transition: "width 0.45s cubic-bezier(0.22,1,0.36,1)" }} />
                 </span>
-                <ArrowRight size={13} strokeWidth={2.5} />
+                <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                  <ArrowRight size={13} strokeWidth={2.5} />
+                </span>
               </a>
             </div>
 
@@ -681,11 +714,20 @@ export default function TemplateICBlueProfessional() {
           pointerEvents: Math.max(sectionLeftIn, sectionRightIn) < 0.05 ? "none" : "auto",
         }}
       >
-        {/* White gradient from bottom 40% — reveals the white sections below */}
+        {/* White gradient from bottom — mirrors footer in reverse (blue → white), same multi-stop depth */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
-          height: "45%",
-          background: `linear-gradient(to bottom, transparent 0%, ${IC.white} 100%)`,
-          opacity: Math.max(0, (sectionLeftIn - 0.56) * 2.4),
+          height: 360,
+          background: `linear-gradient(to bottom,
+            rgba(36,87,155,0) 0%,
+            rgba(63,111,174,0.14) 16%,
+            rgba(108,145,196,0.30) 30%,
+            rgba(155,186,224,0.50) 44%,
+            rgba(190,212,236,0.68) 58%,
+            rgba(220,232,245,0.82) 70%,
+            rgba(240,245,251,0.92) 82%,
+            rgba(247,249,252,0.97) 92%,
+            ${IC.offWhite} 100%)`,
+          opacity: Math.max(0, (sectionLeftIn - 0.35) * 2.2),
         }} />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10"
@@ -826,22 +868,28 @@ export default function TemplateICBlueProfessional() {
       </section>
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
-      <section id="overview-full" className="pt-12 pb-24 lg:pt-16 lg:pb-32 relative overflow-hidden" style={{ background: IC.white, zIndex: 10, position: "relative", marginTop: -10 }}>
+      <section id="overview-full" className="pb-8 lg:pb-12 relative overflow-hidden" style={{
+        background: isDesktop ? `linear-gradient(to bottom, transparent 0px, ${IC.offWhite} 360px, ${IC.white} 420px)` : IC.white,
+        zIndex: 10,
+        position: "relative",
+        marginTop: isDesktop ? -360 : 0,
+        paddingTop: isDesktop ? 420 : 48,
+      }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
             <div className="mb-10" style={{ position: "relative" }}>
               <div style={{ height: 1, background: `linear-gradient(90deg, ${IC.blueXL} 0%, rgba(36,87,155,0.6) 45%, ${IC.blueXL} 100%)` }} />
               <div
                 style={{
-                  position: "absolute",
-                  left: 0,
-                  top: 0,
-                  height: 1,
-                  width: `${15 + competencesLeadIn * 85}%`,
-                  background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
-                  transition: "width 0.4s ease",
-                }}
-              />
-            </div>
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    height: 1,
+                    width: `${15 + competencesLeadIn * 85}%`,
+                    background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
+                    transition: "width 0.4s ease",
+                  }}
+                />
+              </div>
             <Fade>
               <div className="flex items-end justify-between mb-14">
                 <div>
@@ -874,10 +922,29 @@ export default function TemplateICBlueProfessional() {
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
                       <h3 className="text-[15px] font-bold mb-3" style={{ color: IC.gray80 }}>{c.title}</h3>
                       <p className="text-sm leading-relaxed flex-1" style={{ color: IC.gray60 }}>{c.desc}</p>
-                      <a href="#" className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 group"
-                        style={{ color: IC.blue }}>
-                        Explore
-                        <ArrowRight size={11} className="transition-transform duration-200 group-hover:translate-x-1" />
+                      <a href="#"
+                        className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
+                        style={{ color: IC.blue, transition: "color 0.25s ease" }}
+                        onMouseEnter={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.color = IC.blueDark
+                          const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
+                          const ul = el.querySelector(".exp-ul") as HTMLElement; if (ul) ul.style.width = "100%"
+                        }}
+                        onMouseLeave={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.color = IC.blue
+                          const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                          const ul = el.querySelector(".exp-ul") as HTMLElement; if (ul) ul.style.width = "0%"
+                        }}
+                      >
+                        <span style={{ position: "relative", paddingBottom: 1 }}>
+                          Explore
+                          <span className="exp-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
+                        </span>
+                        <span className="exp-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                          <ArrowRight size={11} />
+                        </span>
                       </a>
                     </div>
                   </Fade>
@@ -1061,30 +1128,29 @@ export default function TemplateICBlueProfessional() {
         className="py-14 px-6 lg:px-14 relative overflow-hidden"
         style={{
           background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
-          paddingTop: 156,
+          paddingTop: 200,
         }}
       >
         {/* gradient bridge from page to footer */}
         <div
           className="absolute inset-x-0 top-0 pointer-events-none"
           style={{
-            height: 176,
+            height: 360,
             background: `linear-gradient(to bottom,
               ${IC.offWhite} 0%,
-              rgba(247,249,252,0.94) 14%,
-              rgba(232,239,248,0.80) 30%,
-              rgba(181,202,230,0.58) 48%,
-              rgba(108,145,196,0.34) 68%,
-              rgba(53,96,165,0.16) 84%,
+              rgba(247,249,252,0.97) 8%,
+              rgba(240,245,251,0.92) 18%,
+              rgba(220,232,245,0.82) 30%,
+              rgba(190,212,236,0.68) 42%,
+              rgba(155,186,224,0.50) 56%,
+              rgba(108,145,196,0.30) 70%,
+              rgba(63,111,174,0.14) 84%,
               rgba(36,87,155,0) 100%)`,
           }}
         />
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 relative z-10" style={{ padding: "26px 24px" }}>
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 flex items-center justify-center font-black text-[13px]" style={{ background: IC.white, color: IC.blue }}>IC</div>
-              <span className="text-sm font-bold" style={{ color: IC.white }}>Interconnection Consulting</span>
-            </div>
+            <p className="text-sm font-bold mb-4" style={{ color: IC.white }}>Interconnection Consulting</p>
             <p className="text-xs leading-relaxed" style={{ color: IC.blueLight }}>
               Market intelligence for the building materials & construction industry since 1989.
             </p>
