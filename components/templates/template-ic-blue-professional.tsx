@@ -1003,9 +1003,31 @@ export default function TemplateICBlueProfessional() {
               <Fade delay={0.25}>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{ borderRadius: 0, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
+                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5 relative overflow-hidden"
+                  style={{
+                    borderRadius: 0,
+                    color: IC.white,
+                    background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                    border: "1px solid rgba(142,180,227,0.45)",
+                    boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                  }}
+                  onMouseEnter={e => {
+                    const btn = e.currentTarget as HTMLElement
+                    btn.style.transform = "translateY(-3px)"
+                    btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                  }}
+                  onMouseLeave={e => {
+                    const btn = e.currentTarget as HTMLElement
+                    btn.style.transform = "translateY(0)"
+                    btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                  }}
                 >
+                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
                   More News <ArrowUpRight size={12} />
                 </a>
               </Fade>
@@ -1044,9 +1066,31 @@ export default function TemplateICBlueProfessional() {
               <Fade delay={0.3}>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{ borderRadius: 0, color: IC.white, background: `linear-gradient(135deg, ${IC.blueDark} 0%, ${IC.blue} 55%, #3f74bc 100%)`, boxShadow: "0 4px 14px rgba(36,87,155,0.3), inset 0 1px 0 rgba(255,255,255,0.15)" }}
+                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5 relative overflow-hidden"
+                  style={{
+                    borderRadius: 0,
+                    color: IC.white,
+                    background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                    border: "1px solid rgba(142,180,227,0.45)",
+                    boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                  }}
+                  onMouseEnter={e => {
+                    const btn = e.currentTarget as HTMLElement
+                    btn.style.transform = "translateY(-3px)"
+                    btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                  }}
+                  onMouseLeave={e => {
+                    const btn = e.currentTarget as HTMLElement
+                    btn.style.transform = "translateY(0)"
+                    btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                  }}
                 >
+                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
                   More Events <ArrowUpRight size={12} />
                 </a>
               </Fade>
