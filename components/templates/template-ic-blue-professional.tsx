@@ -401,25 +401,44 @@ export default function TemplateICBlueProfessional() {
       {/* ── HERO content layer ── */}
       <section className="relative overflow-hidden" style={{ position: "sticky", top: 0, height: "100vh", background: "transparent", display: "flex", flexDirection: "column", zIndex: 2, marginTop: "-100vh" }}>
 
-        {/* Layer 1 — Photo (full bleed on mobile, right half on desktop) */}
+        {/* Layer 1 — Photo: right-aligned contain so full image is visible, blends into blue on left */}
         <div
-          className="absolute inset-0 lg:left-auto lg:right-0 pointer-events-none"
-          style={{ width: "100%", overflow: "hidden" }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ overflow: "hidden" }}
         >
-          <div style={{
-            position: "absolute", inset: "-8% 0",
-            transform: `translateY(${scrollY * 0.14}px) scale(1.08)`,
-            transformOrigin: "center top",
-            willChange: "transform",
-            opacity: Math.max(0, 1 - heroOut * 1.6),
-            width: "100%",
-          }}>
-            <Image src="/images/hero-dark.jpg" alt={D.productName} fill className="object-cover lg:object-center" style={{ objectPosition: "center center" }} priority />
-            {/* Mobile overlay — top fade (navbar) + heavy bottom so content pops */}
-            <div className="absolute inset-0 lg:hidden" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
-            {/* Desktop overlay — fade from left only */}
-            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to right, rgba(30,74,134,0.96) 0%, rgba(30,74,134,0.60) 30%, rgba(30,74,134,0.12) 100%)" }} />
-            <div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.25) 0%, rgba(20,44,90,0.55) 100%)" }} />
+          {/* Desktop: image shown full on right 58%, no cropping */}
+          <div
+            className="absolute inset-0 hidden lg:block"
+            style={{
+              transform: `translateY(${scrollY * 0.06}px)`,
+              willChange: "transform",
+              opacity: Math.max(0, 1 - heroOut * 1.6),
+            }}
+          >
+            <Image
+              src="/Slide.jpg"
+              alt={D.productName}
+              fill
+              className="object-contain"
+              style={{ objectPosition: "right center" }}
+              priority
+            />
+            {/* Left-to-right dissolve: solid blue → transparent, covering ~45% from left */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,74,134,1) 0%, rgba(30,74,134,1) 28%, rgba(30,74,134,0.88) 36%, rgba(30,74,134,0.55) 46%, rgba(30,74,134,0.18) 58%, transparent 72%)" }} />
+            {/* Top vignette */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.55) 0%, transparent 22%)" }} />
+            {/* Bottom vignette */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(20,44,90,0.60) 0%, transparent 35%)" }} />
+          </div>
+          {/* Mobile: full bleed cover */}
+          <div
+            className="absolute inset-0 lg:hidden"
+            style={{
+              opacity: Math.max(0, 1 - heroOut * 1.6),
+            }}
+          >
+            <Image src="/Slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
           </div>
         </div>
 
@@ -571,7 +590,7 @@ export default function TemplateICBlueProfessional() {
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold"
+                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold relative overflow-hidden"
                 style={{
                   color: "rgba(220,230,242,0.96)",
                   padding: "12px 18px",
@@ -579,28 +598,28 @@ export default function TemplateICBlueProfessional() {
                   background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                  transition: "border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
+                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
                 }}
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.borderColor = "rgba(220,230,242,0.75)"
+                  btn.style.transform = "translateY(-3px)"
                   btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                  btn.style.background = `linear-gradient(135deg, rgba(142,180,227,0.78) 0%, rgba(76,125,190,0.95) 40%, rgba(30,74,134,1) 100%)`
-                  const ul = btn.querySelector(".cta-ul") as HTMLElement; if (ul) ul.style.width = "100%"
+                  const shine = btn.querySelector(".cta2-shine") as HTMLElement
+                  if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(320px) skewX(-18deg)" }
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.borderColor = "rgba(142,180,227,0.45)"
+                  btn.style.transform = "translateY(0)"
                   btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                  btn.style.background = `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`
-                  const ul = btn.querySelector(".cta-ul") as HTMLElement; if (ul) ul.style.width = "0%"
+                  const shine = btn.querySelector(".cta2-shine") as HTMLElement
+                  if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
+                <span className="cta2-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
                 <span style={{ position: "relative", paddingBottom: 2 }}>
                   Explore market reports
-                  <span className="cta-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: "rgba(255,255,255,0.62)", transition: "width 0.45s cubic-bezier(0.22,1,0.36,1)" }} />
                 </span>
                 <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
                   <ArrowRight size={13} strokeWidth={2.5} />
@@ -752,7 +771,7 @@ export default function TemplateICBlueProfessional() {
                 Consultants by passion<br />and excellence!
               </h2>
               <div className="w-7 h-[2px] mb-8" style={{ background: "rgba(142,180,227,0.6)" }} />
-              <p className="text-[13px] leading-[1.8] mb-10" style={{ color: "rgba(220,230,242,0.78)" }}>
+              <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
                 Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.
               </p>
               <div>
@@ -920,8 +939,8 @@ export default function TemplateICBlueProfessional() {
                       }}
                     >
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[15px] font-bold mb-3" style={{ color: IC.gray80 }}>{c.title}</h3>
-                      <p className="text-sm leading-relaxed flex-1" style={{ color: IC.gray60 }}>{c.desc}</p>
+                      <h3 className="text-[15px] font-bold mb-3" style={{ color: "#4D4D4D" }}>{c.title}</h3>
+                      <p className="text-sm leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
                       <a href="#"
                         className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
                         style={{ color: IC.blue, transition: "color 0.25s ease" }}
