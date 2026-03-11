@@ -361,30 +361,9 @@ export default function TemplateICBlueProfessional() {
               </a>
             ))}
           </div>
-          {/* Logo right — single logo, filter animates from white → original as scroll progresses */}
+          {/* Logo right — always original colors */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
-            {/* White logo (hero) */}
-            <div
-              className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center"
-              style={{
-                opacity: Math.max(0, 1 - scrollY / 80),
-                transition: "opacity 0.1s linear",
-                pointerEvents: scrollY > 80 ? "none" : "auto",
-              }}
-            >
-              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} priority />
-            </div>
-            {/* Color logo (scrolled) */}
-            <div
-              className="absolute right-0 top-1/2 -translate-y-1/2"
-              style={{
-                opacity: Math.min(1, Math.max(0, (scrollY - 20) / 80)),
-                transition: "opacity 0.1s linear",
-                pointerEvents: scrollY < 20 ? "none" : "auto",
-              }}
-            >
-              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
-            </div>
+            <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
           </div>
         </div>
       </nav>
