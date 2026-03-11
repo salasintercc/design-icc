@@ -361,29 +361,26 @@ export default function TemplateICBlueProfessional() {
               </a>
             ))}
           </div>
-          {/* Logo right — cross-fade between transparent state (text) and scrolled state (image) */}
+          {/* Logo right — single logo, filter animates from white → original as scroll progresses */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
-            {/* Logo transparent (not scrolled) */}
+            {/* White logo (hero) */}
             <div
               className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center"
               style={{
-                opacity: scrolled ? 0 : 1,
-                transition: "opacity 0.45s cubic-bezier(0.22,1,0.36,1)",
-                pointerEvents: scrolled ? "none" : "auto",
-                whiteSpace: "nowrap",
+                opacity: Math.max(0, 1 - scrollY / 80),
+                transition: "opacity 0.1s linear",
+                pointerEvents: scrollY > 80 ? "none" : "auto",
               }}
             >
-              <span className="block text-[11px] sm:text-[13px] font-bold" style={{ color: IC.white }}>
-                Interconnection Consulting
-              </span>
+              <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} priority />
             </div>
-            {/* Logo scrolled (image) */}
+            {/* Color logo (scrolled) */}
             <div
               className="absolute right-0 top-1/2 -translate-y-1/2"
               style={{
-                opacity: scrolled ? 1 : 0,
-                transition: "opacity 0.45s cubic-bezier(0.22,1,0.36,1)",
-                pointerEvents: scrolled ? "auto" : "none",
+                opacity: Math.min(1, Math.max(0, (scrollY - 20) / 80)),
+                transition: "opacity 0.1s linear",
+                pointerEvents: scrollY < 20 ? "none" : "auto",
               }}
             >
               <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
@@ -564,7 +561,7 @@ export default function TemplateICBlueProfessional() {
                 style={{
                   borderRadius: 0,
                   color: IC.white,
-                  background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                  background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   textShadow: "0 1px 0 rgba(0,0,0,0.2)",
@@ -595,7 +592,7 @@ export default function TemplateICBlueProfessional() {
                   color: "rgba(220,230,242,0.96)",
                   padding: "12px 18px",
                   borderRadius: 0,
-                  background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                  background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -631,77 +628,7 @@ export default function TemplateICBlueProfessional() {
           </div>
             </div>{/* end left column */}
 
-            {/* Right — stats panel (distinctly different from editorial image-only) */}
-            <div
-              className="hidden lg:grid grid-cols-2 gap-3"
-              style={{
-                opacity: (heroReady ? 1 : 0) * Math.max(0, 1 - heroRightOut * 1.35),
-                transform: `translate3d(${heroRightOut * 52}px, ${heroRightOut * -8}px, 0)`,
-                filter: `blur(${heroRightOut * 2}px)`,
-                willChange: "transform, opacity, filter",
-              }}
-            >
-              {/* CTA card — scroll to contact */}
-              <button
-                onClick={() => {
-                  window.scrollTo({ top: window.innerHeight * 0.85, behavior: "smooth" })
-                }}
-                className="group text-left"
-                style={{
-                  padding: "20px 22px",
-                  background: `linear-gradient(135deg, rgba(36,87,155,0.82) 0%, rgba(72,126,198,0.72) 100%)`,
-                  border: `1px solid rgba(195,218,244,0.72)`,
-                  cursor: "pointer",
-                  transition: "background 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease",
-                  boxShadow: "0 14px 36px rgba(20,44,90,0.36), inset 0 1px 0 rgba(255,255,255,0.28)",
-                }}
-                onMouseEnter={e => {
-                  const t = e.currentTarget
-                  t.style.background = `linear-gradient(135deg, rgba(36,87,155,0.96) 0%, rgba(86,139,210,0.86) 100%)`
-                  t.style.borderColor = "rgba(220,235,252,0.88)"
-                  t.style.transform = "translateY(-4px) scale(1.015)"
-                  t.style.boxShadow = "0 18px 44px rgba(20,44,90,0.48), 0 0 0 1px rgba(220,235,252,0.28)"
-                }}
-                onMouseLeave={e => {
-                  const t = e.currentTarget
-                  t.style.background = `linear-gradient(135deg, rgba(36,87,155,0.82) 0%, rgba(72,126,198,0.72) 100%)`
-                  t.style.borderColor = "rgba(195,218,244,0.72)"
-                  t.style.transform = "translateY(0)"
-                  t.style.boxShadow = "0 14px 36px rgba(20,44,90,0.36), inset 0 1px 0 rgba(255,255,255,0.28)"
-                }}
-              >
-                <div className="flex flex-col justify-between h-full gap-6">
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[9px] font-bold tracking-[0.28em] uppercase" style={{ color: "#DCEEFF" }}>Contact Us</span>
-                      <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" style={{ color: "#DCEEFF" }} />
-                    </div>
-                    <p className="font-black leading-[1.2]" style={{ fontSize: "clamp(0.95rem,1.45vw,1.1rem)", color: IC.white, letterSpacing: "-0.01em" }}>Talk to<br />our Experts</p>
-                  </div>
-                  <p className="text-[10px] leading-[1.6]" style={{ color: "rgba(233,242,252,0.86)" }}>Let&apos;s discuss your market — no commitment needed.</p>
-                </div>
-              </button>
 
-              {/* Remaining feature cards */}
-              {[
-                { title: "Industry Experience", label: "Cross-sector expertise", sub: "International scope" },
-                { title: "Strategic Consulting", label: "Tailor-made concepts",   sub: "Practical execution" },
-                { title: "Customer Insights",    label: "Decision support",       sub: "Actionable outcomes" },
-              ].map((s, i) => (
-                <div
-                  key={s.title}
-                  style={{
-                    padding: "20px 22px",
-                    background: i % 2 === 0 ? "rgba(36,87,155,0.35)" : "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(142,180,227,0.18)",
-                  }}
-                >
-                  <p className="font-black" style={{ fontSize: "clamp(0.95rem,1.45vw,1.15rem)", color: IC.white, letterSpacing: "-0.01em", lineHeight: 1.2 }}>{s.title}</p>
-                  <p className="text-[11px] font-bold mt-1" style={{ color: IC.blueLight }}>{s.label}</p>
-                  <p className="text-[10px] mt-0.5" style={{ color: IC.white }}>{s.sub}</p>
-                </div>
-              ))}
-            </div>
 
           </div>{/* end grid */}
         </div>{/* end content wrapper */}
@@ -892,7 +819,7 @@ export default function TemplateICBlueProfessional() {
         zIndex: 10,
         position: "relative",
         marginTop: isDesktop ? -360 : 0,
-        paddingTop: isDesktop ? 420 : 48,
+        paddingTop: isDesktop ? 280 : 48,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
             <div className="mb-10" style={{ position: "relative" }}>
@@ -915,10 +842,7 @@ export default function TemplateICBlueProfessional() {
                   <Label>What we do</Label>
                   <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
                 </div>
-                <a href="#" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold pb-0.5"
-                  style={{ color: IC.blue, borderBottom: `1px solid ${IC.blueLight}` }}>
-                  All services <ArrowRight size={12} />
-                </a>
+
               </div>
             </Fade>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
@@ -943,7 +867,7 @@ export default function TemplateICBlueProfessional() {
                       <p className="text-sm leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
                       <a href="#"
                         className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
-                        style={{ color: IC.blue, transition: "color 0.25s ease" }}
+                        style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
                           el.style.color = IC.blueDark
@@ -1010,11 +934,28 @@ export default function TemplateICBlueProfessional() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{p.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold group"
-                      style={{ color: IC.blue }}
+                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold"
+                      style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
+                      onMouseEnter={e => {
+                        const el = e.currentTarget as HTMLElement
+                        el.style.color = IC.blueDark
+                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
+                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "100%"
+                      }}
+                      onMouseLeave={e => {
+                        const el = e.currentTarget as HTMLElement
+                        el.style.color = IC.blue
+                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "0%"
+                      }}
                     >
-                      Read more
-                      <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span style={{ position: "relative", paddingBottom: 1 }}>
+                        Read more
+                        <span className="rm-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
+                      </span>
+                      <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                        <ArrowRight size={12} />
+                      </span>
                     </a>
                   </div>
                 </Fade>
@@ -1026,7 +967,7 @@ export default function TemplateICBlueProfessional() {
                   style={{
                     borderRadius: 0,
                     color: IC.white,
-                    background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                    background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
                     boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                     transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -1073,11 +1014,28 @@ export default function TemplateICBlueProfessional() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{e.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold group"
-                      style={{ color: IC.blue }}
+                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold"
+                      style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
+                      onMouseEnter={e => {
+                        const el = e.currentTarget as HTMLElement
+                        el.style.color = IC.blueDark
+                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
+                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "100%"
+                      }}
+                      onMouseLeave={e => {
+                        const el = e.currentTarget as HTMLElement
+                        el.style.color = IC.blue
+                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "0%"
+                      }}
                     >
-                      Read more
-                      <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span style={{ position: "relative", paddingBottom: 1 }}>
+                        Read more
+                        <span className="rm-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
+                      </span>
+                      <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                        <ArrowRight size={12} />
+                      </span>
                     </a>
                   </div>
                 </Fade>
@@ -1089,7 +1047,7 @@ export default function TemplateICBlueProfessional() {
                   style={{
                     borderRadius: 0,
                     color: IC.white,
-                    background: `linear-gradient(135deg, rgba(142,180,227,0.65) 0%, rgba(76,125,190,0.86) 40%, rgba(30,74,134,0.92) 100%)`,
+                    background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
                     boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                     transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -1191,7 +1149,7 @@ export default function TemplateICBlueProfessional() {
         className="py-14 px-6 lg:px-14 relative overflow-hidden"
         style={{
           background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
-          paddingTop: 200,
+          paddingTop: 80,
         }}
       >
         {/* gradient bridge from page to footer */}
@@ -1213,28 +1171,28 @@ export default function TemplateICBlueProfessional() {
         />
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 relative z-10" style={{ padding: "26px 24px" }}>
           <div>
-            <p className="text-sm font-bold mb-4" style={{ color: IC.white }}>Interconnection Consulting</p>
-            <p className="text-xs leading-relaxed" style={{ color: IC.blueLight }}>
+            <p className="text-sm font-bold mb-4" style={{ color: IC.gray80 }}>Interconnection Consulting</p>
+            <p className="text-xs leading-relaxed" style={{ color: IC.gray60 }}>
               Market intelligence for the building materials & construction industry since 1989.
             </p>
           </div>
           <div>
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Quick Links</p>
+            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Quick Links</p>
             {["About IC", "Reports & Studies", "Consulting", "Contact"].map(l => (
-              <a key={l} href="#" className="block text-sm mb-2" style={{ color: IC.white, opacity: 0.85 }}>{l}</a>
+              <a key={l} href="#" className="block text-sm mb-2" style={{ color: IC.gray80 }}>{l}</a>
             ))}
           </div>
           <div>
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact</p>
-            <p className="text-sm leading-relaxed" style={{ color: IC.white, opacity: 0.85 }}>
+            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact</p>
+            <p className="text-sm leading-relaxed" style={{ color: IC.gray80 }}>
               Getreidemarkt 1, 1060 Vienna<br />
               +43 1 585 47 10<br />
               office@interconnection.at
             </p>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-10 pt-6" style={{ borderTop: `1px solid rgba(142,180,227,0.3)` }}>
-          <p className="text-xs" style={{ color: IC.blueLight }}>© 2026 Interconnection Consulting GmbH · All rights reserved</p>
+        <div className="max-w-7xl mx-auto mt-10 pt-6" style={{ borderTop: `1px solid ${IC.blueXL}` }}>
+          <p className="text-xs" style={{ color: IC.gray50 }}>© 2026 Interconnection Consulting GmbH · All rights reserved</p>
         </div>
       </footer>
 

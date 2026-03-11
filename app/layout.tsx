@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, DM_Sans } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _inter = Inter({ subsets: ["latin"] });
-const _dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 export const metadata: Metadata = {
   title: 'ICC - Interconnection Consulting | Market Research & Consulting',
@@ -39,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.variable}>
       <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
         <Analytics />
