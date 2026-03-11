@@ -416,7 +416,7 @@ export default function TemplateICBlueProfessional() {
             }}
           >
             <Image
-              src="/Slide.jpg"
+              src="/slide.jpg"
               alt={D.productName}
               fill
               className="object-contain"
@@ -437,7 +437,7 @@ export default function TemplateICBlueProfessional() {
               opacity: Math.max(0, 1 - heroOut * 1.6),
             }}
           >
-            <Image src="/Slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
+            <Image src="/slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
           </div>
         </div>
