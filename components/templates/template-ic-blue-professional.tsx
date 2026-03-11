@@ -401,8 +401,6 @@ export default function TemplateICBlueProfessional() {
             />
             {/* Left-to-right dissolve: solid blue → transparent, covering ~45% from left */}
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,74,134,1) 0%, rgba(30,74,134,1) 28%, rgba(30,74,134,0.88) 36%, rgba(30,74,134,0.55) 46%, rgba(30,74,134,0.18) 58%, transparent 72%)" }} />
-            {/* Top vignette */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.55) 0%, transparent 22%)" }} />
             {/* Bottom vignette */}
             <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(20,44,90,0.60) 0%, transparent 35%)" }} />
           </div>
@@ -540,7 +538,7 @@ export default function TemplateICBlueProfessional() {
                 style={{
                   borderRadius: 0,
                   color: IC.white,
-                  background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
+                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   textShadow: "0 1px 0 rgba(0,0,0,0.2)",
@@ -571,7 +569,7 @@ export default function TemplateICBlueProfessional() {
                   color: "rgba(220,230,242,0.96)",
                   padding: "12px 18px",
                   borderRadius: 0,
-                  background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
+                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
                   boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                   transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -946,7 +944,7 @@ export default function TemplateICBlueProfessional() {
                   style={{
                     borderRadius: 0,
                     color: IC.white,
-                    background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
+                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
                     boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                     transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -967,7 +965,7 @@ export default function TemplateICBlueProfessional() {
                   }}
                 >
                   <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                  More News <ArrowUpRight size={12} />
+                  More News <ArrowRight size={12} />
                 </a>
               </Fade>
             </div>
@@ -1026,7 +1024,7 @@ export default function TemplateICBlueProfessional() {
                   style={{
                     borderRadius: 0,
                     color: IC.white,
-                    background: `linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)`,
+                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
                     boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                     transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
@@ -1047,7 +1045,7 @@ export default function TemplateICBlueProfessional() {
                   }}
                 >
                   <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                  More Events <ArrowUpRight size={12} />
+                  More Events <ArrowRight size={12} />
                 </a>
               </Fade>
             </div>
@@ -1056,7 +1054,7 @@ export default function TemplateICBlueProfessional() {
       </section>
 
       {/* REFERENCES */}
-      <section className="py-24 lg:py-32" style={{ background: IC.offWhite }}>
+      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16" style={{ background: IC.offWhite }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>References</Label>
@@ -1128,14 +1126,14 @@ export default function TemplateICBlueProfessional() {
         className="py-14 px-6 lg:px-14 relative overflow-hidden"
         style={{
           background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
-          paddingTop: 80,
+          paddingTop: 48,
         }}
       >
         {/* gradient bridge from page to footer */}
         <div
           className="absolute inset-x-0 top-0 pointer-events-none"
           style={{
-            height: 360,
+            height: 260,
             background: `linear-gradient(to bottom,
               ${IC.offWhite} 0%,
               rgba(247,249,252,0.97) 8%,
