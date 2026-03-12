@@ -284,7 +284,7 @@ export default function TemplateICBlueProfessional() {
   const competencesLeadIn = clamp01((scrollY - winH * 1.38) / (winH * 0.44))
 
   return (
-    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
+    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, paddingBottom: 0, backgroundColor: "#336ab2" }}>
 
       <style>{`
         @keyframes scrollBounce {
@@ -1054,7 +1054,7 @@ export default function TemplateICBlueProfessional() {
       </section>
 
       {/* REFERENCES */}
-      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16" style={{ background: IC.offWhite }}>
+      <section className="pt-24 pb-0 lg:pt-32 lg:pb-0" style={{ background: IC.offWhite }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>References</Label>
@@ -1123,53 +1123,41 @@ export default function TemplateICBlueProfessional() {
 
       {/* FOOTER */}
       <footer
-        className="py-14 px-6 lg:px-14 relative overflow-hidden"
+        className="px-6 lg:px-14 relative"
         style={{
           background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
-          paddingTop: 48,
+          paddingTop: 16,
+          paddingBottom: 32,
+          marginTop: -120,
+          marginBottom: -8,
         }}
       >
         {/* gradient bridge from page to footer */}
         <div
           className="absolute inset-x-0 top-0 pointer-events-none"
           style={{
-            height: 260,
+            height: 160,
             background: `linear-gradient(to bottom,
               ${IC.offWhite} 0%,
-              rgba(247,249,252,0.97) 8%,
-              rgba(240,245,251,0.92) 18%,
-              rgba(220,232,245,0.82) 30%,
-              rgba(190,212,236,0.68) 42%,
-              rgba(155,186,224,0.50) 56%,
-              rgba(108,145,196,0.30) 70%,
-              rgba(63,111,174,0.14) 84%,
-              rgba(36,87,155,0) 100%)`,
+              rgba(247,249,252,0.96) 12%,
+              rgba(235,243,251,0.88) 26%,
+              rgba(210,228,245,0.72) 42%,
+              rgba(170,200,232,0.48) 60%,
+              rgba(120,162,210,0.24) 78%,
+              rgba(63,111,174,0) 100%)`,
           }}
         />
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 relative z-10" style={{ padding: "26px 24px" }}>
-          <div>
-            <p className="text-sm font-bold mb-4" style={{ color: IC.gray80 }}>Interconnection Consulting</p>
-            <p className="text-xs leading-relaxed" style={{ color: IC.gray60 }}>
-              Market intelligence for the building materials & construction industry since 1989.
-            </p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 80, paddingBottom: 0 }}>
+          <div
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
+            style={{ borderTop: `1px solid rgba(255,255,255,0.2)` }}
+          >
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting GmbH · All rights reserved</p>
+            <div className="flex items-center gap-5 text-xs">
+              <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Print</a>
+              <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Privacy Policy</a>
+            </div>
           </div>
-          <div>
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Quick Links</p>
-            {["About IC", "Reports & Studies", "Consulting", "Contact"].map(l => (
-              <a key={l} href="#" className="block text-sm mb-2" style={{ color: IC.gray80 }}>{l}</a>
-            ))}
-          </div>
-          <div>
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact</p>
-            <p className="text-sm leading-relaxed" style={{ color: IC.gray80 }}>
-              Getreidemarkt 1, 1060 Vienna<br />
-              +43 1 585 47 10<br />
-              office@interconnection.at
-            </p>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto mt-10 pt-6" style={{ borderTop: `1px solid ${IC.blueXL}` }}>
-          <p className="text-xs" style={{ color: IC.gray50 }}>© 2026 Interconnection Consulting GmbH · All rights reserved</p>
         </div>
       </footer>
 

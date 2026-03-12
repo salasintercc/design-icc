@@ -131,6 +131,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #336ab2;
 }
 
 @keyframes fade-in-up {
