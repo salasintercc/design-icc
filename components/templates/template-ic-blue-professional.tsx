@@ -132,11 +132,11 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
 }
 
 const COMPETENCES = [
-  { icon: BarChart2,  title: "Management Consulting", desc: "Tailor-made consulting solutions to optimise sales, pricing and strategic execution." },
+  { icon: Users,      title: "Management Consulting", desc: "Tailor-made consulting solutions to optimise sales, pricing and strategic execution." },
   { icon: Search,     title: "Customer Insights",     desc: "Practical insight into customer needs, behaviour and market expectations." },
   { icon: TrendingUp, title: "Innovation Management", desc: "From trend detection to innovation priorities that create measurable growth." },
   { icon: Target,     title: "Big Data Tools",        desc: "Data-driven tools for structured market intelligence and decision support." },
-  { icon: Users,      title: "Market Reports",        desc: "High-quality market reports worldwide with actionable and relevant findings." },
+  { icon: BarChart2,  title: "Market Reports",        desc: "High-quality market reports worldwide with actionable and relevant findings." },
   { icon: Lightbulb,  title: "Industry Experience",   desc: "Deep sector expertise built through decades of projects and market research." },
 ]
 
