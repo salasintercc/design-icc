@@ -20,7 +20,7 @@ const IC = {
 }
 
 const D = {
-  productName:  "From Data to Decisions",
+  productName:  "From Data to Better Decisions",
   regionName:   "Faster.",
   productTypes: ["Industry knowledge", "Concepts & tools", "Lead generation", "Pricing optimisation"],
 
