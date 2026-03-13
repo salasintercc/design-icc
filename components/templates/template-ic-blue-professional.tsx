@@ -284,7 +284,7 @@ export default function TemplateICBlueProfessional() {
   const competencesLeadIn = clamp01((scrollY - winH * 1.38) / (winH * 0.44))
 
   return (
-    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, paddingBottom: 0, backgroundColor: "#336ab2" }}>
+    <div className="min-h-screen" style={{ background: IC.offWhite, color: IC.gray80 }}>
 
       <style>{`
         @keyframes scrollBounce {
@@ -1054,7 +1054,7 @@ export default function TemplateICBlueProfessional() {
       </section>
 
       {/* REFERENCES */}
-      <section className="pt-24 pb-0 lg:pt-32 lg:pb-0" style={{ background: IC.offWhite }}>
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20" style={{ background: IC.offWhite }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>References</Label>
@@ -1128,8 +1128,6 @@ export default function TemplateICBlueProfessional() {
           background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
           paddingTop: 16,
           paddingBottom: 32,
-          marginTop: -120,
-          marginBottom: -8,
         }}
       >
         {/* gradient bridge from page to footer */}
@@ -1152,7 +1150,7 @@ export default function TemplateICBlueProfessional() {
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
             style={{ borderTop: `1px solid rgba(255,255,255,0.2)` }}
           >
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting GmbH · All rights reserved</p>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
             <div className="flex items-center gap-5 text-xs">
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Print</a>
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Privacy Policy</a>
