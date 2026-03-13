@@ -47,15 +47,88 @@ const D = {
   ],
 
   references: [
-    { company: "Admonter", domain: "admonter.com", statement: "At the IC Impulsworkshop 'Sales Optimization' we appreciate not only the practical relevance, but also the eloquent language and the perfect rhetoric. The most important benefit for our company was the sales pipeline." },
-    { company: "Österreichs Personaldienstleister", domain: "personaldienstleister.at", statement: "The sales management tool 'Jobs Intelligence' has become indispensable for fast and correct strategic management decisions as well as daily support for hot leads for the sales team." },
+    {
+      company: "ELK",
+      logoSrc: "/images/ELK.png",
+      statement: "The prefabricated housing study by Interconnection Consulting shows a real picture of the actual market situation and forms a valuable basis for our strategic decisions.",
+      author: "Gerhard Schuller (CFO ELK)",
+    },
+    {
+      company: "Epson",
+      logoSrc: "/images/Epson.png",
+      statement: "EPSON is satisfied with the Interconnection's way of communication with the market and with clients. EPSON is also appriciate the Interconnection's continuous work trying to aim the report to be at the higher level. As a result, EPSON rely on Interconnection data, for the market of POS Printers and Systems.",
+      author: "T.Murakami (Brand Management, Seiko Epson Corporation)",
+    },
+    {
+      company: "Sodexo",
+      logoSrc: "/images/Sodexo.jpg",
+      statement: "When developing new market strategies, Interconnection is a trusted source we always come back to.",
+      author: "Christian Frey (Marketing Manager CS DACH)",
+    },
+    {
+      company: "Schneider Electric",
+      logoSrc: "/images/shneider.png",
+      statement: "Under a short time constraint, Interconnection was able to deliver an outstanding study that exceeded my expectation in terms of quality and market breadth. I highly recommend Interconnection to anyone in need of market research.",
+      author: "Jeff Canterberry (Director of Strategy and M&A, Schneider Electric)",
+    },
   ],
   additionalClients: [
-    { name: "CISA",          domain: "cisa.com" },
-    { name: "Citibank",      domain: "citibank.com" },
-    { name: "Codex Partners",domain: "codex.partners" },
-    { name: "Concentro",     domain: "concentro.com" },
+    { name: "Admonter" },
+    { name: "D+H Mechatronic" },
+    { name: "Daikin" },
+    { name: "Danwood" },
+    { name: "Deceuninck" },
+    { name: "Deloitte" },
+    { name: "Deutscher Holzfertigbau Verband" },
+    { name: "Dickson-Constant" },
+    { name: "DME" },
+    { name: "Doka" },
+    { name: "Domoferm" },
+    { name: "Dorel" },
+    { name: "Dormakaba" },
+    { name: "Dow Corning" },
+    { name: "Drexel und Weiss" },
+    { name: "DTZ" },
+    { name: "Dufour" },
   ],
+}
+
+function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
+  const [page, setPage] = useState(0)
+  const [fading, setFading] = useState(false)
+  const cardsPerPage = 4
+  const pageCount = Math.max(1, Math.ceil(clients.length / cardsPerPage))
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setPage((p) => (p + 1) % pageCount)
+        setFading(false)
+      }, 600)
+    }, 3200)
+    return () => clearInterval(timer)
+  }, [pageCount])
+
+  const start = page * cardsPerPage
+  const current = Array.from({ length: cardsPerPage }, (_, i) => clients[(start + i) % clients.length])
+
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+      style={{ opacity: fading ? 0 : 1, transition: "opacity 0.6s ease" }}>
+      {current.map((c) => (
+        <div key={c.name} className="flex items-center justify-center p-6"
+          style={{ height: 76, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
+          <span
+            className="text-[12px] sm:text-[13px] font-semibold leading-tight text-center"
+            style={{ color: IC.gray80 }}
+          >
+            {c.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 const COMPETENCES = [
@@ -230,7 +303,13 @@ export default function TemplateICBlueProfessional() {
   const [hovEdition, setHovEdition] = useState<number | null>(null)
   const [dot,        setDot]        = useState(0)
   const [heroReady,  setHeroReady]  = useState(false)
+  const [referenceLogoPair, setReferenceLogoPair] = useState(0)
+  const [referenceLogoFading, setReferenceLogoFading] = useState(false)
   const sliderRef = useRef<HTMLDivElement>(null)
+  const referenceCardsPerView = 2
+  const referencePairCount = Math.max(1, Math.ceil(D.references.length / referenceCardsPerView))
+  const referenceStart = referenceLogoPair * referenceCardsPerView
+  const currentReferences = Array.from({ length: referenceCardsPerView }, (_, i) => D.references[(referenceStart + i) % D.references.length])
 
   useEffect(() => {
     setWinH(window.innerHeight)
@@ -255,6 +334,17 @@ export default function TemplateICBlueProfessional() {
     const t = setTimeout(() => setHeroReady(true), 180)
     return () => clearTimeout(t)
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setReferenceLogoFading(true)
+      setTimeout(() => {
+        setReferenceLogoPair((p) => (p + 1) % referencePairCount)
+        setReferenceLogoFading(false)
+      }, 500)
+    }, 3200)
+    return () => clearInterval(timer)
+  }, [referencePairCount])
 
   const onSliderScroll = useCallback(() => {
     if (!sliderRef.current) return
@@ -679,10 +769,10 @@ export default function TemplateICBlueProfessional() {
                 Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.
               </p>
               <div>
-                <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid rgba(142,180,227,0.6)` }}>
+                <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid ${IC.blueLight}` }}>
                   <input readOnly placeholder="Industry Report Search"
-                    className="flex-1 py-3 bg-transparent text-sm outline-none"
-                    style={{ color: "rgba(220,230,242,0.7)" }}
+                    className="flex-1 py-3 bg-transparent text-sm outline-none placeholder-[#8EB4E3]"
+                    style={{ color: IC.blueLight }}
                   />
                   <button className="flex items-center gap-1.5 px-3 py-3 text-[13px] font-bold shrink-0"
                     style={{ color: IC.blueLight }}>
@@ -690,7 +780,7 @@ export default function TemplateICBlueProfessional() {
                   </button>
                 </div>
               </div>
-              <p className="mt-2.5 text-[11px]" style={{ color: "rgba(142,180,227,0.55)" }}>14,889 market reports worldwide</p>
+              <p className="mt-2.5 text-[11px]" style={{ color: IC.blueLight }}>14,889 market reports worldwide</p>
             </div>
 
             {/* Right — CTA panel */}
@@ -1054,7 +1144,18 @@ export default function TemplateICBlueProfessional() {
       </section>
 
       {/* REFERENCES */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20" style={{ background: IC.offWhite }}>
+      <section
+        className="pt-24 pb-10 lg:pt-32 lg:pb-12"
+        style={{
+          background: `linear-gradient(to bottom,
+            ${IC.offWhite} 0%,
+            ${IC.offWhite} 56%,
+            #e8f0fa 70%,
+            #cbdff3 82%,
+            #a8c8ea 92%,
+            ${IC.blueLight} 100%)`,
+        }}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>References</Label>
@@ -1063,7 +1164,7 @@ export default function TemplateICBlueProfessional() {
           </Fade>
 
           <div className="flex flex-col gap-12 mb-16 mt-4">
-            {D.references.map((ref, idx) => (
+            {currentReferences.map((ref, idx) => (
               <Fade key={idx} delay={idx * 0.1}>
                 <div className="grid lg:grid-cols-3 gap-10 lg:gap-16 items-center p-10"
                   style={{
@@ -1078,9 +1179,16 @@ export default function TemplateICBlueProfessional() {
                     <div className="flex items-center justify-center p-8"
                       style={{ width: 200, height: 120, background: IC.white, border: `1.5px solid ${IC.blueXL}`, flexShrink: 0 }}>
                       <img
-                        src={`https://logo.clearbit.com/${ref.domain}`}
+                        src={ref.logoSrc}
                         alt={ref.company}
-                        style={{ maxWidth: 130, maxHeight: 60, objectFit: "contain", filter: "grayscale(0%)" }}
+                        style={{
+                          maxWidth: 150,
+                          maxHeight: 72,
+                          objectFit: "contain",
+                          filter: "grayscale(0%)",
+                          opacity: referenceLogoFading ? 0 : 1,
+                          transition: "opacity 0.5s ease",
+                        }}
                         onError={e => {
                           e.currentTarget.style.display = "none"
                           if (e.currentTarget.nextElementSibling) (e.currentTarget.nextElementSibling as HTMLElement).style.display = "block"
@@ -1090,9 +1198,10 @@ export default function TemplateICBlueProfessional() {
                     </div>
                   </div>
                   <div className="lg:col-span-2">
-                    <div style={{ fontSize: "5rem", lineHeight: 0.8, color: IC.blueXL, fontFamily: "Georgia, serif", marginBottom: 12 }}>&ldquo;</div>
+                    <div style={{ fontSize: "5rem", lineHeight: 0.8, color: IC.blue, fontFamily: "Georgia, serif", marginBottom: 12 }}>&ldquo;</div>
                     <p className="text-[17px] leading-relaxed font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
                     <p className="mt-5 text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: IC.blueLight }}>{ref.company}</p>
+                    <p className="mt-2 text-[12px]" style={{ color: IC.gray60 }}>{ref.author}</p>
                   </div>
                 </div>
               </Fade>
@@ -1100,23 +1209,7 @@ export default function TemplateICBlueProfessional() {
           </div>
 
           <Fade delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {D.additionalClients.map((c) => (
-                <div key={c.name} className="flex items-center justify-center p-6"
-                  style={{ height: 76, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
-                  <img
-                    src={`https://logo.clearbit.com/${c.domain}`}
-                    alt={c.name}
-                    style={{ maxWidth: 110, maxHeight: 40, objectFit: "contain", filter: "grayscale(100%)", opacity: 0.75 }}
-                    onError={e => {
-                      e.currentTarget.style.display = "none"
-                      if (e.currentTarget.nextElementSibling) (e.currentTarget.nextElementSibling as HTMLElement).style.display = "block"
-                    }}
-                  />
-                  <span className="hidden text-xs font-semibold" style={{ color: IC.gray80 }}>{c.name}</span>
-                </div>
-              ))}
-            </div>
+            <LogoPairCarousel clients={D.additionalClients} />
           </Fade>
         </div>
       </section>
@@ -1125,27 +1218,12 @@ export default function TemplateICBlueProfessional() {
       <footer
         className="px-6 lg:px-14 relative"
         style={{
-          background: `linear-gradient(150deg, #3f6fae 0%, ${IC.blue} 32%, #336ab2 64%, #5f89c7 100%)`,
+          background: `linear-gradient(to bottom, ${IC.blueLight} 0%, #6e9ed4 30%, #4b7fbe 60%, ${IC.blue} 100%)`,
           paddingTop: 16,
           paddingBottom: 32,
         }}
       >
-        {/* gradient bridge from page to footer */}
-        <div
-          className="absolute inset-x-0 top-0 pointer-events-none"
-          style={{
-            height: 160,
-            background: `linear-gradient(to bottom,
-              ${IC.offWhite} 0%,
-              rgba(247,249,252,0.96) 12%,
-              rgba(235,243,251,0.88) 26%,
-              rgba(210,228,245,0.72) 42%,
-              rgba(170,200,232,0.48) 60%,
-              rgba(120,162,210,0.24) 78%,
-              rgba(63,111,174,0) 100%)`,
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 80, paddingBottom: 0 }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
             style={{ borderTop: `1px solid rgba(255,255,255,0.2)` }}
