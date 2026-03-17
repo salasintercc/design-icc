@@ -304,7 +304,8 @@ export default function TemplateICBlueProfessionalAlt() {
   const [dot,        setDot]        = useState(0)
   const [heroReady,  setHeroReady]  = useState(false)
   const [referenceLogoPair, setReferenceLogoPair] = useState(0)
-  const [referenceLogoFading, setReferenceLogoFading] = useState(false)
+  const [referenceImageFading, setReferenceImageFading] = useState(false)
+  const [referenceTextFading, setReferenceTextFading] = useState(false)
   const sliderRef = useRef<HTMLDivElement>(null)
   const referenceCardsPerView = 2
   const referencePairCount = Math.max(1, Math.ceil(D.references.length / referenceCardsPerView))
@@ -336,14 +337,21 @@ export default function TemplateICBlueProfessionalAlt() {
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setReferenceLogoFading(true)
-      setTimeout(() => {
-        setReferenceLogoPair((p) => (p + 1) % referencePairCount)
-        setReferenceLogoFading(false)
-      }, 500)
-    }, 3200)
-    return () => clearInterval(timer)
+    const timeouts: ReturnType<typeof setTimeout>[] = []
+
+    const runTransitionCycle = () => {
+      setReferenceImageFading(true)
+      timeouts.push(setTimeout(() => setReferenceTextFading(true), 130))
+      timeouts.push(setTimeout(() => setReferenceLogoPair((p) => (p + 1) % referencePairCount), 430))
+      timeouts.push(setTimeout(() => setReferenceImageFading(false), 520))
+      timeouts.push(setTimeout(() => setReferenceTextFading(false), 690))
+    }
+
+    const timer = setInterval(runTransitionCycle, 3600)
+    return () => {
+      clearInterval(timer)
+      timeouts.forEach(clearTimeout)
+    }
   }, [referencePairCount])
 
   const onSliderScroll = useCallback(() => {
@@ -762,11 +770,11 @@ export default function TemplateICBlueProfessionalAlt() {
             >
               <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
               <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
-                Consultants by passion<br />and excellence!
+                Turn data into revenue. Predict what’s next.
               </h2>
               <div className="w-7 h-[2px] mb-8" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
-                Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.
+                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
                 <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid ${IC.blueLight}` }}>
@@ -1164,14 +1172,20 @@ export default function TemplateICBlueProfessionalAlt() {
           </Fade>
 
           <div className="flex flex-col gap-12 mb-16 mt-4">
-            {currentReferences.map((ref, idx) => (
+            {currentReferences.map((ref, idx) => {
+              const imageOutX = idx === 0 ? -24 : 24
+              const textOutX = idx === 0 ? 22 : -22
+              const imageDelay = `${idx * 0.06}s`
+              const textDelay = `${0.08 + idx * 0.07}s`
+
+              return (
               <Fade key={idx} delay={idx * 0.1}>
                 <div className="grid lg:grid-cols-3 gap-10 lg:gap-16 items-center p-10"
                   style={{
                     border: `1.5px solid ${IC.blueXL}`,
                     background: IC.white,
                     transition: "box-shadow 0.3s ease, border-color 0.45s cubic-bezier(0.22,1,0.36,1)",
-                    borderColor: referenceLogoFading ? "rgba(142,180,227,0.55)" : IC.blueXL,
+                    borderColor: referenceImageFading || referenceTextFading ? "rgba(142,180,227,0.55)" : IC.blueXL,
                   }}
                   onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(36,87,155,0.09)")}
                   onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
@@ -1186,10 +1200,12 @@ export default function TemplateICBlueProfessionalAlt() {
                           maxWidth: 150,
                           maxHeight: 72,
                           objectFit: "contain",
-                          filter: referenceLogoFading ? "grayscale(10%) blur(2px)" : "grayscale(0%) blur(0px)",
-                          opacity: referenceLogoFading ? 0 : 1,
-                          transform: referenceLogoFading ? "perspective(900px) rotateY(8deg) translateX(22px) scale(0.96)" : "perspective(900px) rotateY(0deg) translateX(0) scale(1)",
-                          transition: "opacity 0.42s cubic-bezier(0.4,0,0.2,1), transform 0.64s cubic-bezier(0.22,1,0.36,1), filter 0.46s cubic-bezier(0.22,1,0.36,1)",
+                          filter: referenceImageFading ? "grayscale(10%) blur(2px)" : "grayscale(0%) blur(0px)",
+                          opacity: referenceImageFading ? 0 : 1,
+                          transform: referenceImageFading
+                            ? `perspective(900px) rotateY(${idx === 0 ? -8 : 8}deg) translateX(${imageOutX}px) scale(0.96)`
+                            : "perspective(900px) rotateY(0deg) translateX(0) scale(1)",
+                          transition: `opacity 0.42s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.64s cubic-bezier(0.22,1,0.36,1) ${imageDelay}, filter 0.46s cubic-bezier(0.22,1,0.36,1) ${imageDelay}`,
                         }}
                         onError={e => {
                           e.currentTarget.style.display = "none"
@@ -1200,9 +1216,9 @@ export default function TemplateICBlueProfessionalAlt() {
                         className="hidden text-sm font-bold text-center"
                         style={{
                           color: IC.gray80,
-                          opacity: referenceLogoFading ? 0 : 1,
-                          transform: referenceLogoFading ? "translateX(18px)" : "translateX(0)",
-                          transition: "opacity 0.38s cubic-bezier(0.4,0,0.2,1), transform 0.56s cubic-bezier(0.22,1,0.36,1)",
+                          opacity: referenceImageFading ? 0 : 1,
+                          transform: referenceImageFading ? `translateX(${idx === 0 ? -14 : 14}px)` : "translateX(0)",
+                          transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.56s cubic-bezier(0.22,1,0.36,1) ${imageDelay}`,
                         }}
                       >
                         {ref.company}
@@ -1212,13 +1228,15 @@ export default function TemplateICBlueProfessionalAlt() {
                   <div className="lg:col-span-2">
                     <div
                       style={{
-                        opacity: referenceLogoFading ? 0 : 1,
-                        transform: referenceLogoFading
-                          ? "perspective(1000px) rotateY(-6deg) translateX(-26px) scale(0.985)"
+                        opacity: referenceTextFading ? 0 : 1,
+                        transform: referenceTextFading
+                          ? `perspective(1000px) rotateY(${idx === 0 ? -5 : 5}deg) translateX(${textOutX}px) scale(0.985)`
                           : "perspective(1000px) rotateY(0deg) translateX(0) scale(1)",
-                        filter: referenceLogoFading ? "blur(6px)" : "blur(0px)",
-                        clipPath: referenceLogoFading ? "inset(0 14% 0 0)" : "inset(0 0 0 0)",
-                        transition: "opacity 0.44s cubic-bezier(0.4,0,0.2,1), transform 0.68s cubic-bezier(0.22,1,0.36,1), filter 0.5s cubic-bezier(0.22,1,0.36,1), clip-path 0.62s cubic-bezier(0.22,1,0.36,1)",
+                        filter: referenceTextFading ? "blur(6px)" : "blur(0px)",
+                        clipPath: referenceTextFading
+                          ? (idx === 0 ? "inset(0 0 0 14%)" : "inset(0 14% 0 0)")
+                          : "inset(0 0 0 0)",
+                        transition: `opacity 0.44s cubic-bezier(0.4,0,0.2,1) ${textDelay}, transform 0.68s cubic-bezier(0.22,1,0.36,1) ${textDelay}, filter 0.5s cubic-bezier(0.22,1,0.36,1) ${textDelay}, clip-path 0.62s cubic-bezier(0.22,1,0.36,1) ${textDelay}`,
                         willChange: "opacity, transform, filter, clip-path",
                       }}
                     >
@@ -1229,8 +1247,10 @@ export default function TemplateICBlueProfessionalAlt() {
                           color: IC.blue,
                           fontFamily: "Georgia, serif",
                           marginBottom: 12,
-                          transform: referenceLogoFading ? "translateX(-12px) rotate(-4deg)" : "translateX(0) rotate(0deg)",
-                          transition: "transform 0.62s cubic-bezier(0.22,1,0.36,1)",
+                          transform: referenceTextFading
+                            ? `translateX(${idx === 0 ? -10 : 10}px) rotate(${idx === 0 ? -4 : 4}deg)`
+                            : "translateX(0) rotate(0deg)",
+                          transition: `transform 0.62s cubic-bezier(0.22,1,0.36,1) ${textDelay}`,
                         }}
                       >&ldquo;</div>
                       <p className="text-[17px] leading-relaxed font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
@@ -1240,7 +1260,8 @@ export default function TemplateICBlueProfessionalAlt() {
                   </div>
                 </div>
               </Fade>
-            ))}
+              )
+            })}
           </div>
 
           <Fade delay={0.2}>

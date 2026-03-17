@@ -762,11 +762,11 @@ export default function TemplateICBlueProfessional() {
             >
               <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
               <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
-                Consultants by passion<br />and excellence!
+                Turn data into revenue. Predict what’s next.
               </h2>
               <div className="w-7 h-[2px] mb-8" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
-                Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.
+                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
                 <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid ${IC.blueLight}` }}>
