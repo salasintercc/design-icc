@@ -609,7 +609,7 @@ export default function TemplateICBlueProfessional() {
             }}
           >
             <p className="text-sm leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: IC.white }}>
-              Consultants by passion and excellence. We help companies improve sales performance through industry knowledge, practical concepts and measurable tools.
+              We help companies unlock sales growth by combining industry expertise with market data, big data analytics, and AI-driven forecasts — delivering practical strategies and measurable results.
             </p>
           </div>
 
