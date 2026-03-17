@@ -1170,13 +1170,8 @@ export default function TemplateICBlueProfessionalAlt() {
                   style={{
                     border: `1.5px solid ${IC.blueXL}`,
                     background: IC.white,
-                    opacity: referenceLogoFading ? 0 : 1,
-                    transform: referenceLogoFading ? "translateY(18px) scale(0.985)" : "translateY(0) scale(1)",
-                    filter: referenceLogoFading ? "blur(6px)" : "blur(0px)",
-                    transition: "box-shadow 0.3s ease",
-                    transitionProperty: "box-shadow, opacity, transform, filter",
-                    transitionDuration: "0.35s, 0.52s, 0.62s, 0.52s",
-                    transitionTimingFunction: "ease, cubic-bezier(0.22,1,0.36,1), cubic-bezier(0.22,1,0.36,1), cubic-bezier(0.22,1,0.36,1)",
+                    transition: "box-shadow 0.3s ease, border-color 0.45s cubic-bezier(0.22,1,0.36,1)",
+                    borderColor: referenceLogoFading ? "rgba(142,180,227,0.55)" : IC.blueXL,
                   }}
                   onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(36,87,155,0.09)")}
                   onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
@@ -1191,66 +1186,57 @@ export default function TemplateICBlueProfessionalAlt() {
                           maxWidth: 150,
                           maxHeight: 72,
                           objectFit: "contain",
-                          filter: "grayscale(0%)",
+                          filter: referenceLogoFading ? "grayscale(10%) blur(2px)" : "grayscale(0%) blur(0px)",
                           opacity: referenceLogoFading ? 0 : 1,
-                          transition: "opacity 0.5s ease",
+                          transform: referenceLogoFading ? "perspective(900px) rotateY(8deg) translateX(22px) scale(0.96)" : "perspective(900px) rotateY(0deg) translateX(0) scale(1)",
+                          transition: "opacity 0.42s cubic-bezier(0.4,0,0.2,1), transform 0.64s cubic-bezier(0.22,1,0.36,1), filter 0.46s cubic-bezier(0.22,1,0.36,1)",
                         }}
                         onError={e => {
                           e.currentTarget.style.display = "none"
                           if (e.currentTarget.nextElementSibling) (e.currentTarget.nextElementSibling as HTMLElement).style.display = "block"
                         }}
                       />
-                      <span className="hidden text-sm font-bold text-center" style={{ color: IC.gray80 }}>{ref.company}</span>
+                      <span
+                        className="hidden text-sm font-bold text-center"
+                        style={{
+                          color: IC.gray80,
+                          opacity: referenceLogoFading ? 0 : 1,
+                          transform: referenceLogoFading ? "translateX(18px)" : "translateX(0)",
+                          transition: "opacity 0.38s cubic-bezier(0.4,0,0.2,1), transform 0.56s cubic-bezier(0.22,1,0.36,1)",
+                        }}
+                      >
+                        {ref.company}
+                      </span>
                     </div>
                   </div>
                   <div className="lg:col-span-2">
                     <div
                       style={{
-                        fontSize: "5rem",
-                        lineHeight: 0.8,
-                        color: IC.blue,
-                        fontFamily: "Georgia, serif",
-                        marginBottom: 12,
                         opacity: referenceLogoFading ? 0 : 1,
-                        transform: referenceLogoFading ? "translateY(10px)" : "translateY(0)",
-                        filter: referenceLogoFading ? "blur(4px)" : "blur(0px)",
-                        transition: "opacity 0.45s cubic-bezier(0.22,1,0.36,1), transform 0.58s cubic-bezier(0.22,1,0.36,1), filter 0.45s cubic-bezier(0.22,1,0.36,1)",
-                      }}
-                    >&ldquo;</div>
-                    <p
-                      className="text-[17px] leading-relaxed font-light"
-                      style={{
-                        color: IC.gray80,
-                        opacity: referenceLogoFading ? 0 : 1,
-                        transform: referenceLogoFading ? "translateY(12px)" : "translateY(0)",
-                        filter: referenceLogoFading ? "blur(5px)" : "blur(0px)",
-                        transition: "opacity 0.55s cubic-bezier(0.22,1,0.36,1) 0.04s, transform 0.65s cubic-bezier(0.22,1,0.36,1) 0.04s, filter 0.55s cubic-bezier(0.22,1,0.36,1) 0.04s",
+                        transform: referenceLogoFading
+                          ? "perspective(1000px) rotateY(-6deg) translateX(-26px) scale(0.985)"
+                          : "perspective(1000px) rotateY(0deg) translateX(0) scale(1)",
+                        filter: referenceLogoFading ? "blur(6px)" : "blur(0px)",
+                        clipPath: referenceLogoFading ? "inset(0 14% 0 0)" : "inset(0 0 0 0)",
+                        transition: "opacity 0.44s cubic-bezier(0.4,0,0.2,1), transform 0.68s cubic-bezier(0.22,1,0.36,1), filter 0.5s cubic-bezier(0.22,1,0.36,1), clip-path 0.62s cubic-bezier(0.22,1,0.36,1)",
+                        willChange: "opacity, transform, filter, clip-path",
                       }}
                     >
-                      {ref.statement}
-                    </p>
-                    <p
-                      className="mt-5 text-[10px] font-bold tracking-[0.3em] uppercase"
-                      style={{
-                        color: IC.blueLight,
-                        opacity: referenceLogoFading ? 0 : 1,
-                        transform: referenceLogoFading ? "translateY(8px)" : "translateY(0)",
-                        transition: "opacity 0.5s cubic-bezier(0.22,1,0.36,1) 0.09s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.09s",
-                      }}
-                    >
-                      {ref.company}
-                    </p>
-                    <p
-                      className="mt-2 text-[12px]"
-                      style={{
-                        color: IC.gray60,
-                        opacity: referenceLogoFading ? 0 : 1,
-                        transform: referenceLogoFading ? "translateY(7px)" : "translateY(0)",
-                        transition: "opacity 0.5s cubic-bezier(0.22,1,0.36,1) 0.13s, transform 0.58s cubic-bezier(0.22,1,0.36,1) 0.13s",
-                      }}
-                    >
-                      {ref.author}
-                    </p>
+                      <div
+                        style={{
+                          fontSize: "5rem",
+                          lineHeight: 0.8,
+                          color: IC.blue,
+                          fontFamily: "Georgia, serif",
+                          marginBottom: 12,
+                          transform: referenceLogoFading ? "translateX(-12px) rotate(-4deg)" : "translateX(0) rotate(0deg)",
+                          transition: "transform 0.62s cubic-bezier(0.22,1,0.36,1)",
+                        }}
+                      >&ldquo;</div>
+                      <p className="text-[17px] leading-relaxed font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
+                      <p className="mt-5 text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: IC.blueLight }}>{ref.company}</p>
+                      <p className="mt-2 text-[12px]" style={{ color: IC.gray60 }}>{ref.author}</p>
+                    </div>
                   </div>
                 </div>
               </Fade>
