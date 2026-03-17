@@ -6,6 +6,7 @@ import TemplateLightMinimalist from "@/components/templates/template-light-minim
 import TemplateBoldGradient from "@/components/templates/template-bold-gradient"
 import TemplateCorporateElegant from "@/components/templates/template-corporate-elegant"
 import TemplateICBlueProfessional from "@/components/templates/template-ic-blue-professional"
+import TemplateICBlueProfessionalAlt from "@/components/templates/template-ic-blue-professional-alt"
 import TemplateICEditorial from "@/components/templates/template-ic-editorial"
 
 const TEMPLATES = [
@@ -14,6 +15,14 @@ const TEMPLATES = [
     name: "IC Blue Professional",
     description: "Light white base, strong IC Blue structure. Classic, authoritative, brand-true.",
     colors: ["#FFFFFF", "#24579B", "#DCE6F2", "#8EB4E3"],
+    preview: "bg-white",
+    badge: "New",
+  },
+  {
+    id: "ic-blue-professional-alt",
+    name: "IC Blue Professional Alt",
+    description: "Same structure, alternate palette and smoother reference transitions.",
+    colors: ["#F7F9FC", "#24579B", "#1E4A86", "#8EB4E3"],
     preview: "bg-white",
     badge: "New",
   },
@@ -92,6 +101,7 @@ export default function HomePage() {
         {selectedTemplate === "bold-gradient" && <TemplateBoldGradient />}
         {selectedTemplate === "corporate-elegant" && <TemplateCorporateElegant />}
         {selectedTemplate === "ic-blue-professional" && <TemplateICBlueProfessional />}
+        {selectedTemplate === "ic-blue-professional-alt" && <TemplateICBlueProfessionalAlt />}
         {selectedTemplate === "ic-editorial" && <TemplateICEditorial />}
       </div>
     )
@@ -105,7 +115,7 @@ export default function HomePage() {
           <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm" style={{ background: "#fff", color: "#0a0a0a" }}>IC</div>
           <span className="text-lg font-semibold tracking-tight" style={{ color: "#fafafa" }}>ICC Redesign</span>
         </div>
-        <p className="text-sm font-medium" style={{ color: "#525252" }}>6 Template Proposals</p>
+        <p className="text-sm font-medium" style={{ color: "#525252" }}>{TEMPLATES.length} Template Proposals</p>
       </header>
 
       {/* Hero */}
@@ -326,6 +336,39 @@ export default function HomePage() {
                           <p style={{ fontSize: 6, color: "#8EB4E3", textTransform: "uppercase", letterSpacing: "0.08em" }}>KPI</p>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* IC Blue Professional Alt — visual preview */}
+              {template.id === "ic-blue-professional-alt" && (
+                <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(142,180,227,0.28)", background: "#12396f" }}>
+                  <div style={{ padding: "8px 12px", borderBottom: "1px solid rgba(142,180,227,0.28)", color: "rgba(220,230,242,0.92)", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
+                    Interconnection Consulting · Blue Professional Alt
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", minHeight: 152 }}>
+                    <div style={{ padding: "12px 12px 10px", background: "linear-gradient(180deg, #1e4a86 0%, #24579B 100%)" }}>
+                      <p style={{ fontSize: 7, fontWeight: 700, letterSpacing: "0.22em", color: "#8EB4E3", textTransform: "uppercase", marginBottom: 6 }}>Hero</p>
+                      <p style={{ fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 0.95, marginBottom: 6 }}>Defining Growth<br />Potential</p>
+                      <p style={{ fontSize: 13, fontWeight: 400, fontStyle: "italic", color: "#DCE6F2", marginBottom: 8 }}>Since 1998</p>
+                      <div style={{ borderTop: "1px solid rgba(220,230,242,0.25)", paddingTop: 7, display: "flex", gap: 5 }}>
+                        <span style={{ fontSize: 8, fontWeight: 700, color: "#24579B", background: "#DCE6F2", borderRadius: 99, padding: "3px 8px" }}>Contact us</span>
+                        <span style={{ fontSize: 8, color: "#dce6f2" }}>Smooth transitions</span>
+                      </div>
+                    </div>
+                    <div style={{ borderLeft: "1px solid rgba(142,180,227,0.25)", background: "linear-gradient(180deg, #0f2d56 0%, #1e4a86 100%)", padding: 8, display: "grid", gap: 6 }}>
+                      <div style={{ border: "1px solid rgba(142,180,227,0.25)", background: "rgba(255,255,255,0.08)", height: 76 }} />
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                        <div style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(142,180,227,0.25)", padding: "6px" }}>
+                          <p style={{ fontSize: 6, color: "#8EB4E3", letterSpacing: "0.08em", textTransform: "uppercase" }}>Reference</p>
+                          <p style={{ fontSize: 9, fontWeight: 700, color: "#fff" }}>Soft In/Out</p>
+                        </div>
+                        <div style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(142,180,227,0.25)", padding: "6px" }}>
+                          <p style={{ fontSize: 6, color: "#8EB4E3", letterSpacing: "0.08em", textTransform: "uppercase" }}>Palette</p>
+                          <p style={{ fontSize: 9, fontWeight: 700, color: "#fff" }}>Alt Blue</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
