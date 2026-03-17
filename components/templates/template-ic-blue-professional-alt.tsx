@@ -114,14 +114,17 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const current = Array.from({ length: cardsPerPage }, (_, i) => clients[(start + i) % clients.length])
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4"
-      style={{ opacity: fading ? 0 : 1, transition: "opacity 0.6s ease" }}>
+    <div className="flex gap-4">
       {current.map((c) => (
-        <div key={c.name} className="flex items-center justify-center p-6"
-          style={{ height: 76, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
+        <div key={c.name} className="flex-1 flex items-center justify-center px-4 py-4"
+          style={{ height: 68, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
           <span
             className="text-[12px] sm:text-[13px] font-semibold leading-tight text-center"
-            style={{ color: IC.gray80 }}
+            style={{
+              color: IC.gray80,
+              opacity: fading ? 0 : 1,
+              transition: "opacity 0.5s ease",
+            }}
           >
             {c.name}
           </span>
@@ -379,7 +382,6 @@ export default function TemplateICBlueProfessionalAlt() {
   // keep old names as aliases for rest of component
   const heroBridgeProgress = heroOut
   const sectionLeadIn = sectionIn
-  const competencesLeadIn = clamp01((scrollY - winH * 1.38) / (winH * 0.44))
 
   return (
     <div className="min-h-screen" style={{ background: IC.offWhite, color: IC.gray80 }}>
@@ -553,15 +555,7 @@ export default function TemplateICBlueProfessionalAlt() {
               transition: "opacity 1.2s ease 0.22s",
             }}
           >
-            <div className="flex items-center gap-4 mb-5 lg:mb-8">
-              <div
-                className="h-px origin-left"
-                style={{
-                  width: 36,
-                  background: IC.blueLight,
-                  animation: heroReady ? "heroLineGrow 1.35s cubic-bezier(0.22,1,0.36,1) 0.36s both" : "none",
-                }}
-              />
+            <div className="flex items-center mb-5 lg:mb-8">
               <p className="text-[9px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(142,180,227,0.7)" }}>
                 Interconnection Consulting
               </p>
@@ -598,15 +592,7 @@ export default function TemplateICBlueProfessionalAlt() {
             </span>
           </h1>
 
-          {/* Thin accent line — draws in after title */}
-          <div
-            className="mt-5 mb-6 h-px origin-left"
-            style={{
-              width: 56,
-              background: "rgba(142,180,227,0.45)",
-              animation: heroReady ? "heroLineGrow 1.25s cubic-bezier(0.22,1,0.36,1) 0.82s both" : "none",
-            }}
-          />
+          <div className="mt-5 mb-6" aria-hidden="true" />
 
           {/* Supporting copy and key highlights */}
           <div
@@ -757,10 +743,11 @@ export default function TemplateICBlueProfessionalAlt() {
             willChange: "transform",
           }}
         >
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-stretch">
 
             {/* Left — on dark bg */}
             <div
+              className="h-full flex flex-col justify-between py-12"
               style={{
                 opacity: sectionLeftInEff,
                 transform: `translate3d(${(1 - sectionLeftInEff) * -44}px, ${(1 - sectionLeftInEff) * 14}px, 0)`,
@@ -768,31 +755,83 @@ export default function TemplateICBlueProfessionalAlt() {
                 willChange: "transform, opacity, filter",
               }}
             >
-              <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-              <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
-                Turn data into revenue. Predict what’s next.
-              </h2>
-              <div className="w-7 h-[2px] mb-8" style={{ background: "rgba(142,180,227,0.6)" }} />
-              <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
-                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
-              </p>
               <div>
-                <div className="flex items-center gap-0" style={{ borderBottom: `1.5px solid ${IC.blueLight}` }}>
-                  <input readOnly placeholder="Industry Report Search"
-                    className="flex-1 py-3 bg-transparent text-sm outline-none placeholder-[#8EB4E3]"
-                    style={{ color: IC.blueLight }}
+                <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
+                <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
+                  Turn data into revenue. Predict what’s next.
+                </h2>
+                <div className="mb-8" aria-hidden="true" />
+                <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
+                  We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
+                </p>
+                <div
+                  className="flex items-center gap-0"
+                  style={{}}
+                >
+                  <input
+                    placeholder="Industry Report Search"
+                    className="flex-1 px-4 py-3 bg-transparent text-sm outline-none placeholder:text-[#8EB4E3]"
+                    style={{
+                      color: IC.white,
+                      caretColor: IC.white,
+                      background: "rgba(255,255,255,0.07)",
+                      boxShadow: "inset 0 0 0 1px rgba(142,180,227,0.25)",
+                      backdropFilter: "blur(6px)",
+                    }}
                   />
-                  <button className="flex items-center gap-1.5 px-3 py-3 text-[13px] font-bold shrink-0"
-                    style={{ color: IC.blueLight }}>
+                  <button
+                    className="flex items-center gap-1.5 px-4 py-3 text-[12px] font-bold uppercase tracking-[0.14em] shrink-0 relative overflow-hidden"
+                    style={{
+                      color: IC.white,
+                      background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
+                      border: "1px solid rgba(142,180,227,0.45)",
+                      boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+                      whiteSpace: "nowrap",
+                      transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                      cursor: "pointer",
+                    }}
+                    onMouseEnter={e => {
+                      const btn = e.currentTarget as HTMLElement
+                      btn.style.transform = "translateY(-3px)"
+                      btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                      const shine = btn.querySelector(".srch-shine") as HTMLElement
+                      if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                    }}
+                    onMouseLeave={e => {
+                      const btn = e.currentTarget as HTMLElement
+                      btn.style.transform = "translateY(0)"
+                      btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                      const shine = btn.querySelector(".srch-shine") as HTMLElement
+                      if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                    }}
+                  >
+                    <span className="srch-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
                     Search <ArrowRight size={12} />
                   </button>
                 </div>
+                <p className="mt-2.5 text-[11px]" style={{ color: IC.blueLight }}>14,889 market reports worldwide</p>
               </div>
-              <p className="mt-2.5 text-[11px]" style={{ color: IC.blueLight }}>14,889 market reports worldwide</p>
+
+              <div className="grid grid-cols-3 gap-4 mt-10">
+                {[["14,889+", "Reports"], ["35+", "Years"], ["50+", "Analysts"]].map(([n, l]) => (
+                  <div
+                    key={l}
+                    className="py-4 px-4"
+                    style={{
+                      border: "1px solid rgba(142,180,227,0.28)",
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                    }}
+                  >
+                    <p className="text-[24px] font-bold leading-none" style={{ color: IC.white }}>{n}</p>
+                    <p className="text-[11px] font-semibold mt-2" style={{ color: IC.white }}>{l}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Right — CTA panel */}
             <div
+              className="h-full"
               style={{
                 opacity: sectionRightInEff,
                 transform: `translate3d(${(1 - sectionRightInEff) * 56}px, ${(1 - sectionRightInEff) * 12}px, 0)`,
@@ -802,7 +841,7 @@ export default function TemplateICBlueProfessionalAlt() {
             >
               <div
                 id="contact-panel"
-                className="flex flex-col justify-between py-12 px-10"
+                className="h-full flex flex-col justify-between py-12 px-10"
                 style={{
                   background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)",
                   border: "1px solid rgba(142,180,227,0.2)",
@@ -811,41 +850,88 @@ export default function TemplateICBlueProfessionalAlt() {
                 }}
               >
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Tell us your challenge</p>
+                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
                   <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(1.4rem,2.8vw,1.75rem)", color: IC.white }}>
-                    Do not hesitate<br />to contact us
+                    Tell us your challenge
                   </h3>
-                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                    {[
-                      ["Contact Us", "#"],
-                      ["Send inquiry", "#"],
-                    ].map(([label, href]) => (
-                      <a
-                        key={label} href={href}
-                        className="flex items-center justify-between py-4 text-[15px] font-medium"
-                        style={{ color: IC.white, borderBottom: "1px solid rgba(255,255,255,0.1)", transition: "opacity 0.2s, transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.opacity = "0.78"
-                          e.currentTarget.style.transform = "translateX(6px)"
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.opacity = "1"
-                          e.currentTarget.style.transform = "translateX(0)"
-                        }}
-                      >
-                        {label}
-                        <ArrowRight size={14} style={{ color: IC.blueLight, flexShrink: 0 }} />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 mt-12 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                  {[["14,889+", "Reports"], ["35+", "Years"], ["50+", "Analysts"]].map(([n, l]) => (
-                    <div key={l}>
-                      <p className="text-[22px] font-bold" style={{ color: IC.white }}>{n}</p>
-                      <p className="text-[11px] mt-1" style={{ color: IC.blueLight }}>{l}</p>
-                    </div>
-                  ))}
+                  <form className="grid grid-cols-2 gap-4 pt-6" onSubmit={(e) => e.preventDefault()}>
+                    <input
+                      name="name"
+                      placeholder="Name"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                      }}
+                    />
+                    <input
+                      name="company"
+                      placeholder="Company"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                      }}
+                    />
+                    <input
+                      name="mail"
+                      type="email"
+                      placeholder="Mail"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                      }}
+                    />
+                    <input
+                      name="tel"
+                      type="tel"
+                      placeholder="Tel"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                      }}
+                    />
+                    <textarea
+                      name="message"
+                      placeholder="Message"
+                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#8EB4E3]"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] relative overflow-hidden"
+                      style={{
+                        color: IC.white,
+                        background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
+                        border: "1px solid rgba(142,180,227,0.45)",
+                        boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+                        transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={e => {
+                        const btn = e.currentTarget as HTMLElement
+                        btn.style.transform = "translateY(-3px)"
+                        btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
+                        const shine = btn.querySelector(".sr-shine") as HTMLElement
+                        if (shine) { shine.style.transform = "translateX(900px) skewX(-18deg)" }
+                      }}
+                      onMouseLeave={e => {
+                        const btn = e.currentTarget as HTMLElement
+                        btn.style.transform = "translateY(0)"
+                        btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
+                        const shine = btn.querySelector(".sr-shine") as HTMLElement
+                        if (shine) { setTimeout(() => { shine.style.transition = "none"; shine.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { shine.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }
+                      }}
+                    >
+                      <span className="sr-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
+                      Send Request <ArrowRight size={13} />
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -867,29 +953,39 @@ export default function TemplateICBlueProfessionalAlt() {
               <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(1.5rem,6vw,2rem)", color: IC.white, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[13px] leading-[1.8]" style={{ color: "rgba(220,230,242,0.78)" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
+              <div className="grid grid-cols-3 gap-2.5 mt-7">
+                {[["14,889+","Reports"],["35+","Years"],["50+","Analysts"]].map(([n,l]) => (
+                  <div key={l} className="py-2.5 px-2.5" style={{ border: "1px solid rgba(142,180,227,0.28)", background: "rgba(255,255,255,0.05)" }}>
+                    <p className="text-[18px] font-bold leading-none" style={{ color: IC.white }}>{n}</p>
+                    <p className="text-[10px] font-semibold mt-1" style={{ color: IC.white }}>{l}</p>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)", border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
-              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.white }}>Do not hesitate<br />to contact us</h3>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                {[["Contact Us","#"],["Send inquiry","#"]].map(([label,href]) => (
-                  <a key={label} href={href} className="flex items-center justify-between py-4 text-[15px] font-medium" style={{ color: IC.white, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                    {label}<ArrowRight size={14} style={{ color: IC.blueLight, flexShrink: 0 }} />
-                  </a>
-                ))}
-              </div>
-              <div className="grid grid-cols-3 mt-10 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                {[["14,889+","Reports"],["35+","Years"],["50+","Analysts"]].map(([n,l]) => (
-                  <div key={l}><p className="text-[20px] font-bold" style={{ color: IC.white }}>{n}</p><p className="text-[11px] mt-1" style={{ color: IC.blueLight }}>{l}</p></div>
-                ))}
-              </div>
+              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.white }}>Tell us your challenge</h3>
+              <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
+                <input name="name" placeholder="Name" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="company" placeholder="Company" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", border: "1px solid rgba(142,180,227,0.45)", boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease", cursor: "pointer" }}
+                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(-3px)"; b.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"; const s = b.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" } }}
+                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(0)"; b.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"; const s = b.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) } }}
+                >
+                  <span className="srm-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
+                  Send Request <ArrowRight size={13} />
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
-      <section id="overview-full" className="pb-8 lg:pb-12 relative overflow-hidden" style={{
+      <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
         background: isDesktop ? `linear-gradient(to bottom, transparent 0px, ${IC.offWhite} 360px, ${IC.white} 420px)` : IC.white,
         zIndex: 10,
         position: "relative",
@@ -897,20 +993,7 @@ export default function TemplateICBlueProfessionalAlt() {
         paddingTop: isDesktop ? 280 : 48,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
-            <div className="mb-10" style={{ position: "relative" }}>
-              <div style={{ height: 1, background: `linear-gradient(90deg, ${IC.blueXL} 0%, rgba(36,87,155,0.6) 45%, ${IC.blueXL} 100%)` }} />
-              <div
-                style={{
-                    position: "absolute",
-                    left: 0,
-                    top: 0,
-                    height: 1,
-                    width: `${15 + competencesLeadIn * 85}%`,
-                    background: `linear-gradient(90deg, ${IC.blue} 0%, ${IC.blueLight} 100%)`,
-                    transition: "width 0.4s ease",
-                  }}
-                />
-              </div>
+            <div className="mb-10" aria-hidden="true" />
             <Fade>
               <div className="flex items-end justify-between mb-14">
                 <div>
@@ -942,24 +1025,21 @@ export default function TemplateICBlueProfessionalAlt() {
                       <p className="text-sm leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
                       <a href="#"
                         className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
-                        style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
+                        style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
                           el.style.color = IC.blueDark
+                          el.style.transform = "translateX(4px)"
                           const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                          const ul = el.querySelector(".exp-ul") as HTMLElement; if (ul) ul.style.width = "100%"
                         }}
                         onMouseLeave={e => {
                           const el = e.currentTarget as HTMLElement
                           el.style.color = IC.blue
+                          el.style.transform = "translateX(0)"
                           const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                          const ul = el.querySelector(".exp-ul") as HTMLElement; if (ul) ul.style.width = "0%"
                         }}
                       >
-                        <span style={{ position: "relative", paddingBottom: 1 }}>
-                          Explore
-                          <span className="exp-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
-                        </span>
+                        <span>Explore</span>
                         <span className="exp-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
                           <ArrowRight size={11} />
                         </span>
@@ -973,20 +1053,20 @@ export default function TemplateICBlueProfessionalAlt() {
       </section>
 
       {/* NEWS & EVENTS */}
-      <section className="py-24 lg:py-32" style={{ background: IC.white }}>
+      <section className="pt-20 pb-8 lg:pt-28 lg:pb-10" style={{ background: IC.white }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>IC News</Label>
             <ParaTitle className="mb-4">Don't miss any Industry Trends</ParaTitle>
-            <Rule />
+            <div className="mb-8" aria-hidden="true" />
           </Fade>
-          <div className="grid lg:grid-cols-2 gap-16 mt-4">
+          <div className="grid lg:grid-cols-2 gap-12 mt-2">
 
             {/* Press */}
             <div>
               <Fade>
-                <h3 className="text-[13px] font-bold pb-5 mb-8 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: IC.gray80, borderBottom: `2px solid ${IC.blue}` }}>
+                <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  style={{ color: IC.gray80 }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
@@ -995,7 +1075,7 @@ export default function TemplateICBlueProfessionalAlt() {
               </Fade>
               {D.press.map((p, idx) => (
                 <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-8 mb-8 min-h-[170px] flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
                     <div className="flex items-start justify-between gap-3 mb-2">
                       <h4 className="text-[15px] font-semibold" style={{ color: IC.gray80 }}>{p.title}</h4>
                       <span
@@ -1009,25 +1089,22 @@ export default function TemplateICBlueProfessionalAlt() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{p.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold"
-                      style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
+                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
+                      style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
                         el.style.color = IC.blueDark
+                        el.style.transform = "translateX(4px)"
                         const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "100%"
                       }}
                       onMouseLeave={e => {
                         const el = e.currentTarget as HTMLElement
                         el.style.color = IC.blue
+                        el.style.transform = "translateX(0)"
                         const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "0%"
                       }}
                     >
-                      <span style={{ position: "relative", paddingBottom: 1 }}>
-                        Read more
-                        <span className="rm-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
-                      </span>
+                      <span>Read more</span>
                       <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
                         <ArrowRight size={12} />
                       </span>
@@ -1071,8 +1148,8 @@ export default function TemplateICBlueProfessionalAlt() {
             {/* Events */}
             <div>
               <Fade delay={0.05}>
-                <h3 className="text-[13px] font-bold pb-5 mb-8 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: IC.gray80, borderBottom: `2px solid ${IC.blue}` }}>
+                <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  style={{ color: IC.gray80 }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
@@ -1081,7 +1158,7 @@ export default function TemplateICBlueProfessionalAlt() {
               </Fade>
               {D.events.map((e, idx) => (
                 <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-8 mb-8 min-h-[170px] flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
                     <div className="flex items-start justify-between gap-3 mb-2">
                       <h4 className="text-[15px] font-semibold" style={{ color: IC.gray80 }}>{e.title}</h4>
                       <span className="text-[10px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{e.date}</span>
@@ -1089,25 +1166,22 @@ export default function TemplateICBlueProfessionalAlt() {
                     <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{e.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-4 text-[12px] font-semibold"
-                      style={{ color: IC.blue, transition: "color 0.25s ease", paddingBottom: 2 }}
+                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
+                      style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
                         el.style.color = IC.blueDark
+                        el.style.transform = "translateX(4px)"
                         const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "100%"
                       }}
                       onMouseLeave={e => {
                         const el = e.currentTarget as HTMLElement
                         el.style.color = IC.blue
+                        el.style.transform = "translateX(0)"
                         const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                        const ul = el.querySelector(".rm-ul") as HTMLElement; if (ul) ul.style.width = "0%"
                       }}
                     >
-                      <span style={{ position: "relative", paddingBottom: 1 }}>
-                        Read more
-                        <span className="rm-ul" style={{ position: "absolute", bottom: 0, left: 0, height: "1px", width: "0%", background: IC.blue, transition: "width 0.35s cubic-bezier(0.22,1,0.36,1)" }} />
-                      </span>
+                      <span>Read more</span>
                       <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
                         <ArrowRight size={12} />
                       </span>
@@ -1153,14 +1227,16 @@ export default function TemplateICBlueProfessionalAlt() {
 
       {/* REFERENCES */}
       <section
-        className="pt-24 pb-10 lg:pt-32 lg:pb-12"
+        className="pt-20 pb-10 lg:pt-28 lg:pb-12"
         style={{
           background: `linear-gradient(to bottom,
-            ${IC.offWhite} 0%,
-            ${IC.offWhite} 56%,
-            #e8f0fa 70%,
-            #cbdff3 82%,
-            #a8c8ea 92%,
+            ${IC.white} 0%,
+            ${IC.offWhite} 12%,
+            #edf3fb 28%,
+            #dce9f5 44%,
+            #c8daee 58%,
+            #b4cce7 72%,
+            #9fbde0 84%,
             ${IC.blueLight} 100%)`,
         }}
       >
@@ -1168,44 +1244,47 @@ export default function TemplateICBlueProfessionalAlt() {
           <Fade>
             <Label>References</Label>
             <ParaTitle className="mb-4">Leading Companies trust in Interconnection Consulting</ParaTitle>
-            <Rule />
+            <div className="mb-8" aria-hidden="true" />
           </Fade>
 
-          <div className="flex flex-col gap-12 mb-16 mt-4">
+          <div className="flex flex-col gap-7 mb-10 mt-0">
             {currentReferences.map((ref, idx) => {
               const imageOutX = idx === 0 ? -24 : 24
               const textOutX = idx === 0 ? 22 : -22
-              const imageDelay = `${idx * 0.06}s`
-              const textDelay = `${0.08 + idx * 0.07}s`
+              const imageDelay = `0s`
+              const textDelay = `0s`
 
               return (
-              <Fade key={idx} delay={idx * 0.1}>
-                <div className="grid lg:grid-cols-3 gap-10 lg:gap-16 items-center p-10"
+              <Fade key={idx} delay={0}>
+                <div className="grid lg:grid-cols-3 gap-6 lg:gap-10 items-stretch p-7"
                   style={{
                     border: `1.5px solid ${IC.blueXL}`,
                     background: IC.white,
-                    transition: "box-shadow 0.3s ease, border-color 0.45s cubic-bezier(0.22,1,0.36,1)",
-                    borderColor: referenceImageFading || referenceTextFading ? "rgba(142,180,227,0.55)" : IC.blueXL,
+                    minHeight: 280,
+                    transition: "box-shadow 0.4s ease, border-color 0.5s ease",
+                    borderColor: referenceImageFading || referenceTextFading ? "rgba(142,180,227,0.45)" : IC.blueXL,
                   }}
                   onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(36,87,155,0.09)")}
                   onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
                 >
-                  <div className="flex justify-center">
-                    <div className="flex items-center justify-center p-8"
-                      style={{ width: 200, height: 120, background: IC.white, border: `1.5px solid ${IC.blueXL}`, flexShrink: 0 }}>
+                  <div className="flex justify-center items-center">
+                    <div className="flex items-center justify-center p-5"
+                      style={{
+                        width: 170, height: 100, background: IC.white, border: `1.5px solid ${IC.blueXL}`, flexShrink: 0,
+                        transition: "opacity 0.5s ease",
+                        opacity: referenceImageFading ? 0.15 : 1,
+                      }}>
                       <img
                         src={ref.logoSrc}
                         alt={ref.company}
                         style={{
-                          maxWidth: 150,
-                          maxHeight: 72,
+                          maxWidth: 130,
+                          maxHeight: 60,
                           objectFit: "contain",
-                          filter: referenceImageFading ? "grayscale(10%) blur(2px)" : "grayscale(0%) blur(0px)",
                           opacity: referenceImageFading ? 0 : 1,
-                          transform: referenceImageFading
-                            ? `perspective(900px) rotateY(${idx === 0 ? -8 : 8}deg) translateX(${imageOutX}px) scale(0.96)`
-                            : "perspective(900px) rotateY(0deg) translateX(0) scale(1)",
-                          transition: `opacity 0.42s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.64s cubic-bezier(0.22,1,0.36,1) ${imageDelay}, filter 0.46s cubic-bezier(0.22,1,0.36,1) ${imageDelay}`,
+                          transform: referenceImageFading ? `scale(0.88) translateY(6px)` : `scale(1) translateY(0px)`,
+                          filter: referenceImageFading ? "blur(4px)" : "blur(0px)",
+                          transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.52s cubic-bezier(0.22,1,0.36,1) ${imageDelay}, filter 0.38s ease ${imageDelay}`,
                         }}
                         onError={e => {
                           e.currentTarget.style.display = "none"
@@ -1217,45 +1296,43 @@ export default function TemplateICBlueProfessionalAlt() {
                         style={{
                           color: IC.gray80,
                           opacity: referenceImageFading ? 0 : 1,
-                          transform: referenceImageFading ? `translateX(${idx === 0 ? -14 : 14}px)` : "translateX(0)",
-                          transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.56s cubic-bezier(0.22,1,0.36,1) ${imageDelay}`,
+                          transition: `opacity 0.38s ease ${imageDelay}`,
                         }}
                       >
                         {ref.company}
                       </span>
                     </div>
                   </div>
-                  <div className="lg:col-span-2">
-                    <div
-                      style={{
+                  <div className="lg:col-span-2 flex items-center">
+                    <div style={{ width: "100%" }}>
+                      <div style={{
+                        display: "flex", alignItems: "flex-start", gap: 10,
                         opacity: referenceTextFading ? 0 : 1,
-                        transform: referenceTextFading
-                          ? `perspective(1000px) rotateY(${idx === 0 ? -5 : 5}deg) translateX(${textOutX}px) scale(0.985)`
-                          : "perspective(1000px) rotateY(0deg) translateX(0) scale(1)",
-                        filter: referenceTextFading ? "blur(6px)" : "blur(0px)",
-                        clipPath: referenceTextFading
-                          ? (idx === 0 ? "inset(0 0 0 14%)" : "inset(0 14% 0 0)")
-                          : "inset(0 0 0 0)",
-                        transition: `opacity 0.44s cubic-bezier(0.4,0,0.2,1) ${textDelay}, transform 0.68s cubic-bezier(0.22,1,0.36,1) ${textDelay}, filter 0.5s cubic-bezier(0.22,1,0.36,1) ${textDelay}, clip-path 0.62s cubic-bezier(0.22,1,0.36,1) ${textDelay}`,
-                        willChange: "opacity, transform, filter, clip-path",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: "5rem",
-                          lineHeight: 0.8,
+                        transform: referenceTextFading ? `translateY(-12px)` : `translateY(0px)`,
+                        filter: referenceTextFading ? "blur(5px)" : "blur(0px)",
+                        transition: `opacity 0.45s cubic-bezier(0.4,0,0.2,1) ${textDelay}, transform 0.55s cubic-bezier(0.22,1,0.36,1) ${textDelay}, filter 0.4s ease ${textDelay}`,
+                      }}>
+                        <span style={{
+                          flexShrink: 0,
+                          fontSize: "5.5rem",
+                          lineHeight: 0.72,
                           color: IC.blue,
-                          fontFamily: "Georgia, serif",
-                          marginBottom: 12,
-                          transform: referenceTextFading
-                            ? `translateX(${idx === 0 ? -10 : 10}px) rotate(${idx === 0 ? -4 : 4}deg)`
-                            : "translateX(0) rotate(0deg)",
-                          transition: `transform 0.62s cubic-bezier(0.22,1,0.36,1) ${textDelay}`,
-                        }}
-                      >&ldquo;</div>
-                      <p className="text-[17px] leading-relaxed font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
-                      <p className="mt-5 text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: IC.blueLight }}>{ref.company}</p>
-                      <p className="mt-2 text-[12px]" style={{ color: IC.gray60 }}>{ref.author}</p>
+                          marginTop: 2,
+                        }}>&ldquo;</span>
+                        <p className="text-[15px] leading-[1.7] font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
+                      </div>
+                      <p className="mt-3 text-[10px] font-bold tracking-[0.3em] uppercase" style={{
+                        color: IC.blueLight,
+                        opacity: referenceTextFading ? 0 : 1,
+                        transform: referenceTextFading ? `translateY(-8px)` : `translateY(0px)`,
+                        transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.12s), transform 0.46s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.12s)`,
+                      }}>{ref.company}</p>
+                      <p className="mt-1.5 text-[12px]" style={{
+                        color: IC.gray60,
+                        opacity: referenceTextFading ? 0 : 1,
+                        transform: referenceTextFading ? `translateY(-6px)` : `translateY(0px)`,
+                        transition: `opacity 0.34s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.22s), transform 0.42s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.22s)`,
+                      }}>{ref.author}</p>
                     </div>
                   </div>
                 </div>
@@ -1282,7 +1359,6 @@ export default function TemplateICBlueProfessionalAlt() {
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
-            style={{ borderTop: `1px solid rgba(255,255,255,0.2)` }}
           >
             <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
             <div className="flex items-center gap-5 text-xs">

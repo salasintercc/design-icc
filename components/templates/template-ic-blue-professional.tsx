@@ -803,9 +803,9 @@ export default function TemplateICBlueProfessional() {
                 }}
               >
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Tell us your challenge</p>
+                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
                   <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(1.4rem,2.8vw,1.75rem)", color: IC.white }}>
-                    Do not hesitate<br />to contact us
+                    Tell us your challenge
                   </h3>
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
                     {[
