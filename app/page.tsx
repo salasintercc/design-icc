@@ -7,22 +7,31 @@ import TemplateBoldGradient from "@/components/templates/template-bold-gradient"
 import TemplateCorporateElegant from "@/components/templates/template-corporate-elegant"
 import TemplateICBlueProfessional from "@/components/templates/template-ic-blue-professional"
 import TemplateICBlueProfessionalAlt from "@/components/templates/template-ic-blue-professional-alt"
+import TemplateICBlueProfessionalV2 from "@/components/templates/template-ic-blue-professional-v2"
 import TemplateICEditorial from "@/components/templates/template-ic-editorial"
 
 const TEMPLATES = [
   {
-    id: "ic-blue-professional",
+    id: "ic-blue-professional-alt",
     name: "IC Blue Professional",
-    description: "Light white base, strong IC Blue structure. Classic, authoritative, brand-true.",
-    colors: ["#FFFFFF", "#24579B", "#DCE6F2", "#8EB4E3"],
-    preview: "bg-white",
+    description: "Same structure, alternate palette and smoother reference transitions.",
+    colors: ["#1E4A86", "#24579B", "#8EB4E3", "#DCE6F2"],
+    preview: "bg-[#1E4A86]",
     badge: "New",
   },
   {
-    id: "ic-blue-professional-alt",
-    name: "IC Blue Professional Alt",
-    description: "Same structure, alternate palette and smoother reference transitions.",
-    colors: ["#F7F9FC", "#24579B", "#1E4A86", "#8EB4E3"],
+    id: "ic-blue-professional-v2",
+    name: "IC Blue Professional V2",
+    description: "Refined version with unified typography, compressed cards and polished animations.",
+    colors: ["#4D4D4D", "#FFFFFF", "#24579B", "#8EB4E3"],
+    preview: "bg-[#4D4D4D]",
+    badge: "Latest",
+  },
+  {
+    id: "ic-blue-professional",
+    name: "IC Blue Professional old version",
+    description: "Light white base, strong IC Blue structure. Classic, authoritative, brand-true.",
+    colors: ["#FFFFFF", "#24579B", "#DCE6F2", "#8EB4E3"],
     preview: "bg-white",
     badge: "New",
   },
@@ -102,6 +111,7 @@ export default function HomePage() {
         {selectedTemplate === "corporate-elegant" && <TemplateCorporateElegant />}
         {selectedTemplate === "ic-blue-professional" && <TemplateICBlueProfessional />}
         {selectedTemplate === "ic-blue-professional-alt" && <TemplateICBlueProfessionalAlt />}
+        {selectedTemplate === "ic-blue-professional-v2" && <TemplateICBlueProfessionalV2 />}
         {selectedTemplate === "ic-editorial" && <TemplateICEditorial />}
       </div>
     )
@@ -341,11 +351,44 @@ export default function HomePage() {
                 </div>
               )}
 
+              {/* IC Blue Professional V2 — visual preview */}
+              {template.id === "ic-blue-professional-v2" && (
+                <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(255,255,255,0.1)", background: "rgb(77,77,77)" }}>
+                  <div style={{ padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
+                    Interconnection Consulting · Blue Professional V2
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", minHeight: 152 }}>
+                    <div style={{ padding: "12px 12px 10px" }}>
+                      <p style={{ fontSize: 7, fontWeight: 700, letterSpacing: "0.22em", color: "#8EB4E3", textTransform: "uppercase", marginBottom: 6 }}>Hero</p>
+                      <p style={{ fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 0.95, marginBottom: 6 }}>Defining Growth<br />Potential</p>
+                      <p style={{ fontSize: 14, fontWeight: 400, fontStyle: "italic", color: "#8EB4E3", marginBottom: 10 }}>Since 1998</p>
+                      <div style={{ display: "flex", gap: 5 }}>
+                        <span style={{ fontSize: 8, fontWeight: 700, color: "#fff", background: "rgb(127,127,127)", border: "1px solid #24579B", padding: "3px 8px" }}>Talk to our Experts</span>
+                      </div>
+                    </div>
+                    <div style={{ borderLeft: "1px solid rgba(255,255,255,0.12)", background: "#fff", padding: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+                      <div style={{ background: "#F7F9FC", border: "1px solid #DCE6F2", padding: "6px 8px" }}>
+                        <p style={{ fontSize: 6, color: "#8EB4E3", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>What we do</p>
+                        <p style={{ fontSize: 9, fontWeight: 700, color: "#2C2C2C" }}>Industry Experience</p>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
+                        {[["14,889+","Reports"],["35+","Years"]].map(([n,l]) => (
+                          <div key={n} style={{ background: "#fff", border: "1px solid #DCE6F2", padding: "5px" }}>
+                            <p style={{ fontSize: 10, fontWeight: 800, color: "#8EB4E3", lineHeight: 1 }}>{n}</p>
+                            <p style={{ fontSize: 6, color: "rgb(127,127,127)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{l}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* IC Blue Professional Alt — visual preview */}
               {template.id === "ic-blue-professional-alt" && (
                 <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(142,180,227,0.28)", background: "#12396f" }}>
                   <div style={{ padding: "8px 12px", borderBottom: "1px solid rgba(142,180,227,0.28)", color: "rgba(220,230,242,0.92)", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
-                    Interconnection Consulting · Blue Professional Alt
+                    Interconnection Consulting · Blue Professional
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", minHeight: 152 }}>
                     <div style={{ padding: "12px 12px 10px", background: "linear-gradient(180deg, #1e4a86 0%, #24579B 100%)" }}>
