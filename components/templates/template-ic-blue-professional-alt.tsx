@@ -1021,7 +1021,7 @@ export default function TemplateICBlueProfessionalAlt() {
                       }}
                     >
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[15px] font-bold mb-3" style={{ color: "#4D4D4D" }}>{c.title}</h3>
+                      <h3 className="text-[15px] font-semibold mb-3" style={{ color: "#4D4D4D" }}>{c.title}</h3>
                       <p className="text-sm leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
                       <a href="#"
                         className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
@@ -1066,7 +1066,7 @@ export default function TemplateICBlueProfessionalAlt() {
             <div>
               <Fade>
                 <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: IC.gray80 }}>
+                  style={{ color: "#4D4D4D" }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
@@ -1077,7 +1077,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 <Fade key={idx} delay={idx * 0.1}>
                   <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[15px] font-semibold" style={{ color: IC.gray80 }}>{p.title}</h4>
+                      <h4 className="text-[15px] font-semibold" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                       <span
                         className="text-[10px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none"
                         style={{ background: IC.blueXL, color: IC.blue }}
@@ -1086,7 +1086,7 @@ export default function TemplateICBlueProfessionalAlt() {
                         00/00/0000
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{p.desc}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
                     <a
                       href="#"
                       className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
@@ -1149,7 +1149,7 @@ export default function TemplateICBlueProfessionalAlt() {
             <div>
               <Fade delay={0.05}>
                 <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: IC.gray80 }}>
+                  style={{ color: "#4D4D4D" }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
@@ -1160,10 +1160,10 @@ export default function TemplateICBlueProfessionalAlt() {
                 <Fade key={idx} delay={idx * 0.1}>
                   <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[15px] font-semibold" style={{ color: IC.gray80 }}>{e.title}</h4>
+                      <h4 className="text-[15px] font-semibold" style={{ color: "#4D4D4D" }}>{e.title}</h4>
                       <span className="text-[10px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{e.date}</span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: IC.gray60 }}>{e.desc}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{e.desc}</p>
                     <a
                       href="#"
                       className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
@@ -1319,7 +1319,7 @@ export default function TemplateICBlueProfessionalAlt() {
                           color: IC.blue,
                           marginTop: 2,
                         }}>&ldquo;</span>
-                        <p className="text-[15px] leading-[1.7] font-light" style={{ color: IC.gray80 }}>{ref.statement}</p>
+                        <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{ref.statement}</p>
                       </div>
                       <p className="mt-3 text-[10px] font-bold tracking-[0.3em] uppercase" style={{
                         color: IC.blueLight,
