@@ -1271,7 +1271,7 @@ export default function TemplateICBlueProfessionalV2() {
           paddingBottom: 32,
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 16, paddingBottom: 0 }}>
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
           >
