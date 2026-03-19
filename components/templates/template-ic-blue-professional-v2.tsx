@@ -603,23 +603,23 @@ export default function TemplateICBlueProfessionalV2() {
                   padding: "12px 18px",
                   borderRadius: 0,
                   background: "rgb(127,127,127)",
-                  border: "1px solid #4D4D4D",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease",
+                  border: `1px solid ${IC.blue}`,
+                  boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
+                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
                   cursor: "pointer",
                 }}
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.transform = "translateY(-2px)"
+                  btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                   btn.style.background = "rgb(100,100,100)"
-                  btn.style.borderColor = "rgb(100,100,100)"
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.transform = "translateY(0)"
+                  btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                   btn.style.background = "rgb(127,127,127)"
-                  btn.style.borderColor = "rgb(127,127,127)"
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
@@ -985,9 +985,9 @@ export default function TemplateICBlueProfessionalV2() {
           <Fade>
             <Label style={{ color: IC.blueLight }}>IC News</Label>
             <ParaTitle className="mb-4">Don't miss any Industry Trends</ParaTitle>
-            <div className="mb-8" aria-hidden="true" />
+            <div className="mb-14" aria-hidden="true" />
           </Fade>
-          <div className="grid lg:grid-cols-2 gap-12 mt-2">
+          <div className="grid lg:grid-cols-2 gap-12 mt-4">
 
             {/* Press */}
             <div>
@@ -1150,7 +1150,7 @@ export default function TemplateICBlueProfessionalV2() {
 
       {/* REFERENCES */}
       <section
-        className="pt-20 pb-10 lg:pt-28 lg:pb-12"
+        className="pt-20 pb-20 lg:pt-28 lg:pb-24"
         style={{
           background: "#EFF1F5",
         }}
@@ -1159,10 +1159,10 @@ export default function TemplateICBlueProfessionalV2() {
           <Fade>
             <Label>References</Label>
             <ParaTitle className="mb-4">Leading Companies trust in Interconnection Consulting</ParaTitle>
-            <div className="mb-8" aria-hidden="true" />
+            <div className="mb-14" aria-hidden="true" />
           </Fade>
 
-          <div className="flex flex-col gap-7 mb-10 mt-0">
+          <div className="flex flex-col gap-7 mb-20 mt-0">
             {currentReferences.map((ref, idx) => {
               const imageOutX = idx === 0 ? -24 : 24
               const textOutX = idx === 0 ? 22 : -22
