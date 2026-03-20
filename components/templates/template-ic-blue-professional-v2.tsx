@@ -7,17 +7,17 @@ import { D, COMPETENCES } from "./ic-shared-data"
 
 /* ── Brand tokens ──────────────────────────────────────────────────────── */
 const IC = {
-  blue:      "#24579B",
-  blueDark:  "#1e4a86",
-  blueLight: "#8EB4E3",
-  blueXL:    "#DCE6F2",
+  blue:      "#4D4D4D",   // medium-dark gray accent
+  blueDark:  "#2C2C2C",   // darker gray (hover, footer)
+  blueLight: "#7F7F7F",   // mid gray (subtle labels)
+  blueXL:    "#C2C2C2",   // light gray (borders, accents)
   gray80:    "#2C2C2C",
   gray60:    "#C2C2C2",
   gray50:    "#7F7F7F",
   grayLight: "#C2C2C2",
   white:     "#FFFFFF",
-  offWhite:  "#F7F9FC",
-  surface:   "#F4F7FB",
+  offWhite:  "#F5F5F5",
+  surface:   "#F0F0F0",
 }
 
 function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
@@ -473,7 +473,7 @@ export default function TemplateICBlueProfessionalV2() {
           <svg width="100%" height="100%" className="absolute inset-0" style={{ animation: "heroGridPulse 4s ease-in-out infinite", opacity: 0.55 }}>
             <defs>
               <pattern id="bpgrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(142,180,227,1)" strokeWidth="0.5" />
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(194,194,194,0.6)" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#bpgrid)" />
@@ -508,7 +508,7 @@ export default function TemplateICBlueProfessionalV2() {
             }}
           >
             <div className="flex items-center mb-5 lg:mb-8">
-              <p className="text-[9px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(142,180,227,0.7)" }}>
+              <p className="text-[9px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(194,194,194,0.7)" }}>
                 Interconnection Consulting
               </p>
             </div>
@@ -950,7 +950,7 @@ export default function TemplateICBlueProfessionalV2() {
               <Fade>
                 <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
                   style={{ color: "rgb(77,77,77)" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
+                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
                     <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
                   IC News
@@ -1026,7 +1026,7 @@ export default function TemplateICBlueProfessionalV2() {
               <Fade delay={0.05}>
                 <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
                   style={{ color: "rgb(77,77,77)" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
+                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
                     <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
                   </span>
                   Keep in touch with our events
@@ -1123,9 +1123,9 @@ export default function TemplateICBlueProfessionalV2() {
                     background: IC.white,
                     minHeight: 280,
                     transition: "box-shadow 0.4s ease, border-color 0.5s ease",
-                    borderColor: referenceImageFading || referenceTextFading ? "rgba(142,180,227,0.45)" : IC.blueXL,
+                    borderColor: referenceImageFading || referenceTextFading ? "rgba(194,194,194,0.35)" : IC.blueXL,
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(36,87,155,0.09)")}
+                  onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(44,44,44,0.09)")}
                   onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
                 >
                   <div className="flex justify-center items-center">
@@ -1212,19 +1212,26 @@ export default function TemplateICBlueProfessionalV2() {
       <footer
         className="px-6 lg:px-14 relative"
         style={{
-          background: IC.blue,
+          background: "rgb(127,127,127)",
           paddingTop: 16,
           paddingBottom: 32,
+          borderTop: `1px solid rgba(255,255,255,0.08)`,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 16, paddingBottom: 0 }}>
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
           >
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>© 2026 Interconnection Consulting</p>
             <div className="flex items-center gap-5 text-xs">
-              <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Print</a>
-              <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Privacy Policy</a>
+              <a href="#" style={{ color: "rgba(255,255,255,0.6)", transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+              >Print</a>
+              <a href="#" style={{ color: "rgba(255,255,255,0.6)", transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+              >Privacy Policy</a>
             </div>
           </div>
         </div>
