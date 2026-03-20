@@ -421,7 +421,7 @@ export default function TemplateICBlueProfessionalLight() {
       </nav>
 
       {/* ═══ STICKY SCENE: hero + section 2 share one viewport-pinned stage ═══ */}
-      <div style={{ position: "relative", height: isDesktop ? "262vh" : "100vh" }}>
+      <div style={{ position: "relative", height: isDesktop ? "220vh" : "100vh" }}>
 
         {/* ── Layer 0: persistent background that NEVER changes color ── */}
         <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.offWhite, zIndex: 0 }} />
@@ -872,14 +872,14 @@ export default function TemplateICBlueProfessionalLight() {
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
-        background: isDesktop ? `linear-gradient(to bottom, ${IC.white} 0px, ${IC.offWhite} 360px, ${IC.white} 420px)` : IC.white,
+        background: IC.white,
         zIndex: 10,
         position: "relative",
-        marginTop: isDesktop ? -360 : 0,
-        paddingTop: isDesktop ? 280 : 48,
+        marginTop: 0,
+        paddingTop: isDesktop ? 80 : 48,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
-            <div className="mb-10" aria-hidden="true" />
+            <div className="mb-4" aria-hidden="true" />
             <Fade>
               <div className="flex items-end justify-between mb-14">
                 <div>
