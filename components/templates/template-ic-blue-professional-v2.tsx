@@ -576,20 +576,15 @@ export default function TemplateICBlueProfessionalV2() {
                   color: IC.white,
                   background: "rgb(127,127,127)",
                   border: `1px solid ${IC.blue}`,
-                  boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
-                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                  transition: "background 0.25s ease",
                   cursor: "pointer",
                 }}
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(-2px)"
-                  btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                   btn.style.background = "rgb(100,100,100)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(0)"
-                  btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                   btn.style.background = "rgb(127,127,127)"
                 }}
               >
@@ -604,21 +599,16 @@ export default function TemplateICBlueProfessionalV2() {
                   borderRadius: 0,
                   background: "rgb(127,127,127)",
                   border: `1px solid ${IC.blue}`,
-                  boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
-                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                  transition: "background 0.25s ease",
                   cursor: "pointer",
                 }}
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(-2px)"
-                  btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                   btn.style.background = "rgb(100,100,100)"
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(0)"
-                  btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                   btn.style.background = "rgb(127,127,127)"
                   const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
@@ -687,13 +677,14 @@ export default function TemplateICBlueProfessionalV2() {
             >
               <div>
                 <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: "#4D4D4D", letterSpacing: "-0.015em" }}>
+                <h2 className="font-bold tracking-tight leading-[1.08]" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: "#4D4D4D", letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
-                <div className="mb-8" aria-hidden="true" />
-                <p className="text-[13px] leading-[1.8] mb-10" style={{ color: "#7F7F7F" }}>
-                  We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
-                </p>
+              </div>
+              <p className="text-[13px] leading-[1.8]" style={{ color: "#7F7F7F" }}>
+                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
+              </p>
+              <div>
                 <div
                   className="flex items-center gap-0"
                   style={{}}
@@ -714,44 +705,22 @@ export default function TemplateICBlueProfessionalV2() {
                       color: IC.white,
                       background: "rgb(127,127,127)",
                       border: `1px solid ${IC.blue}`,
-                      boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
                       whiteSpace: "nowrap",
-                      transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                      transition: "background 0.25s ease",
                       cursor: "pointer",
                     }}
                     onMouseEnter={e => {
                       const btn = e.currentTarget as HTMLElement
-                      btn.style.transform = "translateY(-2px)"
-                      btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                       btn.style.background = "rgb(100,100,100)"
                     }}
                     onMouseLeave={e => {
                       const btn = e.currentTarget as HTMLElement
-                      btn.style.transform = "translateY(0)"
-                      btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                       btn.style.background = "rgb(127,127,127)"
                     }}
                   >
                     Search <ArrowRight size={12} />
                   </button>
                 </div>
-                <p className="mt-2.5 text-[11px]" style={{ color: IC.blueLight }}>14,889 market reports worldwide</p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 mt-10">
-                {[["14,889+", "Reports"], ["35+", "Years"], ["50+", "Analysts"]].map(([n, l]) => (
-                  <div
-                    key={l}
-                    className="py-4 px-4"
-                    style={{
-                      border: "1px solid #DDE1E8",
-                      background: IC.white,
-                    }}
-                  >
-                    <p className="text-[24px] font-bold leading-none" style={{ color: IC.blueLight }}>{n}</p>
-                    <p className="text-[11px] font-semibold mt-2" style={{ color: "#C2C2C2" }}>{l}</p>
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -840,20 +809,15 @@ export default function TemplateICBlueProfessionalV2() {
                         color: IC.white,
                         background: "rgb(127,127,127)",
                         border: `1px solid ${IC.blue}`,
-                        boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
-                        transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                        transition: "background 0.25s ease",
                         cursor: "pointer",
                       }}
                       onMouseEnter={e => {
                         const btn = e.currentTarget as HTMLElement
-                        btn.style.transform = "translateY(-2px)"
-                        btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                         btn.style.background = "rgb(100,100,100)"
                       }}
                       onMouseLeave={e => {
                         const btn = e.currentTarget as HTMLElement
-                        btn.style.transform = "translateY(0)"
-                        btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                         btn.style.background = "rgb(127,127,127)"
                       }}
                     >
@@ -881,14 +845,6 @@ export default function TemplateICBlueProfessionalV2() {
               <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(1.5rem,6vw,2rem)", color: "#C2C2C2", letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
               <p className="text-[13px] leading-[1.8]" style={{ color: "#7F7F7F" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
-              <div className="grid grid-cols-3 gap-2.5 mt-7">
-                {[["14,889+","Reports"],["35+","Years"],["50+","Analysts"]].map(([n,l]) => (
-                  <div key={l} className="py-2.5 px-2.5" style={{ border: "1px solid #DDE1E8", background: IC.white }}>
-                    <p className="text-[18px] font-bold leading-none" style={{ color: IC.blueLight }}>{n}</p>
-                    <p className="text-[10px] font-semibold mt-1" style={{ color: "#C2C2C2" }}>{l}</p>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: IC.white, border: "1px solid #DDE1E8", boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}>
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
@@ -899,9 +855,9 @@ export default function TemplateICBlueProfessionalV2() {
                 <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, boxShadow: "0 4px 12px rgba(36,87,155,0.25)", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(-2px)"; b.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"; b.style.background = "rgb(100,100,100)" }}
-                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(0)"; b.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"; b.style.background = "rgb(127,127,127)" }}
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
+                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)" }}
+                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)" }}
                 >
                   Send Request <ArrowRight size={13} />
                 </button>
@@ -1048,20 +1004,15 @@ export default function TemplateICBlueProfessionalV2() {
                     color: IC.white,
                     background: "rgb(127,127,127)",
                     border: `1px solid ${IC.blue}`,
-                    boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
-                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                    transition: "background 0.25s ease",
                     cursor: "pointer",
                   }}
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(-2px)"
-                    btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                     btn.style.background = "rgb(100,100,100)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(0)"
-                    btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                     btn.style.background = "rgb(127,127,127)"
                   }}
                 >
@@ -1123,20 +1074,15 @@ export default function TemplateICBlueProfessionalV2() {
                     color: IC.white,
                     background: "rgb(127,127,127)",
                     border: `1px solid ${IC.blue}`,
-                    boxShadow: "0 4px 12px rgba(36,87,155,0.25)",
-                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, background 0.25s ease",
+                    transition: "background 0.25s ease",
                     cursor: "pointer",
                   }}
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(-2px)"
-                    btn.style.boxShadow = "0 8px 20px rgba(36,87,155,0.35)"
                     btn.style.background = "rgb(100,100,100)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(0)"
-                    btn.style.boxShadow = "0 4px 12px rgba(36,87,155,0.25)"
                     btn.style.background = "rgb(127,127,127)"
                   }}
                 >

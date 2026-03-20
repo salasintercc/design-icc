@@ -542,22 +542,14 @@ export default function TemplateICBlueProfessionalAlt() {
                   color: IC.white,
                   background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
-                  boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                  textShadow: "0 1px 0 rgba(0,0,0,0.2)",
-                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                  transition: "opacity 0.2s ease",
                 }}
                 onMouseEnter={e => {
-                  const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(-3px)"
-                  btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                  const shine = btn.querySelector(".btn-shine") as HTMLElement
+                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
                 }}
                 onMouseLeave={e => {
-                  const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(0)"
-                  btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                  const shine = btn.querySelector(".btn-shine") as HTMLElement
+                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                 }}
               >
@@ -573,24 +565,17 @@ export default function TemplateICBlueProfessionalAlt() {
                   borderRadius: 0,
                   background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                   border: "1px solid rgba(142,180,227,0.45)",
-                  boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                  transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                  transition: "opacity 0.2s ease",
                 }}
                 onMouseEnter={e => {
-                  const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(-3px)"
-                  btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                  const shine = btn.querySelector(".cta2-shine") as HTMLElement
+                  const shine = e.currentTarget.querySelector(".cta2-shine") as HTMLElement
                   if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(320px) skewX(-18deg)" }
-                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
+                  const arrow = e.currentTarget.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
-                  const btn = e.currentTarget as HTMLElement
-                  btn.style.transform = "translateY(0)"
-                  btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                  const shine = btn.querySelector(".cta2-shine") as HTMLElement
+                  const shine = e.currentTarget.querySelector(".cta2-shine") as HTMLElement
                   if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                  const arrow = e.currentTarget.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
                 <span className="cta2-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
@@ -665,7 +650,7 @@ export default function TemplateICBlueProfessionalAlt() {
 
             {/* Left — on dark bg */}
             <div
-              className="h-full flex flex-col justify-between py-12"
+              className="h-full flex flex-col justify-start gap-8 py-12"
               style={{
                 opacity: sectionLeftInEff,
                 transform: `translate3d(${(1 - sectionLeftInEff) * -44}px, ${(1 - sectionLeftInEff) * 14}px, 0)`,
@@ -674,14 +659,16 @@ export default function TemplateICBlueProfessionalAlt() {
               }}
             >
               <div>
-                <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08] mb-4" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
+                <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.blueLight }}>How we make our customers successful</p>
+                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.white, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
-                <div className="mb-8" aria-hidden="true" />
-                <p className="text-[13px] leading-[1.8] mb-10" style={{ color: IC.white }}>
-                  We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
-                </p>
+                <div className="w-10 h-[2px] mt-1" style={{ background: "rgba(142,180,227,0.5)" }} />
+              </div>
+              <p className="text-[13px] leading-[1.9]" style={{ color: "rgba(220,230,242,0.82)" }}>
+                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
+              </p>
+              <div>
                 <div
                   className="flex items-center gap-0"
                   style={{}}
@@ -703,23 +690,16 @@ export default function TemplateICBlueProfessionalAlt() {
                       color: IC.white,
                       background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
                       border: "1px solid rgba(142,180,227,0.45)",
-                      boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
                       whiteSpace: "nowrap",
-                      transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                      transition: "opacity 0.2s ease",
                       cursor: "pointer",
                     }}
                     onMouseEnter={e => {
-                      const btn = e.currentTarget as HTMLElement
-                      btn.style.transform = "translateY(-3px)"
-                      btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                      const shine = btn.querySelector(".srch-shine") as HTMLElement
+                      const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
                       if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
                     }}
                     onMouseLeave={e => {
-                      const btn = e.currentTarget as HTMLElement
-                      btn.style.transform = "translateY(0)"
-                      btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                      const shine = btn.querySelector(".srch-shine") as HTMLElement
+                      const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
                       if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                     }}
                   >
@@ -727,23 +707,6 @@ export default function TemplateICBlueProfessionalAlt() {
                     Search <ArrowRight size={12} />
                   </button>
                 </div>
-                <p className="mt-2.5 text-[11px]" style={{ color: IC.blueLight }}>14,889 market reports worldwide</p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 mt-10">
-                {[["14,889+", "Reports"], ["35+", "Years"], ["50+", "Analysts"]].map(([n, l]) => (
-                  <div
-                    key={l}
-                    className="py-4 px-4"
-                    style={{
-                      border: "1px solid rgba(142,180,227,0.28)",
-                      background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                    }}
-                  >
-                    <p className="text-[24px] font-bold leading-none" style={{ color: IC.white }}>{n}</p>
-                    <p className="text-[11px] font-semibold mt-2" style={{ color: IC.white }}>{l}</p>
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -827,22 +790,15 @@ export default function TemplateICBlueProfessionalAlt() {
                         color: IC.white,
                         background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
                         border: "1px solid rgba(142,180,227,0.45)",
-                        boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                        transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                        transition: "opacity 0.2s ease",
                         cursor: "pointer",
                       }}
                       onMouseEnter={e => {
-                        const btn = e.currentTarget as HTMLElement
-                        btn.style.transform = "translateY(-3px)"
-                        btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                        const shine = btn.querySelector(".sr-shine") as HTMLElement
+                        const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
                         if (shine) { shine.style.transform = "translateX(900px) skewX(-18deg)" }
                       }}
                       onMouseLeave={e => {
-                        const btn = e.currentTarget as HTMLElement
-                        btn.style.transform = "translateY(0)"
-                        btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                        const shine = btn.querySelector(".sr-shine") as HTMLElement
+                        const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
                         if (shine) { setTimeout(() => { shine.style.transition = "none"; shine.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { shine.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }
                       }}
                     >
@@ -871,14 +827,6 @@ export default function TemplateICBlueProfessionalAlt() {
               <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(1.5rem,6vw,2rem)", color: IC.white, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[13px] leading-[1.8]" style={{ color: "rgba(220,230,242,0.78)" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
-              <div className="grid grid-cols-3 gap-2.5 mt-7">
-                {[["14,889+","Reports"],["35+","Years"],["50+","Analysts"]].map(([n,l]) => (
-                  <div key={l} className="py-2.5 px-2.5" style={{ border: "1px solid rgba(142,180,227,0.28)", background: "rgba(255,255,255,0.05)" }}>
-                    <p className="text-[18px] font-bold leading-none" style={{ color: IC.white }}>{n}</p>
-                    <p className="text-[10px] font-semibold mt-1" style={{ color: IC.white }}>{l}</p>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)", border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
@@ -889,9 +837,9 @@ export default function TemplateICBlueProfessionalAlt() {
                 <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
                 <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", border: "1px solid rgba(142,180,227,0.45)", boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(-3px)"; b.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"; const s = b.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" } }}
-                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.transform = "translateY(0)"; b.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"; const s = b.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) } }}
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", border: "1px solid rgba(142,180,227,0.45)", transition: "opacity 0.2s ease", cursor: "pointer" }}
+                  onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" } }}
+                  onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) } }}
                 >
                   <span className="srm-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
                   Send Request <ArrowRight size={13} />
@@ -1039,21 +987,14 @@ export default function TemplateICBlueProfessionalAlt() {
                     color: IC.white,
                     background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
-                    boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                    transition: "opacity 0.2s ease",
                   }}
                   onMouseEnter={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(-3px)"
-                    btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                     if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
                   }}
                   onMouseLeave={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(0)"
-                    btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                     if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                   }}
                 >
@@ -1116,21 +1057,14 @@ export default function TemplateICBlueProfessionalAlt() {
                     color: IC.white,
                     background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                     border: "1px solid rgba(142,180,227,0.45)",
-                    boxShadow: "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
-                    transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease",
+                    transition: "opacity 0.2s ease",
                   }}
                   onMouseEnter={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(-3px)"
-                    btn.style.boxShadow = "0 14px 32px rgba(18,44,86,0.45), inset 0 1px 0 rgba(255,255,255,0.35)"
-                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                     if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
                   }}
                   onMouseLeave={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.transform = "translateY(0)"
-                    btn.style.boxShadow = "0 8px 20px rgba(18,44,86,0.28), inset 0 1px 0 rgba(255,255,255,0.28)"
-                    const shine = btn.querySelector(".btn-shine") as HTMLElement
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                     if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
                   }}
                 >
