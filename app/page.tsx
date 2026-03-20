@@ -24,12 +24,12 @@ const TEMPLATES = [
   },
   {
     id: "ic-blue-professional-v2",
-    name: "IC Blue Professional V2",
+    name: "IC Gray Professional",
     description: "Refined version with unified typography, compressed cards and polished animations.",
     colors: ["#4D4D4D", "#FFFFFF", "#24579B", "#8EB4E3"],
     preview: "bg-[#4D4D4D]",
     badge: "Latest",
-    route: "/v2",
+    route: "/gray",
   },
   {
     id: "ic-blue-professional-light",
@@ -374,7 +374,7 @@ export default function HomePage() {
               {template.id === "ic-blue-professional-v2" && (
                 <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(255,255,255,0.1)", background: "rgb(77,77,77)" }}>
                   <div style={{ padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
-                    Interconnection Consulting · Blue Professional V2
+                    Interconnection Consulting · Gray Professional
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", minHeight: 152 }}>
                     <div style={{ padding: "12px 12px 10px" }}>
