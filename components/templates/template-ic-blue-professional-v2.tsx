@@ -415,7 +415,7 @@ export default function TemplateICBlueProfessionalV2() {
           </div>
           {/* Logo right — always original colors */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
-            <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
+            <Image src="/images/Logo-grey-blue.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
           </div>
         </div>
       </nav>

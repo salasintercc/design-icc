@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import TemplateDarkExecutive from "@/components/templates/template-dark-executive"
 import TemplateLightMinimalist from "@/components/templates/template-light-minimalist"
 import TemplateBoldGradient from "@/components/templates/template-bold-gradient"
@@ -8,6 +9,7 @@ import TemplateCorporateElegant from "@/components/templates/template-corporate-
 import TemplateICBlueProfessional from "@/components/templates/template-ic-blue-professional"
 import TemplateICBlueProfessionalAlt from "@/components/templates/template-ic-blue-professional-alt"
 import TemplateICBlueProfessionalV2 from "@/components/templates/template-ic-blue-professional-v2"
+import TemplateICBlueProfessionalLight from "@/components/templates/template-ic-blue-professional-light"
 import TemplateICEditorial from "@/components/templates/template-ic-editorial"
 
 const TEMPLATES = [
@@ -18,6 +20,7 @@ const TEMPLATES = [
     colors: ["#1E4A86", "#24579B", "#8EB4E3", "#DCE6F2"],
     preview: "bg-[#1E4A86]",
     badge: "New",
+    route: "/alt",
   },
   {
     id: "ic-blue-professional-v2",
@@ -26,6 +29,16 @@ const TEMPLATES = [
     colors: ["#4D4D4D", "#FFFFFF", "#24579B", "#8EB4E3"],
     preview: "bg-[#4D4D4D]",
     badge: "Latest",
+    route: "/v2",
+  },
+  {
+    id: "ic-blue-professional-light",
+    name: "IC Blue Professional Light",
+    description: "Same structure as V2 but in full light mode — white body, IC Blue hero, blue gradient contact panel.",
+    colors: ["#FFFFFF", "#24579B", "#1E4A86", "#DCE6F2"],
+    preview: "bg-white",
+    badge: "New",
+    route: "/light",
   },
   {
     id: "ic-blue-professional",
@@ -74,6 +87,7 @@ const TEMPLATES = [
 ]
 
 export default function HomePage() {
+  const router = useRouter()
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
 
   useEffect(() => {
@@ -81,6 +95,11 @@ export default function HomePage() {
   }, [selectedTemplate])
 
   function selectTemplate(id: string) {
+    const tpl = TEMPLATES.find(t => t.id === id)
+    if (tpl && "route" in tpl && tpl.route) {
+      router.push(tpl.route as string)
+      return
+    }
     setSelectedTemplate(id)
   }
 
