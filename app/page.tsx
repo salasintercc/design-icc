@@ -20,7 +20,7 @@ const TEMPLATES = [
     colors: ["#1E4A86", "#24579B", "#8EB4E3", "#DCE6F2"],
     preview: "bg-[#1E4A86]",
     badge: "New",
-    route: "/alt",
+    route: "/blue",
   },
   {
     id: "ic-blue-professional-v2",
