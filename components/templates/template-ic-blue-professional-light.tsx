@@ -679,7 +679,7 @@ export default function TemplateICBlueProfessionalLight() {
                   Turn data into revenue. Predict what’s next.
                 </h2>
               </div>
-              <p className="text-[13px] leading-[1.8]" style={{ color: IC.gray50 }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
