@@ -661,7 +661,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(31px,3.52vw,46px)", color: IC.white, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
-                <div className="w-10 h-[2px] mt-1" style={{ background: "rgba(142,180,227,0.5)" }} />
+                <div className="h-[2px] mt-1" aria-hidden="true" />
               </div>
               <p className="text-[15px] leading-[1.9]" style={{ color: IC.white }}>
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
