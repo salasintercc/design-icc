@@ -582,13 +582,15 @@ export default function TemplateICBlueProfessionalV2() {
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.background = "rgb(100,100,100)"
+                  const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.background = "rgb(127,127,127)"
+                  const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
-                Talk to our Experts <ArrowRight size={13} strokeWidth={2.5} />
+                Talk to our Experts <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} strokeWidth={2.5} /></span>
               </a>
               <a
                 href="#overview"
@@ -712,13 +714,15 @@ export default function TemplateICBlueProfessionalV2() {
                     onMouseEnter={e => {
                       const btn = e.currentTarget as HTMLElement
                       btn.style.background = "rgb(100,100,100)"
+                      const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                     }}
                     onMouseLeave={e => {
                       const btn = e.currentTarget as HTMLElement
                       btn.style.background = "rgb(127,127,127)"
+                      const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                     }}
                   >
-                    Search <ArrowRight size={12} />
+                    Search <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
                   </button>
                 </div>
               </div>
@@ -815,13 +819,15 @@ export default function TemplateICBlueProfessionalV2() {
                       onMouseEnter={e => {
                         const btn = e.currentTarget as HTMLElement
                         btn.style.background = "rgb(100,100,100)"
+                        const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                       }}
                       onMouseLeave={e => {
                         const btn = e.currentTarget as HTMLElement
                         btn.style.background = "rgb(127,127,127)"
+                        const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
-                      Send Request <ArrowRight size={13} />
+                      Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
                     </button>
                   </form>
                 </div>
@@ -856,10 +862,10 @@ export default function TemplateICBlueProfessionalV2() {
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)" }}
-                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)" }}
+                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
+                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
                 >
-                  Send Request <ArrowRight size={13} />
+                  Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
                 </button>
               </form>
             </div>
@@ -1010,13 +1016,15 @@ export default function TemplateICBlueProfessionalV2() {
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = "rgb(100,100,100)"
+                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = "rgb(127,127,127)"
+                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                   }}
                 >
-                  More News <ArrowRight size={12} />
+                  More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
                 </a>
               </Fade>
             </div>
@@ -1080,13 +1088,15 @@ export default function TemplateICBlueProfessionalV2() {
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = "rgb(100,100,100)"
+                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = "rgb(127,127,127)"
+                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                   }}
                 >
-                  More Events <ArrowRight size={12} />
+                  More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
                 </a>
               </Fade>
             </div>

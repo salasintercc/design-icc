@@ -543,14 +543,16 @@ export default function TemplateICBlueProfessionalAlt() {
                 onMouseEnter={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
                 <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                Talk to our Experts <ArrowRight size={13} strokeWidth={2.5} />
+                Talk to our Experts <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} strokeWidth={2.5} /></span>
               </a>
               <a
                 href="#overview"
@@ -681,7 +683,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     }}
                   />
                   <button
-                    className="flex items-center gap-1.5 px-4 py-3 text-[14px] font-bold uppercase tracking-[0.14em] shrink-0 relative overflow-hidden"
+                    className="flex items-center gap-1.5 px-4 py-3 text-[14px] font-bold tracking-[0.03em] shrink-0 relative overflow-hidden"
                     style={{
                       color: IC.white,
                       background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
@@ -692,14 +694,16 @@ export default function TemplateICBlueProfessionalAlt() {
                     onMouseEnter={e => {
                       const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
                       if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                      const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                     }}
                     onMouseLeave={e => {
                       const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
                       if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                      const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                     }}
                   >
                     <span className="srch-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                    Search <ArrowRight size={12} />
+                    Search <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
                   </button>
                 </div>
               </div>
@@ -780,7 +784,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     />
                     <button
                       type="submit"
-                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-[0.16em] relative overflow-hidden"
+                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
@@ -790,14 +794,16 @@ export default function TemplateICBlueProfessionalAlt() {
                       onMouseEnter={e => {
                         const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
                         if (shine) { shine.style.transform = "translateX(900px) skewX(-18deg)" }
+                        const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                       }}
                       onMouseLeave={e => {
                         const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
                         if (shine) { setTimeout(() => { shine.style.transition = "none"; shine.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { shine.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }
+                        const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
                       <span className="sr-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
-                      Send Request <ArrowRight size={13} />
+                      Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
                     </button>
                   </form>
                 </div>
@@ -831,12 +837,12 @@ export default function TemplateICBlueProfessionalAlt() {
                 <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[15px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[15px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
                 <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[15px] outline-none resize-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-[0.16em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", transition: "opacity 0.2s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" } }}
-                  onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) } }}
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", transition: "opacity 0.2s ease", cursor: "pointer" }}
+                  onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
+                  onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
                 >
                   <span className="srm-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
-                  Send Request <ArrowRight size={13} />
+                  Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
                 </button>
               </form>
             </div>
@@ -950,7 +956,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 <>
                   {/* Press item */}
                   <Fade key={`press-${idx}`} delay={idx * 0.1} className="h-full">
-                    <div className="pb-6 mb-6 flex flex-col h-full" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                    <div className="pb-6 mb-6 flex flex-col h-full">
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                         <span
@@ -990,7 +996,7 @@ export default function TemplateICBlueProfessionalAlt() {
                   {/* Event item — same row */}
                   {ev && (
                     <Fade key={`event-${idx}`} delay={idx * 0.1} className="h-full">
-                      <div className="pb-6 mb-6 flex flex-col h-full" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                      <div className="pb-6 mb-6 flex flex-col h-full">
                         <div className="flex items-start justify-between gap-3 mb-2">
                           <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
                           <span className="text-[12px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
@@ -1029,7 +1035,7 @@ export default function TemplateICBlueProfessionalAlt() {
             <Fade delay={0.25}>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 text-[14px] font-bold uppercase tracking-widest px-5 py-2.5 relative overflow-hidden"
+                className="inline-flex items-center gap-2 text-[14px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden"
                 style={{
                   borderRadius: 0,
                   color: IC.white,
@@ -1039,20 +1045,22 @@ export default function TemplateICBlueProfessionalAlt() {
                 onMouseEnter={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
                 <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                More News <ArrowRight size={12} />
+                More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
               </a>
             </Fade>
             <Fade delay={0.3}>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 text-[14px] font-bold uppercase tracking-widest px-5 py-2.5 relative overflow-hidden"
+                className="inline-flex items-center gap-2 text-[14px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden"
                 style={{
                   borderRadius: 0,
                   color: IC.white,
@@ -1069,7 +1077,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 }}
               >
                 <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                More Events <ArrowRight size={12} />
+                More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
               </a>
             </Fade>
           </div>

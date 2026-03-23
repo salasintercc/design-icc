@@ -43,7 +43,7 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
         <div key={c.name} className="flex-1 flex items-center justify-center px-4 py-4"
           style={{ height: 68, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
           <span
-            className="text-[12px] sm:text-[13px] font-semibold leading-tight text-center"
+            className="text-[13px] sm:text-[14px] font-semibold leading-tight text-center"
             style={{
               color: IC.gray80,
               opacity: fading ? 0 : 1,
@@ -108,7 +108,7 @@ function Fade({
 
 function Label({ light = false, style, children }: { light?: boolean; style?: React.CSSProperties; children: React.ReactNode }) {
   return (
-    <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4"
+    <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4"
        style={{ color: light ? IC.blueLight : IC.blue, ...style }}>
       {children}
     </p>
@@ -120,7 +120,7 @@ function SH({ children, light = false, className }: { children: React.ReactNode;
     <h2
       className={`font-bold tracking-tight leading-[1.08] ${className ?? ""}`}
       style={{
-        fontSize: "clamp(1.75rem,3.2vw,2.6rem)",
+        fontSize: "clamp(31px,3.52vw,46px)",
         color: light ? IC.white : "#4D4D4D",
         letterSpacing: "-0.015em",
       }}
@@ -399,7 +399,7 @@ export default function TemplateICBlueProfessionalLight() {
             <Menu size={22} />
           </button>
 
-          <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium">
+          <div className="hidden lg:flex items-center gap-8 text-[14px] font-medium">
             {["Reports & Tools", "Our Competence", "Shop", "News", "Events", "About Us"].map(l => (
               <a
                 key={l} href="#"
@@ -441,7 +441,7 @@ export default function TemplateICBlueProfessionalLight() {
             }}
           >
             <Image
-              src="/images/global_network_4.jpg"
+              src="/Bild.png"
               alt={D.productName}
               fill
               className="object-contain"
@@ -460,7 +460,7 @@ export default function TemplateICBlueProfessionalLight() {
               opacity: Math.max(0, 1 - heroOut * 1.6),
             }}
           >
-            <Image src="/images/global_network_4.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
+            <Image src="/Bild.png" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(247,249,252,0.72) 0%, rgba(247,249,252,0.38) 40%, rgba(247,249,252,0.72) 75%, rgba(247,249,252,0.95) 100%)" }} />
           </div>
         </div>
@@ -505,7 +505,7 @@ export default function TemplateICBlueProfessionalLight() {
             }}
           >
             <div className="flex items-center mb-5 lg:mb-8">
-              <p className="text-[9px] font-bold tracking-[0.45em] uppercase" style={{ color: IC.blue }}>
+              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: IC.blue }}>
                 Interconnection Consulting
               </p>
             </div>
@@ -514,7 +514,7 @@ export default function TemplateICBlueProfessionalLight() {
           {/* H1 — refined scale */}
           <h1
             className="font-black"
-            style={{ fontSize: "clamp(2.1rem, 8vw, 2.85rem)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
+            style={{ fontSize: "clamp(37px,8.8vw,50px)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
           >
             <span
               style={{
@@ -550,7 +550,7 @@ export default function TemplateICBlueProfessionalLight() {
               transition: "opacity 1s ease 1.05s, transform 1s cubic-bezier(0.22,1,0.36,1) 1.05s",
             }}
           >
-            <p className="text-sm leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: IC.gray50 }}>
+            <p className="text-[15px] leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: IC.gray50 }}>
               We help companies unlock sales growth by combining industry expertise with market data, big data analytics, and AI-driven forecasts — delivering practical strategies and measurable results.
             </p>
           </div>
@@ -566,7 +566,7 @@ export default function TemplateICBlueProfessionalLight() {
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-bold px-6 py-3.5 relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-6 py-3.5 relative overflow-hidden"
                 style={{
                   borderRadius: 0,
                   color: IC.white,
@@ -578,17 +578,24 @@ export default function TemplateICBlueProfessionalLight() {
                 onMouseEnter={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.background = IC.blueDark
+                  btn.style.borderColor = IC.blueDark
+                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const btn = e.currentTarget as HTMLElement
                   btn.style.background = IC.blue
+                  btn.style.borderColor = IC.blue
+                  const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
-                Talk to our Experts <ArrowRight size={13} strokeWidth={2.5} />
+                Talk to our Experts
+                <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                  <ArrowRight size={13} strokeWidth={2.5} />
+                </span>
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] font-semibold relative overflow-hidden"
                 style={{
                   color: IC.white,
                   padding: "12px 18px",
@@ -674,12 +681,12 @@ export default function TemplateICBlueProfessionalLight() {
               }}
             >
               <div>
-                <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08]" style={{ fontSize: "clamp(1.75rem,3.2vw,2.6rem)", color: IC.gray80, letterSpacing: "-0.015em" }}>
+                <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>How we make our customers successful</p>
+                <h2 className="font-bold tracking-tight leading-[1.08]" style={{ fontSize: "clamp(31px,3.52vw,46px)", color: IC.gray80, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>
+              <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
@@ -689,7 +696,7 @@ export default function TemplateICBlueProfessionalLight() {
                 >
                   <input
                     placeholder="Industry Report Search"
-                    className="flex-1 px-4 py-3 bg-transparent text-sm outline-none placeholder:text-[#999999]"
+                    className="flex-1 px-4 py-3 bg-transparent text-[15px] outline-none placeholder:text-[#999999]"
                     style={{
                       color: IC.gray80,
                       caretColor: IC.gray80,
@@ -697,7 +704,7 @@ export default function TemplateICBlueProfessionalLight() {
                     }}
                   />
                   <button
-                    className="flex items-center gap-1.5 px-4 py-3 text-[12px] font-bold uppercase tracking-[0.14em] shrink-0"
+                    className="flex items-center gap-1.5 px-4 py-3 text-[13px] font-bold tracking-[0.03em] shrink-0"
                     style={{
                       color: IC.white,
                       background: IC.blue,
@@ -709,13 +716,20 @@ export default function TemplateICBlueProfessionalLight() {
                     onMouseEnter={e => {
                       const btn = e.currentTarget as HTMLElement
                       btn.style.background = IC.blueDark
+                      btn.style.borderColor = IC.blueDark
+                      const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                     }}
                     onMouseLeave={e => {
                       const btn = e.currentTarget as HTMLElement
                       btn.style.background = IC.blue
+                      btn.style.borderColor = IC.blue
+                      const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                     }}
                   >
-                    Search <ArrowRight size={12} />
+                    Search
+                    <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                      <ArrowRight size={12} />
+                    </span>
                   </button>
                 </div>
               </div>
@@ -742,66 +756,66 @@ export default function TemplateICBlueProfessionalLight() {
                 }}
               >
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blue }}>Contact us</p>
-                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(1.4rem,2.8vw,1.75rem)", color: IC.gray80 }}>
+                  <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blue }}>Contact us</p>
+                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(25px,3.08vw,31px)", color: IC.gray80 }}>
                     Tell us your challenge
                   </h3>
                   <form className="grid grid-cols-2 gap-4 pt-6" onSubmit={(e) => e.preventDefault()}>
                     <input
                       name="name"
                       placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
                       style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
+                        color: IC.gray80,
+                        background: IC.blueXL,
+                        border: `1px solid ${IC.blueXL}`,
                       }}
                     />
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
                       style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
+                        color: IC.gray80,
+                        background: IC.blueXL,
+                        border: `1px solid ${IC.blueXL}`,
                       }}
                     />
                     <input
                       name="mail"
                       type="email"
                       placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
                       style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
+                        color: IC.gray80,
+                        background: IC.blueXL,
+                        border: `1px solid ${IC.blueXL}`,
                       }}
                     />
                     <input
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
                       style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
+                        color: IC.gray80,
+                        background: IC.blueXL,
+                        border: `1px solid ${IC.blueXL}`,
                       }}
                     />
                     <textarea
                       name="message"
                       placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-white"
+                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#999999]"
                       style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
+                        color: IC.gray80,
+                        background: IC.blueXL,
+                        border: `1px solid ${IC.blueXL}`,
                       }}
                     />
                     <button
                       type="submit"
-                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]"
+                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]"
                       style={{
                         color: IC.white,
                         background: IC.blue,
@@ -813,14 +827,19 @@ export default function TemplateICBlueProfessionalLight() {
                         const btn = e.currentTarget as HTMLElement
                         btn.style.background = IC.blueDark
                         btn.style.borderColor = IC.blueDark
+                        const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                       }}
                       onMouseLeave={e => {
                         const btn = e.currentTarget as HTMLElement
                         btn.style.background = IC.blue
                         btn.style.borderColor = IC.blue
+                        const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
-                      Send Request <ArrowRight size={13} />
+                      Send Request
+                      <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                        <ArrowRight size={13} />
+                      </span>
                     </button>
                   </form>
                 </div>
@@ -840,25 +859,28 @@ export default function TemplateICBlueProfessionalLight() {
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="flex flex-col gap-10">
             <div>
-              <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(1.5rem,6vw,2rem)", color: IC.gray80, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
+              <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>How we make our customers successful</p>
+              <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.gray80, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
-              <p className="text-[13px] leading-[1.8]" style={{ color: IC.gray50 }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
+              <p className="text-[14px] leading-[1.8]" style={{ color: IC.gray50 }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: IC.white, border: `1.5px solid ${IC.blueXL}`, boxShadow: "0 8px 32px rgba(36,87,155,0.09)" }}>
-              <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
-              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.gray80 }}>Tell us your challenge</h3>
+              <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
+              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.gray80 }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: IC.blue, border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blueDark; b.style.borderColor = IC.blueDark }}
-                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blue; b.style.borderColor = IC.blue }}
+                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: IC.blue, border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
+                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blueDark; b.style.borderColor = IC.blueDark; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)" }}
+                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blue; b.style.borderColor = IC.blue; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)" }}
                 >
-                  Send Request <ArrowRight size={13} />
+                  Send Request
+                  <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                    <ArrowRight size={13} />
+                  </span>
                 </button>
               </form>
             </div>
@@ -903,10 +925,10 @@ export default function TemplateICBlueProfessionalLight() {
                       }}
                     >
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[15px] font-semibold mb-3" style={{ color: "#7F7F7F" }}>{c.title}</h3>
-                      <p className="text-sm leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
+                      <h3 className="text-[17px] font-semibold mb-3" style={{ color: "#7F7F7F" }}>{c.title}</h3>
+                      <p className="text-[15px] leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
                       <a href="#"
-                        className="inline-flex items-center gap-1.5 text-[12px] font-semibold mt-6 relative w-fit"
+                        className="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-6 relative w-fit"
                         style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
@@ -945,9 +967,9 @@ export default function TemplateICBlueProfessionalLight() {
           <div className="grid lg:grid-cols-2 gap-12 mt-4">
 
             {/* Press */}
-            <div>
+            <div className="flex flex-col">
               <Fade>
-                <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
                   style={{ color: "rgb(77,77,77)" }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
@@ -955,23 +977,24 @@ export default function TemplateICBlueProfessionalLight() {
                   IC News
                 </h3>
               </Fade>
+              <div className="flex-1 flex flex-col">
               {D.press.map((p, idx) => (
-                <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
+                <Fade key={idx} delay={idx * 0.1} className="flex-1 flex flex-col">
+                  <div className="pb-6 flex flex-col h-full">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[15px] font-semibold" style={{ color: "#7F7F7F" }}>{p.title}</h4>
+                      <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{p.title}</h4>
                       <span
-                        className="text-[10px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none"
+                        className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none"
                         style={{ background: IC.blueXL, color: IC.blue }}
                         aria-hidden="true"
                       >
                         00/00/0000
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
+                    <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
+                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
                       style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
@@ -994,10 +1017,11 @@ export default function TemplateICBlueProfessionalLight() {
                   </div>
                 </Fade>
               ))}
-              <Fade delay={0.25}>
+              </div>
+              <Fade delay={0.25} className="mt-6">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5"
                   style={{
                     borderRadius: 0,
                     color: IC.white,
@@ -1009,21 +1033,28 @@ export default function TemplateICBlueProfessionalLight() {
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = IC.blueDark
+                    btn.style.borderColor = IC.blueDark
+                    const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = IC.blue
+                    btn.style.borderColor = IC.blue
+                    const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                   }}
                 >
-                  More News <ArrowRight size={12} />
+                  More News
+                  <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                    <ArrowRight size={12} />
+                  </span>
                 </a>
               </Fade>
             </div>
 
             {/* Events */}
-            <div>
+            <div className="flex flex-col">
               <Fade delay={0.05}>
-                <h3 className="text-[13px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
                   style={{ color: "rgb(77,77,77)" }}>
                   <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
                     <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
@@ -1031,17 +1062,18 @@ export default function TemplateICBlueProfessionalLight() {
                   Keep in touch with our events
                 </h3>
               </Fade>
+              <div className="flex-1 flex flex-col">
               {D.events.map((e, idx) => (
-                <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
+                <Fade key={idx} delay={idx * 0.1} className="flex-1 flex flex-col">
+                  <div className="pb-6 flex flex-col h-full">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[15px] font-semibold" style={{ color: "#7F7F7F" }}>{e.title}</h4>
-                      <span className="text-[10px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{e.date}</span>
+                      <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{e.title}</h4>
+                      <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{e.date}</span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{e.desc}</p>
+                    <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{e.desc}</p>
                     <a
                       href="#"
-                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[12px] font-semibold"
+                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
                       style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
                       onMouseEnter={e => {
                         const el = e.currentTarget as HTMLElement
@@ -1064,10 +1096,11 @@ export default function TemplateICBlueProfessionalLight() {
                   </div>
                 </Fade>
               ))}
-              <Fade delay={0.3}>
+              </div>
+              <Fade delay={0.3} className="mt-6">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest px-5 py-2.5"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5"
                   style={{
                     borderRadius: 0,
                     color: IC.white,
@@ -1079,13 +1112,20 @@ export default function TemplateICBlueProfessionalLight() {
                   onMouseEnter={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = IC.blueDark
+                    btn.style.borderColor = IC.blueDark
+                    const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                   }}
                   onMouseLeave={e => {
                     const btn = e.currentTarget as HTMLElement
                     btn.style.background = IC.blue
+                    btn.style.borderColor = IC.blue
+                    const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                   }}
                 >
-                  More Events <ArrowRight size={12} />
+                  More Events
+                  <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                    <ArrowRight size={12} />
+                  </span>
                 </a>
               </Fade>
             </div>
@@ -1152,7 +1192,7 @@ export default function TemplateICBlueProfessionalLight() {
                         }}
                       />
                       <span
-                        className="hidden text-sm font-bold text-center"
+                        className="hidden text-[15px] font-bold text-center"
                         style={{
                           color: IC.gray80,
                           opacity: referenceImageFading ? 0 : 1,
@@ -1174,20 +1214,20 @@ export default function TemplateICBlueProfessionalLight() {
                       }}>
                         <span style={{
                           flexShrink: 0,
-                          fontSize: "5.5rem",
+                          fontSize: "97px",
                           lineHeight: 0.72,
                           color: IC.blue,
                           marginTop: 2,
                         }}>&ldquo;</span>
-                        <p className="text-sm leading-relaxed" style={{ color: "#7F7F7F" }}>{ref.statement}</p>
+                        <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ref.statement}</p>
                       </div>
-                      <p className="mt-3 text-[10px] font-bold tracking-[0.3em] uppercase" style={{
+                      <p className="mt-3 text-[11px] font-bold tracking-[0.3em] uppercase" style={{
                         color: IC.blueLight,
                         opacity: referenceTextFading ? 0 : 1,
                         transform: referenceTextFading ? `translateY(-8px)` : `translateY(0px)`,
                         transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.12s), transform 0.46s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.12s)`,
                       }}>{ref.company}</p>
-                      <p className="mt-1.5 text-[12px]" style={{
+                      <p className="mt-1.5 text-[13px]" style={{
                         color: "rgb(127,127,127)",
                         opacity: referenceTextFading ? 0 : 1,
                         transform: referenceTextFading ? `translateY(-6px)` : `translateY(0px)`,
@@ -1220,8 +1260,8 @@ export default function TemplateICBlueProfessionalLight() {
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
           >
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
-            <div className="flex items-center gap-5 text-xs">
+            <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
+            <div className="flex items-center gap-5 text-[13px]">
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Print</a>
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Privacy Policy</a>
             </div>
