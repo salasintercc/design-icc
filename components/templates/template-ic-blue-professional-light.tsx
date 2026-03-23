@@ -696,18 +696,21 @@ export default function TemplateICBlueProfessionalLight() {
                 >
                   <input
                     placeholder="Industry Report Search"
-                    className="flex-1 px-4 py-3 bg-transparent text-[15px] outline-none placeholder:text-[#999999]"
+                    className="flex-1 h-12 px-4 bg-transparent text-[15px] outline-none placeholder:text-white"
                     style={{
-                      color: IC.gray80,
-                      caretColor: IC.gray80,
-                      background: IC.blueXL,
+                      color: IC.white,
+                      caretColor: IC.white,
+                      background: IC.blueLight,
+                      border: "none",
+                      appearance: "none",
                     }}
                   />
                   <button
-                    className="flex items-center gap-1.5 px-4 py-3 text-[13px] font-bold tracking-[0.03em] shrink-0"
+                    className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                     style={{
                       color: IC.white,
                       background: IC.blue,
+                      minWidth: 150,
                       border: `1px solid ${IC.blue}`,
                       whiteSpace: "nowrap",
                       transition: "background 0.25s ease",
@@ -764,53 +767,53 @@ export default function TemplateICBlueProfessionalLight() {
                     <input
                       name="name"
                       placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.blueXL,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.blueXL,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="mail"
                       type="email"
                       placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.blueXL,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.blueXL,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <textarea
                       name="message"
                       placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#999999]"
+                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.blueXL,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <button
@@ -868,11 +871,11 @@ export default function TemplateICBlueProfessionalLight() {
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
               <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.gray80 }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#999999]" style={{ color: IC.gray80, background: IC.blueXL, border: `1px solid ${IC.blueXL}` }} />
+                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
                 <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: IC.blue, border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blueDark; b.style.borderColor = IC.blueDark; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blue; b.style.borderColor = IC.blue; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)" }}
