@@ -7,17 +7,14 @@ import { D, COMPETENCES } from "./ic-shared-data"
 
 /* ── Brand tokens ──────────────────────────────────────────────────────── */
 const IC = {
-  blue:      "#24579B",
-  blueDark:  "#1e4a86",
-  blueLight: "#8EB4E3",
-  blueXL:    "#DCE6F2",
-  gray80:    "#2C2C2C",
-  gray60:    "#4D4D4D",
-  gray50:    "#7F7F7F",
-  grayLight: "#C2C2C2",
+  blue:      "#24579B",   // IC Blue (36;87;155)
+  blueDark:  "#376092",   // Blue, Akzent darker 25% (55;96;146)
+  blueLight: "#8EB4E3",   // Dark blue, lighter 60% (142;180;227)
+  blueXL:    "#DCE6F2",   // Blue, lighter 80% (220;230;242)
+  gray80:    "#4D4D4D",   // Gray 80% (77;77;77)
+  gray50:    "#7F7F7F",   // Black, lighter 50% (127;127;127)
+  grayLight: "#C2C2C2",   // Gray Not Standard (194;194;194)
   white:     "#FFFFFF",
-  offWhite:  "#F7F9FC",
-  surface:   "#F4F7FB",
 }
 
 function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
@@ -302,7 +299,7 @@ export default function TemplateICBlueProfessionalAlt() {
   const sectionLeadIn = sectionIn
 
   return (
-    <div className="min-h-screen" style={{ background: IC.offWhite, color: IC.gray80 }}>
+    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
 
       <style>{`
         @keyframes scrollBounce {
@@ -381,7 +378,7 @@ export default function TemplateICBlueProfessionalAlt() {
           </div>
           {/* Logo right — always original colors */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
-            <Image src="/images/Logo-grey-blue.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
+            <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
           </div>
         </div>
       </nav>
@@ -636,7 +633,8 @@ export default function TemplateICBlueProfessionalAlt() {
             rgba(220,232,245,0.82) 70%,
             rgba(240,245,251,0.92) 82%,
             rgba(247,249,252,0.97) 92%,
-            ${IC.offWhite} 100%)`,
+            ${IC.blueXL} 100%)`,
+
           opacity: Math.max(0, (sectionLeftIn - 0.35) * 2.2),
         }} />
 
@@ -724,7 +722,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 id="contact-panel"
                 className="h-full flex flex-col justify-between py-12 px-10"
                 style={{
-                  background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)",
+                  background: `linear-gradient(145deg, ${IC.blueDark} 0%, ${IC.blue} 72%)`,
                   border: "1px solid rgba(142,180,227,0.2)",
                   boxShadow: "0 18px 60px rgba(23,53,95,0.23)",
                   animation: "panelDrift 9s ease-in-out infinite",
@@ -828,7 +826,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[13px] leading-[1.8]" style={{ color: "rgba(220,230,242,0.78)" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
             </div>
-            <div className="flex flex-col justify-between py-10 px-8" style={{ background: "linear-gradient(145deg, #1e4a86 0%, #24579B 72%)", border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
+            <div className="flex flex-col justify-between py-10 px-8" style={{ background: `linear-gradient(145deg, ${IC.blueDark} 0%, ${IC.blue} 72%)`, border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
               <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.white }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
@@ -852,7 +850,7 @@ export default function TemplateICBlueProfessionalAlt() {
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
-        background: isDesktop ? `linear-gradient(to bottom, transparent 0px, ${IC.offWhite} 360px, ${IC.white} 420px)` : IC.white,
+        background: isDesktop ? `linear-gradient(to bottom, transparent 0px, ${IC.blueXL} 360px, ${IC.white} 420px)` : IC.white,
         zIndex: 10,
         position: "relative",
         marginTop: isDesktop ? -360 : 0,
@@ -878,7 +876,7 @@ export default function TemplateICBlueProfessionalAlt() {
                       className="relative flex flex-col p-8 overflow-hidden"
                       style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.background = IC.surface
+                        e.currentTarget.style.background = IC.blueXL
                         e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
                       }}
                       onMouseLeave={e => {
@@ -1083,7 +1081,7 @@ export default function TemplateICBlueProfessionalAlt() {
         style={{
           background: `linear-gradient(to bottom,
             ${IC.white} 0%,
-            ${IC.offWhite} 12%,
+            ${IC.blueXL} 12%,
             #edf3fb 28%,
             #dce9f5 44%,
             #c8daee 58%,
@@ -1180,7 +1178,7 @@ export default function TemplateICBlueProfessionalAlt() {
                         transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.12s), transform 0.46s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.12s)`,
                       }}>{ref.company}</p>
                       <p className="mt-1.5 text-[12px]" style={{
-                        color: IC.gray60,
+                        color: IC.gray80,
                         opacity: referenceTextFading ? 0 : 1,
                         transform: referenceTextFading ? `translateY(-6px)` : `translateY(0px)`,
                         transition: `opacity 0.34s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.22s), transform 0.42s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.22s)`,

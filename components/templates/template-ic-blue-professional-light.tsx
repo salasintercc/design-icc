@@ -7,17 +7,14 @@ import { D, COMPETENCES } from "./ic-shared-data"
 
 /* ── Brand tokens ──────────────────────────────────────────────────────── */
 const IC = {
-  blue:      "#24579B",
-  blueDark:  "#1e4a86",
-  blueLight: "#8EB4E3",
-  blueXL:    "#DCE6F2",
-  gray80:    "#2C2C2C",
-  gray60:    "#C2C2C2",
-  gray50:    "#7F7F7F",
-  grayLight: "#C2C2C2",
+  blue:      "#24579B",   // IC Blue (36;87;155)
+  blueDark:  "#376092",   // Blue, Akzent darker 25% (55;96;146)
+  blueLight: "#8EB4E3",   // Dark blue, lighter 60% (142;180;227)
+  blueXL:    "#DCE6F2",   // Blue, lighter 80% (220;230;242)
+  gray80:    "#4D4D4D",   // Gray 80% (77;77;77)
+  gray50:    "#7F7F7F",   // Black, lighter 50% (127;127;127)
+  grayLight: "#C2C2C2",   // Gray Not Standard (194;194;194)
   white:     "#FFFFFF",
-  offWhite:  "#F7F9FC",
-  surface:   "#F4F7FB",
 }
 
 function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
@@ -424,7 +421,7 @@ export default function TemplateICBlueProfessionalLight() {
       <div style={{ position: "relative", height: isDesktop ? "220vh" : "100vh" }}>
 
         {/* ── Layer 0: persistent background that NEVER changes color ── */}
-        <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.offWhite, zIndex: 0 }} />
+        <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.blueXL, zIndex: 0 }} />
 
       {/* ── HERO content layer ── */}
       <section className="relative overflow-hidden" style={{ position: "sticky", top: 0, height: "100vh", background: "transparent", display: "flex", flexDirection: "column", zIndex: 2, marginTop: "-100vh" }}>
@@ -696,8 +693,7 @@ export default function TemplateICBlueProfessionalLight() {
                     style={{
                       color: IC.gray80,
                       caretColor: IC.gray80,
-                      background: IC.offWhite,
-                      border: "1px solid #DDE1E8",
+                      background: IC.blueXL,
                     }}
                   />
                   <button
@@ -754,53 +750,53 @@ export default function TemplateICBlueProfessionalLight() {
                     <input
                       name="name"
                       placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.offWhite,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.offWhite,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="mail"
                       type="email"
                       placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.offWhite,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <input
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]"
+                      className="col-span-1 h-11 px-3 text-[13px] outline-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.offWhite,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <textarea
                       name="message"
                       placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#AABBD0]"
+                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-white"
                       style={{
-                        color: IC.gray80,
-                        background: IC.offWhite,
-                        border: `1px solid ${IC.blueXL}`,
+                        color: IC.white,
+                        background: IC.blueLight,
+                        border: `1px solid ${IC.blueLight}`,
                       }}
                     />
                     <button
@@ -839,7 +835,7 @@ export default function TemplateICBlueProfessionalLight() {
       {/* ── MOBILE SECTION 2 — shown only on mobile, flows naturally below hero ── */}
       <section
         className="flex flex-col lg:hidden"
-        style={{ background: IC.surface, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
+        style={{ background: IC.blueXL, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
       >
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="flex flex-col gap-10">
@@ -853,11 +849,11 @@ export default function TemplateICBlueProfessionalLight() {
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
               <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(1.3rem,5vw,1.6rem)", color: IC.gray80 }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]" style={{ color: IC.gray80, background: IC.offWhite, border: `1px solid ${IC.blueXL}` }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]" style={{ color: IC.gray80, background: IC.offWhite, border: `1px solid ${IC.blueXL}` }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]" style={{ color: IC.gray80, background: IC.offWhite, border: `1px solid ${IC.blueXL}` }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-[#AABBD0]" style={{ color: IC.gray80, background: IC.offWhite, border: `1px solid ${IC.blueXL}` }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-[#AABBD0]" style={{ color: IC.gray80, background: IC.offWhite, border: `1px solid ${IC.blueXL}` }} />
+                <input name="name" placeholder="Name" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="company" placeholder="Company" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[13px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[13px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
                 <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: IC.blue, border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blueDark; b.style.borderColor = IC.blueDark }}
                   onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blue; b.style.borderColor = IC.blue }}
@@ -898,7 +894,7 @@ export default function TemplateICBlueProfessionalLight() {
                       className="relative flex flex-col p-8 overflow-hidden"
                       style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.background = IC.surface
+                        e.currentTarget.style.background = IC.blueXL
                         e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
                       }}
                       onMouseLeave={e => {
@@ -1101,7 +1097,7 @@ export default function TemplateICBlueProfessionalLight() {
       <section
         className="pt-20 pb-20 lg:pt-28 lg:pb-24"
         style={{
-          background: IC.surface,
+          background: IC.blueXL,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
