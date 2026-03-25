@@ -161,109 +161,58 @@ export default function HomePage() {
       </section>
 
       {/* Design System Card */}
-      <section className="px-6 lg:px-16 pb-10">
-        <div className="rounded-2xl p-8 lg:p-10" style={{ background: "#141414", border: "1px solid #262626" }}>
+      <section className="px-6 lg:px-16 pb-6">
+        <div className="rounded-2xl p-6 lg:p-7" style={{ background: "#141414", border: "1px solid #262626" }}>
           <p className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color: "#525252" }}>Design System</p>
-          <p className="text-xl font-bold mb-1" style={{ color: "#fafafa" }}>IC Blue Professional</p>
-          <p className="text-sm mb-8" style={{ color: "#525252" }}>Tipografía: <span style={{ color: "#a3a3a3" }}>Geist</span> · Radios: <span style={{ color: "#a3a3a3" }}>0px (sharp)</span> · Base: <span style={{ color: "#a3a3a3" }}>13px</span></p>
+          <p className="text-lg font-bold mb-1" style={{ color: "#fafafa" }}>IC Blue Professional</p>
+          <p className="text-sm mb-3" style={{ color: "#525252" }}>Tipografía: <span style={{ color: "#a3a3a3" }}>Geist</span> · Base: <span style={{ color: "#a3a3a3" }}>13px</span></p>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-4">
 
             {/* Color Palette */}
             <div>
-              <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#737373" }}>Paleta de Colores</p>
-              <div className="flex flex-col gap-1.5">
+              <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Paleta de Colores</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-5 sm:grid-flow-col gap-1">
                 {[
-                  { name: "IC Blue",       hex: "#24579B", usage: "Principal, CTAs, links", dark: false },
-                  { name: "IC Blue Dark",  hex: "#1E4A86", usage: "Hero bg, hover states",  dark: false },
-                  { name: "IC Blue Light", hex: "#8EB4E3", usage: "Eyebrows en fondo oscuro, sublines", dark: true },
-                  { name: "IC Blue XL",    hex: "#DCE6F2", usage: "Fondos suaves, divisores", dark: true },
-                  { name: "Off White",     hex: "#F7F9FC", usage: "Fondo de página", dark: true },
-                  { name: "Surface",       hex: "#F4F7FB", usage: "Hover en cards", dark: true },
-                  { name: "Gray 80",       hex: "#2C2C2C", usage: "Títulos sobre fondo blanco", dark: false },
-                  { name: "Gray 60",       hex: "#4D4D4D", usage: "Subtítulos, body text", dark: false },
-                  { name: "Gray 50",       hex: "#7F7F7F", usage: "Texto secundario, muted", dark: false },
-                  { name: "Gray Light",    hex: "#C2C2C2", usage: "Placeholders, bordes suaves", dark: true },
+                  { name: "IC Blue Dark", hex: "#1E4A86" },
+                  { name: "IC Blue", hex: "#24579B" },
+                  { name: "IC Blue Light", hex: "#8EB4E3" },
+                  { name: "Gray 80", hex: "#2C2C2C" },
+                  { name: "Gray 60", hex: "#4D4D4D" },
+                  { name: "Gray 50", hex: "#7F7F7F" },
+                  { name: "Gray Light", hex: "#C2C2C2" },
+                  { name: "IC Blue XL", hex: "#DCE6F2" },
+                  { name: "Surface", hex: "#F4F7FB" },
+                  { name: "Off White", hex: "#F7F9FC" },
                 ].map(c => (
-                  <div key={c.hex} className="flex items-center gap-3 py-1.5 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
-                    <div className="w-7 h-7 rounded flex-shrink-0" style={{ background: c.hex, border: "1px solid rgba(255,255,255,0.08)" }} />
-                    <span className="text-[11px] font-mono w-[72px] flex-shrink-0" style={{ color: "#8EB4E3" }}>{c.hex}</span>
-                    <span className="text-[11px] font-semibold w-[96px] flex-shrink-0" style={{ color: "#d4d4d4" }}>{c.name}</span>
-                    <span className="text-[10px]" style={{ color: "#525252" }}>{c.usage}</span>
+                  <div key={c.hex} className="flex items-center gap-3 py-1 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
+                    <div className="w-5 h-5 rounded flex-shrink-0" style={{ background: c.hex, border: "1px solid rgba(255,255,255,0.08)" }} />
+                    <span className="text-[11px] font-mono w-[70px] flex-shrink-0" style={{ color: "#8EB4E3" }}>{c.hex}</span>
+                    <span className="text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{c.name}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right column: Typography + Buttons */}
-            <div className="flex flex-col gap-8">
-
-              {/* Typography */}
-              <div>
-                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#737373" }}>Escala Tipográfica · Geist</p>
-                <div className="flex flex-col gap-3">
-                  {[
-                    { role: "Hero H1",       size: "clamp(2.1–2.85rem)", weight: "900",  sample: "From Data to Decisions", color: "#fafafa",  bg: "#1e4a86",  note: "Blanco sobre hero azul oscuro" },
-                    { role: "Section H2",    size: "clamp(1.75–2.6rem)", weight: "700",  sample: "Industry Experience",    color: "#2C2C2C",  bg: "",         note: "Gray 80 sobre fondo blanco" },
-                    { role: "Body",          size: "13–15px",            weight: "400",  sample: "Consultants by passion and excellence.", color: "#4D4D4D", bg: "", note: "Gray 60 sobre blanco · Blue XL sobre azul" },
-                    { role: "Eyebrow",       size: "10px · +0.32em",     weight: "700",  sample: "WHAT WE DO",             color: "#24579B",  bg: "",         note: "IC Blue sobre blanco · Blue Light sobre azul" },
-                    { role: "Link / CTA",    size: "12px",               weight: "600",  sample: "Explore →",              color: "#24579B",  bg: "",         note: "Underline animado izq→der en hover" },
-                    { role: "Nav",           size: "13px",               weight: "400",  sample: "Reports & Tools",        color: "#7F7F7F",  bg: "",         note: "Gray 50 al hacer scroll · Blanco en hero" },
-                  ].map(t => (
-                    <div key={t.role} className="flex items-start gap-3 py-2 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)", borderLeft: "2px solid #24579B" }}>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                          <span className="text-[9px] font-bold tracking-widest uppercase" style={{ color: "#525252" }}>{t.role}</span>
-                          <span className="text-[9px] font-mono" style={{ color: "#404040" }}>{t.size} · w{t.weight}</span>
-                        </div>
-                        <p className="text-sm leading-snug truncate" style={{
-                          color: t.color,
-                          background: t.bg || "transparent",
-                          padding: t.bg ? "1px 6px" : 0,
-                          borderRadius: 3,
-                          display: "inline-block",
-                          maxWidth: "100%",
-                        }}>{t.sample}</p>
-                        <p className="text-[9px] mt-0.5" style={{ color: "#404040" }}>{t.note}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Buttons */}
-              <div>
-                <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: "#737373" }}>Botones</p>
-                <div className="flex flex-col gap-3">
-                  {[
-                    { name: "Primary CTA",    bg: "linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)", color: "#fff",     border: "1px solid rgba(142,180,227,0.45)", note: "Hero, More News, More Events" },
-                    { name: "Secondary CTA",  bg: "linear-gradient(135deg, #24579B 50%, #8EB4E3 100%)", color: "rgba(220,230,242,0.96)", border: "1px solid rgba(142,180,227,0.45)", note: "Explore market reports" },
-                  ].map(b => (
-                    <div key={b.name} className="flex items-center gap-4 py-2 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
-                      <div className="px-4 py-2 text-[11px] font-bold uppercase tracking-widest flex-shrink-0"
-                        style={{ background: b.bg, color: b.color, border: b.border, boxShadow: "0 4px 12px rgba(18,44,86,0.3)" }}>
-                        {b.name}
-                      </div>
-                      <div>
-                        <p className="text-[9px] font-semibold" style={{ color: "#d4d4d4" }}>{b.name}</p>
-                        <p className="text-[9px]" style={{ color: "#525252" }}>{b.note}</p>
-                        <p className="text-[9px] font-mono" style={{ color: "#404040" }}>#24579B → #8EB4E3 · 135°</p>
-                      </div>
-                    </div>
-                  ))}
-                  <div className="flex items-center gap-4 py-2 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
-                    <div className="px-3 py-1 text-[11px] font-semibold flex-shrink-0" style={{ color: "#24579B", borderBottom: "1px solid #24579B" }}>
-                      Explore →
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-semibold" style={{ color: "#d4d4d4" }}>Text Link</p>
-                      <p className="text-[9px]" style={{ color: "#525252" }}>Underline izq→der en hover · flecha desliza 5px</p>
-                      <p className="text-[9px] font-mono" style={{ color: "#404040" }}>IC Blue · Geist 600 · 12px</p>
-                    </div>
+            {/* Typography */}
+            <div>
+              <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Tipografía · Geist</p>
+              <div className="flex flex-col gap-1">
+                {[
+                  { role: "H1", size: "clamp(2.1rem–2.85rem) ≈ 34–46px", weight: "900" },
+                  { role: "H2", size: "clamp(1.75rem–2.6rem) ≈ 28–42px", weight: "700" },
+                  { role: "H3", size: "clamp(1.45rem–1.9rem) ≈ 23–30px", weight: "700" },
+                  { role: "P / Body", size: "13–15px", weight: "400" },
+                  { role: "Eyebrow", size: "10–11px", weight: "700" },
+                  { role: "Link / CTA", size: "12–13px", weight: "600–700" },
+                  { role: "Nav", size: "13px", weight: "400–500" },
+                ].map(t => (
+                  <div key={t.role} className="flex items-center justify-between gap-3 py-1.5 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
+                    <span className="text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{t.role}</span>
+                    <span className="text-[10px] font-mono" style={{ color: "#737373" }}>{t.size} · w{t.weight}</span>
                   </div>
-                </div>
+                ))}
               </div>
-
             </div>
           </div>
         </div>
