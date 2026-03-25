@@ -46,7 +46,6 @@ const TEMPLATES = [
     description: "Light white base, strong IC Blue structure. Classic, authoritative, brand-true.",
     colors: ["#FFFFFF", "#24579B", "#DCE6F2", "#8EB4E3"],
     preview: "bg-white",
-    badge: "New",
   },
   {
     id: "ic-editorial",
@@ -54,7 +53,6 @@ const TEMPLATES = [
     description: "Airy white & light blue. Editorial layout, IC Blue used as a refined accent.",
     colors: ["#F5F8FC", "#24579B", "#376092", "#DCE6F2"],
     preview: "bg-[#F5F8FC]",
-    badge: "New",
   },
   {
     id: "dark-executive",
@@ -257,61 +255,34 @@ export default function HomePage() {
                 </div>
               )}
 
-              {/* IC Editorial — visual preview */}
-              {template.id === "ic-editorial" && (
-                <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ background: "#fff", borderRadius: 6, border: "1px solid #dce6f2" }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", minHeight: 152 }}>
-                    <div style={{ padding: "12px 12px 10px", background: "#f5f8fc" }}>
-                      <p style={{ fontSize: 7, fontWeight: 700, letterSpacing: "0.22em", color: "#24579B", textTransform: "uppercase", marginBottom: 7 }}>Interconnection Consulting</p>
-                      <p style={{ fontSize: 19, fontWeight: 900, color: "#4d4d4d", lineHeight: 0.95, marginBottom: 4 }}>Defining Growth<br />Potential</p>
-                      <p style={{ fontSize: 13, fontWeight: 400, fontStyle: "italic", color: "#24579B", marginBottom: 10 }}>Since 1998</p>
-                      <div style={{ borderTop: "1px solid #dce6f2", paddingTop: 7, display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 8, fontWeight: 700, color: "#24579B", background: "#dce6f2", borderRadius: 99, padding: "3px 8px" }}>Contact us</span>
-                        <span style={{ fontSize: 8, color: "#7f7f7f" }}>Talk to our Experts</span>
-                      </div>
-                    </div>
-                    <div style={{ borderLeft: "1px solid #dce6f2", background: "linear-gradient(180deg, #edf3fa 0%, #ffffff 100%)", position: "relative" }}>
-                      <div style={{ position: "absolute", inset: "10px", border: "1px solid #dce6f2", background: "#fff" }} />
-                      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, background: "#24579B" }} />
-                      <div style={{ position: "absolute", left: 10, right: 10, bottom: 10, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                        <div style={{ background: "#f5f8fc", border: "1px solid #dce6f2", padding: "6px" }}>
-                          <p style={{ fontSize: 6, color: "#7f7f7f", letterSpacing: "0.08em", textTransform: "uppercase" }}>Editorial</p>
-                          <p style={{ fontSize: 9, fontWeight: 700, color: "#4d4d4d" }}>White + Blue</p>
-                        </div>
-                        <div style={{ background: "#f5f8fc", border: "1px solid #dce6f2", padding: "6px" }}>
-                          <p style={{ fontSize: 6, color: "#7f7f7f", letterSpacing: "0.08em", textTransform: "uppercase" }}>Clean Grid</p>
-                          <p style={{ fontSize: 9, fontWeight: 700, color: "#24579B" }}>Swiss layout</p>
-                        </div>
-                      </div>
-                    </div>
+              {/* IC Blue Professional Light — visual preview */}
+              {template.id === "ic-blue-professional-light" && (
+                <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(220,230,242,0.3)", background: "#ffffff" }}>
+                  <div style={{ padding: "8px 12px", borderBottom: "1px solid #DCE6F2", color: "#24579B", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
+                    Interconnection Consulting · Blue Professional Light
                   </div>
-                </div>
-              )}
-
-              {/* IC Blue Professional — visual preview */}
-              {template.id === "ic-blue-professional" && (
-                <div className="w-full mb-6 overflow-hidden pointer-events-none select-none" style={{ borderRadius: 6, border: "1px solid rgba(142,180,227,0.25)", background: "#1e4a86" }}>
-                  <div style={{ padding: "8px 12px", borderBottom: "1px solid rgba(142,180,227,0.25)", color: "rgba(220,230,242,0.92)", fontSize: 7, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 700 }}>
-                    Interconnection Consulting · Blue Professional
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", minHeight: 152 }}>
-                    <div style={{ padding: "12px 12px 10px" }}>
-                      <p style={{ fontSize: 7, fontWeight: 700, letterSpacing: "0.22em", color: "#8EB4E3", textTransform: "uppercase", marginBottom: 6 }}>Hero</p>
-                      <p style={{ fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 0.95, marginBottom: 6 }}>Defining Growth<br />Potential</p>
-                      <p style={{ fontSize: 14, fontWeight: 400, fontStyle: "italic", color: "#8EB4E3", marginBottom: 8 }}>Since 1998</p>
-                      <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-                        {["14,889 reports", "50+ industries", "35+ years"].map((t) => (
-                          <span key={t} style={{ fontSize: 7, color: "#dce6f2", border: "1px solid rgba(142,180,227,0.3)", padding: "2px 5px", background: "rgba(255,255,255,0.07)" }}>{t}</span>
-                        ))}
+                  <div style={{ display: "grid", gridTemplateColumns: "1.25fr 1fr", minHeight: 152 }}>
+                    <div style={{ padding: "12px 12px 10px", background: "linear-gradient(180deg, #F7F9FC 0%, #FFFFFF 100%)" }}>
+                      <p style={{ fontSize: 7, fontWeight: 700, letterSpacing: "0.22em", color: "#24579B", textTransform: "uppercase", marginBottom: 6 }}>Hero</p>
+                      <p style={{ fontSize: 20, fontWeight: 900, color: "#4D4D4D", lineHeight: 0.95, marginBottom: 6 }}>Defining Growth<br />Potential</p>
+                      <p style={{ fontSize: 13, fontWeight: 400, fontStyle: "italic", color: "#24579B", marginBottom: 8 }}>Since 1998</p>
+                      <div style={{ borderTop: "1px solid #DCE6F2", paddingTop: 7, display: "flex", gap: 5 }}>
+                        <span style={{ fontSize: 8, fontWeight: 700, color: "#fff", background: "#24579B", padding: "3px 8px" }}>Contact us</span>
+                        <span style={{ fontSize: 8, color: "#7F7F7F" }}>Light mode</span>
                       </div>
                     </div>
-                    <div style={{ borderLeft: "1px solid rgba(142,180,227,0.22)", background: "linear-gradient(160deg, rgba(220,230,242,0.18) 0%, rgba(142,180,227,0.08) 65%, rgba(36,87,155,0.2) 100%)", padding: 8, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, alignContent: "end" }}>
-                      {["14,889", "50+", "35+", "200+"].map((n) => (
-                        <div key={n} style={{ border: "1px solid rgba(142,180,227,0.25)", background: "rgba(255,255,255,0.08)", padding: "6px 6px" }}>
-                          <p style={{ fontSize: 11, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{n}</p>
-                          <p style={{ fontSize: 6, color: "#8EB4E3", textTransform: "uppercase", letterSpacing: "0.08em" }}>KPI</p>
+                    <div style={{ borderLeft: "1px solid #DCE6F2", background: "linear-gradient(180deg, #1E4A86 0%, #24579B 100%)", padding: 8, display: "grid", gap: 6 }}>
+                      <div style={{ border: "1px solid rgba(220,230,242,0.35)", background: "rgba(255,255,255,0.08)", height: 76 }} />
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                        <div style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(220,230,242,0.35)", padding: "6px" }}>
+                          <p style={{ fontSize: 6, color: "#DCE6F2", letterSpacing: "0.08em", textTransform: "uppercase" }}>Palette</p>
+                          <p style={{ fontSize: 9, fontWeight: 700, color: "#fff" }}>White + Blue</p>
                         </div>
-                      ))}
+                        <div style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(220,230,242,0.35)", padding: "6px" }}>
+                          <p style={{ fontSize: 6, color: "#DCE6F2", letterSpacing: "0.08em", textTransform: "uppercase" }}>Style</p>
+                          <p style={{ fontSize: 9, fontWeight: 700, color: "#fff" }}>Clean light</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
