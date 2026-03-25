@@ -471,7 +471,7 @@ export default function TemplateICBlueProfessionalAlt() {
             }}
           >
             <div className="flex items-center mb-5 lg:mb-8">
-              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(142,180,227,0.7)" }}>
+              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: isDesktop ? "rgba(142,180,227,0.7)" : IC.blue }}>
                 Interconnection Consulting
               </p>
             </div>
@@ -497,7 +497,7 @@ export default function TemplateICBlueProfessionalAlt() {
             <span
               style={{
                 display: "block",
-                color: IC.blueLight,
+                color: isDesktop ? IC.blueLight : IC.blue,
                 opacity: heroReady ? 1 : 0,
                 transform: heroReady ? "none" : "translateY(26px)",
                 transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s, transform 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s",
