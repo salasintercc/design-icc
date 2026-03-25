@@ -374,7 +374,7 @@ export default function TemplateICBlueProfessional() {
   const competencesLeadIn = clamp01((scrollY - winH * 1.38) / (winH * 0.44))
 
   return (
-    <div className="min-h-screen" style={{ background: IC.offWhite, color: IC.gray80 }}>
+    <div className="min-h-screen" style={{ background: IC.offWhite, color: IC.gray80, overflowX: "clip" }}>
 
       <style>{`
         @keyframes scrollBounce {

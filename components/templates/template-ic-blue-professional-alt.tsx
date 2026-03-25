@@ -299,7 +299,7 @@ export default function TemplateICBlueProfessionalAlt() {
   const sectionLeadIn = sectionIn
 
   return (
-    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, overflowX: "hidden" }}>
+    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, overflowX: "clip" }}>
 
       <style>{`
         @keyframes scrollBounce {

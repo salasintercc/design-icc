@@ -336,7 +336,7 @@ export default function TemplateICBlueProfessionalV2() {
   const sectionLeadIn = sectionIn
 
   return (
-    <div className="min-h-screen" style={{ background: "rgb(77,77,77)", color: IC.gray80, overflowX: "hidden" }}>
+    <div className="min-h-screen" style={{ background: "rgb(77,77,77)", color: IC.gray80, overflowX: "clip" }}>
 
       <style>{`
         @keyframes scrollBounce {
