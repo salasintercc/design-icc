@@ -851,9 +851,35 @@ export default function TemplateICBlueProfessionalV2() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: "#C2C2C2", letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
+              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: "#4D4D4D", letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
-              <p className="text-[14px] leading-[1.8]" style={{ color: "#7F7F7F" }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
+              <p className="text-[14px] leading-[1.8] mb-6" style={{ color: "#7F7F7F" }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
+              <div className="flex items-center gap-0">
+                <input
+                  placeholder="Industry Report Search"
+                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-[#999999]"
+                  style={{
+                    color: "#C2C2C2",
+                    background: IC.white,
+                    border: "none",
+                    appearance: "none",
+                  }}
+                />
+                <button
+                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold uppercase tracking-[0.14em] shrink-0"
+                  style={{
+                    color: IC.white,
+                    background: "rgb(127,127,127)",
+                    minWidth: 120,
+                    border: `1px solid ${IC.blue}`,
+                    whiteSpace: "nowrap",
+                    transition: "background 0.25s ease",
+                    cursor: "pointer",
+                  }}
+                >
+                  Search <ArrowRight size={12} />
+                </button>
+              </div>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: IC.white, border: "1px solid #DDE1E8", boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
@@ -952,157 +978,110 @@ export default function TemplateICBlueProfessionalV2() {
             <ParaTitle className="mb-4">Don't miss any Industry Trends</ParaTitle>
             <div className="mb-16" aria-hidden="true" />
           </Fade>
-          <div className="grid lg:grid-cols-2 gap-12 mt-4">
+          <div className="grid lg:grid-cols-2 gap-x-12 gap-y-0 mt-4">
 
-            {/* Press */}
-            <div>
-              <Fade>
-                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: "rgb(77,77,77)" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
-                    <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                  </span>
-                  IC News
-                </h3>
-              </Fade>
-              {D.press.map((p, idx) => (
-                <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{p.title}</h4>
-                      <span
-                        className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none"
-                        style={{ background: IC.blueXL, color: IC.blue }}
-                        aria-hidden="true"
-                      >
-                        00/00/0000
-                      </span>
-                    </div>
-                    <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
-                      style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
-                      onMouseEnter={e => {
-                        const el = e.currentTarget as HTMLElement
-                        el.style.color = IC.blueDark
-                        el.style.transform = "translateX(4px)"
-                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                      }}
-                      onMouseLeave={e => {
-                        const el = e.currentTarget as HTMLElement
-                        el.style.color = IC.blue
-                        el.style.transform = "translateX(0)"
-                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                      }}
-                    >
-                      <span>Read more</span>
-                      <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                        <ArrowRight size={12} />
-                      </span>
-                    </a>
-                  </div>
-                </Fade>
-              ))}
-              <Fade delay={0.25}>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{
-                    borderRadius: 0,
-                    color: IC.white,
-                    background: "rgb(127,127,127)",
-                    border: `1px solid ${IC.blue}`,
-                    transition: "background 0.25s ease",
-                    cursor: "pointer",
-                  }}
-                  onMouseEnter={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.background = "rgb(100,100,100)"
-                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                  }}
-                  onMouseLeave={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.background = "rgb(127,127,127)"
-                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                  }}
-                >
-                  More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
-                </a>
-              </Fade>
-            </div>
+            {/* ── Column headers ── */}
+            <Fade>
+              <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                style={{ color: "rgb(77,77,77)" }}>
+                <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
+                  <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                </span>
+                IC News
+              </h3>
+            </Fade>
+            <Fade delay={0.05}>
+              <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                style={{ color: "rgb(77,77,77)" }}>
+                <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
+                  <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                </span>
+                Keep in touch with our events
+              </h3>
+            </Fade>
 
-            {/* Events */}
-            <div>
-              <Fade delay={0.05}>
-                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: "rgb(77,77,77)" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBEBEB 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(44,44,44,0.12)" }}>
-                    <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                  </span>
-                  Keep in touch with our events
-                </h3>
-              </Fade>
-              {D.events.map((e, idx) => (
-                <Fade key={idx} delay={idx * 0.1}>
-                  <div className="pb-6 mb-6 min-h-[150px] flex flex-col">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{e.title}</h4>
-                      <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{e.date}</span>
+            {/* ── Rows: press[i] + events[i] share the same grid row → equal height → Read more aligns ── */}
+            {Array.from({ length: Math.max(D.press.length, D.events.length) }, (_, idx) => {
+              const p = D.press[idx]
+              const ev = D.events[idx]
+              return (
+                <>
+                  {/* News item */}
+                  <Fade key={`press-${idx}`} delay={idx * 0.1} className="h-full">
+                    <div className="pb-6 mb-4 flex flex-col h-full">
+                      {p ? (
+                        <>
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{p.title}</h4>
+                            <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none" style={{ background: IC.blueXL, color: IC.blue }} aria-hidden="true">00/00/0000</span>
+                          </div>
+                          <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
+                          <a
+                            href="#"
+                            className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
+                            style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
+                            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = IC.blueDark; el.style.transform = "translateX(4px)"; const a = el.querySelector(".rm-arrow") as HTMLElement; if (a) a.style.transform = "translateX(5px)" }}
+                            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = IC.blue; el.style.transform = "translateX(0)"; const a = el.querySelector(".rm-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
+                          >
+                            <span>Read more</span>
+                            <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                          </a>
+                        </>
+                      ) : null}
                     </div>
-                    <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{e.desc}</p>
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
-                      style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
-                      onMouseEnter={e => {
-                        const el = e.currentTarget as HTMLElement
-                        el.style.color = IC.blueDark
-                        el.style.transform = "translateX(4px)"
-                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                      }}
-                      onMouseLeave={e => {
-                        const el = e.currentTarget as HTMLElement
-                        el.style.color = IC.blue
-                        el.style.transform = "translateX(0)"
-                        const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                      }}
-                    >
-                      <span>Read more</span>
-                      <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                        <ArrowRight size={12} />
-                      </span>
-                    </a>
-                  </div>
-                </Fade>
-              ))}
-              <Fade delay={0.3}>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5"
-                  style={{
-                    borderRadius: 0,
-                    color: IC.white,
-                    background: "rgb(127,127,127)",
-                    border: `1px solid ${IC.blue}`,
-                    transition: "background 0.25s ease",
-                    cursor: "pointer",
-                  }}
-                  onMouseEnter={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.background = "rgb(100,100,100)"
-                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                  }}
-                  onMouseLeave={e => {
-                    const btn = e.currentTarget as HTMLElement
-                    btn.style.background = "rgb(127,127,127)"
-                    const arrow = btn.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                  }}
-                >
-                  More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
-                </a>
-              </Fade>
-            </div>
+                  </Fade>
+
+                  {/* Event item */}
+                  <Fade key={`event-${idx}`} delay={idx * 0.1} className="h-full">
+                    <div className="pb-6 mb-4 flex flex-col h-full">
+                      {ev ? (
+                        <>
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <h4 className="text-[17px] font-semibold" style={{ color: "#7F7F7F" }}>{ev.title}</h4>
+                            <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
+                          </div>
+                          <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
+                          <a
+                            href="#"
+                            className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
+                            style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
+                            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = IC.blueDark; el.style.transform = "translateX(4px)"; const a = el.querySelector(".rm-arrow") as HTMLElement; if (a) a.style.transform = "translateX(5px)" }}
+                            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = IC.blue; el.style.transform = "translateX(0)"; const a = el.querySelector(".rm-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
+                          >
+                            <span>Read more</span>
+                            <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                          </a>
+                        </>
+                      ) : null}
+                    </div>
+                  </Fade>
+                </>
+              )
+            })}
+
+            {/* ── Buttons row — share the same grid row so they sit at same height ── */}
+            <Fade delay={0.25} className="pt-2">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5 w-fit"
+                style={{ borderRadius: 0, color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
+                onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
+                onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
+              >
+                More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+              </a>
+            </Fade>
+            <Fade delay={0.3} className="pt-2">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5 w-fit"
+                style={{ borderRadius: 0, color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
+                onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
+                onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
+              >
+                More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+              </a>
+            </Fade>
           </div>
         </div>
       </section>

@@ -863,9 +863,36 @@ export default function TemplateICBlueProfessionalLight() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blue }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-4" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.gray80, letterSpacing: "-0.015em" }}>Consultants by passion<br />and excellence!</h2>
+              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.gray80, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
-              <p className="text-[14px] leading-[1.8]" style={{ color: IC.gray50 }}>Interconnection Consulting provides worldwide since 1998 to our customers competitive advantages through valuable industry and market knowledge as well as through tailor-made concepts and tools in order to optimize sales processes, lead generation, pricing and customer satisfaction.</p>
+              <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray50 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
+              <div className="flex items-center gap-0">
+                <input
+                  placeholder="Industry Report Search"
+                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-white"
+                  style={{
+                    color: IC.white,
+                    caretColor: IC.white,
+                    background: IC.blueLight,
+                    border: "none",
+                    appearance: "none",
+                  }}
+                />
+                <button
+                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
+                  style={{
+                    color: IC.white,
+                    background: IC.blue,
+                    minWidth: 120,
+                    border: `1px solid ${IC.blue}`,
+                    whiteSpace: "nowrap",
+                    transition: "background 0.25s ease",
+                    cursor: "pointer",
+                  }}
+                >
+                  Search <ArrowRight size={12} />
+                </button>
+              </div>
             </div>
             <div className="flex flex-col justify-between py-10 px-8" style={{ background: IC.white, border: `1.5px solid ${IC.blueXL}`, boxShadow: "0 8px 32px rgba(36,87,155,0.09)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
