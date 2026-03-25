@@ -38,9 +38,9 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const current = Array.from({ length: cardsPerPage }, (_, i) => clients[(start + i) % clients.length])
 
   return (
-    <div className="flex gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
       {current.map((c) => (
-        <div key={c.name} className="flex-1 flex items-center justify-center px-4 py-4"
+        <div key={c.name} className="flex items-center justify-center px-4 py-4"
           style={{ height: 68, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
           <span
             className="text-[13px] sm:text-[14px] font-semibold leading-tight text-center"
@@ -333,7 +333,7 @@ export default function TemplateICBlueProfessionalLight() {
   const sectionLeadIn = sectionIn
 
   return (
-    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
+    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, overflowX: "hidden" }}>
 
       <style>{`
         @keyframes scrollBounce {

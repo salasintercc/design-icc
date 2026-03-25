@@ -38,9 +38,9 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const current = Array.from({ length: cardsPerPage }, (_, i) => clients[(start + i) % clients.length])
 
   return (
-    <div className="flex gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
       {current.map((c) => (
-        <div key={c.name} className="flex-1 flex items-center justify-center px-4 py-4"
+        <div key={c.name} className="flex items-center justify-center px-4 py-4"
           style={{ height: 68, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
           <span
             className="text-[13px] sm:text-[14px] font-semibold leading-tight text-center"
@@ -299,7 +299,7 @@ export default function TemplateICBlueProfessionalAlt() {
   const sectionLeadIn = sectionIn
 
   return (
-    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80 }}>
+    <div className="min-h-screen" style={{ background: IC.white, color: IC.gray80, overflowX: "hidden" }}>
 
       <style>{`
         @keyframes scrollBounce {
@@ -929,37 +929,24 @@ export default function TemplateICBlueProfessionalAlt() {
             <ParaTitle className="mb-4">Don't miss any Industry Trends</ParaTitle>
             <div className="mb-8" aria-hidden="true" />
           </Fade>
-          {/* Interleaved grid: each row = press[i] + event[i] → equal heights → Read more aligns */}
-          <div className="grid lg:grid-cols-2 gap-x-12 gap-y-0 mt-2 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-x-12 gap-y-10 mt-2 items-start">
 
-            {/* Row 0 — section headers */}
-            <Fade>
-              <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                style={{ color: "#4D4D4D" }}>
-                <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
-                  <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                </span>
-                IC News
-              </h3>
-            </Fade>
-            <Fade delay={0.05}>
-              <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                style={{ color: "#4D4D4D" }}>
-                <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
-                  <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                </span>
-                Keep in touch with our events
-              </h3>
-            </Fade>
+            {/* News column */}
+            <div className="flex flex-col h-full">
+              <Fade>
+                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  style={{ color: "#4D4D4D" }}>
+                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
+                    <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                  </span>
+                  IC News
+                </h3>
+              </Fade>
 
-            {/* Rows 1…n — one press item + one event item per row */}
-            {D.press.map((p, idx) => {
-              const ev = D.events[idx]
-              return (
-                <>
-                  {/* Press item */}
-                  <Fade key={`press-${idx}`} delay={idx * 0.1} className="h-full">
-                    <div className="pb-6 mb-6 flex flex-col h-full">
+              <div className="flex flex-col">
+                {D.press.map((p, idx) => (
+                  <Fade key={`press-${idx}`} delay={idx * 0.1}>
+                    <div className="pb-6 mb-6 flex flex-col">
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                         <span
@@ -995,94 +982,108 @@ export default function TemplateICBlueProfessionalAlt() {
                       </a>
                     </div>
                   </Fade>
+                ))}
+              </div>
 
-                  {/* Event item — same row */}
-                  {ev && (
-                    <Fade key={`event-${idx}`} delay={idx * 0.1} className="h-full">
-                      <div className="pb-6 mb-6 flex flex-col h-full">
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
-                          <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
-                        </div>
-                        <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
-                        <a
-                          href="#"
-                          className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
-                          style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
-                          onMouseEnter={e => {
-                            const el = e.currentTarget as HTMLElement
-                            el.style.color = IC.blueDark
-                            el.style.transform = "translateX(4px)"
-                            const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                          }}
-                          onMouseLeave={e => {
-                            const el = e.currentTarget as HTMLElement
-                            el.style.color = IC.blue
-                            el.style.transform = "translateX(0)"
-                            const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                          }}
-                        >
-                          <span>Read more</span>
-                          <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                            <ArrowRight size={12} />
-                          </span>
-                        </a>
+              <Fade delay={0.25} className="mt-auto pt-2">
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
+                  style={{
+                    borderRadius: 0,
+                    color: IC.white,
+                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                    transition: "opacity 0.2s ease",
+                  }}
+                  onMouseEnter={e => {
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                    const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
+                  }}
+                  onMouseLeave={e => {
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                    const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                  }}
+                >
+                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
+                  More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                </a>
+              </Fade>
+            </div>
+
+            {/* Events column */}
+            <div className="flex flex-col h-full">
+              <Fade delay={0.05}>
+                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  style={{ color: "#4D4D4D" }}>
+                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
+                    <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                  </span>
+                  Keep in touch with our events
+                </h3>
+              </Fade>
+
+              <div className="flex flex-col">
+                {D.events.map((ev, idx) => (
+                  <Fade key={`event-${idx}`} delay={idx * 0.1}>
+                    <div className="pb-6 mb-6 flex flex-col">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
+                        <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
                       </div>
-                    </Fade>
-                  )}
-                </>
-              )
-            })}
+                      <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
+                      <a
+                        href="#"
+                        className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
+                        style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
+                        onMouseEnter={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.color = IC.blueDark
+                          el.style.transform = "translateX(4px)"
+                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
+                        }}
+                        onMouseLeave={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.color = IC.blue
+                          el.style.transform = "translateX(0)"
+                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                        }}
+                      >
+                        <span>Read more</span>
+                        <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
+                          <ArrowRight size={12} />
+                        </span>
+                      </a>
+                    </div>
+                  </Fade>
+                ))}
+              </div>
 
-            {/* Last row — action buttons */}
-            <Fade delay={0.25}>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden"
-                style={{
-                  borderRadius: 0,
-                  color: IC.white,
-                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
-                  transition: "opacity 0.2s ease",
-                }}
-                onMouseEnter={e => {
-                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                }}
-                onMouseLeave={e => {
-                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                }}
-              >
-                <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
-              </a>
-            </Fade>
-            <Fade delay={0.3}>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden"
-                style={{
-                  borderRadius: 0,
-                  color: IC.white,
-                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
-                  transition: "opacity 0.2s ease",
-                }}
-                onMouseEnter={e => {
-                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                }}
-                onMouseLeave={e => {
-                  const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                }}
-              >
-                <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
-              </a>
-            </Fade>
+              <Fade delay={0.3} className="mt-auto pt-2">
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
+                  style={{
+                    borderRadius: 0,
+                    color: IC.white,
+                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                    transition: "opacity 0.2s ease",
+                  }}
+                  onMouseEnter={e => {
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
+                  }}
+                  onMouseLeave={e => {
+                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
+                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
+                  }}
+                >
+                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
+                  More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                </a>
+              </Fade>
+            </div>
           </div>
         </div>
       </section>
