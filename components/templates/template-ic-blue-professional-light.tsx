@@ -932,12 +932,12 @@ export default function TemplateICBlueProfessionalLight() {
               <div className="flex items-end justify-between mb-14">
                 <div>
                   <Label>What we do</Label>
-                  <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
+                  <ParaTitle className="mb-0">Sales Growth Through Market Intelligence</ParaTitle>
                 </div>
 
               </div>
             </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5px", background: "rgba(36,87,155,0.24)" }}>
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (

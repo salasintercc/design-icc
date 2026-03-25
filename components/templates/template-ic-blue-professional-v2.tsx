@@ -704,7 +704,7 @@ export default function TemplateICBlueProfessionalV2() {
                     }}
                   />
                   <button
-                    className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold uppercase tracking-[0.14em] shrink-0"
+                    className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                     style={{
                       color: IC.white,
                       background: "rgb(127,127,127)",
@@ -811,7 +811,7 @@ export default function TemplateICBlueProfessionalV2() {
                     />
                     <button
                       type="submit"
-                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-[0.16em]"
+                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]"
                       style={{
                         color: IC.white,
                         background: "rgb(127,127,127)",
@@ -866,7 +866,7 @@ export default function TemplateICBlueProfessionalV2() {
                   }}
                 />
                 <button
-                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold uppercase tracking-[0.14em] shrink-0"
+                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                   style={{
                     color: IC.white,
                     background: "rgb(127,127,127)",
@@ -890,7 +890,7 @@ export default function TemplateICBlueProfessionalV2() {
                 <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
                 <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#999999]" style={{ color: "#C2C2C2", background: "#F5F6F8", border: "1px solid #DDE1E8" }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-[0.16em]" style={{ color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
+                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
                 >
@@ -916,12 +916,12 @@ export default function TemplateICBlueProfessionalV2() {
               <div className="flex items-end justify-between mb-14">
                 <div>
                   <Label style={{ color: IC.blueLight }}>What we do</Label>
-                  <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
+                  <ParaTitle className="mb-0">Sales Growth Through Market Intelligence</ParaTitle>
                 </div>
 
               </div>
             </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5px", background: "rgba(77,77,77,0.28)" }}>
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
@@ -1017,7 +1017,7 @@ export default function TemplateICBlueProfessionalV2() {
               <Fade delay={0.25} className="mt-6">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5 w-fit"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 w-fit"
                   style={{ borderRadius: 0, color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
@@ -1064,7 +1064,7 @@ export default function TemplateICBlueProfessionalV2() {
               <Fade delay={0.3} className="mt-6">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest px-5 py-2.5 w-fit"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 w-fit"
                   style={{ borderRadius: 0, color: IC.white, background: "rgb(127,127,127)", border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(100,100,100)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = "rgb(127,127,127)"; const a = b.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}

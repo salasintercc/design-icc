@@ -556,10 +556,9 @@ export default function TemplateICBlueProfessionalAlt() {
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[14px] font-semibold relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-6 py-3.5 relative overflow-hidden"
                 style={{
-                  color: "rgba(220,230,242,0.96)",
-                  padding: "12px 18px",
+                  color: IC.white,
                   borderRadius: 0,
                   background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
                   transition: "opacity 0.2s ease",
@@ -673,7 +672,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 >
                   <input
                     placeholder="Industry Report Search"
-                    className="flex-1 h-12 px-4 bg-transparent text-[15px] outline-none placeholder:text-[#8EB4E3]"
+                    className="flex-1 h-12 px-4 bg-transparent text-[15px] outline-none placeholder:text-white"
                     style={{
                       color: IC.white,
                       caretColor: IC.white,
@@ -741,7 +740,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     <input
                       name="name"
                       placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
@@ -750,7 +749,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
@@ -760,7 +759,7 @@ export default function TemplateICBlueProfessionalAlt() {
                       name="mail"
                       type="email"
                       placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
@@ -770,7 +769,7 @@ export default function TemplateICBlueProfessionalAlt() {
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]"
+                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
@@ -779,7 +778,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     <textarea
                       name="message"
                       placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#8EB4E3]"
+                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white"
                       style={{
                         color: IC.white,
                         background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
@@ -833,7 +832,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex items-center gap-0">
                 <input
                   placeholder="Industry Report Search"
-                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-[#8EB4E3]"
+                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-white"
                   style={{
                     color: IC.white,
                     caretColor: IC.white,
@@ -860,11 +859,11 @@ export default function TemplateICBlueProfessionalAlt() {
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
               <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.white }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-[#8EB4E3]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
                 <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", transition: "opacity 0.2s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
@@ -892,12 +891,12 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex items-end justify-between mb-14">
                 <div>
                   <Label>What we do</Label>
-                  <ParaTitle className="mb-0">Industry Experience<br />that creates value.</ParaTitle>
+                  <ParaTitle className="mb-0">Sales Growth Through Market Intelligence</ParaTitle>
                 </div>
 
               </div>
             </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: IC.blueXL }}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5px", background: "rgba(36,87,155,0.24)" }}>
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
@@ -971,7 +970,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex flex-col">
                 {D.press.map((p, idx) => (
                   <Fade key={`press-${idx}`} delay={idx * 0.1}>
-                    <div className="pb-6 mb-6 flex flex-col">
+                    <div className="pb-6 mb-6 flex flex-col min-h-[210px]">
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                         <span
@@ -1052,7 +1051,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex flex-col">
                 {D.events.map((ev, idx) => (
                   <Fade key={`event-${idx}`} delay={idx * 0.1}>
-                    <div className="pb-6 mb-6 flex flex-col">
+                    <div className="pb-6 mb-6 flex flex-col min-h-[210px]">
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
                         <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
