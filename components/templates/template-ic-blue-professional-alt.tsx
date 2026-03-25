@@ -427,7 +427,7 @@ export default function TemplateICBlueProfessionalAlt() {
             }}
           >
             <Image src="/slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.85) 0%, rgba(20,44,90,0.55) 40%, rgba(20,44,90,0.82) 75%, rgba(20,44,90,0.97) 100%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.35) 0%, transparent 40%, rgba(20,44,90,0.15) 75%, rgba(20,44,90,0.30) 100%)" }} />
           </div>
         </div>
 

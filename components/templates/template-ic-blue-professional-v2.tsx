@@ -464,7 +464,7 @@ export default function TemplateICBlueProfessionalV2() {
             }}
           >
             <Image src="/slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(77,77,77,0.85) 0%, rgba(77,77,77,0.55) 40%, rgba(77,77,77,0.82) 75%, rgba(77,77,77,0.97) 100%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(77,77,77,0.35) 0%, transparent 40%, rgba(77,77,77,0.15) 75%, rgba(77,77,77,0.30) 100%)" }} />
           </div>
         </div>
 
@@ -508,7 +508,7 @@ export default function TemplateICBlueProfessionalV2() {
             }}
           >
             <div className="flex items-center mb-5 lg:mb-8">
-              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(194,194,194,0.7)" }}>
+              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: IC.blueLight }}>
                 Interconnection Consulting
               </p>
             </div>
