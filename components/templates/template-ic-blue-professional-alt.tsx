@@ -876,9 +876,9 @@ export default function TemplateICBlueProfessionalAlt() {
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
-                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95}>
+                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} className="h-full">
                     <div
-                      className="relative flex flex-col p-8 overflow-hidden"
+                      className="relative flex flex-col p-8 overflow-hidden h-full"
                       style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background = IC.blueXL
