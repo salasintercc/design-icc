@@ -172,18 +172,16 @@ export default function HomePage() {
             {/* Color Palette */}
             <div>
               <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Paleta de Colores</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-5 sm:grid-flow-col gap-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-4 sm:grid-flow-col gap-1">
                 {[
-                  { name: "IC Blue Dark", hex: "#1E4A86" },
                   { name: "IC Blue", hex: "#24579B" },
+                  { name: "Blue Akzent Darker 25%", hex: "#376092" },
                   { name: "IC Blue Light", hex: "#8EB4E3" },
-                  { name: "Gray 80", hex: "#2C2C2C" },
-                  { name: "Gray 60", hex: "#4D4D4D" },
+                  { name: "IC Blue XL", hex: "#DCE6F2" },
+                  { name: "Gray 80", hex: "#4D4D4D" },
                   { name: "Gray 50", hex: "#7F7F7F" },
                   { name: "Gray Light", hex: "#C2C2C2" },
-                  { name: "IC Blue XL", hex: "#DCE6F2" },
-                  { name: "Surface", hex: "#F4F7FB" },
-                  { name: "Off White", hex: "#F7F9FC" },
+                  { name: "White", hex: "#FFFFFF" },
                 ].map(c => (
                   <div key={c.hex} className="flex items-center gap-3 py-1 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
                     <div className="w-5 h-5 rounded flex-shrink-0" style={{ background: c.hex, border: "1px solid rgba(255,255,255,0.08)" }} />
