@@ -20,7 +20,7 @@ const IC = {
 function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const [page, setPage] = useState(0)
   const [fading, setFading] = useState(false)
-  const cardsPerPage = 4
+  const cardsPerPage = 5
   const pageCount = Math.max(1, Math.ceil(clients.length / cardsPerPage))
 
   useEffect(() => {
@@ -29,8 +29,8 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
       setTimeout(() => {
         setPage((p) => (p + 1) % pageCount)
         setFading(false)
-      }, 600)
-    }, 3200)
+      }, 500)
+    }, 3000)
     return () => clearInterval(timer)
   }, [pageCount])
 
@@ -38,22 +38,50 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const current = Array.from({ length: cardsPerPage }, (_, i) => clients[(start + i) % clients.length])
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      {current.map((c) => (
-        <div key={c.name} className="flex items-center justify-center px-4 py-4"
-          style={{ height: 68, background: IC.white, border: `1.5px solid ${IC.blueXL}` }}>
-          <span
-            className="text-[13px] sm:text-[14px] font-semibold leading-tight text-center"
+    <div>
+      <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray50 }}>Also trusted by</p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {current.map((c, i) => (
+          <div key={i} className="flex items-center justify-center px-3 py-3"
             style={{
-              color: IC.gray80,
-              opacity: fading ? 0 : 1,
-              transition: "opacity 0.5s ease",
+              height: 64,
+              background: "rgba(255,255,255,0.78)",
+              border: `1px solid rgba(36,87,155,0.13)`,
+              backdropFilter: "blur(6px)",
+              transition: "background 0.3s ease",
             }}
           >
-            {c.name}
-          </span>
-        </div>
-      ))}
+            <span
+              className="text-[12px] sm:text-[13px] font-semibold leading-tight text-center"
+              style={{
+                color: IC.gray80,
+                opacity: fading ? 0 : 1,
+                transition: "opacity 0.45s ease",
+              }}
+            >
+              {c.name}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-1.5 mt-5 justify-center">
+        {Array.from({ length: pageCount }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => setPage(i)}
+            style={{
+              width: i === page ? 22 : 7,
+              height: 5,
+              borderRadius: 3,
+              background: i === page ? IC.blue : IC.blueLight,
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+              transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
+            }}
+          />
+        ))}
+      </div>
     </div>
   )
 }
@@ -278,6 +306,14 @@ export default function TemplateICBlueProfessionalAlt() {
     const idx = Math.round((scrollLeft / (scrollWidth - clientWidth)) * (COMPETENCES.length - 1))
     setDot(Math.min(Math.max(idx, 0), COMPETENCES.length - 1))
   }, [])
+
+  const goToReference = useCallback((dir: 1 | -1) => {
+    setReferenceImageFading(true)
+    setTimeout(() => setReferenceTextFading(true), 130)
+    setTimeout(() => setReferenceLogoPair((p) => (p + dir + referencePairCount) % referencePairCount), 430)
+    setTimeout(() => setReferenceImageFading(false), 520)
+    setTimeout(() => setReferenceTextFading(false), 690)
+  }, [referencePairCount])
 
   const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1)
   // hero content fades from scroll 0 → winH*0.60
@@ -1114,121 +1150,147 @@ export default function TemplateICBlueProfessionalAlt() {
 
       {/* REFERENCES */}
       <section
-        className="pt-20 pb-10 lg:pt-28 lg:pb-12"
+        className="pt-20 pb-16 lg:pt-28 lg:pb-20"
         style={{
           background: `linear-gradient(to bottom,
             ${IC.white} 0%,
-            ${IC.blueXL} 12%,
-            #edf3fb 28%,
-            #dce9f5 44%,
+            ${IC.blueXL} 10%,
+            #edf3fb 24%,
+            #dce9f5 42%,
             #c8daee 58%,
-            #b4cce7 72%,
-            #9fbde0 84%,
+            #b4cce7 74%,
             ${IC.blueLight} 100%)`,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
+
+          {/* ── Header row ── */}
           <Fade>
-            <Label>References</Label>
-            <ParaTitle className="mb-4">Leading Companies trust in Interconnection Consulting</ParaTitle>
-            <div className="mb-8" aria-hidden="true" />
+            <div className="mb-2">
+              <Label>References</Label>
+              <ParaTitle className="mb-0">Leading Companies trust in Interconnection Consulting</ParaTitle>
+              <Rule />
+            </div>
+
           </Fade>
 
-          <div className="flex flex-col gap-7 mb-10 mt-0">
-            {currentReferences.map((ref, idx) => {
-              const imageOutX = idx === 0 ? -24 : 24
-              const textOutX = idx === 0 ? 22 : -22
-              const imageDelay = `0s`
-              const textDelay = `0s`
-
-              return (
-              <Fade key={idx} delay={0}>
-                <div className="grid lg:grid-cols-3 gap-6 lg:gap-10 items-stretch p-7"
+          {/* ── Cards grid ── */}
+          <div className="grid lg:grid-cols-2 gap-5 mb-12">
+            {currentReferences.map((ref, idx) => (
+              <Fade key={idx} delay={idx * 0.08} style={{ display: "flex" }}>
+                <div
+                  className="relative overflow-hidden flex flex-col w-full"
                   style={{
-                    border: `1.5px solid ${IC.blueXL}`,
                     background: IC.white,
-                    minHeight: 280,
-                    transition: "box-shadow 0.4s ease, border-color 0.5s ease",
-                    borderColor: referenceImageFading || referenceTextFading ? "rgba(142,180,227,0.45)" : IC.blueXL,
+                    borderLeft: `4px solid ${IC.blue}`,
+                    borderTop: `1px solid ${IC.blueXL}`,
+                    borderRight: `1px solid ${IC.blueXL}`,
+                    borderBottom: `1px solid ${IC.blueXL}`,
+                    boxShadow: "0 4px 28px rgba(36,87,155,0.08)",
+                    height: 300,
+                    padding: "1.4rem 1.6rem 1.3rem 1.5rem",
+                    transition: "box-shadow 0.35s ease, border-color 0.35s ease",
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 10px 32px rgba(36,87,155,0.09)")}
-                  onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.boxShadow = "0 12px 44px rgba(36,87,155,0.14)"
+                    e.currentTarget.style.borderColor = IC.blueLight
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.boxShadow = "0 4px 28px rgba(36,87,155,0.08)"
+                    e.currentTarget.style.borderColor = IC.blueXL
+                  }}
                 >
-                  <div className="flex justify-center items-center">
-                    <div className="flex items-center justify-center p-5"
-                      style={{
-                        width: 170, height: 100, background: IC.white, border: `1.5px solid ${IC.blueXL}`, flexShrink: 0,
-                        transition: "opacity 0.5s ease",
-                        opacity: referenceImageFading ? 0.15 : 1,
-                      }}>
-                      <img
-                        src={ref.logoSrc}
-                        alt={ref.company}
-                        style={{
-                          maxWidth: 130,
-                          maxHeight: 60,
-                          objectFit: "contain",
-                          opacity: referenceImageFading ? 0 : 1,
-                          transform: referenceImageFading ? `scale(0.88) translateY(6px)` : `scale(1) translateY(0px)`,
-                          filter: referenceImageFading ? "blur(4px)" : "blur(0px)",
-                          transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) ${imageDelay}, transform 0.52s cubic-bezier(0.22,1,0.36,1) ${imageDelay}, filter 0.38s ease ${imageDelay}`,
-                        }}
-                        onError={e => {
-                          e.currentTarget.style.display = "none"
-                          if (e.currentTarget.nextElementSibling) (e.currentTarget.nextElementSibling as HTMLElement).style.display = "block"
-                        }}
-                      />
-                      <span
-                        className="hidden text-[15px] font-bold text-center"
-                        style={{
-                          color: IC.gray80,
-                          opacity: referenceImageFading ? 0 : 1,
-                          transition: `opacity 0.38s ease ${imageDelay}`,
-                        }}
+                  {/* Watermark quote mark */}
+                  <div
+                    className="absolute bottom-14 right-3 select-none pointer-events-none"
+                    style={{ fontSize: 200, lineHeight: 1, fontFamily: "Georgia, 'Times New Roman', serif", color: IC.blue, opacity: 0.04, userSelect: "none" }}
+                    aria-hidden="true"
+                  >
+                    &rdquo;
+                  </div>
+
+                  {/* Animated content wrapper */}
+                  <div
+                    className="flex flex-col h-full"
+                    style={{
+                      opacity: referenceTextFading ? 0 : 1,
+                      transform: referenceTextFading ? "translateY(-8px)" : "translateY(0)",
+                      filter: referenceTextFading ? "blur(4px)" : "blur(0px)",
+                      transition: "opacity 0.42s ease, transform 0.52s cubic-bezier(0.22,1,0.36,1), filter 0.4s ease",
+                    }}
+                  >
+                    {/* Company label + quote — starts from top */}
+                    <div className="flex flex-col justify-start" style={{ flex: "1 1 auto" }}>
+                      <p
+                        className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5"
+                        style={{ color: IC.blue, flexShrink: 0 }}
                       >
                         {ref.company}
-                      </span>
+                      </p>
+
+                      {/* Quote text — clamped to 5 lines */}
+                      <p
+                        className="text-[15px] leading-relaxed relative z-10"
+                        style={{
+                          color: "#7F7F7F",
+                          overflow: "hidden",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 5,
+                          WebkitBoxOrient: "vertical",
+                        }}
+                      >
+                        {ref.statement}
+                      </p>
                     </div>
-                  </div>
-                  <div className="lg:col-span-2 flex items-center">
-                    <div style={{ width: "100%" }}>
-                      <div style={{
-                        display: "flex", alignItems: "flex-start", gap: 10,
-                        opacity: referenceTextFading ? 0 : 1,
-                        transform: referenceTextFading ? `translateY(-12px)` : `translateY(0px)`,
-                        filter: referenceTextFading ? "blur(5px)" : "blur(0px)",
-                        transition: `opacity 0.45s cubic-bezier(0.4,0,0.2,1) ${textDelay}, transform 0.55s cubic-bezier(0.22,1,0.36,1) ${textDelay}, filter 0.4s ease ${textDelay}`,
-                      }}>
-                        <span style={{
-                          flexShrink: 0,
-                          fontSize: "97px",
-                          lineHeight: 0.72,
-                          color: IC.blue,
-                          marginTop: 2,
-                        }}>&ldquo;</span>
-                        <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ref.statement}</p>
+
+                    {/* Divider + author + logo */}
+                    <div
+                      className="flex items-center justify-between pt-4 mt-auto"
+                      style={{ borderTop: `1px solid ${IC.blueXL}`, flexShrink: 0 }}
+                    >
+                      <p className="text-[12.5px] font-medium leading-snug" style={{ color: IC.gray80, maxWidth: "60%" }}>
+                        {ref.author}
+                      </p>
+                      <div
+                        className="flex items-center justify-end shrink-0"
+                        style={{
+                          width: 90, height: 44,
+                          background: "transparent",
+                          opacity: referenceImageFading ? 0.15 : 1,
+                          transition: "opacity 0.4s ease",
+                        }}
+                      >
+                        <img
+                          src={ref.logoSrc}
+                          alt={ref.company}
+                          style={{
+                            maxWidth: 90, maxHeight: 36, objectFit: "contain",
+                            opacity: referenceImageFading ? 0 : 1,
+                            transform: referenceImageFading ? "scale(0.86)" : "scale(1)",
+                            transition: "opacity 0.38s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+                          }}
+                          onError={e => {
+                            e.currentTarget.style.display = "none"
+                            const next = e.currentTarget.nextElementSibling as HTMLElement
+                            if (next) next.style.display = "block"
+                          }}
+                        />
+                        <span
+                          className="hidden text-[11px] font-bold text-right"
+                          style={{ color: IC.blue }}
+                        >
+                          {ref.company}
+                        </span>
                       </div>
-                      <p className="mt-3 text-[11px] font-bold tracking-[0.3em] uppercase" style={{
-                        color: IC.blueLight,
-                        opacity: referenceTextFading ? 0 : 1,
-                        transform: referenceTextFading ? `translateY(-8px)` : `translateY(0px)`,
-                        transition: `opacity 0.38s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.12s), transform 0.46s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.12s)`,
-                      }}>{ref.company}</p>
-                      <p className="mt-1.5 text-[13px]" style={{
-                        color: IC.gray80,
-                        opacity: referenceTextFading ? 0 : 1,
-                        transform: referenceTextFading ? `translateY(-6px)` : `translateY(0px)`,
-                        transition: `opacity 0.34s cubic-bezier(0.4,0,0.2,1) calc(${textDelay} + 0.22s), transform 0.42s cubic-bezier(0.22,1,0.36,1) calc(${textDelay} + 0.22s)`,
-                      }}>{ref.author}</p>
                     </div>
                   </div>
                 </div>
               </Fade>
-              )
-            })}
+            ))}
           </div>
 
-          <Fade delay={0.2}>
+          {/* Logo carousel */}
+          <Fade delay={0.15}>
             <LogoPairCarousel clients={D.additionalClients} />
           </Fade>
         </div>
