@@ -372,6 +372,16 @@ export default function TemplateICBlueProfessionalLight() {
           from { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
           to   { clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%); }
         }
+        .ic-field {
+          border-bottom: 1.5px solid rgba(36,87,155,0.18) !important;
+          border-top: none !important; border-left: none !important; border-right: none !important;
+          background: transparent !important;
+          border-radius: 0 !important;
+          transition: border-color 0.3s ease;
+        }
+        .ic-field::placeholder { color: #C2C2C2; }
+        .ic-field:focus { border-bottom-color: #24579B !important; }
+        .ic-field:hover { border-bottom-color: #8EB4E3 !important; }
       `}</style>
 
       {/* NAVBAR */}
@@ -690,48 +700,48 @@ export default function TemplateICBlueProfessionalLight() {
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
-                <div
-                  className="flex items-center gap-0"
-                  style={{}}
-                >
+                <label className="text-[10px] font-bold tracking-[0.22em] uppercase block mb-2" style={{ color: IC.blueLight }}>Search reports</label>
+                <div className="flex items-end gap-0">
                   <input
-                    placeholder="Industry Report Search"
-                    className="flex-1 h-12 px-4 bg-transparent text-[15px] outline-none placeholder:text-white"
+                    placeholder="Industry, market or topic…"
+                    className="flex-1 text-[15px] outline-none pb-2"
                     style={{
-                      color: IC.white,
-                      caretColor: IC.white,
-                      background: IC.blueLight,
+                      color: IC.gray80,
+                      background: "transparent",
                       border: "none",
+                      borderBottom: `1.5px solid rgba(36,87,155,0.22)`,
+                      borderRadius: 0,
                       appearance: "none",
+                      transition: "border-color 0.3s ease",
                     }}
+                    onFocus={e => (e.currentTarget.style.borderBottomColor = IC.blue)}
+                    onBlur={e => (e.currentTarget.style.borderBottomColor = "rgba(36,87,155,0.22)")}
                   />
                   <button
-                    className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
+                    className="inline-flex items-center justify-between h-11 px-5 text-[13px] font-bold tracking-[0.06em] shrink-0 ml-4"
                     style={{
                       color: IC.white,
-                      background: IC.blue,
-                      minWidth: 150,
-                      border: `1px solid ${IC.blue}`,
+                      background: `linear-gradient(to right, ${IC.blue} 0%, ${IC.blueDark} 100%)`,
+                      border: "none",
                       whiteSpace: "nowrap",
-                      transition: "background 0.25s ease",
                       cursor: "pointer",
+                      transition: "opacity 0.25s ease",
+                      minWidth: 130,
                     }}
                     onMouseEnter={e => {
-                      const btn = e.currentTarget as HTMLElement
-                      btn.style.background = IC.blueDark
-                      btn.style.borderColor = IC.blueDark
-                      const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
+                      (e.currentTarget as HTMLElement).style.opacity = "0.88"
+                      const arrow = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement
+                      if (arrow) arrow.style.transform = "translateX(5px)"
                     }}
                     onMouseLeave={e => {
-                      const btn = e.currentTarget as HTMLElement
-                      btn.style.background = IC.blue
-                      btn.style.borderColor = IC.blue
-                      const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                      (e.currentTarget as HTMLElement).style.opacity = "1"
+                      const arrow = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement
+                      if (arrow) arrow.style.transform = "translateX(0)"
                     }}
                   >
-                    Search
+                    <span>Search</span>
                     <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                      <ArrowRight size={12} />
+                      <ArrowRight size={13} />
                     </span>
                   </button>
                 </div>
@@ -750,98 +760,71 @@ export default function TemplateICBlueProfessionalLight() {
             >
               <div
                 id="contact-panel"
-                className="h-full flex flex-col justify-between py-12 px-10"
+                className="h-full flex flex-col justify-between py-10 px-10"
                 style={{
                   background: IC.white,
-                  border: `1.5px solid ${IC.blueXL}`,
-                  boxShadow: "0 8px 32px rgba(36,87,155,0.09)",
+                  borderTop: `3px solid ${IC.blue}`,
+                  boxShadow: "0 20px 60px rgba(36,87,155,0.10), 0 2px 8px rgba(36,87,155,0.05)",
                   animation: "panelDrift 9s ease-in-out infinite",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
-                <div>
-                  <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blue }}>Contact us</p>
-                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(25px,3.08vw,31px)", color: IC.gray80 }}>
+                <div style={{ position: "relative", zIndex: 1 }}>
+                  <p className="text-[10px] font-bold tracking-[0.36em] uppercase mb-3" style={{ color: IC.blue }}>Contact us</p>
+                  <h3 className="font-bold leading-[1.1] mb-7" style={{ fontSize: "clamp(22px,2.5vw,27px)", color: IC.gray80, letterSpacing: "-0.01em" }}>
                     Tell us your challenge
                   </h3>
-                  <form className="grid grid-cols-2 gap-4 pt-6" onSubmit={(e) => e.preventDefault()}>
-                    <input
-                      name="name"
-                      placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
-                      }}
-                    />
-                    <input
-                      name="company"
-                      placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
-                      }}
-                    />
-                    <input
-                      name="mail"
-                      type="email"
-                      placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
-                      }}
-                    />
-                    <input
-                      name="tel"
-                      type="tel"
-                      placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
-                      }}
-                    />
-                    <textarea
-                      name="message"
-                      placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: IC.blueLight,
-                        border: `1px solid ${IC.blueLight}`,
-                      }}
-                    />
+
+                  <form className="flex flex-col" onSubmit={(e) => e.preventDefault()}>
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-5">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Name</label>
+                        <input name="name" placeholder="Your name" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Company</label>
+                        <input name="company" placeholder="Your company" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Email</label>
+                        <input name="mail" type="email" placeholder="you@company.com" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Phone</label>
+                        <input name="tel" type="tel" placeholder="+43 ..." className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 mb-7">
+                      <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Message</label>
+                      <textarea name="message" placeholder="Briefly describe your challenge…" className="ic-field text-[14px] outline-none resize-none py-1" style={{ color: IC.gray80, minHeight: 68 }} />
+                    </div>
+
                     <button
                       type="submit"
-                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]"
+                      className="h-12 inline-flex items-center justify-between px-6 text-[13px] font-bold tracking-[0.06em] relative overflow-hidden"
                       style={{
                         color: IC.white,
-                        background: IC.blue,
-                        border: `1px solid ${IC.blue}`,
-                        transition: "background 0.25s ease",
+                        background: `linear-gradient(to right, ${IC.blue} 0%, ${IC.blueDark} 100%)`,
+                        border: "none",
                         cursor: "pointer",
+                        transition: "opacity 0.25s ease",
                       }}
                       onMouseEnter={e => {
-                        const btn = e.currentTarget as HTMLElement
-                        btn.style.background = IC.blueDark
-                        btn.style.borderColor = IC.blueDark
-                        const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
+                        (e.currentTarget as HTMLElement).style.opacity = "0.88"
+                        const arrow = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(5px)"
                       }}
                       onMouseLeave={e => {
-                        const btn = e.currentTarget as HTMLElement
-                        btn.style.background = IC.blue
-                        btn.style.borderColor = IC.blue
-                        const arrow = btn.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
+                        (e.currentTarget as HTMLElement).style.opacity = "1"
+                        const arrow = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
-                      Send Request
+                      <span>Send Request</span>
                       <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                        <ArrowRight size={13} />
+                        <ArrowRight size={14} />
                       </span>
                     </button>
                   </form>
@@ -866,51 +849,83 @@ export default function TemplateICBlueProfessionalLight() {
               <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.gray80, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
               <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray50 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
-              <div className="flex items-center gap-0">
-                <input
-                  placeholder="Industry Report Search"
-                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-white"
-                  style={{
-                    color: IC.white,
-                    caretColor: IC.white,
-                    background: IC.blueLight,
-                    border: "none",
-                    appearance: "none",
-                  }}
-                />
-                <button
-                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
-                  style={{
-                    color: IC.white,
-                    background: IC.blue,
-                    minWidth: 120,
-                    border: `1px solid ${IC.blue}`,
-                    whiteSpace: "nowrap",
-                    transition: "background 0.25s ease",
-                    cursor: "pointer",
-                  }}
-                >
-                  Search <ArrowRight size={12} />
-                </button>
+              <div>
+                <label className="text-[10px] font-bold tracking-[0.22em] uppercase block mb-2" style={{ color: IC.blue }}>Search reports</label>
+                <div className="flex items-end gap-0">
+                  <input
+                    placeholder="Industry, market or topic…"
+                    className="flex-1 text-[14px] outline-none pb-2"
+                    style={{
+                      color: IC.gray80,
+                      background: "transparent",
+                      border: "none",
+                      borderBottom: `1.5px solid rgba(36,87,155,0.28)`,
+                      borderRadius: 0,
+                      appearance: "none",
+                      transition: "border-color 0.3s ease",
+                    }}
+                    onFocus={e => (e.currentTarget.style.borderBottomColor = IC.blue)}
+                    onBlur={e => (e.currentTarget.style.borderBottomColor = "rgba(36,87,155,0.28)")}
+                  />
+                  <button
+                    className="inline-flex items-center justify-between h-11 px-4 text-[13px] font-bold tracking-[0.06em] shrink-0 ml-3"
+                    style={{
+                      color: IC.white,
+                      background: `linear-gradient(to right, ${IC.blue} 0%, ${IC.blueDark} 100%)`,
+                      border: "none",
+                      minWidth: 110,
+                      cursor: "pointer",
+                      transition: "opacity 0.25s ease",
+                    }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.88" }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1" }}
+                  >
+                    <span>Search</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col justify-between py-10 px-8" style={{ background: IC.white, border: `1.5px solid ${IC.blueXL}`, boxShadow: "0 8px 32px rgba(36,87,155,0.09)" }}>
-              <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blue }}>Contact us</p>
-              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.gray80 }}>Tell us your challenge</h3>
-              <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: IC.blueLight, border: `1px solid ${IC.blueLight}` }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: IC.blue, border: `1px solid ${IC.blue}`, transition: "background 0.25s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blueDark; b.style.borderColor = IC.blueDark; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)" }}
-                  onMouseLeave={e => { const b = e.currentTarget as HTMLElement; b.style.background = IC.blue; b.style.borderColor = IC.blue; const arrow = b.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)" }}
+            <div
+              className="flex flex-col py-8 px-7 relative overflow-hidden"
+              style={{
+                background: IC.white,
+                borderTop: `3px solid ${IC.blue}`,
+                boxShadow: "0 12px 40px rgba(36,87,155,0.09)",
+              }}
+            >
+              <p className="text-[10px] font-bold tracking-[0.36em] uppercase mb-3" style={{ color: IC.blue }}>Contact us</p>
+              <h3 className="font-bold leading-[1.1] mb-6" style={{ fontSize: "clamp(21px,5.2vw,26px)", color: IC.gray80, letterSpacing: "-0.01em" }}>Tell us your challenge</h3>
+              <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Name</label>
+                  <input name="name" placeholder="Your name" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Company</label>
+                  <input name="company" placeholder="Your company" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Email</label>
+                  <input name="mail" type="email" placeholder="you@company.com" className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Phone</label>
+                  <input name="tel" type="tel" placeholder="+43 ..." className="ic-field h-10 text-[14px] outline-none pb-1" style={{ color: IC.gray80 }} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: IC.blueLight }}>Message</label>
+                  <textarea name="message" placeholder="Briefly describe your challenge…" className="ic-field text-[14px] outline-none resize-none py-1" style={{ color: IC.gray80, minHeight: 72 }} />
+                </div>
+                <button
+                  type="submit"
+                  className="h-12 inline-flex items-center justify-between px-6 text-[13px] font-bold tracking-[0.06em] mt-1"
+                  style={{ color: IC.white, background: `linear-gradient(to right, ${IC.blue} 0%, ${IC.blueDark} 100%)`, border: "none", cursor: "pointer", transition: "opacity 0.25s ease" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.88"; const a = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement; if (a) a.style.transform = "translateX(5px)" }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; const a = (e.currentTarget as HTMLElement).querySelector(".cta-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
                 >
-                  Send Request
-                  <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                    <ArrowRight size={13} />
-                  </span>
+                  <span>Send Request</span>
+                  <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={14} /></span>
                 </button>
               </form>
             </div>

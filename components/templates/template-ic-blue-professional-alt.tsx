@@ -1169,7 +1169,7 @@ export default function TemplateICBlueProfessionalAlt() {
             <div className="mb-2">
               <Label>References</Label>
               <ParaTitle className="mb-0">Leading Companies trust in Interconnection Consulting</ParaTitle>
-              <Rule />
+              <div className="w-7 mt-1 mb-8" aria-hidden="true" />
             </div>
 
           </Fade>
