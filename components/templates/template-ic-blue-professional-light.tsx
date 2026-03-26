@@ -402,7 +402,7 @@ export default function TemplateICBlueProfessionalLight() {
             aria-label="Open menu"
             className="lg:hidden inline-flex items-center justify-center w-10 h-10"
             style={{
-              color: IC.gray80,
+              color: IC.blue,
               transition: "color 0.45s cubic-bezier(0.22,1,0.36,1)",
             }}
           >
@@ -414,7 +414,7 @@ export default function TemplateICBlueProfessionalLight() {
               <a
                 key={l} href="#"
                 className="transition-colors duration-300 hover:opacity-80"
-                style={{ color: scrolled ? IC.gray80 : IC.gray80 }}
+                style={{ color: IC.blue }}
               >
                 {l}
               </a>
@@ -952,14 +952,26 @@ export default function TemplateICBlueProfessionalLight() {
 
               </div>
             </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5px", background: "rgba(36,87,155,0.24)" }}>
+            <div
+              className="grid sm:grid-cols-2 lg:grid-cols-3"
+              style={{
+                borderTop: `1px solid ${IC.blueXL}`,
+                borderLeft: `1px solid ${IC.blueXL}`,
+              }}
+            >
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
-                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} className="h-full">
+                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} style={{ display: "flex" }}>
                     <div
-                      className="relative flex flex-col p-8 overflow-hidden h-full"
-                      style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
+                      className="relative flex flex-col p-8 overflow-hidden w-full"
+                      style={{
+                        background: IC.white,
+                        minHeight: 240,
+                        borderRight: `1px solid ${IC.blueXL}`,
+                        borderBottom: `1px solid ${IC.blueXL}`,
+                        transition: "background 0.35s ease, box-shadow 0.35s ease",
+                      }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background = IC.blueXL
                         e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
@@ -970,8 +982,8 @@ export default function TemplateICBlueProfessionalLight() {
                       }}
                     >
                       <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[17px] font-semibold mb-3" style={{ color: "#7F7F7F" }}>{c.title}</h3>
-                      <p className="text-[15px] leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
+                      <h3 className="text-[17px] font-semibold mb-3" style={{ color: IC.gray80 }}>{c.title}</h3>
+                      <p className="text-[15px] leading-relaxed flex-1" style={{ color: IC.gray50 }}>{c.desc}</p>
                       <a href="#"
                         className="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-6 relative w-fit"
                         style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}

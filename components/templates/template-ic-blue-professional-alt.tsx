@@ -45,9 +45,8 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
           <div key={i} className="flex items-center justify-center px-3 py-3"
             style={{
               height: 64,
-              background: "rgba(255,255,255,0.78)",
+              background: IC.white,
               border: `1px solid rgba(36,87,155,0.13)`,
-              backdropFilter: "blur(6px)",
               transition: "background 0.3s ease",
             }}
           >
@@ -932,14 +931,26 @@ export default function TemplateICBlueProfessionalAlt() {
 
               </div>
             </Fade>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "1.5px", background: "rgba(36,87,155,0.24)" }}>
+            <div
+              className="grid sm:grid-cols-2 lg:grid-cols-3"
+              style={{
+                borderTop: `1px solid ${IC.blueXL}`,
+                borderLeft: `1px solid ${IC.blueXL}`,
+              }}
+            >
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
                 return (
-                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} className="h-full">
+                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} style={{ display: "flex" }}>
                     <div
-                      className="relative flex flex-col p-8 overflow-hidden h-full"
-                      style={{ background: IC.white, minHeight: 240, transition: "background 0.35s ease, box-shadow 0.35s ease" }}
+                      className="relative flex flex-col p-8 overflow-hidden w-full"
+                      style={{
+                        background: IC.white,
+                        minHeight: 240,
+                        borderRight: `1px solid ${IC.blueXL}`,
+                        borderBottom: `1px solid ${IC.blueXL}`,
+                        transition: "background 0.35s ease, box-shadow 0.35s ease",
+                      }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background = IC.blueXL
                         e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
