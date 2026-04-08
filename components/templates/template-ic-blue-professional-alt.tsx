@@ -176,14 +176,26 @@ function useParallax(speed = 0.07) {
   const ref = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState(0)
   useEffect(() => {
-    const fn = () => {
+    let rafId = 0
+    const update = () => {
+      rafId = 0
       if (!ref.current) return
       const rect = ref.current.getBoundingClientRect()
-      setOffset((rect.top + rect.height / 2 - window.innerHeight / 2) * speed)
+      const next = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed
+      setOffset((prev) => (Math.abs(prev - next) < 0.5 ? prev : next))
+    }
+    const fn = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(update)
     }
     window.addEventListener("scroll", fn, { passive: true })
-    fn()
-    return () => window.removeEventListener("scroll", fn)
+    window.addEventListener("resize", fn)
+    update()
+    return () => {
+      window.removeEventListener("scroll", fn)
+      window.removeEventListener("resize", fn)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
   }, [speed])
   return { ref, offset }
 }
@@ -260,9 +272,18 @@ export default function TemplateICBlueProfessionalAlt() {
   useEffect(() => {
     setWinH(window.innerHeight)
     setWinW(window.innerWidth)
+    let rafId = 0
     const fn = () => {
-      setScrolled(window.scrollY > 60)
-      setScrollY(window.scrollY)
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        rafId = 0
+        const y = window.scrollY
+        setScrolled((prev) => {
+          const next = y > 60
+          return prev === next ? prev : next
+        })
+        setScrollY((prev) => (Math.abs(prev - y) < 0.5 ? prev : y))
+      })
     }
     const onResize = () => {
       setWinH(window.innerHeight)
@@ -273,6 +294,7 @@ export default function TemplateICBlueProfessionalAlt() {
     return () => {
       window.removeEventListener("scroll", fn)
       window.removeEventListener("resize", onResize)
+      if (rafId) cancelAnimationFrame(rafId)
     }
   }, [])
 
@@ -411,9 +433,18 @@ export default function TemplateICBlueProfessionalAlt() {
               </a>
             ))}
           </div>
-          {/* Logo right — always original colors */}
+          {/* Company name right */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
-            <Image src="/IcLogoNew.png" alt="Interconnection Consulting" width={160} height={28} className="w-[120px] sm:w-[150px] h-auto" style={{ objectFit: "contain" }} priority />
+            <span
+              className="text-[14px] font-bold tracking-tight"
+              style={{
+                color: scrolled ? IC.blue : IC.white,
+                whiteSpace: "nowrap",
+                transition: "color 0.45s cubic-bezier(0.22,1,0.36,1)",
+              }}
+            >
+              Interconnection Consulting
+            </span>
           </div>
         </div>
       </nav>
@@ -427,55 +458,24 @@ export default function TemplateICBlueProfessionalAlt() {
       {/* ── HERO content layer ── */}
       <section className="relative overflow-hidden" style={{ position: "sticky", top: 0, height: "100vh", background: "transparent", display: "flex", flexDirection: "column", zIndex: 2, marginTop: "-100vh" }}>
 
-        {/* Layer 1 — Photo: right-aligned contain so full image is visible, blends into blue on left */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ overflow: "hidden" }}
-        >
-          {/* Desktop: image shown full on right 58%, no cropping */}
+        {/* Layer 1 — Video background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <video
+            src="/Animation_MainSection.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Gradient overlay: IC blue left → transparent right */}
           <div
-            className="absolute inset-0 hidden lg:block"
+            className="absolute inset-0"
             style={{
-              transform: `translateY(${scrollY * 0.06}px)`,
-              willChange: "transform",
-              opacity: Math.max(0, 1 - heroOut * 1.6),
+              background: `linear-gradient(to right, ${IC.blue} 0%, rgba(36,87,155,0.72) 30%, rgba(36,87,155,0.28) 60%, rgba(36,87,155,0) 100%)`,
+              pointerEvents: "none",
             }}
-          >
-            <Image
-              src="/slide.jpg"
-              alt={D.productName}
-              fill
-              className="object-contain"
-              style={{ objectPosition: "right center" }}
-              priority
-            />
-            {/* Left-to-right dissolve: solid blue → transparent, covering ~45% from left */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,74,134,1) 0%, rgba(30,74,134,1) 28%, rgba(30,74,134,0.88) 36%, rgba(30,74,134,0.55) 46%, rgba(30,74,134,0.18) 58%, transparent 72%)" }} />
-            {/* Bottom vignette */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(20,44,90,0.60) 0%, transparent 35%)" }} />
-          </div>
-          {/* Mobile: full bleed cover */}
-          <div
-            className="absolute inset-0 lg:hidden"
-            style={{
-              opacity: Math.max(0, 1 - heroOut * 1.6),
-            }}
-          >
-            <Image src="/slide.jpg" alt={D.productName} fill className="object-cover" style={{ objectPosition: "center center" }} priority />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,44,90,0.35) 0%, transparent 40%, rgba(20,44,90,0.15) 75%, rgba(20,44,90,0.30) 100%)" }} />
-          </div>
-        </div>
-
-        {/* Layer 2 — Animated grid */}
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: Math.max(0, 1 - heroOut * 1.8) }}>
-          <svg width="100%" height="100%" className="absolute inset-0" style={{ animation: "heroGridPulse 4s ease-in-out infinite", opacity: 0.55 }}>
-            <defs>
-              <pattern id="bpgrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(142,180,227,1)" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#bpgrid)" />
-          </svg>
+          />
         </div>
 
         {/* Layer 3 — Content: flex-grow to fill viewport */}
@@ -487,15 +487,14 @@ export default function TemplateICBlueProfessionalAlt() {
             willChange: "transform, opacity",
           }}
         >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="grid lg:grid-cols-[4fr_1fr] gap-12 lg:gap-8 items-center">
 
             {/* Left — headline + CTA */}
             <div
               style={{
                 opacity: Math.max(0, 1 - heroLeftOut * 1.35),
                 transform: `translate3d(${heroLeftOut * -42}px, ${heroLeftOut * -10}px, 0)`,
-                filter: `blur(${heroLeftOut * 1.8}px)`,
-                willChange: "transform, opacity, filter",
+                willChange: "transform, opacity",
               }}
             >
           {/* Eyebrow line */}
@@ -506,7 +505,7 @@ export default function TemplateICBlueProfessionalAlt() {
             }}
           >
             <div className="flex items-center mb-5 lg:mb-8">
-              <p className="text-[10px] font-bold tracking-[0.45em] uppercase" style={{ color: isDesktop ? "rgba(142,180,227,0.7)" : IC.blue }}>
+              <p className="text-[14px] font-bold tracking-[0.45em] uppercase" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Interconnection Consulting
               </p>
             </div>
@@ -515,7 +514,7 @@ export default function TemplateICBlueProfessionalAlt() {
           {/* H1 — refined scale */}
           <h1
             className="font-black"
-            style={{ fontSize: "clamp(37px,8.8vw,50px)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
+            style={{ fontSize: "clamp(64px,15.2vw,86px)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
           >
             <span
               style={{
@@ -527,35 +526,23 @@ export default function TemplateICBlueProfessionalAlt() {
                 transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1) 0.26s, transform 1.1s cubic-bezier(0.22,1,0.36,1) 0.26s",
               }}
             >
-              {D.productName}
+              {D.productName.split(/(?<=Better)/i)[0]}
+              <br />
+              {D.productName.split(/(?<=Better)/i)[1]?.trimStart()}
             </span>
             <span
               style={{
                 display: "block",
-                color: isDesktop ? IC.blueLight : IC.blue,
+                color: IC.white,
                 opacity: heroReady ? 1 : 0,
                 transform: heroReady ? "none" : "translateY(26px)",
                 transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s, transform 1.1s cubic-bezier(0.22,1,0.36,1) 0.46s",
               }}
             >
-              {D.regionName}
             </span>
           </h1>
 
           <div className="mt-5 mb-6" aria-hidden="true" />
-
-          {/* Supporting copy and key highlights */}
-          <div
-            style={{
-              opacity: heroReady ? 1 : 0,
-              transform: heroReady ? "none" : "translateY(16px)",
-              transition: "opacity 1s ease 1.05s, transform 1s cubic-bezier(0.22,1,0.36,1) 1.05s",
-            }}
-          >
-            <p className="text-[15px] leading-[1.7] max-w-[480px] mb-5 lg:mb-7" style={{ color: IC.white }}>
-              We help companies unlock sales growth by combining industry expertise with market data, big data analytics, and AI-driven forecasts — delivering practical strategies and measurable results.
-            </p>
-          </div>
 
           {/* CTA group */}
           <div
@@ -568,11 +555,13 @@ export default function TemplateICBlueProfessionalAlt() {
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-6 py-3.5 relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-7 py-3.5 relative overflow-hidden"
                 style={{
-                  borderRadius: 0,
+                  borderRadius: 999,
                   color: IC.white,
-                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                  background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                  border: "none",
+                  boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
                   transition: "opacity 0.2s ease",
                 }}
                 onMouseEnter={e => {
@@ -591,11 +580,13 @@ export default function TemplateICBlueProfessionalAlt() {
               </a>
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-6 py-3.5 relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-7 py-3.5 relative overflow-hidden"
                 style={{
                   color: IC.white,
-                  borderRadius: 0,
-                  background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                  borderRadius: 999,
+                  background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                  border: "none",
+                  boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
                   transition: "opacity 0.2s ease",
                 }}
                 onMouseEnter={e => {
@@ -655,21 +646,17 @@ export default function TemplateICBlueProfessionalAlt() {
           pointerEvents: Math.max(sectionLeftIn, sectionRightIn) < 0.05 ? "none" : "auto",
         }}
       >
-        {/* White gradient from bottom — mirrors footer in reverse (blue → white), same multi-stop depth */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
-          height: 360,
-          background: `linear-gradient(to bottom,
-            rgba(36,87,155,0) 0%,
-            rgba(63,111,174,0.14) 16%,
-            rgba(108,145,196,0.30) 30%,
-            rgba(155,186,224,0.50) 44%,
-            rgba(190,212,236,0.68) 58%,
-            rgba(220,232,245,0.82) 70%,
-            rgba(240,245,251,0.92) 82%,
-            rgba(247,249,252,0.97) 92%,
-            ${IC.blueXL} 100%)`,
-
-          opacity: Math.max(0, (sectionLeftIn - 0.35) * 2.2),
+        {/* White gradient rising from bottom — stronger white dominance during scroll */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: `linear-gradient(to top,
+            rgba(255,255,255,1)    0%,
+            rgba(255,255,255,0.99) 18%,
+            rgba(255,255,255,0.95) 38%,
+            rgba(255,255,255,0.88) 56%,
+            rgba(255,255,255,0.72) 72%,
+            rgba(255,255,255,0.45) 86%,
+            rgba(255,255,255,0.18) 100%)`,
+          opacity: Math.min(1, Math.max(0, (sectionRightIn - 0.03) * 1.05 + sectionLeftIn * 1.1)),
         }} />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10"
@@ -686,43 +673,46 @@ export default function TemplateICBlueProfessionalAlt() {
               style={{
                 opacity: sectionLeftInEff,
                 transform: `translate3d(${(1 - sectionLeftInEff) * -44}px, ${(1 - sectionLeftInEff) * 14}px, 0)`,
-                filter: `blur(${(1 - sectionLeftInEff) * 2.2}px)`,
-                willChange: "transform, opacity, filter",
+                willChange: "transform, opacity",
               }}
             >
               <div>
-                <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(31px,3.52vw,46px)", color: IC.white, letterSpacing: "-0.015em" }}>
+                <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>How we make our customers successful</p>
+                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(31px,3.52vw,46px)", color: IC.blue, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
                 <div className="h-[2px] mt-1" aria-hidden="true" />
               </div>
-              <p className="text-[15px] leading-[1.9]" style={{ color: IC.white }}>
+              <p className="text-[15px] leading-[1.9]" style={{ color: IC.gray80 }}>
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
                 <div
-                  className="flex items-center gap-0"
+                  className="flex items-center gap-3"
                   style={{}}
                 >
                   <input
                     placeholder="Industry Report Search"
-                    className="flex-1 h-12 px-4 bg-transparent text-[15px] outline-none placeholder:text-white"
+                    className="flex-1 h-12 px-5 text-[15px] outline-none"
                     style={{
-                      color: IC.white,
-                      caretColor: IC.white,
-                      background: "rgba(255,255,255,0.07)",
+                      color: IC.gray80,
+                      caretColor: IC.blue,
+                      background: "rgba(255,255,255,0.86)",
                       boxShadow: "none",
-                      border: "none",
+                      border: "1.5px solid rgba(36,87,155,0.26)",
+                      borderRadius: 999,
                       appearance: "none",
-                      backdropFilter: "blur(6px)",
+                      backdropFilter: "blur(4px)",
                     }}
                   />
                   <button
                     className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0 relative overflow-hidden"
                     style={{
                       color: IC.white,
-                      background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
+                      background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                      border: "none",
+                      boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                      borderRadius: 999,
                       minWidth: 150,
                       whiteSpace: "nowrap",
                       transition: "opacity 0.2s ease",
@@ -752,17 +742,17 @@ export default function TemplateICBlueProfessionalAlt() {
               style={{
                 opacity: sectionRightInEff,
                 transform: `translate3d(${(1 - sectionRightInEff) * 56}px, ${(1 - sectionRightInEff) * 12}px, 0)`,
-                filter: `blur(${(1 - sectionRightInEff) * 2.4}px)`,
-                willChange: "transform, opacity, filter",
+                willChange: "transform, opacity",
               }}
             >
               <div
                 id="contact-panel"
-                className="h-full flex flex-col justify-between py-12 px-10"
+                className="h-full flex flex-col justify-between py-12 px-10 rounded-[30px] overflow-hidden"
                 style={{
-                  background: `linear-gradient(145deg, ${IC.blueDark} 0%, ${IC.blue} 72%)`,
-                  border: "1px solid rgba(142,180,227,0.2)",
-                  boxShadow: "0 18px 60px rgba(23,53,95,0.23)",
+                  background: `linear-gradient(150deg, rgba(55,96,146,0.97) 0%, rgba(36,87,155,0.98) 62%, rgba(46,101,170,0.97) 100%)`,
+                  border: "1.5px solid rgba(220,230,242,0.34)",
+                  boxShadow: "0 22px 70px rgba(23,53,95,0.28)",
+                  backdropFilter: "blur(8px)",
                   animation: "panelDrift 9s ease-in-out infinite",
                 }}
               >
@@ -775,56 +765,69 @@ export default function TemplateICBlueProfessionalAlt() {
                     <input
                       name="name"
                       placeholder="Name"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
+                        border: "1px solid rgba(220,230,242,0.34)",
+                        borderRadius: 12,
                       }}
                     />
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
+                        border: "1px solid rgba(220,230,242,0.34)",
+                        borderRadius: 12,
                       }}
                     />
                     <input
                       name="mail"
                       type="email"
                       placeholder="Mail"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
+                        border: "1px solid rgba(220,230,242,0.34)",
+                        borderRadius: 12,
                       }}
                     />
                     <input
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-3 text-[14px] outline-none placeholder:text-white"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
+                        border: "1px solid rgba(220,230,242,0.34)",
+                        borderRadius: 12,
                       }}
                     />
                     <textarea
                       name="message"
                       placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white"
+                      className="col-span-2 min-h-[130px] px-4 py-3 text-[14px] outline-none resize-none placeholder:text-[rgba(220,230,242,0.86)]"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)",
+                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
+                        border: "1px solid rgba(220,230,242,0.34)",
+                        borderRadius: 14,
                       }}
                     />
                     <button
                       type="submit"
-                      className="col-span-2 h-11 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em] relative overflow-hidden"
+                      className="col-span-2 h-12 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em] relative overflow-hidden"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)",
+                        background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                        border: "none",
+                        boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                        borderRadius: 999,
                         transition: "opacity 0.2s ease",
                         cursor: "pointer",
                       }}
@@ -860,19 +863,20 @@ export default function TemplateICBlueProfessionalAlt() {
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="flex flex-col gap-10">
             <div>
-              <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.blueLight }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.white, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
+              <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
+              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
-              <p className="text-[14px] leading-[1.8] mb-6" style={{ color: "rgba(220,230,242,0.78)" }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
+              <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
               <div className="flex items-center gap-0">
                 <input
                   placeholder="Industry Report Search"
-                  className="flex-1 h-12 px-4 text-[14px] outline-none placeholder:text-white"
+                  className="flex-1 h-12 px-5 text-[14px] outline-none"
                   style={{
-                    color: IC.white,
-                    caretColor: IC.white,
-                    background: "rgba(255,255,255,0.07)",
-                    border: "none",
+                    color: IC.gray80,
+                    caretColor: IC.blue,
+                    background: "rgba(255,255,255,0.9)",
+                    border: "1.5px solid rgba(36,87,155,0.26)",
+                    borderRadius: 999,
                     appearance: "none",
                   }}
                 />
@@ -880,7 +884,10 @@ export default function TemplateICBlueProfessionalAlt() {
                   className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                   style={{
                     color: IC.white,
-                    background: `linear-gradient(to right, ${IC.blue} 0%, ${IC.blue} 50%, ${IC.blueLight} 100%)`,
+                    background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                    border: "none",
+                    boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                    borderRadius: 999,
                     minWidth: 120,
                     whiteSpace: "nowrap",
                     cursor: "pointer",
@@ -890,16 +897,16 @@ export default function TemplateICBlueProfessionalAlt() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col justify-between py-10 px-8" style={{ background: `linear-gradient(145deg, ${IC.blueDark} 0%, ${IC.blue} 72%)`, border: "1px solid rgba(142,180,227,0.2)", boxShadow: "0 18px 60px rgba(23,53,95,0.23)" }}>
+            <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.97) 0%, rgba(36,87,155,0.98) 62%, rgba(46,101,170,0.97) 100%)`, border: "1.5px solid rgba(220,230,242,0.34)", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
               <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.white }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="company" placeholder="Company" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-3 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-3 py-2.5 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.06) 100%)" }} />
-                <button type="submit" className="h-11 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden" style={{ color: IC.white, background: "linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)", transition: "opacity 0.2s ease", cursor: "pointer" }}
+                <input name="name" placeholder="Name" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
+                <input name="company" placeholder="Company" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
+                <textarea name="message" placeholder="Message" className="min-h-[110px] px-4 py-3 text-[14px] outline-none resize-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 14 }} />
+                <button type="submit" className="h-12 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden" style={{ color: IC.white, background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`, border: "none", boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`, borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
                   onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
                   onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
                 >
@@ -914,7 +921,7 @@ export default function TemplateICBlueProfessionalAlt() {
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
-        background: isDesktop ? `linear-gradient(to bottom, transparent 0px, ${IC.blueXL} 360px, ${IC.white} 420px)` : IC.white,
+        background: isDesktop ? `linear-gradient(to bottom, rgba(255,255,255,0) 0px, rgba(255,255,255,0.96) 300px, ${IC.white} 420px)` : IC.white,
         zIndex: 10,
         position: "relative",
         marginTop: isDesktop ? -360 : 0,
@@ -1193,22 +1200,10 @@ export default function TemplateICBlueProfessionalAlt() {
                   className="relative overflow-hidden flex flex-col w-full"
                   style={{
                     background: IC.white,
-                    borderLeft: `4px solid ${IC.blue}`,
-                    borderTop: `1px solid ${IC.blueXL}`,
-                    borderRight: `1px solid ${IC.blueXL}`,
-                    borderBottom: `1px solid ${IC.blueXL}`,
+                    border: `1px solid ${IC.blueXL}`,
                     boxShadow: "0 4px 28px rgba(36,87,155,0.08)",
                     height: 300,
                     padding: "1.4rem 1.6rem 1.3rem 1.5rem",
-                    transition: "box-shadow 0.35s ease, border-color 0.35s ease",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.boxShadow = "0 12px 44px rgba(36,87,155,0.14)"
-                    e.currentTarget.style.borderColor = IC.blueLight
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.boxShadow = "0 4px 28px rgba(36,87,155,0.08)"
-                    e.currentTarget.style.borderColor = IC.blueXL
                   }}
                 >
                   {/* Watermark quote mark */}
