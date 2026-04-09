@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, ArrowDownRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb, Menu } from "lucide-react"
+import { ArrowRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb, Menu } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect, useRef, useCallback } from "react"
 import { D, COMPETENCES } from "./ic-shared-data"
@@ -47,6 +47,7 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
               height: 64,
               background: IC.white,
               border: `1px solid rgba(36,87,155,0.13)`,
+              borderRadius: 14,
               transition: "background 0.3s ease",
             }}
           >
@@ -513,7 +514,7 @@ export default function TemplateICBlueProfessionalAlt() {
 
           {/* H1 — refined scale */}
           <h1
-            className="font-black"
+            className="font-bold"
             style={{ fontSize: "clamp(64px,15.2vw,86px)", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: 0 }}
           >
             <span
@@ -567,16 +568,14 @@ export default function TemplateICBlueProfessionalAlt() {
                 onMouseEnter={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
                 }}
                 onMouseLeave={e => {
                   const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
                   if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                 }}
               >
                 <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                Our Services and Tools <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} strokeWidth={2.5} /></span>
+                Our Services and Tools
               </a>
             </div>
 
@@ -717,10 +716,10 @@ export default function TemplateICBlueProfessionalAlt() {
               >
                 <div>
                   <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
-                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(26px,3.23vw,33px)", color: IC.white }}>
+                  <h3 className="font-bold tracking-tight leading-[1.08] mb-8" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.white, letterSpacing: "-0.015em" }}>
                     Tell us your challenge
                   </h3>
-                  <form className="grid grid-cols-2 gap-4 pt-6" onSubmit={(e) => e.preventDefault()}>
+                  <form className="grid grid-cols-2 gap-4 pt-2" onSubmit={(e) => e.preventDefault()}>
                     <input
                       name="mail"
                       type="email"
@@ -767,35 +766,42 @@ export default function TemplateICBlueProfessionalAlt() {
                         borderRadius: 9,
                       }}
                     />
-                    <div className="col-span-2 relative">
+                    <div
+                      className="col-span-2 overflow-hidden"
+                      style={{
+                        background: "rgba(142,180,227,0.82)",
+                        borderRadius: 10,
+                      }}
+                    >
                       <textarea
                         name="message"
                         placeholder="Message"
-                        className="w-full min-h-[130px] px-4 py-3 pb-14 text-[14px] outline-none resize-none placeholder:text-white"
+                        className="w-full h-[120px] px-4 py-3 text-[14px] outline-none resize-none overflow-y-auto placeholder:text-white"
                         style={{
                           color: IC.white,
-                          background: "rgba(142,180,227,0.82)",
+                          background: "transparent",
                           border: "none",
-                          borderRadius: 10,
                         }}
                       />
-                      <button
-                        type="submit"
-                        className="absolute bottom-4 left-1/2 -translate-x-1/2 h-9 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]"
-                        style={{
-                          color: IC.white,
-                          background: "#1E4A86",
-                          border: "none",
-                          boxShadow: "none",
-                          borderRadius: 999,
-                          transition: "opacity 0.2s ease",
-                          cursor: "pointer",
-                        }}
-                        onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
-                        onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
-                      >
-                        Send Inquiry
-                      </button>
+                      <div className="h-14 flex items-center justify-center" style={{ background: "transparent" }}>
+                        <button
+                          type="submit"
+                          className="h-9 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]"
+                          style={{
+                            color: IC.white,
+                            background: "#1E4A86",
+                            border: "none",
+                            boxShadow: "none",
+                            borderRadius: 999,
+                            transition: "opacity 0.2s ease",
+                            cursor: "pointer",
+                          }}
+                          onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                          onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
+                        >
+                          Send Inquiry
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -816,7 +822,7 @@ export default function TemplateICBlueProfessionalAlt() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(27px,6.93vw,37px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
+              <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
               <div className="flex items-center gap-0">
@@ -851,20 +857,22 @@ export default function TemplateICBlueProfessionalAlt() {
             </div>
             <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`, border: "none", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
-              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(24px,5.78vw,29px)", color: IC.white }}>Tell us your challenge</h3>
-              <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
+              <h3 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.white, letterSpacing: "-0.015em" }}>Tell us your challenge</h3>
+              <form className="grid grid-cols-1 gap-4 pt-2" onSubmit={(e) => e.preventDefault()}>
                 <input name="mail" type="email" placeholder="Mail" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
                 <input name="name" placeholder="Name" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
                 <input name="company" placeholder="Company" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
                 <input name="tel" type="tel" placeholder="Tel" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
-                <div className="relative">
-                  <textarea name="message" placeholder="Message" className="w-full min-h-[110px] px-4 py-3 pb-14 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 10 }} />
-                  <button type="submit" className="absolute bottom-4 left-1/2 -translate-x-1/2 h-10 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: "#1E4A86", border: "none", boxShadow: "none", borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
-                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
-                    onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
-                  >
-                    Send Inquiry
-                  </button>
+                <div className="overflow-hidden" style={{ background: "rgba(142,180,227,0.82)", borderRadius: 10 }}>
+                  <textarea name="message" placeholder="Message" className="w-full h-[106px] px-4 py-3 text-[14px] outline-none resize-none overflow-y-auto placeholder:text-white" style={{ color: IC.white, background: "transparent", border: "none" }} />
+                  <div className="h-14 flex items-center justify-center" style={{ background: "transparent" }}>
+                    <button type="submit" className="h-10 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: "#1E4A86", border: "none", boxShadow: "none", borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
+                      onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                      onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
+                    >
+                      Send Inquiry
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -892,7 +900,9 @@ export default function TemplateICBlueProfessionalAlt() {
               </div>
             </Fade>
             <div style={{ borderTop: `1.5px solid ${IC.blueXL}` }}>
-              {COMPETENCES.map((c, i) => (
+              {COMPETENCES.map((c, i) => {
+                const Icon = c.icon
+                return (
                 <Fade key={c.title} delay={0.12 + i * 0.07} duration={0.85}>
                   <a
                     href="#"
@@ -913,15 +923,17 @@ export default function TemplateICBlueProfessionalAlt() {
                     }}
                   >
                     <span
-                      className="shrink-0"
+                      className="shrink-0 inline-flex items-center justify-center"
                       style={{
                         width: 64,
                         height: 44,
                         borderRadius: 999,
                         background: IC.blueXL,
-                        border: "3px solid #0C3352",
+                        border: `1.5px solid ${IC.blueXL}`,
                       }}
-                    />
+                    >
+                      <Icon size={22} style={{ color: IC.blue }} />
+                    </span>
 
                     <span className="flex-1 min-w-0">
                       <span className="block text-[17px] font-semibold mb-1" style={{ color: IC.blue }}>
@@ -933,11 +945,12 @@ export default function TemplateICBlueProfessionalAlt() {
                     </span>
 
                     <span className="wwd-arrow shrink-0 inline-flex items-center justify-center" style={{ color: IC.blue, transition: "transform 0.25s ease" }}>
-                      <ArrowDownRight size={38} strokeWidth={2.2} />
+                      <ArrowRight size={34} strokeWidth={2.2} />
                     </span>
                   </a>
                 </Fade>
-              ))}
+                )
+              })}
             </div>
         </div>
       </section>
@@ -989,7 +1002,7 @@ export default function TemplateICBlueProfessionalAlt() {
                           el.style.transform = "translateX(0)"
                         }}
                       >
-                        <ArrowDownRight size={36} strokeWidth={2.2} />
+                        <ArrowRight size={34} strokeWidth={2.2} />
                         <span className="text-[11px] font-semibold uppercase tracking-[0.08em] opacity-0 -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
                           Read more
                         </span>
@@ -1058,7 +1071,7 @@ export default function TemplateICBlueProfessionalAlt() {
                           el.style.transform = "translateX(0)"
                         }}
                       >
-                        <ArrowDownRight size={36} strokeWidth={2.2} />
+                        <ArrowRight size={34} strokeWidth={2.2} />
                         <span className="text-[11px] font-semibold uppercase tracking-[0.08em] opacity-0 -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
                           Read more
                         </span>
@@ -1096,14 +1109,13 @@ export default function TemplateICBlueProfessionalAlt() {
         style={{
           background: `linear-gradient(to bottom,
             ${IC.white} 0%,
-            ${IC.white} 12%,
-            #f7faff 24%,
-            #eef4fb 38%,
-            #e4edf8 52%,
-            #d8e5f4 66%,
-            #c9dbee 80%,
-            #bfd4ea 90%,
-            ${IC.blueLight} 100%)`,
+            #fafdff 10%,
+            #eef5fd 24%,
+            #dce9f8 40%,
+            #c7dbf0 56%,
+            #a9c6e8 72%,
+            #84abd9 86%,
+            #5f91ca 100%)`,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
@@ -1126,8 +1138,9 @@ export default function TemplateICBlueProfessionalAlt() {
                   className="relative overflow-hidden flex flex-col w-full"
                   style={{
                     background: IC.white,
-                    border: `1px solid ${IC.blueXL}`,
-                    boxShadow: "0 4px 28px rgba(36,87,155,0.08)",
+                    border: `1.5px solid ${IC.blueXL}`,
+                    borderRadius: 22,
+                    boxShadow: "0 10px 28px rgba(36,87,155,0.09)",
                     height: 300,
                     padding: "1.4rem 1.6rem 1.3rem 1.5rem",
                   }}
@@ -1233,11 +1246,11 @@ export default function TemplateICBlueProfessionalAlt() {
         className="px-6 lg:px-14 relative"
         style={{
           background: `linear-gradient(to bottom,
-            ${IC.blueLight} 0%,
-            #84abd9 22%,
-            #729fd2 42%,
-            #5f91ca 62%,
-            #4f84c2 80%,
+            #5f91ca 0%,
+            #5689c4 22%,
+            #4a7dbc 46%,
+            #3c6eae 68%,
+            #2f63a4 86%,
             ${IC.blue} 100%)`,
           paddingTop: 16,
           paddingBottom: 32,
