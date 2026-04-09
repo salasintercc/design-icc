@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, ArrowUpRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb, Menu } from "lucide-react"
+import { ArrowRight, ArrowDownRight, CalendarCheck2, Newspaper, BarChart2, Search, TrendingUp, Target, Users, Lightbulb, Menu } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect, useRef, useCallback } from "react"
 import { D, COMPETENCES } from "./ic-shared-data"
@@ -136,7 +136,7 @@ function Fade({
 function Label({ light = false, children }: { light?: boolean; children: React.ReactNode }) {
   return (
     <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4"
-       style={{ color: light ? IC.blueLight : IC.blue }}>
+       style={{ color: light ? IC.blueLight : IC.gray80 }}>
       {children}
     </p>
   )
@@ -147,8 +147,8 @@ function SH({ children, light = false, className }: { children: React.ReactNode;
     <h2
       className={`font-bold tracking-tight leading-[1.08] ${className ?? ""}`}
       style={{
-        fontSize: "clamp(31px,3.52vw,46px)",
-        color: light ? IC.white : "#4D4D4D",
+        fontSize: "clamp(33px,3.7vw,48px)",
+        color: IC.blue,
         letterSpacing: "-0.015em",
       }}
     >
@@ -558,10 +558,10 @@ export default function TemplateICBlueProfessionalAlt() {
                 className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-7 py-3.5 relative overflow-hidden"
                 style={{
                   borderRadius: 999,
-                  color: IC.white,
-                  background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                  color: IC.blue,
+                  background: IC.white,
                   border: "none",
-                  boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                  boxShadow: "none",
                   transition: "opacity 0.2s ease",
                 }}
                 onMouseEnter={e => {
@@ -576,37 +576,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 }}
               >
                 <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                Talk to our Experts <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} strokeWidth={2.5} /></span>
-              </a>
-              <a
-                href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-7 py-3.5 relative overflow-hidden"
-                style={{
-                  color: IC.white,
-                  borderRadius: 999,
-                  background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
-                  border: "none",
-                  boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
-                  transition: "opacity 0.2s ease",
-                }}
-                onMouseEnter={e => {
-                  const shine = e.currentTarget.querySelector(".cta2-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(320px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                }}
-                onMouseLeave={e => {
-                  const shine = e.currentTarget.querySelector(".cta2-shine") as HTMLElement
-                  if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                  const arrow = e.currentTarget.querySelector(".cta-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                }}
-              >
-                <span className="cta2-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                <span style={{ position: "relative", paddingBottom: 2 }}>
-                  Explore market reports
-                </span>
-                <span className="cta-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                  <ArrowRight size={13} strokeWidth={2.5} />
-                </span>
+                Our Services and Tools <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} strokeWidth={2.5} /></span>
               </a>
             </div>
 
@@ -678,7 +648,7 @@ export default function TemplateICBlueProfessionalAlt() {
             >
               <div>
                 <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(31px,3.52vw,46px)", color: IC.blue, letterSpacing: "-0.015em" }}>
+                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.blue, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
                 <div className="h-[2px] mt-1" aria-hidden="true" />
@@ -687,51 +657,40 @@ export default function TemplateICBlueProfessionalAlt() {
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
-                <div
-                  className="flex items-center gap-3"
-                  style={{}}
-                >
+                <div className="w-full max-w-[560px] rounded-[14px] p-2" style={{ background: IC.blueLight, boxShadow: "0 12px 30px rgba(36,87,155,0.16)" }}>
+                  <div className="flex items-center gap-2">
                   <input
-                    placeholder="Industry Report Search"
-                    className="flex-1 h-12 px-5 text-[15px] outline-none"
+                    placeholder="Explore our Industry Markets"
+                    className="flex-1 h-12 px-5 text-[15px] outline-none placeholder:text-white"
                     style={{
-                      color: IC.gray80,
+                      color: IC.white,
                       caretColor: IC.blue,
-                      background: "rgba(255,255,255,0.86)",
+                      background: IC.blueLight,
                       boxShadow: "none",
-                      border: "1.5px solid rgba(36,87,155,0.26)",
-                      borderRadius: 999,
+                      border: "none",
+                      borderRadius: 10,
                       appearance: "none",
-                      backdropFilter: "blur(4px)",
                     }}
                   />
                   <button
-                    className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0 relative overflow-hidden"
+                    className="flex items-center justify-center h-10 px-12 text-[13px] font-bold tracking-[0.03em] shrink-0"
                     style={{
                       color: IC.white,
-                      background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                      background: IC.blue,
                       border: "none",
-                      boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                      boxShadow: "none",
                       borderRadius: 999,
-                      minWidth: 150,
+                      minWidth: 148,
                       whiteSpace: "nowrap",
-                      transition: "opacity 0.2s ease",
+                      transition: "opacity 0.2s ease, transform 0.2s ease",
                       cursor: "pointer",
                     }}
-                    onMouseEnter={e => {
-                      const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
-                      if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                      const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                    }}
-                    onMouseLeave={e => {
-                      const shine = e.currentTarget.querySelector(".srch-shine") as HTMLElement
-                      if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                      const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                    }}
+                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                    onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
                   >
-                    <span className="srch-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                    Search <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                    Search
                   </button>
+                </div>
                 </div>
               </div>
             </div>
@@ -749,102 +708,95 @@ export default function TemplateICBlueProfessionalAlt() {
                 id="contact-panel"
                 className="h-full flex flex-col justify-between py-12 px-10 rounded-[30px] overflow-hidden"
                 style={{
-                  background: `linear-gradient(150deg, rgba(55,96,146,0.97) 0%, rgba(36,87,155,0.98) 62%, rgba(46,101,170,0.97) 100%)`,
-                  border: "1.5px solid rgba(220,230,242,0.34)",
-                  boxShadow: "0 22px 70px rgba(23,53,95,0.28)",
+                  background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`,
+                  border: "none",
+                  boxShadow: "0 24px 74px rgba(23,53,95,0.26)",
                   backdropFilter: "blur(8px)",
                   animation: "panelDrift 9s ease-in-out infinite",
                 }}
               >
                 <div>
                   <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.blueLight }}>Contact us</p>
-                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(25px,3.08vw,31px)", color: IC.white }}>
+                  <h3 className="font-bold leading-[1.15] mb-12" style={{ fontSize: "clamp(26px,3.23vw,33px)", color: IC.white }}>
                     Tell us your challenge
                   </h3>
                   <form className="grid grid-cols-2 gap-4 pt-6" onSubmit={(e) => e.preventDefault()}>
                     <input
-                      name="name"
-                      placeholder="Name"
-                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
+                      name="mail"
+                      type="email"
+                      placeholder="Mail"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
-                        border: "1px solid rgba(220,230,242,0.34)",
-                        borderRadius: 12,
+                        background: "rgba(142,180,227,0.82)",
+                        border: "none",
+                        borderRadius: 9,
+                      }}
+                    />
+                    <input
+                      name="name"
+                      placeholder="Name"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-white"
+                      style={{
+                        color: IC.white,
+                        background: "rgba(142,180,227,0.82)",
+                        border: "none",
+                        borderRadius: 9,
                       }}
                     />
                     <input
                       name="company"
                       placeholder="Company"
-                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
-                        border: "1px solid rgba(220,230,242,0.34)",
-                        borderRadius: 12,
-                      }}
-                    />
-                    <input
-                      name="mail"
-                      type="email"
-                      placeholder="Mail"
-                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
-                      style={{
-                        color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
-                        border: "1px solid rgba(220,230,242,0.34)",
-                        borderRadius: 12,
+                        background: "rgba(142,180,227,0.82)",
+                        border: "none",
+                        borderRadius: 9,
                       }}
                     />
                     <input
                       name="tel"
                       type="tel"
                       placeholder="Tel"
-                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]"
+                      className="col-span-1 h-11 px-4 text-[14px] outline-none placeholder:text-white"
                       style={{
                         color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
-                        border: "1px solid rgba(220,230,242,0.34)",
-                        borderRadius: 12,
-                      }}
-                    />
-                    <textarea
-                      name="message"
-                      placeholder="Message"
-                      className="col-span-2 min-h-[130px] px-4 py-3 text-[14px] outline-none resize-none placeholder:text-[rgba(220,230,242,0.86)]"
-                      style={{
-                        color: IC.white,
-                        background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)",
-                        border: "1px solid rgba(220,230,242,0.34)",
-                        borderRadius: 14,
-                      }}
-                    />
-                    <button
-                      type="submit"
-                      className="col-span-2 h-12 inline-flex items-center justify-center gap-2 text-[13px] font-bold tracking-[0.03em] relative overflow-hidden"
-                      style={{
-                        color: IC.white,
-                        background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                        background: "rgba(142,180,227,0.82)",
                         border: "none",
-                        boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
-                        borderRadius: 999,
-                        transition: "opacity 0.2s ease",
-                        cursor: "pointer",
+                        borderRadius: 9,
                       }}
-                      onMouseEnter={e => {
-                        const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
-                        if (shine) { shine.style.transform = "translateX(900px) skewX(-18deg)" }
-                        const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                      }}
-                      onMouseLeave={e => {
-                        const shine = e.currentTarget.querySelector(".sr-shine") as HTMLElement
-                        if (shine) { setTimeout(() => { shine.style.transition = "none"; shine.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { shine.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }
-                        const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                      }}
-                    >
-                      <span className="sr-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
-                      Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
-                    </button>
+                    />
+                    <div className="col-span-2 relative">
+                      <textarea
+                        name="message"
+                        placeholder="Message"
+                        className="w-full min-h-[130px] px-4 py-3 pb-14 text-[14px] outline-none resize-none placeholder:text-white"
+                        style={{
+                          color: IC.white,
+                          background: "rgba(142,180,227,0.82)",
+                          border: "none",
+                          borderRadius: 10,
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        className="absolute bottom-4 left-1/2 -translate-x-1/2 h-9 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]"
+                        style={{
+                          color: IC.white,
+                          background: "#1E4A86",
+                          border: "none",
+                          boxShadow: "none",
+                          borderRadius: 999,
+                          transition: "opacity 0.2s ease",
+                          cursor: "pointer",
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                        onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
+                      >
+                        Send Inquiry
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -864,18 +816,18 @@ export default function TemplateICBlueProfessionalAlt() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
-              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(26px,6.6vw,35px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
+              <h2 className="font-bold leading-[1.1] mb-5" style={{ fontSize: "clamp(27px,6.93vw,37px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
               <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
               <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
               <div className="flex items-center gap-0">
                 <input
-                  placeholder="Industry Report Search"
-                  className="flex-1 h-12 px-5 text-[14px] outline-none"
+                  placeholder="Explore our Industry Markets"
+                  className="flex-1 h-12 px-5 text-[14px] outline-none placeholder:text-white"
                   style={{
-                    color: IC.gray80,
+                    color: IC.white,
                     caretColor: IC.blue,
-                    background: "rgba(255,255,255,0.9)",
-                    border: "1.5px solid rgba(36,87,155,0.26)",
+                    background: IC.blueLight,
+                    border: "none",
                     borderRadius: 999,
                     appearance: "none",
                   }}
@@ -884,35 +836,36 @@ export default function TemplateICBlueProfessionalAlt() {
                   className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                   style={{
                     color: IC.white,
-                    background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`,
+                    background: IC.blue,
                     border: "none",
-                    boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`,
+                    boxShadow: "none",
                     borderRadius: 999,
                     minWidth: 120,
                     whiteSpace: "nowrap",
                     cursor: "pointer",
                   }}
                 >
-                  Search <ArrowRight size={12} />
+                  Search
                 </button>
               </div>
             </div>
-            <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.97) 0%, rgba(36,87,155,0.98) 62%, rgba(46,101,170,0.97) 100%)`, border: "1.5px solid rgba(220,230,242,0.34)", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
+            <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`, border: "none", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.blueLight }}>Contact us</p>
-              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(23px,5.5vw,28px)", color: IC.white }}>Tell us your challenge</h3>
+              <h3 className="font-bold leading-[1.15] mb-8" style={{ fontSize: "clamp(24px,5.78vw,29px)", color: IC.white }}>Tell us your challenge</h3>
               <form className="grid grid-cols-1 gap-4 pt-5" onSubmit={(e) => e.preventDefault()}>
-                <input name="name" placeholder="Name" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
-                <input name="company" placeholder="Company" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-4 text-[14px] outline-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 12 }} />
-                <textarea name="message" placeholder="Message" className="min-h-[110px] px-4 py-3 text-[14px] outline-none resize-none placeholder:text-[rgba(220,230,242,0.86)]" style={{ color: IC.white, background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.09) 100%)", border: "1px solid rgba(220,230,242,0.34)", borderRadius: 14 }} />
-                <button type="submit" className="h-12 inline-flex items-center justify-center gap-2 text-[14px] font-bold tracking-[0.03em] relative overflow-hidden" style={{ color: IC.white, background: `linear-gradient(70deg, ${IC.white} 0%, ${IC.blueLight} 35%, ${IC.blue} 100%)`, border: "none", boxShadow: `inset 0 0 0 1.8px rgba(36,87,155,0.42), 0 0 0 1px rgba(255,255,255,0.35)`, borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
-                  onMouseEnter={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { s.style.transform = "translateX(900px) skewX(-18deg)" }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(4px)" }}
-                  onMouseLeave={e => { const s = e.currentTarget.querySelector(".srm-shine") as HTMLElement; if (s) { setTimeout(() => { s.style.transition = "none"; s.style.transform = "translateX(-120px) skewX(-18deg)"; requestAnimationFrame(() => { s.style.transition = "transform 0.65s cubic-bezier(0.22,1,0.36,1)" }) }, 650) }; const a = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (a) a.style.transform = "translateX(0)" }}
-                >
-                  <span className="srm-shine" style={{ position: "absolute", top: 0, left: "-80px", width: "60px", height: "100%", background: "rgba(255,255,255,0.2)", transform: "translateX(-120px) skewX(-18deg)", transition: "transform 0.65s cubic-bezier(0.22,1,0.36,1)", pointerEvents: "none" }} />
-                  Send Request <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={13} /></span>
-                </button>
+                <input name="mail" type="email" placeholder="Mail" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
+                <input name="name" placeholder="Name" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
+                <input name="company" placeholder="Company" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
+                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-4 text-[14px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
+                <div className="relative">
+                  <textarea name="message" placeholder="Message" className="w-full min-h-[110px] px-4 py-3 pb-14 text-[14px] outline-none resize-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 10 }} />
+                  <button type="submit" className="absolute bottom-4 left-1/2 -translate-x-1/2 h-10 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: "#1E4A86", border: "none", boxShadow: "none", borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
+                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                    onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
+                  >
+                    Send Inquiry
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -938,63 +891,53 @@ export default function TemplateICBlueProfessionalAlt() {
 
               </div>
             </Fade>
-            <div
-              className="grid sm:grid-cols-2 lg:grid-cols-3"
-              style={{
-                borderTop: `1px solid ${IC.blueXL}`,
-                borderLeft: `1px solid ${IC.blueXL}`,
-              }}
-            >
-              {COMPETENCES.map((c, i) => {
-                const Icon = c.icon
-                return (
-                  <Fade key={c.title} delay={0.14 + i * 0.09} duration={0.95} style={{ display: "flex" }}>
-                    <div
-                      className="relative flex flex-col p-8 overflow-hidden w-full"
+            <div style={{ borderTop: `1.5px solid ${IC.blueXL}` }}>
+              {COMPETENCES.map((c, i) => (
+                <Fade key={c.title} delay={0.12 + i * 0.07} duration={0.85}>
+                  <a
+                    href="#"
+                    className="group flex items-center gap-4 sm:gap-6 py-5"
+                    style={{
+                      borderBottom: `1.5px solid ${IC.blueXL}`,
+                      transition: "background 0.25s ease",
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = "rgba(220,230,242,0.22)"
+                      const arrow = e.currentTarget.querySelector(".wwd-arrow") as HTMLElement
+                      if (arrow) arrow.style.transform = "translateX(4px)"
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = "transparent"
+                      const arrow = e.currentTarget.querySelector(".wwd-arrow") as HTMLElement
+                      if (arrow) arrow.style.transform = "translateX(0)"
+                    }}
+                  >
+                    <span
+                      className="shrink-0"
                       style={{
-                        background: IC.white,
-                        minHeight: 240,
-                        borderRight: `1px solid ${IC.blueXL}`,
-                        borderBottom: `1px solid ${IC.blueXL}`,
-                        transition: "background 0.35s ease, box-shadow 0.35s ease",
+                        width: 64,
+                        height: 44,
+                        borderRadius: 999,
+                        background: IC.blueXL,
+                        border: "3px solid #0C3352",
                       }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = IC.blueXL
-                        e.currentTarget.style.boxShadow = `inset 3px 0 0 ${IC.blue}`
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = IC.white
-                        e.currentTarget.style.boxShadow = "none"
-                      }}
-                    >
-                      <Icon size={22} style={{ color: IC.blue, marginBottom: 20 }} />
-                      <h3 className="text-[17px] font-semibold mb-3" style={{ color: "#4D4D4D" }}>{c.title}</h3>
-                      <p className="text-[15px] leading-relaxed flex-1" style={{ color: "#7F7F7F" }}>{c.desc}</p>
-                      <a href="#"
-                        className="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-6 relative w-fit"
-                        style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
-                        onMouseEnter={e => {
-                          const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blueDark
-                          el.style.transform = "translateX(4px)"
-                          const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
-                        }}
-                        onMouseLeave={e => {
-                          const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blue
-                          el.style.transform = "translateX(0)"
-                          const arrow = el.querySelector(".exp-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                        }}
-                      >
-                        <span>Explore</span>
-                        <span className="exp-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                          <ArrowRight size={11} />
-                        </span>
-                      </a>
-                    </div>
-                  </Fade>
-                )
-              })}
+                    />
+
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[17px] font-semibold mb-1" style={{ color: IC.blue }}>
+                        {c.title}
+                      </span>
+                      <span className="block text-[15px] leading-relaxed" style={{ color: IC.gray50 }}>
+                        {c.desc}
+                      </span>
+                    </span>
+
+                    <span className="wwd-arrow shrink-0 inline-flex items-center justify-center" style={{ color: IC.blue, transition: "transform 0.25s ease" }}>
+                      <ArrowDownRight size={38} strokeWidth={2.2} />
+                    </span>
+                  </a>
+                </Fade>
+              ))}
             </div>
         </div>
       </section>
@@ -1012,50 +955,43 @@ export default function TemplateICBlueProfessionalAlt() {
             {/* News column */}
             <div className="flex flex-col h-full">
               <Fade>
-                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: "#4D4D4D" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
-                    <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                  </span>
-                  IC News
-                </h3>
+                <span
+                  className="inline-flex items-center justify-center h-9 px-10 mb-6 text-[14px] font-bold tracking-[0.18em] uppercase"
+                  style={{
+                    borderRadius: 999,
+                    color: IC.gray80,
+                    border: `2px solid rgba(36,87,155,0.28)`,
+                    background: IC.white,
+                    width: "fit-content",
+                  }}
+                >
+                  News
+                </span>
               </Fade>
 
               <div className="flex flex-col">
                 {D.press.map((p, idx) => (
                   <Fade key={`press-${idx}`} delay={idx * 0.1}>
-                    <div className="pb-6 mb-6 flex flex-col min-h-[210px]">
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{p.title}</h4>
-                        <span
-                          className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide opacity-0 pointer-events-none select-none"
-                          style={{ background: IC.blueXL, color: IC.blue }}
-                          aria-hidden="true"
-                        >
-                          00/00/0000
-                        </span>
-                      </div>
+                    <div className="relative pr-14 h-[196px] py-5 flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                      <h4 className="text-[17px] font-semibold mb-2" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                       <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
                       <a
                         href="#"
-                        className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
-                        style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
+                        aria-label="View news item"
+                        className="absolute right-0 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blueDark
                           el.style.transform = "translateX(4px)"
-                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
                         }}
                         onMouseLeave={e => {
                           const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blue
                           el.style.transform = "translateX(0)"
-                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                         }}
                       >
-                        <span>Read more</span>
-                        <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                          <ArrowRight size={12} />
+                        <ArrowDownRight size={36} strokeWidth={2.2} />
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.08em] opacity-0 -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
+                          Read more
                         </span>
                       </a>
                     </div>
@@ -1068,24 +1004,16 @@ export default function TemplateICBlueProfessionalAlt() {
                   href="#"
                   className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
                   style={{
-                    borderRadius: 0,
+                    borderRadius: 999,
                     color: IC.white,
-                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                    background: IC.blue,
+                    border: "none",
                     transition: "opacity 0.2s ease",
                   }}
-                  onMouseEnter={e => {
-                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                    const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(4px)"
-                  }}
-                  onMouseLeave={e => {
-                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                    const arrow = e.currentTarget.querySelector(".btn-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
-                  }}
+                  onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                  onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
                 >
-                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                  More News <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                  More News
                 </a>
               </Fade>
             </div>
@@ -1093,19 +1021,24 @@ export default function TemplateICBlueProfessionalAlt() {
             {/* Events column */}
             <div className="flex flex-col h-full">
               <Fade delay={0.05}>
-                <h3 className="text-[14px] font-bold pb-4 mb-6 tracking-widest uppercase inline-flex items-center gap-3"
-                  style={{ color: "#4D4D4D" }}>
-                  <span style={{ width: 38, height: 38, borderRadius: 999, background: `linear-gradient(145deg, ${IC.blueXL} 0%, #eef4fb 100%)`, border: `1px solid ${IC.blueXL}`, display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(36,87,155,0.12)" }}>
-                    <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
-                  </span>
-                  Keep in touch with our events
-                </h3>
+                <span
+                  className="inline-flex items-center justify-center h-9 px-10 mb-6 text-[14px] font-bold tracking-[0.18em] uppercase"
+                  style={{
+                    borderRadius: 999,
+                    color: IC.gray80,
+                    border: `2px solid rgba(36,87,155,0.28)`,
+                    background: IC.white,
+                    width: "fit-content",
+                  }}
+                >
+                  Events
+                </span>
               </Fade>
 
               <div className="flex flex-col">
                 {D.events.map((ev, idx) => (
                   <Fade key={`event-${idx}`} delay={idx * 0.1}>
-                    <div className="pb-6 mb-6 flex flex-col min-h-[210px]">
+                    <div className="relative pr-14 h-[196px] py-5 flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
                         <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue }}>{ev.date}</span>
@@ -1113,24 +1046,21 @@ export default function TemplateICBlueProfessionalAlt() {
                       <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
                       <a
                         href="#"
-                        className="inline-flex items-center gap-1.5 mt-auto pt-4 text-[13px] font-semibold"
-                        style={{ color: IC.blue, transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)", paddingBottom: 2 }}
+                        aria-label="View event item"
+                        className="absolute right-0 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blueDark
                           el.style.transform = "translateX(4px)"
-                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(5px)"
                         }}
                         onMouseLeave={e => {
                           const el = e.currentTarget as HTMLElement
-                          el.style.color = IC.blue
                           el.style.transform = "translateX(0)"
-                          const arrow = el.querySelector(".rm-arrow") as HTMLElement; if (arrow) arrow.style.transform = "translateX(0)"
                         }}
                       >
-                        <span>Read more</span>
-                        <span className="rm-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}>
-                          <ArrowRight size={12} />
+                        <ArrowDownRight size={36} strokeWidth={2.2} />
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.08em] opacity-0 -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
+                          Read more
                         </span>
                       </a>
                     </div>
@@ -1143,22 +1073,16 @@ export default function TemplateICBlueProfessionalAlt() {
                   href="#"
                   className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
                   style={{
-                    borderRadius: 0,
+                    borderRadius: 999,
                     color: IC.white,
-                    background: `linear-gradient(to right, #24579B 0%, #24579B 50%, #8EB4E3 100%)`,
+                    background: IC.blue,
+                    border: "none",
                     transition: "opacity 0.2s ease",
                   }}
-                  onMouseEnter={e => {
-                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                    if (shine) { shine.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)"; shine.style.transform = "translateX(260px) skewX(-18deg)" }
-                  }}
-                  onMouseLeave={e => {
-                    const shine = e.currentTarget.querySelector(".btn-shine") as HTMLElement
-                    if (shine) { shine.style.transition = "none"; shine.style.transform = "translateX(-80px) skewX(-18deg)" }
-                  }}
+                  onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
+                  onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
                 >
-                  <span className="btn-shine" style={{ position: "absolute", top: 0, left: "-60px", width: "48px", height: "100%", background: "rgba(255,255,255,0.18)", transform: "translateX(-80px) skewX(-18deg)", pointerEvents: "none" }} />
-                  More Events <span className="btn-arrow" style={{ display: "inline-flex", transition: "transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}><ArrowRight size={12} /></span>
+                  More Events
                 </a>
               </Fade>
             </div>
@@ -1172,11 +1096,13 @@ export default function TemplateICBlueProfessionalAlt() {
         style={{
           background: `linear-gradient(to bottom,
             ${IC.white} 0%,
-            ${IC.blueXL} 10%,
-            #edf3fb 24%,
-            #dce9f5 42%,
-            #c8daee 58%,
-            #b4cce7 74%,
+            ${IC.white} 12%,
+            #f7faff 24%,
+            #eef4fb 38%,
+            #e4edf8 52%,
+            #d8e5f4 66%,
+            #c9dbee 80%,
+            #bfd4ea 90%,
             ${IC.blueLight} 100%)`,
         }}
       >
@@ -1306,7 +1232,13 @@ export default function TemplateICBlueProfessionalAlt() {
       <footer
         className="px-6 lg:px-14 relative"
         style={{
-          background: `linear-gradient(to bottom, ${IC.blueLight} 0%, #6e9ed4 30%, #4b7fbe 60%, ${IC.blue} 100%)`,
+          background: `linear-gradient(to bottom,
+            ${IC.blueLight} 0%,
+            #84abd9 22%,
+            #729fd2 42%,
+            #5f91ca 62%,
+            #4f84c2 80%,
+            ${IC.blue} 100%)`,
           paddingTop: 16,
           paddingBottom: 32,
         }}
