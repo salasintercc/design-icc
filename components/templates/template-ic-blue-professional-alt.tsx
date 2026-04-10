@@ -44,9 +44,11 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
     const timer = setInterval(() => {
       setFading(true)
       setTimeout(() => {
-        setPage((p) => (p + 1) % pageCount)
-        setFading(false)
-      }, 500)
+        setPage((p) => (p + 1) % pageCount)   // cambia contenido mientras está invisible
+      }, 480)
+      setTimeout(() => {
+        setFading(false)                        // inicia fade-in solo tras el cambio
+      }, 530)
     }, 3000)
     return () => clearInterval(timer)
   }, [pageCount])
@@ -72,7 +74,7 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
               style={{
                 color: IC.blue,
                 opacity: fading ? 0 : 1,
-                transition: "opacity 0.45s ease",
+                transition: "opacity 0.38s ease",
               }}
             >
               {c.name}
