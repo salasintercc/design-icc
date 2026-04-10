@@ -69,9 +69,9 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
             }}
           >
             <span
-              className="text-[12px] sm:text-[13px] font-semibold leading-tight text-center"
+              className="text-[14px] font-bold tracking-widest uppercase leading-tight text-center"
               style={{
-                color: IC.gray80,
+                color: IC.blue,
                 opacity: fading ? 0 : 1,
                 transition: "opacity 0.45s ease",
               }}
@@ -686,7 +686,7 @@ export default function TemplateICBlueProfessionalAlt() {
                   <div className="flex items-center gap-2">
                   <input
                     placeholder="Explore our Industry Markets"
-                    className="flex-1 h-12 px-5 text-[15px] outline-none placeholder:text-white"
+                    className="flex-1 h-12 text-[15px] outline-none placeholder:text-white"
                     style={{
                       color: IC.white,
                       caretColor: IC.blue,
@@ -998,23 +998,22 @@ export default function TemplateICBlueProfessionalAlt() {
             <div className="flex flex-col h-full">
               <Fade>
                 <h3
-                  className="text-[14px] font-bold mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  className="text-[14px] font-bold mb-6 tracking-widest inline-flex items-center gap-3"
                   style={{ color: IC.blue }}
                 >
                   <span
                     style={{
-                      width: 38,
-                      height: 38,
+                      width: 64,
+                      height: 44,
                       borderRadius: 999,
-                      background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBF2FB 100%)`,
-                      border: `1px solid ${IC.blueXL}`,
+                      background: IC.blueXL,
+                      border: `1.5px solid ${IC.blueXL}`,
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      boxShadow: "0 2px 8px rgba(36,87,155,0.12)",
                     }}
                   >
-                    <Newspaper size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                    <Newspaper size={22} style={{ color: IC.blue }} />
                   </span>
                   News
                 </h3>
@@ -1023,13 +1022,29 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex flex-col">
                 {D.press.map((p, idx) => (
                   <Fade key={`press-${idx}`} delay={idx * 0.1}>
-                    <div className="relative pr-14 h-[196px] py-5 flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                    <div
+                      className="group relative pr-16 h-[196px] py-5 flex flex-col"
+                      style={{
+                        borderBottom: `1px solid ${IC.blueXL}`,
+                        transition: "background 0.25s ease",
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = "rgba(220,230,242,0.22)"
+                        const arrow = e.currentTarget.querySelector(".icnews-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(4px)"
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = "transparent"
+                        const arrow = e.currentTarget.querySelector(".icnews-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(0)"
+                      }}
+                    >
                       <h4 className="text-[17px] font-semibold mb-2" style={{ color: "#4D4D4D" }}>{p.title}</h4>
                       <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
                       <a
                         href="#"
                         aria-label="View news item"
-                        className="absolute right-0 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        className="icnews-arrow absolute right-3 bottom-4 inline-flex flex-col items-center gap-1 group"
                         style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
@@ -1050,7 +1065,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 ))}
               </div>
 
-              <Fade delay={0.25} className="mt-auto pt-2">
+              <Fade delay={0.25} className="mt-auto pt-8">
                 <a
                   href="#"
                   className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
@@ -1073,23 +1088,22 @@ export default function TemplateICBlueProfessionalAlt() {
             <div className="flex flex-col h-full">
               <Fade delay={0.05}>
                 <h3
-                  className="text-[14px] font-bold mb-6 tracking-widest uppercase inline-flex items-center gap-3"
+                  className="text-[14px] font-bold mb-6 tracking-widest inline-flex items-center gap-3"
                   style={{ color: IC.blue }}
                 >
                   <span
                     style={{
-                      width: 38,
-                      height: 38,
+                      width: 64,
+                      height: 44,
                       borderRadius: 999,
-                      background: `linear-gradient(145deg, ${IC.blueXL} 0%, #EBF2FB 100%)`,
-                      border: `1px solid ${IC.blueXL}`,
+                      background: IC.blueXL,
+                      border: `1.5px solid ${IC.blueXL}`,
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      boxShadow: "0 2px 8px rgba(36,87,155,0.12)",
                     }}
                   >
-                    <CalendarCheck2 size={20} strokeWidth={2.15} style={{ color: IC.blue }} />
+                    <CalendarCheck2 size={22} style={{ color: IC.blue }} />
                   </span>
                   Events
                 </h3>
@@ -1098,7 +1112,23 @@ export default function TemplateICBlueProfessionalAlt() {
               <div className="flex flex-col">
                 {D.events.map((ev, idx) => (
                   <Fade key={`event-${idx}`} delay={idx * 0.1}>
-                    <div className="relative pr-14 h-[196px] py-5 flex flex-col" style={{ borderBottom: `1px solid ${IC.blueXL}` }}>
+                    <div
+                      className="group relative pr-16 h-[196px] py-5 flex flex-col"
+                      style={{
+                        borderBottom: `1px solid ${IC.blueXL}`,
+                        transition: "background 0.25s ease",
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = "rgba(220,230,242,0.22)"
+                        const arrow = e.currentTarget.querySelector(".icnews-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(4px)"
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = "transparent"
+                        const arrow = e.currentTarget.querySelector(".icnews-arrow") as HTMLElement
+                        if (arrow) arrow.style.transform = "translateX(0)"
+                      }}
+                    >
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
                         <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue, borderRadius: 999 }}>{ev.date}</span>
@@ -1107,7 +1137,7 @@ export default function TemplateICBlueProfessionalAlt() {
                       <a
                         href="#"
                         aria-label="View event item"
-                        className="absolute right-0 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        className="icnews-arrow absolute right-3 bottom-4 inline-flex flex-col items-center gap-1 group"
                         style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
@@ -1128,7 +1158,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 ))}
               </div>
 
-              <Fade delay={0.3} className="mt-auto pt-2">
+              <Fade delay={0.3} className="mt-auto pt-8">
                 <a
                   href="#"
                   className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
@@ -1214,7 +1244,7 @@ export default function TemplateICBlueProfessionalAlt() {
                     {/* Company label + quote — starts from top */}
                     <div className="flex flex-col justify-start" style={{ flex: "1 1 auto" }}>
                       <p
-                        className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5"
+                        className="text-[14px] font-bold tracking-widest uppercase mb-5"
                         style={{ color: IC.blue, flexShrink: 0 }}
                       >
                         {ref.company}
