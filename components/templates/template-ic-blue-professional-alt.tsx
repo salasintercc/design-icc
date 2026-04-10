@@ -56,7 +56,6 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
 
   return (
     <div>
-      <p className="text-[10px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>Also trusted by</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {current.map((c, i) => (
           <div key={i} className="flex items-center justify-center px-3 py-3"
@@ -905,7 +904,7 @@ export default function TemplateICBlueProfessionalAlt() {
                   }}
                 />
                 <button
-                  className="flex items-center justify-center gap-1.5 h-12 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
+                  className="flex items-center justify-center gap-1.5 h-10 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
                   style={{
                     color: IC.white,
                     background: IC.blue,
@@ -1110,7 +1109,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <Fade delay={0.25} className="mt-auto pt-8">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
+                  className="inline-flex items-center gap-2 h-10 text-[13px] font-bold tracking-[0.03em] px-5 relative overflow-hidden w-fit"
                   style={{
                     borderRadius: 999,
                     color: IC.white,
@@ -1205,7 +1204,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <Fade delay={0.3} className="mt-auto pt-8">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[0.03em] px-5 py-2.5 relative overflow-hidden w-fit"
+                  className="inline-flex items-center gap-2 h-10 text-[13px] font-bold tracking-[0.03em] px-5 relative overflow-hidden w-fit"
                   style={{
                     borderRadius: 999,
                     color: IC.white,
@@ -1377,7 +1376,7 @@ export default function TemplateICBlueProfessionalAlt() {
           paddingBottom: 32,
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
+        <div className="max-w-7xl mx-auto px-32 lg:px-48 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
           <div
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
           >
