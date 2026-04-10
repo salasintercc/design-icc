@@ -413,6 +413,11 @@ export default function TemplateICBlueProfessionalAlt() {
           from { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
           to   { clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%); }
         }
+        @keyframes searchIconPop {
+          0%, 100% { opacity: 0.6; transform: translateY(0) scale(1); }
+          50%       { opacity: 1;   transform: translateY(-2px) scale(1.14); }
+        }
+        .search-icon-pop { animation: searchIconPop 2.4s ease-in-out infinite; }
       `}</style>
 
       {/* NAVBAR */}
@@ -682,40 +687,75 @@ export default function TemplateICBlueProfessionalAlt() {
                 We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
               </p>
               <div>
-                <div className="w-full max-w-[560px] rounded-[14px] p-2" style={{ background: IC.blueLight, boxShadow: "0 12px 30px rgba(36,87,155,0.16)" }}>
+                <div
+                  className="search-container w-full max-w-[560px] rounded-[14px] py-[10px] px-3"
+                  style={{
+                    background: IC.blueLight,
+                    boxShadow: "0 12px 30px rgba(36,87,155,0.16)",
+                    transition: "box-shadow 0.28s ease, transform 0.28s ease",
+                  }}
+                  onMouseEnter={e => {
+                    const active = document.activeElement
+                    const inp = e.currentTarget.querySelector("input")
+                    if (active !== inp) {
+                      e.currentTarget.style.boxShadow = "0 16px 42px rgba(36,87,155,0.26), 0 0 0 2.5px rgba(255,255,255,0.38)"
+                      e.currentTarget.style.transform = "translateY(-1.5px)"
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    const active = document.activeElement
+                    const inp = e.currentTarget.querySelector("input")
+                    if (active !== inp) {
+                      e.currentTarget.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"
+                      e.currentTarget.style.transform = "translateY(0)"
+                    }
+                  }}
+                >
                   <div className="flex items-center gap-2">
-                  <input
-                    placeholder="Explore our Industry Markets"
-                    className="flex-1 h-12 text-[15px] outline-none placeholder:text-white"
-                    style={{
-                      color: IC.white,
-                      caretColor: IC.blue,
-                      background: IC.blueLight,
-                      boxShadow: "none",
-                      border: "none",
-                      borderRadius: 10,
-                      appearance: "none",
-                    }}
-                  />
-                  <button
-                    className="flex items-center justify-center h-10 px-12 text-[13px] font-bold tracking-[0.03em] shrink-0"
-                    style={{
-                      color: IC.white,
-                      background: IC.blue,
-                      border: "none",
-                      boxShadow: "none",
-                      borderRadius: 999,
-                      minWidth: 148,
-                      whiteSpace: "nowrap",
-                      transition: "opacity 0.2s ease, transform 0.2s ease",
-                      cursor: "pointer",
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
-                    onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
-                  >
-                    Search
-                  </button>
-                </div>
+                    <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                      <Search size={18} />
+                    </span>
+                    <input
+                      placeholder="Explore our Industry Markets"
+                      className="flex-1 h-12 text-[15px] outline-none placeholder:text-white/60"
+                      style={{
+                        color: IC.white,
+                        caretColor: IC.white,
+                        background: "transparent",
+                        boxShadow: "none",
+                        border: "none",
+                        borderRadius: 10,
+                        appearance: "none",
+                      }}
+                      onFocus={e => {
+                        const c = e.currentTarget.closest(".search-container") as HTMLElement
+                        if (c) { c.style.boxShadow = "0 16px 42px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-1.5px)" }
+                      }}
+                      onBlur={e => {
+                        const c = e.currentTarget.closest(".search-container") as HTMLElement
+                        if (c) { c.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; c.style.transform = "translateY(0)" }
+                      }}
+                    />
+                    <button
+                      className="flex items-center justify-center gap-2 h-10 px-5 text-[13px] font-bold tracking-[0.03em] shrink-0"
+                      style={{
+                        color: IC.white,
+                        background: IC.blue,
+                        border: "none",
+                        boxShadow: "none",
+                        borderRadius: 999,
+                        minWidth: 110,
+                        whiteSpace: "nowrap",
+                        transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.opacity = "0.92"; e.currentTarget.style.transform = "scale(1.04)" }}
+                      onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1)" }}
+                    >
+                      <Search size={14} />
+                      Search
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
