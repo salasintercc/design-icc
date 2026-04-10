@@ -16,8 +16,8 @@ function CornerArrow({ size = 34, strokeWidth = 2.4, className }: { size?: numbe
       className={className}
       aria-hidden="true"
     >
-      <path d="M4 14H23" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="square" strokeLinejoin="miter" />
-      <path d="M15 6L23 14L15 22" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="square" strokeLinejoin="miter" />
+      <path d="M10 10 L22 22" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 22 L22 22 L22 10" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -1063,7 +1063,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 {D.press.map((p, idx) => (
                   <Fade key={`press-${idx}`} delay={idx * 0.1}>
                     <div
-                      className="group relative pr-16 h-[196px] py-5 flex flex-col"
+                      className="group flex items-center gap-6 py-5 pr-2"
                       style={{
                         borderBottom: `1px solid ${IC.blueXL}`,
                         transition: "background 0.25s ease",
@@ -1079,12 +1079,14 @@ export default function TemplateICBlueProfessionalAlt() {
                         if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
-                      <h4 className="text-[17px] font-semibold mb-2" style={{ color: "#4D4D4D" }}>{p.title}</h4>
-                      <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-[17px] font-semibold mb-2" style={{ color: "#4D4D4D" }}>{p.title}</h4>
+                        <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{p.desc}</p>
+                      </div>
                       <a
                         href="#"
                         aria-label="View news item"
-                        className="icnews-arrow absolute right-3 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        className="icnews-arrow shrink-0 inline-flex flex-col items-center gap-1 group"
                         style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
@@ -1153,7 +1155,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 {D.events.map((ev, idx) => (
                   <Fade key={`event-${idx}`} delay={idx * 0.1}>
                     <div
-                      className="group relative pr-16 h-[196px] py-5 flex flex-col"
+                      className="group flex items-center gap-6 py-5 pr-2"
                       style={{
                         borderBottom: `1px solid ${IC.blueXL}`,
                         transition: "background 0.25s ease",
@@ -1169,15 +1171,17 @@ export default function TemplateICBlueProfessionalAlt() {
                         if (arrow) arrow.style.transform = "translateX(0)"
                       }}
                     >
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
-                        <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue, borderRadius: 999 }}>{ev.date}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                          <h4 className="text-[17px] font-semibold" style={{ color: "#4D4D4D" }}>{ev.title}</h4>
+                          <span className="text-[11px] font-bold px-2.5 py-1 shrink-0 tracking-wide" style={{ background: IC.blueXL, color: IC.blue, borderRadius: 999 }}>{ev.date}</span>
+                        </div>
+                        <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
                       </div>
-                      <p className="text-[15px] leading-relaxed" style={{ color: "#7F7F7F" }}>{ev.desc}</p>
                       <a
                         href="#"
                         aria-label="View event item"
-                        className="icnews-arrow absolute right-3 bottom-4 inline-flex flex-col items-center gap-1 group"
+                        className="icnews-arrow shrink-0 inline-flex flex-col items-center gap-1 group"
                         style={{ color: IC.blue, transition: "transform 0.25s ease" }}
                         onMouseEnter={e => {
                           const el = e.currentTarget as HTMLElement
