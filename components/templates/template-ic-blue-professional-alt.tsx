@@ -837,7 +837,6 @@ export default function TemplateICBlueProfessionalAlt() {
         >
           <Label>How we make our customers successful</Label>
           <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(28px,8vw,42px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
-          <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
           <p className="text-[14px] leading-[1.75] mb-8" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance.</p>
           <div
             className="search-container w-full rounded-[14px] py-[10px] px-4 max-[420px]:px-2.5"
