@@ -34,6 +34,16 @@ const IC = {
   white:     "#FFFFFF",
 }
 
+const withAlpha = (hex: string, alpha: number) => {
+  const raw = hex.replace("#", "")
+  const full = raw.length === 3 ? raw.split("").map((c) => c + c).join("") : raw
+  const n = Number.parseInt(full, 16)
+  const r = (n >> 16) & 255
+  const g = (n >> 8) & 255
+  const b = n & 255
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
   const [page, setPage] = useState(0)
   const [fading, setFading] = useState(false)
@@ -690,14 +700,13 @@ export default function TemplateICBlueProfessionalAlt() {
                 className="search-container w-full rounded-[18px] py-[14px] px-4"
                 style={{
                   background: IC.blueLight,
-                  boxShadow: "0 16px 40px rgba(36,87,155,0.2)",
-                  transition: "box-shadow 0.28s ease, transform 0.28s ease",
+                  boxShadow: "none",
+                  transition: "transform 0.28s ease",
                 }}
                 onMouseEnter={e => {
                   const active = document.activeElement
                   const inp = e.currentTarget.querySelector("input")
                   if (active !== inp) {
-                    e.currentTarget.style.boxShadow = "0 20px 48px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.44)"
                     e.currentTarget.style.transform = "translateY(-2px)"
                   }
                 }}
@@ -705,13 +714,12 @@ export default function TemplateICBlueProfessionalAlt() {
                   const active = document.activeElement
                   const inp = e.currentTarget.querySelector("input")
                   if (active !== inp) {
-                    e.currentTarget.style.boxShadow = "0 16px 40px rgba(36,87,155,0.2)"
                     e.currentTarget.style.transform = "translateY(0)"
                   }
                 }}
               >
                 <div className="flex items-center gap-3">
-                  <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  <span className="search-icon-pop shrink-0" style={{ color: withAlpha(IC.white, 0.8) }}>
                     <Search size={20} />
                   </span>
                   <input
@@ -728,11 +736,11 @@ export default function TemplateICBlueProfessionalAlt() {
                     }}
                     onFocus={e => {
                       const c = e.currentTarget.closest(".search-container") as HTMLElement
-                      if (c) { c.style.boxShadow = "0 20px 48px rgba(36,87,155,0.3), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-2px)" }
+                      if (c) { c.style.transform = "translateY(-2px)" }
                     }}
                     onBlur={e => {
                       const c = e.currentTarget.closest(".search-container") as HTMLElement
-                      if (c) { c.style.boxShadow = "0 16px 40px rgba(36,87,155,0.2)"; c.style.transform = "translateY(0)" }
+                      if (c) { c.style.transform = "translateY(0)" }
                     }}
                   />
                   <button
@@ -761,12 +769,11 @@ export default function TemplateICBlueProfessionalAlt() {
                 {["Automotive", "Chemicals", "Energy", "Construction", "Healthcare"].map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center h-8 px-4 text-[12px] font-semibold tracking-[0.02em]"
+                    className="inline-flex items-center h-8 px-4 text-[13px] font-medium"
                     style={{
                       color: IC.blue,
-                      background: "rgba(220,230,242,0.82)",
+                      background: withAlpha(IC.blueXL, 0.82),
                       borderRadius: 999,
-                      border: `1px solid rgba(36,87,155,0.15)`,
                     }}
                   >
                     {tag}
@@ -818,24 +825,24 @@ export default function TemplateICBlueProfessionalAlt() {
           <p className="text-[14px] leading-[1.75] mb-8" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance.</p>
           <div
             className="search-container w-full rounded-[14px] py-[10px] px-4 max-[420px]:px-2.5"
-            style={{ background: IC.blueLight, boxShadow: "0 12px 30px rgba(36,87,155,0.16)", transition: "box-shadow 0.28s ease, transform 0.28s ease" }}
+            style={{ background: IC.blueLight, boxShadow: `0 12px 30px ${withAlpha(IC.blue, 0.16)}`, transition: "box-shadow 0.28s ease, transform 0.28s ease" }}
             onMouseEnter={e => {
               const inp = e.currentTarget.querySelector("input")
-              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = "0 16px 42px rgba(36,87,155,0.26), 0 0 0 2.5px rgba(255,255,255,0.38)"; e.currentTarget.style.transform = "translateY(-1.5px)" }
+              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = `0 16px 42px ${withAlpha(IC.blue, 0.26)}, 0 0 0 2.5px ${withAlpha(IC.white, 0.38)}`; e.currentTarget.style.transform = "translateY(-1.5px)" }
             }}
             onMouseLeave={e => {
               const inp = e.currentTarget.querySelector("input")
-              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; e.currentTarget.style.transform = "translateY(0)" }
+              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = `0 12px 30px ${withAlpha(IC.blue, 0.16)}`; e.currentTarget.style.transform = "translateY(0)" }
             }}
           >
             <div className="flex items-center gap-3 max-[420px]:gap-1.5">
-              <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.8)" }}><Search size={20} /></span>
+              <span className="search-icon-pop shrink-0" style={{ color: withAlpha(IC.white, 0.8) }}><Search size={20} /></span>
               <input
                 placeholder={winW < 420 ? "Explore markets" : "Explore our Industry Markets"}
                 className="flex-1 min-w-0 h-12 max-[420px]:h-11 text-[15px] max-[420px]:text-[13px] outline-none placeholder:text-white/60"
                 style={{ color: IC.white, caretColor: IC.white, background: "transparent", boxShadow: "none", border: "none", borderRadius: 10, appearance: "none" }}
-                onFocus={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 16px 42px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-1.5px)" } }}
-                onBlur={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; c.style.transform = "translateY(0)" } }}
+                onFocus={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = `0 16px 42px ${withAlpha(IC.blue, 0.28)}, 0 0 0 3px ${withAlpha(IC.white, 0.65)}`; c.style.transform = "translateY(-1.5px)" } }}
+                onBlur={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = `0 12px 30px ${withAlpha(IC.blue, 0.16)}`; c.style.transform = "translateY(0)" } }}
               />
               <button
                 className="flex items-center justify-center gap-2 h-11 max-[420px]:h-10 px-6 max-[420px]:px-3.5 text-[13px] max-[420px]:text-[12px] font-bold shrink-0 min-w-[114px] max-[420px]:min-w-[88px]"
