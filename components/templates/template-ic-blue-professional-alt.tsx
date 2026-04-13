@@ -687,7 +687,7 @@ export default function TemplateICBlueProfessionalAlt() {
               }}
             >
               <div className="mb-8">
-                <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>How we make our customers successful</p>
+                <Label>How we make our customers successful</Label>
                 <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(36px,4.1vw,56px)", color: IC.blue, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
@@ -724,7 +724,7 @@ export default function TemplateICBlueProfessionalAlt() {
                   </span>
                   <input
                     placeholder="Explore our Industry Markets"
-                    className="flex-1 h-14 text-[16px] outline-none placeholder:text-white/60"
+                    className="flex-1 h-14 text-[16px] outline-none placeholder:text-white"
                     style={{
                       color: IC.white,
                       caretColor: IC.white,
@@ -769,7 +769,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 {["Automotive", "Chemicals", "Energy", "Construction", "Healthcare"].map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center h-8 px-4 text-[13px] font-medium"
+                    className="inline-flex items-center h-8 px-4 text-[11px] font-bold tracking-[0.32em]"
                     style={{
                       color: IC.blue,
                       background: withAlpha(IC.blueXL, 0.82),
@@ -819,7 +819,7 @@ export default function TemplateICBlueProfessionalAlt() {
             willChange: "transform, opacity",
           }}
         >
-          <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
+          <Label>How we make our customers successful</Label>
           <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(28px,8vw,42px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
           <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
           <p className="text-[14px] leading-[1.75] mb-8" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance.</p>
@@ -839,7 +839,7 @@ export default function TemplateICBlueProfessionalAlt() {
               <span className="search-icon-pop shrink-0" style={{ color: withAlpha(IC.white, 0.8) }}><Search size={20} /></span>
               <input
                 placeholder={winW < 420 ? "Explore markets" : "Explore our Industry Markets"}
-                className="flex-1 min-w-0 h-12 max-[420px]:h-11 text-[15px] max-[420px]:text-[13px] outline-none placeholder:text-white/60"
+                className="flex-1 min-w-0 h-12 max-[420px]:h-11 text-[15px] max-[420px]:text-[13px] outline-none placeholder:text-white"
                 style={{ color: IC.white, caretColor: IC.white, background: "transparent", boxShadow: "none", border: "none", borderRadius: 10, appearance: "none" }}
                 onFocus={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = `0 16px 42px ${withAlpha(IC.blue, 0.28)}, 0 0 0 3px ${withAlpha(IC.white, 0.65)}`; c.style.transform = "translateY(-1.5px)" } }}
                 onBlur={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = `0 12px 30px ${withAlpha(IC.blue, 0.16)}`; c.style.transform = "translateY(0)" } }}
