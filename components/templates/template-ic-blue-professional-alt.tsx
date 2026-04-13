@@ -970,7 +970,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 {D.press.map((p, idx) => (
                   <Fade key={`press-${idx}`} delay={idx * 0.1}>
                     <div
-                      className="group flex items-center gap-6 py-5 pr-2"
+                      className="group flex items-center gap-6 py-5 pr-2 min-h-[176px]"
                       style={{
                         borderBottom: `1px solid ${IC.blueXL}`,
                         transition: "background 0.25s ease",
@@ -1062,7 +1062,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 {D.events.map((ev, idx) => (
                   <Fade key={`event-${idx}`} delay={idx * 0.1}>
                     <div
-                      className="group flex items-center gap-6 py-5 pr-2"
+                      className="group flex items-center gap-6 py-5 pr-2 min-h-[176px]"
                       style={{
                         borderBottom: `1px solid ${IC.blueXL}`,
                         transition: "background 0.25s ease",
