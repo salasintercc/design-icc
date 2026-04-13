@@ -58,11 +58,12 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
 
   return (
     <div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="flex flex-wrap justify-center gap-3 lg:grid lg:grid-cols-5">
         {current.map((c, i) => (
-          <div key={i} className="flex items-center justify-center px-3 py-3"
+          <div key={i} className="flex items-center justify-center px-3 py-3 w-[calc(50%-6px)] sm:w-[calc(33.333%-8px)] lg:w-auto"
             style={{
               height: 64,
+              flexShrink: 0,
               background: IC.white,
               border: `1px solid rgba(36,87,155,0.13)`,
               borderRadius: 14,
@@ -456,6 +457,13 @@ export default function TemplateICBlueProfessionalAlt() {
                 {l}
               </a>
             ))}
+            <a
+              href="#contact-panel"
+              className="transition-colors duration-300 hover:opacity-80"
+              style={{ color: scrolled ? IC.gray80 : "rgba(255,255,255,0.85)" }}
+            >
+              Contact Us
+            </a>
           </div>
           {/* Company name right */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
@@ -483,7 +491,7 @@ export default function TemplateICBlueProfessionalAlt() {
       </nav>
 
       {/* ═══ STICKY SCENE: hero + section 2 share one viewport-pinned stage ═══ */}
-      <div style={{ position: "relative", height: isDesktop ? "262vh" : "100vh" }}>
+      <div style={{ position: "relative", height: isDesktop ? "262vh" : "200vh" }}>
 
         {/* ── Layer 0: persistent background that NEVER changes color ── */}
         <div style={{ position: "sticky", top: 0, height: "100vh", background: IC.blueDark, zIndex: 0 }} />
@@ -878,50 +886,89 @@ export default function TemplateICBlueProfessionalAlt() {
           </div>{/* end grid */}
         </div>{/* end max-w wrapper */}
       </section>
-      </div>{/* end sticky scene */}
-
-      {/* ── MOBILE SECTION 2 — shown only on mobile, flows naturally below hero ── */}
+      {/* ── MOBILE PARALLAX SECTION — inside sticky scene, lg:hidden ── */}
       <section
         className="flex flex-col lg:hidden"
-        style={{ background: IC.blueDark, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
+        style={{
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          background: "transparent",
+          zIndex: 3,
+          marginTop: "-100vh",
+          overflow: "hidden",
+          justifyContent: "center",
+          pointerEvents: sectionIn < 0.05 ? "none" : "auto",
+        }}
+      >
+        {/* White gradient rising from bottom */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: `linear-gradient(to top,
+            rgba(255,255,255,1)    0%,
+            rgba(255,255,255,0.99) 22%,
+            rgba(255,255,255,0.96) 44%,
+            rgba(255,255,255,0.88) 62%,
+            rgba(255,255,255,0.62) 80%,
+            rgba(255,255,255,0.22) 94%,
+            rgba(255,255,255,0.04) 100%)`,
+          opacity: Math.min(1, Math.max(0, (sectionIn - 0.03) * 1.1)),
+        }} />
+        <div
+          className="max-w-7xl mx-auto px-6 w-full relative z-10"
+          style={{
+            opacity: sectionIn,
+            transform: `translateY(${(1 - sectionIn) * 34}px)`,
+            willChange: "transform, opacity",
+          }}
+        >
+          <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
+          <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(28px,8vw,42px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
+          <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
+          <p className="text-[14px] leading-[1.75] mb-8" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance.</p>
+          <div
+            className="search-container w-full rounded-[14px] py-[10px] px-3"
+            style={{ background: IC.blueLight, boxShadow: "0 12px 30px rgba(36,87,155,0.16)", transition: "box-shadow 0.28s ease, transform 0.28s ease" }}
+            onMouseEnter={e => {
+              const inp = e.currentTarget.querySelector("input")
+              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = "0 16px 42px rgba(36,87,155,0.26), 0 0 0 2.5px rgba(255,255,255,0.38)"; e.currentTarget.style.transform = "translateY(-1.5px)" }
+            }}
+            onMouseLeave={e => {
+              const inp = e.currentTarget.querySelector("input")
+              if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; e.currentTarget.style.transform = "translateY(0)" }
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.75)" }}><Search size={18} /></span>
+              <input
+                placeholder="Explore our Industry Markets"
+                className="flex-1 h-12 text-[15px] outline-none placeholder:text-white/60"
+                style={{ color: IC.white, caretColor: IC.white, background: "transparent", boxShadow: "none", border: "none", borderRadius: 10, appearance: "none" }}
+                onFocus={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 16px 42px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-1.5px)" } }}
+                onBlur={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; c.style.transform = "translateY(0)" } }}
+              />
+              <button
+                className="flex items-center justify-center gap-2 h-10 px-5 text-[13px] font-bold shrink-0"
+                style={{ color: IC.white, background: IC.blue, border: "none", borderRadius: 999, minWidth: 100, whiteSpace: "nowrap", transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)", cursor: "pointer" }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = "0.92"; e.currentTarget.style.transform = "scale(1.04)" }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1)" }}
+              >
+                <Search size={14} />
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      </div>{/* end sticky scene */}
+
+      {/* ── MOBILE SECTION 2 — contact form only, flows naturally below hero ── */}
+      <section
+        className="flex flex-col lg:hidden"
+        style={{ background: IC.white, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
       >
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="flex flex-col gap-10">
-            <div>
-              <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-4" style={{ color: IC.gray80 }}>How we make our customers successful</p>
-              <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.blue, letterSpacing: "-0.015em" }}>Turn data into revenue. Predict what's next.</h2>
-              <div className="w-7 h-[2px] mb-6" style={{ background: "rgba(142,180,227,0.6)" }} />
-              <p className="text-[14px] leading-[1.8] mb-6" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.</p>
-              <div className="flex items-center gap-0">
-                <input
-                  placeholder="Explore our Industry Markets"
-                  className="flex-1 h-12 px-5 text-[14px] outline-none placeholder:text-white"
-                  style={{
-                    color: IC.white,
-                    caretColor: IC.blue,
-                    background: IC.blueLight,
-                    border: "none",
-                    borderRadius: 999,
-                    appearance: "none",
-                  }}
-                />
-                <button
-                  className="flex items-center justify-center gap-1.5 h-10 px-4 text-[13px] font-bold tracking-[0.03em] shrink-0"
-                  style={{
-                    color: IC.white,
-                    background: IC.blue,
-                    border: "none",
-                    boxShadow: "none",
-                    borderRadius: 999,
-                    minWidth: 120,
-                    whiteSpace: "nowrap",
-                    cursor: "pointer",
-                  }}
-                >
-                  Search
-                </button>
-              </div>
-            </div>
             <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`, border: "none", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
               <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.white }}>Contact us</p>
               <h3 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.white, letterSpacing: "-0.015em" }}>Tell us your challenge</h3>
@@ -1374,13 +1421,16 @@ export default function TemplateICBlueProfessionalAlt() {
             #3c6eae 68%,
             #2f63a4 86%,
             ${IC.blue} 100%)`,
-          paddingTop: 16,
+          paddingTop: 0,
           paddingBottom: 32,
+          border: "none",
+          outline: "none",
+          marginTop: -2,
         }}
       >
-        <div className="max-w-7xl mx-auto px-32 lg:px-48 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
+        <div className="max-w-7xl mx-auto lg:px-48 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
           <div
-            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-3"
+            className="flex flex-row items-center justify-between gap-2 pt-3"
           >
             <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
             <div className="flex items-center gap-5 text-[13px]">
