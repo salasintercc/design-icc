@@ -44,10 +44,10 @@ const withAlpha = (hex: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
-function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
+function LogoPairCarousel({ clients }: { clients: { name: string; logoSrc?: string }[] }) {
   const [page, setPage] = useState(0)
   const [fading, setFading] = useState(false)
-  const cardsPerPage = 5
+  const cardsPerPage = 4
   const pageCount = Math.max(1, Math.ceil(clients.length / cardsPerPage))
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-3 lg:grid lg:grid-cols-5">
+      <div className="flex flex-wrap justify-center gap-3 lg:grid lg:grid-cols-4">
         {current.map((c, i) => (
           <div key={i} className="flex items-center justify-center px-3 py-3 w-[calc(50%-6px)] sm:w-[calc(33.333%-8px)] lg:w-auto"
             style={{
@@ -80,37 +80,53 @@ function LogoPairCarousel({ clients }: { clients: { name: string }[] }) {
               transition: "background 0.3s ease",
             }}
           >
-            <span
-              className="text-[14px] font-bold tracking-widest uppercase leading-tight text-center"
-              style={{
-                color: IC.blue,
-                opacity: fading ? 0 : 1,
-                transition: "opacity 0.38s ease",
-              }}
-            >
-              {c.name}
-            </span>
+            {c.logoSrc ? (
+              <img
+                src={c.logoSrc}
+                alt={c.name}
+                style={{
+                  maxWidth: 140,
+                  maxHeight: 36,
+                  objectFit: "contain",
+                  opacity: fading ? 0 : 1,
+                  transition: "opacity 0.38s ease",
+                }}
+              />
+            ) : (
+              <span
+                className="text-[14px] font-bold tracking-widest uppercase leading-tight text-center"
+                style={{
+                  color: IC.blue,
+                  opacity: fading ? 0 : 1,
+                  transition: "opacity 0.38s ease",
+                }}
+              >
+                {c.name}
+              </span>
+            )}
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-1.5 mt-5 justify-center">
-        {Array.from({ length: pageCount }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setPage(i)}
-            style={{
-              width: i === page ? 22 : 7,
-              height: 5,
-              borderRadius: 3,
-              background: i === page ? IC.blue : IC.blueLight,
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-              transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
-            }}
-          />
-        ))}
-      </div>
+      {pageCount > 1 && (
+        <div className="flex items-center gap-1.5 mt-5 justify-center">
+          {Array.from({ length: pageCount }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i)}
+              style={{
+                width: i === page ? 22 : 7,
+                height: 5,
+                borderRadius: 3,
+                background: i === page ? IC.blue : IC.blueLight,
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -886,7 +902,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 <Fade key={c.title} delay={0.12 + i * 0.07} duration={0.85}>
                   <a
                     href="#"
-                    className="group flex items-center gap-4 sm:gap-6 py-5 pr-2 sm:pr-4"
+                    className="group flex items-center gap-4 sm:gap-6 py-5 pl-2 sm:pl-4 pr-2 sm:pr-4"
                     style={{
                       borderBottom: `1.5px solid ${IC.blueXL}`,
                       transition: "background 0.25s ease",
@@ -1271,7 +1287,7 @@ export default function TemplateICBlueProfessionalAlt() {
 
           {/* Logo carousel */}
           <Fade delay={0.15}>
-            <LogoPairCarousel clients={D.additionalClients} />
+            <LogoPairCarousel clients={D.references.map((r) => ({ name: r.company, logoSrc: r.logoSrc }))} />
           </Fade>
         </div>
       </section>
