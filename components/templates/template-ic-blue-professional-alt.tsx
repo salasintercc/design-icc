@@ -612,10 +612,10 @@ export default function TemplateICBlueProfessionalAlt() {
               transition: "opacity 1.05s ease 0.95s, transform 1.05s cubic-bezier(0.22,1,0.36,1) 0.95s",
             }}
           >
-            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-center sm:items-center gap-3">
               <a
                 href="#overview"
-                className="inline-flex items-center justify-center gap-3 text-[14px] font-bold px-7 py-3.5 relative overflow-hidden"
+                className="inline-flex items-center justify-center gap-3 text-[14px] max-[420px]:text-[13px] font-bold px-7 max-[420px]:px-5 py-3.5 relative overflow-hidden"
                 style={{
                   borderRadius: 999,
                   color: IC.blue,
@@ -693,9 +693,9 @@ export default function TemplateICBlueProfessionalAlt() {
             willChange: "transform",
           }}
         >
-          <div className="flex justify-center">
+          <div>
             <div
-              className="w-full max-w-5xl py-12"
+              className="w-full py-12"
               style={{
                 opacity: sectionLeftInEff,
                 transform: `translate3d(${(1 - sectionLeftInEff) * -28}px, ${(1 - sectionLeftInEff) * 10}px, 0)`,
@@ -707,7 +707,7 @@ export default function TemplateICBlueProfessionalAlt() {
                 <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(36px,4.1vw,56px)", color: IC.blue, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
-                <p className="text-[16px] leading-[1.9] max-w-4xl" style={{ color: IC.gray80 }}>
+                <p className="text-[16px] leading-[1.9]" style={{ color: IC.gray80 }}>
                   We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
                 </p>
               </div>
@@ -881,8 +881,8 @@ export default function TemplateICBlueProfessionalAlt() {
         background: isDesktop ? `linear-gradient(to bottom, rgba(255,255,255,0) 0px, rgba(255,255,255,0.96) 300px, ${IC.white} 420px)` : IC.white,
         zIndex: 10,
         position: "relative",
-        marginTop: isDesktop ? -360 : -240,
-        paddingTop: isDesktop ? 280 : 32,
+        marginTop: isDesktop ? -400 : -240,
+        paddingTop: isDesktop ? 240 : 32,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
             <div className="mb-10" aria-hidden="true" />
