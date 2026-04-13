@@ -457,13 +457,6 @@ export default function TemplateICBlueProfessionalAlt() {
                 {l}
               </a>
             ))}
-            <a
-              href="#contact-panel"
-              className="transition-colors duration-300 hover:opacity-80"
-              style={{ color: scrolled ? IC.gray80 : "rgba(255,255,255,0.85)" }}
-            >
-              Contact Us
-            </a>
           </div>
           {/* Company name right */}
           <div className="relative flex items-center justify-end w-[170px] sm:w-[220px]" style={{ height: 36 }}>
@@ -674,216 +667,114 @@ export default function TemplateICBlueProfessionalAlt() {
             willChange: "transform",
           }}
         >
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-stretch">
-
-            {/* Left — on dark bg */}
+          <div className="flex justify-center">
             <div
-              className="h-full flex flex-col justify-start gap-8 py-12"
+              className="w-full max-w-5xl py-12"
               style={{
                 opacity: sectionLeftInEff,
-                transform: `translate3d(${(1 - sectionLeftInEff) * -44}px, ${(1 - sectionLeftInEff) * 14}px, 0)`,
+                transform: `translate3d(${(1 - sectionLeftInEff) * -28}px, ${(1 - sectionLeftInEff) * 10}px, 0)`,
                 willChange: "transform, opacity",
               }}
             >
-              <div>
+              <div className="mb-8">
                 <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-5" style={{ color: IC.gray80 }}>How we make our customers successful</p>
-                <h2 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.blue, letterSpacing: "-0.015em" }}>
+                <h2 className="font-bold tracking-tight leading-[1.08] mb-5" style={{ fontSize: "clamp(36px,4.1vw,56px)", color: IC.blue, letterSpacing: "-0.015em" }}>
                   Turn data into revenue. Predict what’s next.
                 </h2>
-                <div className="h-[2px] mt-1" aria-hidden="true" />
+                <p className="text-[16px] leading-[1.9] max-w-4xl" style={{ color: IC.gray80 }}>
+                  We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
+                </p>
               </div>
-              <p className="text-[15px] leading-[1.9]" style={{ color: IC.gray80 }}>
-                We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance - with practical strategies and tools you can actually implement.
-              </p>
-              <div>
-                <div
-                  className="search-container w-full max-w-[560px] rounded-[14px] py-[10px] px-3"
-                  style={{
-                    background: IC.blueLight,
-                    boxShadow: "0 12px 30px rgba(36,87,155,0.16)",
-                    transition: "box-shadow 0.28s ease, transform 0.28s ease",
-                  }}
-                  onMouseEnter={e => {
-                    const active = document.activeElement
-                    const inp = e.currentTarget.querySelector("input")
-                    if (active !== inp) {
-                      e.currentTarget.style.boxShadow = "0 16px 42px rgba(36,87,155,0.26), 0 0 0 2.5px rgba(255,255,255,0.38)"
-                      e.currentTarget.style.transform = "translateY(-1.5px)"
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    const active = document.activeElement
-                    const inp = e.currentTarget.querySelector("input")
-                    if (active !== inp) {
-                      e.currentTarget.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"
-                      e.currentTarget.style.transform = "translateY(0)"
-                    }
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.75)" }}>
-                      <Search size={18} />
-                    </span>
-                    <input
-                      placeholder="Explore our Industry Markets"
-                      className="flex-1 h-12 text-[15px] outline-none placeholder:text-white/60"
-                      style={{
-                        color: IC.white,
-                        caretColor: IC.white,
-                        background: "transparent",
-                        boxShadow: "none",
-                        border: "none",
-                        borderRadius: 10,
-                        appearance: "none",
-                      }}
-                      onFocus={e => {
-                        const c = e.currentTarget.closest(".search-container") as HTMLElement
-                        if (c) { c.style.boxShadow = "0 16px 42px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-1.5px)" }
-                      }}
-                      onBlur={e => {
-                        const c = e.currentTarget.closest(".search-container") as HTMLElement
-                        if (c) { c.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; c.style.transform = "translateY(0)" }
-                      }}
-                    />
-                    <button
-                      className="flex items-center justify-center gap-2 h-10 px-5 text-[13px] font-bold tracking-[0.03em] shrink-0"
-                      style={{
-                        color: IC.white,
-                        background: IC.blue,
-                        border: "none",
-                        boxShadow: "none",
-                        borderRadius: 999,
-                        minWidth: 110,
-                        whiteSpace: "nowrap",
-                        transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)",
-                        cursor: "pointer",
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.opacity = "0.92"; e.currentTarget.style.transform = "scale(1.04)" }}
-                      onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1)" }}
-                    >
-                      <Search size={14} />
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            {/* Right — CTA panel */}
-            <div
-              className="h-full"
-              style={{
-                opacity: sectionRightInEff,
-                transform: `translate3d(${(1 - sectionRightInEff) * 56}px, ${(1 - sectionRightInEff) * 12}px, 0)`,
-                willChange: "transform, opacity",
-              }}
-            >
               <div
-                id="contact-panel"
-                className="h-full flex flex-col justify-between py-12 px-10 rounded-[30px] overflow-hidden"
+                className="search-container w-full rounded-[18px] py-[14px] px-4"
                 style={{
-                  background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`,
-                  border: "none",
-                  boxShadow: "0 24px 74px rgba(23,53,95,0.26)",
-                  backdropFilter: "blur(8px)",
-                  animation: "panelDrift 9s ease-in-out infinite",
+                  background: IC.blueLight,
+                  boxShadow: "0 16px 40px rgba(36,87,155,0.2)",
+                  transition: "box-shadow 0.28s ease, transform 0.28s ease",
+                }}
+                onMouseEnter={e => {
+                  const active = document.activeElement
+                  const inp = e.currentTarget.querySelector("input")
+                  if (active !== inp) {
+                    e.currentTarget.style.boxShadow = "0 20px 48px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.44)"
+                    e.currentTarget.style.transform = "translateY(-2px)"
+                  }
+                }}
+                onMouseLeave={e => {
+                  const active = document.activeElement
+                  const inp = e.currentTarget.querySelector("input")
+                  if (active !== inp) {
+                    e.currentTarget.style.boxShadow = "0 16px 40px rgba(36,87,155,0.2)"
+                    e.currentTarget.style.transform = "translateY(0)"
+                  }
                 }}
               >
-                <div>
-                  <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: IC.white }}>Contact us</p>
-                  <h3 className="font-bold tracking-tight leading-[1.08] mb-8" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.white, letterSpacing: "-0.015em" }}>
-                    Tell us your challenge
-                  </h3>
-                  <form className="grid grid-cols-2 gap-4 pt-2" onSubmit={(e) => e.preventDefault()}>
-                    <input
-                      name="mail"
-                      type="email"
-                      placeholder="Mail"
-                      className="col-span-1 h-11 px-4 text-[15px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: "rgba(142,180,227,0.82)",
-                        border: "none",
-                        borderRadius: 9,
-                      }}
-                    />
-                    <input
-                      name="name"
-                      placeholder="Name"
-                      className="col-span-1 h-11 px-4 text-[15px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: "rgba(142,180,227,0.82)",
-                        border: "none",
-                        borderRadius: 9,
-                      }}
-                    />
-                    <input
-                      name="company"
-                      placeholder="Company"
-                      className="col-span-1 h-11 px-4 text-[15px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: "rgba(142,180,227,0.82)",
-                        border: "none",
-                        borderRadius: 9,
-                      }}
-                    />
-                    <input
-                      name="tel"
-                      type="tel"
-                      placeholder="Tel"
-                      className="col-span-1 h-11 px-4 text-[15px] outline-none placeholder:text-white"
-                      style={{
-                        color: IC.white,
-                        background: "rgba(142,180,227,0.82)",
-                        border: "none",
-                        borderRadius: 9,
-                      }}
-                    />
-                    <div
-                      className="col-span-2 overflow-hidden"
-                      style={{
-                        background: "rgba(142,180,227,0.82)",
-                        borderRadius: 10,
-                      }}
-                    >
-                      <textarea
-                        name="message"
-                        placeholder="Message"
-                        className="w-full h-[120px] px-4 py-3 text-[15px] outline-none resize-none overflow-y-auto placeholder:text-white"
-                        style={{
-                          color: IC.white,
-                          background: "transparent",
-                          border: "none",
-                        }}
-                      />
-                      <div className="h-14 flex items-center justify-center" style={{ background: "transparent" }}>
-                        <button
-                          type="submit"
-                          className="h-9 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]"
-                          style={{
-                            color: IC.white,
-                            background: "#1E4A86",
-                            border: "none",
-                            boxShadow: "none",
-                            borderRadius: 999,
-                            transition: "opacity 0.2s ease",
-                            cursor: "pointer",
-                          }}
-                          onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
-                          onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
-                        >
-                          Send Inquiry
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                <div className="flex items-center gap-3">
+                  <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.8)" }}>
+                    <Search size={20} />
+                  </span>
+                  <input
+                    placeholder="Explore our Industry Markets"
+                    className="flex-1 h-14 text-[16px] outline-none placeholder:text-white/60"
+                    style={{
+                      color: IC.white,
+                      caretColor: IC.white,
+                      background: "transparent",
+                      boxShadow: "none",
+                      border: "none",
+                      borderRadius: 12,
+                      appearance: "none",
+                    }}
+                    onFocus={e => {
+                      const c = e.currentTarget.closest(".search-container") as HTMLElement
+                      if (c) { c.style.boxShadow = "0 20px 48px rgba(36,87,155,0.3), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-2px)" }
+                    }}
+                    onBlur={e => {
+                      const c = e.currentTarget.closest(".search-container") as HTMLElement
+                      if (c) { c.style.boxShadow = "0 16px 40px rgba(36,87,155,0.2)"; c.style.transform = "translateY(0)" }
+                    }}
+                  />
+                  <button
+                    className="flex items-center justify-center gap-2 h-11 px-7 text-[14px] font-bold tracking-[0.03em] shrink-0"
+                    style={{
+                      color: IC.white,
+                      background: IC.blue,
+                      border: "none",
+                      boxShadow: "none",
+                      borderRadius: 999,
+                      minWidth: 124,
+                      whiteSpace: "nowrap",
+                      transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)",
+                      cursor: "pointer",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.92"; e.currentTarget.style.transform = "scale(1.03)" }}
+                    onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1)" }}
+                  >
+                    <Search size={15} />
+                    Search
+                  </button>
                 </div>
               </div>
-            </div>
 
-          </div>{/* end grid */}
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {["Automotive", "Chemicals", "Energy", "Construction", "Healthcare"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center h-8 px-4 text-[12px] font-semibold tracking-[0.02em]"
+                    style={{
+                      color: IC.blue,
+                      background: "rgba(220,230,242,0.82)",
+                      borderRadius: 999,
+                      border: `1px solid rgba(36,87,155,0.15)`,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>{/* end max-w wrapper */}
       </section>
       {/* ── MOBILE PARALLAX SECTION — inside sticky scene, lg:hidden ── */}
@@ -914,7 +805,7 @@ export default function TemplateICBlueProfessionalAlt() {
           opacity: Math.min(1, Math.max(0, (sectionIn - 0.03) * 1.1)),
         }} />
         <div
-          className="max-w-7xl mx-auto px-6 w-full relative z-10"
+          className="max-w-7xl mx-auto px-6 max-[420px]:px-4 w-full relative z-10"
           style={{
             opacity: sectionIn,
             transform: `translateY(${(1 - sectionIn) * 34}px)`,
@@ -926,7 +817,7 @@ export default function TemplateICBlueProfessionalAlt() {
           <div className="w-7 h-[2px] mb-6" style={{ background: IC.blue }} />
           <p className="text-[14px] leading-[1.75] mb-8" style={{ color: IC.gray80 }}>We combine market data, big data analytics, and AI-driven forecasts to identify growth opportunities, optimize pricing, and improve sales performance.</p>
           <div
-            className="search-container w-full rounded-[14px] py-[10px] px-3"
+            className="search-container w-full rounded-[14px] py-[10px] px-4 max-[420px]:px-2.5"
             style={{ background: IC.blueLight, boxShadow: "0 12px 30px rgba(36,87,155,0.16)", transition: "box-shadow 0.28s ease, transform 0.28s ease" }}
             onMouseEnter={e => {
               const inp = e.currentTarget.querySelector("input")
@@ -937,18 +828,18 @@ export default function TemplateICBlueProfessionalAlt() {
               if (document.activeElement !== inp) { e.currentTarget.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; e.currentTarget.style.transform = "translateY(0)" }
             }}
           >
-            <div className="flex items-center gap-2">
-              <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.75)" }}><Search size={18} /></span>
+            <div className="flex items-center gap-3 max-[420px]:gap-1.5">
+              <span className="search-icon-pop shrink-0" style={{ color: "rgba(255,255,255,0.8)" }}><Search size={20} /></span>
               <input
-                placeholder="Explore our Industry Markets"
-                className="flex-1 h-12 text-[15px] outline-none placeholder:text-white/60"
+                placeholder={winW < 420 ? "Explore markets" : "Explore our Industry Markets"}
+                className="flex-1 min-w-0 h-12 max-[420px]:h-11 text-[15px] max-[420px]:text-[13px] outline-none placeholder:text-white/60"
                 style={{ color: IC.white, caretColor: IC.white, background: "transparent", boxShadow: "none", border: "none", borderRadius: 10, appearance: "none" }}
                 onFocus={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 16px 42px rgba(36,87,155,0.28), 0 0 0 3px rgba(255,255,255,0.65)"; c.style.transform = "translateY(-1.5px)" } }}
                 onBlur={e => { const c = e.currentTarget.closest(".search-container") as HTMLElement; if (c) { c.style.boxShadow = "0 12px 30px rgba(36,87,155,0.16)"; c.style.transform = "translateY(0)" } }}
               />
               <button
-                className="flex items-center justify-center gap-2 h-10 px-5 text-[13px] font-bold shrink-0"
-                style={{ color: IC.white, background: IC.blue, border: "none", borderRadius: 999, minWidth: 100, whiteSpace: "nowrap", transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)", cursor: "pointer" }}
+                className="flex items-center justify-center gap-2 h-11 max-[420px]:h-10 px-6 max-[420px]:px-3.5 text-[13px] max-[420px]:text-[12px] font-bold shrink-0 min-w-[114px] max-[420px]:min-w-[88px]"
+                style={{ color: IC.white, background: IC.blue, border: "none", borderRadius: 999, whiteSpace: "nowrap", transition: "opacity 0.2s ease, transform 0.22s cubic-bezier(0.22,1,0.36,1)", cursor: "pointer" }}
                 onMouseEnter={e => { e.currentTarget.style.opacity = "0.92"; e.currentTarget.style.transform = "scale(1.04)" }}
                 onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1)" }}
               >
@@ -962,45 +853,13 @@ export default function TemplateICBlueProfessionalAlt() {
 
       </div>{/* end sticky scene */}
 
-      {/* ── MOBILE SECTION 2 — contact form only, flows naturally below hero ── */}
-      <section
-        className="flex flex-col lg:hidden"
-        style={{ background: IC.white, paddingTop: 48, paddingBottom: 56, zIndex: 3 }}
-      >
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <div className="flex flex-col gap-10">
-            <div className="flex flex-col justify-between py-10 px-8 rounded-[24px] overflow-hidden" style={{ background: `linear-gradient(150deg, rgba(55,96,146,0.98) 0%, rgba(36,87,155,0.99) 62%, rgba(30,74,134,0.99) 100%)`, border: "none", boxShadow: "0 20px 60px rgba(23,53,95,0.26)", backdropFilter: "blur(8px)" }}>
-              <p className="text-[11px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: IC.white }}>Contact us</p>
-              <h3 className="font-bold tracking-tight leading-[1.08] mb-6" style={{ fontSize: "clamp(33px,3.7vw,48px)", color: IC.white, letterSpacing: "-0.015em" }}>Tell us your challenge</h3>
-              <form className="grid grid-cols-1 gap-4 pt-2" onSubmit={(e) => e.preventDefault()}>
-                <input name="mail" type="email" placeholder="Mail" className="h-11 px-4 text-[15px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
-                <input name="name" placeholder="Name" className="h-11 px-4 text-[15px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
-                <input name="company" placeholder="Company" className="h-11 px-4 text-[15px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
-                <input name="tel" type="tel" placeholder="Tel" className="h-11 px-4 text-[15px] outline-none placeholder:text-white" style={{ color: IC.white, background: "rgba(142,180,227,0.82)", border: "none", borderRadius: 9 }} />
-                <div className="overflow-hidden" style={{ background: "rgba(142,180,227,0.82)", borderRadius: 10 }}>
-                  <textarea name="message" placeholder="Message" className="w-full h-[106px] px-4 py-3 text-[15px] outline-none resize-none overflow-y-auto placeholder:text-white" style={{ color: IC.white, background: "transparent", border: "none" }} />
-                  <div className="h-14 flex items-center justify-center" style={{ background: "transparent" }}>
-                    <button type="submit" className="h-10 inline-flex items-center justify-center px-10 text-[13px] font-bold tracking-[0.03em]" style={{ color: IC.white, background: "#1E4A86", border: "none", boxShadow: "none", borderRadius: 999, transition: "opacity 0.2s ease", cursor: "pointer" }}
-                      onMouseEnter={e => { e.currentTarget.style.opacity = "0.92" }}
-                      onMouseLeave={e => { e.currentTarget.style.opacity = "1" }}
-                    >
-                      Send Inquiry
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
         background: isDesktop ? `linear-gradient(to bottom, rgba(255,255,255,0) 0px, rgba(255,255,255,0.96) 300px, ${IC.white} 420px)` : IC.white,
         zIndex: 10,
         position: "relative",
-        marginTop: isDesktop ? -360 : 0,
-        paddingTop: isDesktop ? 280 : 48,
+        marginTop: isDesktop ? -360 : -240,
+        paddingTop: isDesktop ? 280 : 32,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
             <div className="mb-10" aria-hidden="true" />
