@@ -668,7 +668,8 @@ export default function TemplateICBlueProfessionalAlt() {
           background: "transparent",
           zIndex: 3,
           marginTop: "-100vh",
-          justifyContent: "center",
+          justifyContent: "flex-end",
+          paddingBottom: "0",
           overflow: "hidden",
           willChange: "transform, opacity",
           pointerEvents: Math.max(sectionLeftIn, sectionRightIn) < 0.05 ? "none" : "auto",
@@ -890,8 +891,8 @@ export default function TemplateICBlueProfessionalAlt() {
         background: IC.white,
         zIndex: 10,
         position: "relative",
-        marginTop: isDesktop ? -80 : -240,
-        paddingTop: isDesktop ? 48 : 32,
+        marginTop: 0,
+        paddingTop: isDesktop ? 24 : 24,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
             <div style={{ borderTop: `1.5px solid ${IC.blueXL}` }}>
