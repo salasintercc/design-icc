@@ -84,6 +84,66 @@ const TEMPLATES = [
   },
 ]
 
+const IC_COLORS = [
+  { token: "blue", name: "IC Blue", hex: "#24579B", usage: "Primary actions, links, key accents" },
+  { token: "blueDark", name: "Blue Akzent Darker 25%", hex: "#376092", usage: "Hero overlays, depth backgrounds" },
+  { token: "blueLight", name: "IC Blue Light", hex: "#8EB4E3", usage: "Search bars, soft highlights" },
+  { token: "blueXL", name: "IC Blue XL", hex: "#DCE6F2", usage: "Borders, chips, subtle surfaces" },
+  { token: "gray80", name: "Gray 80", hex: "#4D4D4D", usage: "Headings on light surfaces" },
+  { token: "gray50", name: "Gray 50", hex: "#7F7F7F", usage: "Body text and metadata" },
+  { token: "grayLight", name: "Gray Light", hex: "#C2C2C2", usage: "Dividers and disabled states" },
+  { token: "white", name: "White", hex: "#FFFFFF", usage: "Cards, primary contrast backgrounds" },
+]
+
+const IC_TYPE_SCALE = [
+  { role: "H1 / Hero", size: "clamp(64px, 15.2vw, 86px)", weight: "900", sample: "Defining Better Growth Potential" },
+  { role: "H2 / Section", size: "clamp(36px, 4.1vw, 56px)", weight: "700", sample: "Turn data into revenue" },
+  { role: "H3 / Block", size: "23–30px", weight: "700", sample: "Sales Growth Through Market Intelligence" },
+  { role: "Body", size: "13–16px", weight: "400", sample: "Readable, practical text for long sections and cards." },
+  { role: "Eyebrow", size: "10–11px", weight: "700", sample: "HOW WE MAKE CUSTOMERS SUCCESSFUL" },
+  { role: "Link / CTA", size: "12–14px", weight: "600–700", sample: "Our Services and Tools" },
+  { role: "Nav", size: "13–14px", weight: "400–500", sample: "Reports & Tools · News · Events" },
+]
+
+const IC_COMPONENT_SIZES = [
+  {
+    component: "Button · Primary",
+    desktop: "h-44px · px-28px · text 14px",
+    mobile: "h-40px · px-22px · text 13px",
+    radius: "999px",
+  },
+  {
+    component: "Button · Secondary/Ghost",
+    desktop: "h-44px · px-24px · text 14px",
+    mobile: "h-38px · px-18px · text 12px",
+    radius: "999px",
+  },
+  {
+    component: "Search container",
+    desktop: "h-84px (input 56px + paddings)",
+    mobile: "h-64px (input 44–48px + paddings)",
+    radius: "14–18px",
+  },
+  {
+    component: "Search button",
+    desktop: "h-44px · min-w 124px · text 14px",
+    mobile: "h-40px · min-w 88px · text 12px",
+    radius: "999px",
+  },
+  {
+    component: "Tag / Chip",
+    desktop: "h-32px · px-16px · text 11px",
+    mobile: "h-28px · px-12px · text 10px",
+    radius: "999px",
+  },
+  {
+    component: "News / Event card row",
+    desktop: "min-h 176px · py 20px",
+    mobile: "min-h 148px · py 16px",
+    radius: "0px (row) / 22px (reference card)",
+  },
+]
+
 export default function HomePage() {
   const router = useRouter()
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
@@ -163,28 +223,19 @@ export default function HomePage() {
         <div className="rounded-2xl p-6 lg:p-7" style={{ background: "#141414", border: "1px solid #262626" }}>
           <p className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color: "#525252" }}>Design System</p>
           <p className="text-lg font-bold mb-1" style={{ color: "#fafafa" }}>IC Blue Professional</p>
-          <p className="text-sm mb-3" style={{ color: "#525252" }}>Tipografía: <span style={{ color: "#a3a3a3" }}>Geist</span> · Base: <span style={{ color: "#a3a3a3" }}>13px</span></p>
+          <p className="text-sm mb-4" style={{ color: "#525252" }}>Tipografía: <span style={{ color: "#a3a3a3" }}>Geist</span> · Base: <span style={{ color: "#a3a3a3" }}>13px</span></p>
 
-          <div className="grid lg:grid-cols-2 gap-4">
-
+          <div className="grid xl:grid-cols-2 gap-5">
             {/* Color Palette */}
             <div>
-              <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Paleta de Colores</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-4 sm:grid-flow-col gap-1">
-                {[
-                  { name: "IC Blue", hex: "#24579B" },
-                  { name: "Blue Akzent Darker 25%", hex: "#376092" },
-                  { name: "IC Blue Light", hex: "#8EB4E3" },
-                  { name: "IC Blue XL", hex: "#DCE6F2" },
-                  { name: "Gray 80", hex: "#4D4D4D" },
-                  { name: "Gray 50", hex: "#7F7F7F" },
-                  { name: "Gray Light", hex: "#C2C2C2" },
-                  { name: "White", hex: "#FFFFFF" },
-                ].map(c => (
-                  <div key={c.hex} className="flex items-center gap-3 py-1 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
-                    <div className="w-5 h-5 rounded flex-shrink-0" style={{ background: c.hex, border: "1px solid rgba(255,255,255,0.08)" }} />
-                    <span className="text-[11px] font-mono w-[70px] flex-shrink-0" style={{ color: "#8EB4E3" }}>{c.hex}</span>
-                    <span className="text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{c.name}</span>
+              <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Paleta de colores · Tokens</p>
+              <div className="grid grid-cols-1 gap-1.5">
+                {IC_COLORS.map((c) => (
+                  <div key={c.token} className="flex items-center gap-3 py-2 px-2.5 rounded-md" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <div className="w-6 h-6 rounded-md flex-shrink-0" style={{ background: c.hex, border: "1px solid rgba(255,255,255,0.12)" }} />
+                    <div className="min-w-[80px] text-[11px] font-mono" style={{ color: "#8EB4E3" }}>{c.hex}</div>
+                    <div className="min-w-[145px] text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{c.name}</div>
+                    <div className="text-[10px] leading-relaxed" style={{ color: "#8a8a8a" }}>{c.usage}</div>
                   </div>
                 ))}
               </div>
@@ -193,21 +244,90 @@ export default function HomePage() {
             {/* Typography */}
             <div>
               <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Tipografía · Geist</p>
-              <div className="flex flex-col gap-1">
-                {[
-                  { role: "H1", size: "clamp(2.1rem–2.85rem) ≈ 34–46px", weight: "900" },
-                  { role: "H2", size: "clamp(1.75rem–2.6rem) ≈ 28–42px", weight: "700" },
-                  { role: "H3", size: "clamp(1.45rem–1.9rem) ≈ 23–30px", weight: "700" },
-                  { role: "P / Body", size: "13–15px", weight: "400" },
-                  { role: "Eyebrow", size: "10–11px", weight: "700" },
-                  { role: "Link / CTA", size: "12–13px", weight: "600–700" },
-                  { role: "Nav", size: "13px", weight: "400–500" },
-                ].map(t => (
-                  <div key={t.role} className="flex items-center justify-between gap-3 py-1.5 px-2 rounded" style={{ background: "rgba(255,255,255,0.025)" }}>
-                    <span className="text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{t.role}</span>
-                    <span className="text-[10px] font-mono" style={{ color: "#737373" }}>{t.size} · w{t.weight}</span>
+              <div className="flex flex-col gap-1.5">
+                {IC_TYPE_SCALE.map((t) => (
+                  <div key={t.role} className="py-2 px-2.5 rounded-md" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <div className="flex items-center justify-between gap-3 mb-1">
+                      <span className="text-[11px] font-semibold" style={{ color: "#d4d4d4" }}>{t.role}</span>
+                      <span className="text-[10px] font-mono" style={{ color: "#737373" }}>{t.size} · w{t.weight}</span>
+                    </div>
+                    <p className="text-[12px]" style={{ color: "#a3a3a3" }}>{t.sample}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Components */}
+            <div className="xl:col-span-2">
+              <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: "#737373" }}>Componentes UI que usaremos</p>
+              <div className="grid lg:grid-cols-2 gap-4">
+                <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: "#8EB4E3" }}>Buttons / CTA</p>
+                  <div className="flex flex-wrap gap-2.5 items-center">
+                    <span className="inline-flex items-center justify-center h-9 px-5 rounded-full text-[12px] font-bold" style={{ background: "#FFFFFF", color: "#24579B" }}>Primary light</span>
+                    <span className="inline-flex items-center justify-center h-9 px-5 rounded-full text-[12px] font-bold" style={{ background: "#24579B", color: "#FFFFFF" }}>Primary blue</span>
+                    <span className="inline-flex items-center justify-center h-9 px-4 rounded-full text-[12px] font-semibold" style={{ border: "1px solid #DCE6F2", color: "#DCE6F2" }}>Secondary ghost</span>
+                  </div>
+                </div>
+
+                <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: "#8EB4E3" }}>Search / Input</p>
+                  <div className="rounded-xl h-11 px-3 flex items-center justify-between" style={{ background: "#8EB4E3" }}>
+                    <span className="text-[12px]" style={{ color: "rgba(255,255,255,0.85)" }}>Explore our Industry Markets</span>
+                    <span className="inline-flex items-center justify-center h-8 px-4 rounded-full text-[11px] font-bold" style={{ background: "#24579B", color: "#FFFFFF" }}>Search</span>
+                  </div>
+                </div>
+
+                <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: "#8EB4E3" }}>Tags / Chips</p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Automotive",
+                      "Chemicals",
+                      "Energy",
+                      "Healthcare",
+                    ].map((chip) => (
+                      <span key={chip} className="inline-flex items-center h-7 px-3 rounded-full text-[10px] font-bold tracking-[0.16em]" style={{ background: "rgba(220,230,242,0.82)", color: "#24579B" }}>
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: "#8EB4E3" }}>Content card</p>
+                  <div className="rounded-xl p-3" style={{ background: "#FFFFFF", border: "1px solid #DCE6F2" }}>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1" style={{ color: "#24579B" }}>News</p>
+                    <p className="text-[13px] font-semibold mb-1" style={{ color: "#4D4D4D" }}>How AI reshapes market intelligence</p>
+                    <p className="text-[12px] leading-relaxed" style={{ color: "#7F7F7F" }}>Compact cards with clear hierarchy and strong readability.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <p className="text-[10px] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: "#8EB4E3" }}>Sizes & layout specs (base para desarrollo)</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[760px] text-left border-separate border-spacing-y-1">
+                    <thead>
+                      <tr>
+                        <th className="py-1.5 px-2 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#a3a3a3" }}>Componente</th>
+                        <th className="py-1.5 px-2 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#a3a3a3" }}>Desktop</th>
+                        <th className="py-1.5 px-2 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#a3a3a3" }}>Mobile</th>
+                        <th className="py-1.5 px-2 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#a3a3a3" }}>Radius</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {IC_COMPONENT_SIZES.map((s) => (
+                        <tr key={s.component} style={{ background: "rgba(255,255,255,0.02)" }}>
+                          <td className="py-2 px-2 text-[12px] font-semibold" style={{ color: "#d4d4d4" }}>{s.component}</td>
+                          <td className="py-2 px-2 text-[11px]" style={{ color: "#b8b8b8" }}>{s.desktop}</td>
+                          <td className="py-2 px-2 text-[11px]" style={{ color: "#b8b8b8" }}>{s.mobile}</td>
+                          <td className="py-2 px-2 text-[11px] font-mono" style={{ color: "#8EB4E3" }}>{s.radius}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
