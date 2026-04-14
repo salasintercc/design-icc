@@ -796,6 +796,16 @@ export default function TemplateICBlueProfessionalAlt() {
                   </span>
                 ))}
               </div>
+
+              {/* ── Bridge heading — previews the next section ── */}
+              <div
+                className="mt-52 pt-0"
+              >
+                <p className="text-[11px] font-bold tracking-[0.32em] uppercase mb-2" style={{ color: IC.gray80 }}>What we do</p>
+                <h2 className="font-bold tracking-tight leading-[1.1]" style={{ fontSize: "clamp(20px,2vw,30px)", color: IC.blue, letterSpacing: "-0.015em" }}>
+                  Sales Growth Through Market Intelligence
+                </h2>
+              </div>
             </div>
           </div>
         </div>{/* end max-w wrapper */}
@@ -877,23 +887,13 @@ export default function TemplateICBlueProfessionalAlt() {
 
       {/* ══ SCROLLABLE CONTENT below sticky scene ══ */}
       <section id="overview-full" className="pb-2 lg:pb-4 relative overflow-hidden" style={{
-        background: isDesktop ? `linear-gradient(to bottom, rgba(255,255,255,0) 0px, rgba(255,255,255,0.96) 300px, ${IC.white} 420px)` : IC.white,
+        background: IC.white,
         zIndex: 10,
         position: "relative",
-        marginTop: isDesktop ? -400 : -240,
-        paddingTop: isDesktop ? 240 : 32,
+        marginTop: isDesktop ? -80 : -240,
+        paddingTop: isDesktop ? 48 : 32,
       }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14 relative z-10">
-            <div className="mb-10" aria-hidden="true" />
-            <Fade>
-              <div className="flex items-end justify-between mb-14">
-                <div>
-                  <Label>What we do</Label>
-                  <ParaTitle className="mb-0">Sales Growth Through Market Intelligence</ParaTitle>
-                </div>
-
-              </div>
-            </Fade>
             <div style={{ borderTop: `1.5px solid ${IC.blueXL}` }}>
               {COMPETENCES.map((c, i) => {
                 const Icon = c.icon
@@ -954,7 +954,7 @@ export default function TemplateICBlueProfessionalAlt() {
       </section>
 
       {/* NEWS & EVENTS */}
-      <section className="pt-20 pb-8 lg:pt-28 lg:pb-10" style={{ background: IC.white }}>
+      <section className="pt-8 pb-8 lg:pt-12 lg:pb-10" style={{ background: IC.white }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-14">
           <Fade>
             <Label>IC News</Label>
@@ -1311,10 +1311,10 @@ export default function TemplateICBlueProfessionalAlt() {
       >
         <div className="max-w-7xl mx-auto lg:px-48 relative z-10" style={{ paddingTop: 40, paddingBottom: 0 }}>
           <div
-            className="flex flex-row items-center justify-between gap-2 pt-3"
+            className="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 lg:gap-0 pt-3"
           >
-            <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
-            <div className="flex items-center gap-5 text-[13px]">
+            <p className="text-[13px] text-center lg:text-right lg:pr-8" style={{ color: "rgba(255,255,255,0.55)" }}>© 2026 Interconnection Consulting</p>
+            <div className="flex items-center justify-center lg:justify-start lg:pl-8 gap-5 text-[13px]">
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Print</a>
               <a href="#" style={{ color: "rgba(255,255,255,0.75)" }}>Privacy Policy</a>
             </div>
